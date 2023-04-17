@@ -1,48 +1,43 @@
 /* const { Schema, model } = require('mongoose');
 
-const productSchema = new Schema({
-    productName: {
+const shareboxSchema = new Schema({
+    shareboxName: {
         type: String, 
         required: true, 
         trim: true,
     },
-    // vegetable, meat, egg, dairy, fruits, etc
-    productType: {
+    // weekly, biweekly, monthly
+    shareboxType: {
         type: String, 
         required: true, 
         trim: true,
     },
-    productPrice: {
+    shareboxPrice: {
         type: Number, 
         required: true, 
         get: getPrice, 
         set: setPrice, 
     },
-    productUnits: {
+    shareboxAllergens: {
         type: String, 
         required: true, 
         trim: true,
     },
-    productAllergens: {
+    shareboxAvailability: {
         type: String, 
         required: true, 
         trim: true,
     },
-    productAvailability: {
-        type: String, 
-        required: true, 
-        trim: true,
-    },
-    productDescription: {
+    shareboxDescription: {
         type: String, 
         required: true, 
         trim: true, 
     },
 });
 
-const Product = mongoose.model('Product', productSchema);
+const Sharebox = mongoose.model('Sharebox', shareboxSchema);
 
-module.exports = Product;
+module.exports = Sharebox;
 
 // Need to move to helpers file
 function getPrice(num){

@@ -17,7 +17,7 @@ const vendorSchema = new Schema({
         required: true, 
         trim: true,
     },
-    description: {
+    farmDescription: {
         type: String, 
         required: true, 
         trim: true, 
