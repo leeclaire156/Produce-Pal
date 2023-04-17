@@ -23,7 +23,10 @@ const vendorSchema = new Schema({
         trim: true, 
     },
     vendorContact: {
-        connectInfo: ContactInfoSchema,
+        connectInfo: contactInfoSchema,
+    },
+    vendorLogin: {
+        userLoginInfo: userInfoSchema,
     },
 });
 

@@ -7,7 +7,8 @@ const addressSchema = new Schema({
         type: String, 
         required: true, 
         trim: true, 
-    }, city: {
+    }, 
+    city: {
         type: String, 
         required: true, 
         trim: true, 

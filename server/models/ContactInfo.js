@@ -14,30 +14,8 @@ const contactInfoSchema = new Schema({
         trim: true, 
     },
     address: {
-        type: AddressSchema,
+        type: addressSchema,
         required: true,
-    },
-});
-
-const addressSchema = new Schema({
-    street: {
-        type: String, 
-        required: true, 
-        trim: true, 
-    }, city: {
-        type: String, 
-        required: true, 
-        trim: true, 
-    },
-    state: {
-        type: String, 
-        required: true, 
-        trim: true, 
-    },
-    zipcode: {
-        type: Number,
-        required: true,
-        trim: true,
     },
 });
 
