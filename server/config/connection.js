@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config();
 
 try {
     // added useNewUrlParser and useUnifiedTopology due to Deprecation Warnings
