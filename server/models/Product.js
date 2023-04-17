@@ -19,9 +19,7 @@ const productSchema = new Schema({
         set: setPrice, 
     },
     productUnits: {
-        type: String, 
-        required: true, 
-        trim: true,
+        type: Number, 
     },
     productAllergens: {
         type: String, 
