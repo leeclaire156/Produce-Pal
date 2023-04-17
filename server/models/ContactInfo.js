@@ -22,5 +22,5 @@ const contactInfoSchema = new Schema({
 // model const that can be used to create instances of contact info for CRUD
 const ContactInfo = mongoose.model('ContactInfo', contactInfoSchema);
 
-module.exports = ContactInfo;
+module.exports = contactInfoSchema, ContactInfo;
 */
