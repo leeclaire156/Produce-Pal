@@ -1,6 +1,5 @@
 /* const { Schema, model } = require('mongoose');
 
-
 const vendorSchema = new Schema({
     farmName: {
         type: String, 
@@ -29,7 +28,6 @@ const vendorSchema = new Schema({
         userLoginInfo: userInfoSchema,
     },
 });
-
 
 const Vendor = mongoose.model('Vendor', vendorSchema);
 
