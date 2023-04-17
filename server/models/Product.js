@@ -29,7 +29,6 @@ const productSchema = new Schema({
     productAvailability: {
         type: String, 
         required: true, 
-        trim: true,
     },
     productDescription: {
         type: String, 
