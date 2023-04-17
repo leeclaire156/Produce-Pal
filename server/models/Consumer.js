@@ -2,10 +2,21 @@
 
 
 const consumerSchema = new Schema({
-    name: {
+    consumerFirstName: {
         type: String, 
         required: true, 
         trim: true,
+    },
+    consumerLastName: {
+        type: String, 
+        required: true, 
+        trim: true,
+    },
+    consumerContact: {
+        connectInfo: contactInfoSchema,
+    },
+    consumerLogin: {
+        userLoginInfo: userInfoSchema,
     },
 });
 
