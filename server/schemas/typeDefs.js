@@ -1,12 +1,7 @@
-/* const { gql } = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-type Vendor {
-    _id: ID!
-    name: String!
-}
-
-type Consumer {
+type User {
     _id: ID!
     name: String!
 }
@@ -18,8 +13,7 @@ type Product {
 }
 
 type Query {
-    vendor: [Vendor]
-    consumer: [Consumer]
+    user: [User]
     product: [Product]
 }
 
@@ -29,4 +23,3 @@ type Mutation {
 `;
 
 module.exports = typeDefs;
-*/
