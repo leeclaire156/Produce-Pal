@@ -27,6 +27,7 @@ const shareboxSchema = new Schema({
         required: true, 
         trim: true,
     },
+    // you can put term length under description
     shareboxDescription: {
         type: String, 
         trim: true, 
@@ -41,7 +42,6 @@ const shareboxSchema = new Schema({
     //     required: true, 
     //     trim: true,
     // },
-    // you can put term length under description
 });
 
 const Sharebox = model('Sharebox', shareboxSchema);

@@ -44,6 +44,17 @@ const userSchema = new Schema({
         default: '',
         trim: true, 
     },
+    // Users who are also selling will have objects of their produce & sharebox
+    vendorStore: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Produce'
+        },
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Sharebox'
+        },
+    ],
     pickupLocation: {
         type: String, 
         default: '',
