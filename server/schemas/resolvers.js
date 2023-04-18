@@ -2,9 +2,9 @@ const { User, Produce, Sharebox, Order } = require('../models');
 
 const resolvers = {
     Query: {
-        // users: async () => {
-        //     return await User.find({});
-        // },
+        users: async () => {
+            return await User.find({});
+        },
         produces: async () => {
             return await Produce.find({});
         },
