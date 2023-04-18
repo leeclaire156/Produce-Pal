@@ -23,7 +23,7 @@ export default function Upload() {
     });
 
     // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_USER mutation
-    const [AddProduce] = useMutation(ADD_PRODUCE);
+    const [addProduce] = useMutation(ADD_PRODUCE);
 
     const handleInputChange = (event) => {
         const { name, type, value } = event.target;
@@ -59,12 +59,13 @@ export default function Upload() {
 
 
         try {
-            const { data } = AddProduce({
+            const { data } = addProduce({
                 variables: { ...produceFormData }, //adds produce to database based on input form information stored in produceFormData variable
             });
         } catch (err) {
             console.error(err);
             console.log(produceFormData) //form contents work
+            console.log(produceFormData.produceAllergens) //form contents work
         }
 
         // setProduceFormData({
