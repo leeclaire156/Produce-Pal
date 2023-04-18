@@ -10,31 +10,36 @@ const produceSchema = new Schema({
         required: true, 
         trim: true,
     },
-    // For Produce categories: vegetable, meat, egg, dairy, fruits, etc.
-    produceCategory: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category',
+    // For Produce type: vegetable, meat, egg, dairy, fruits, etc.
+    produceType: {
+        type: String,
+        required: true,
+        trim: true
     },
     producePrice: {
         type: Number, 
         required: true, 
-        get: getPrice, 
-        set: setPrice, 
+        // get: getPrice, 
+        // set: setPrice, 
+    },
+    // Number in inventory of produce
+    produceInventory: {
+        type: Number, 
+        // required: true, 
     },
     // units example lbs, oz, ea.
     produceUnits: {
         type: String, 
+        // required: true, 
     },
     produceAllergens: {
         type: String, 
-        required: true, 
         trim: true,
     },
     // boolean defaults to true (in stock) & user/vendor can change it to false
     produceAvailability: {
         type: Boolean, 
         default: true,
-        required: true, 
     },
     // open ended field in the front end
     produceDescription: {
@@ -46,9 +51,10 @@ const produceSchema = new Schema({
     },
 });
 
-const Product = mongoose.model('Produce', produceSchema);
 
-module.exports = Product;
+const Produce = model('Produce', produceSchema);
+
+module.exports = Produce;
 
 // function getPrice(num){
 //     return (num/100.toFixed(2);

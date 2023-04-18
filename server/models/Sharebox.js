@@ -10,28 +10,31 @@ const shareboxSchema = new Schema({
         required: true, 
         trim: true,
     },
-    // For Sharebox categories: weekly, biweekly, monthly
-    shareboxCategory: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category',
+    // For Sharebox type: weekly, biweekly, monthly
+    shareboxType: {
+        type: String,
+        required: true,
+        trim: true
     },
     shareboxPrice: {
         type: Number, 
         required: true, 
-        get: getPrice, 
-        set: setPrice, 
+        // get: getPrice, 
+        // set: setPrice, 
     },
     shareboxAllergens: {
         type: String, 
         required: true, 
         trim: true,
     },
+    // you can put term length under description
     shareboxDescription: {
         type: String, 
         trim: true, 
     },
     shareboxImage: {
         type: String,
+        default: '',
     },
     // // in stock or out of stock
     // shareboxAvailability: {
@@ -39,10 +42,9 @@ const shareboxSchema = new Schema({
     //     required: true, 
     //     trim: true,
     // },
-    // you can put term length under description
 });
 
-const Sharebox = mongoose.model('Sharebox', shareboxSchema);
+const Sharebox = model('Sharebox', shareboxSchema);
 
 module.exports = Sharebox;
 

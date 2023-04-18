@@ -1,7 +1,8 @@
 const { Schema, model } = require('mongoose');
 
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const Order = require('./Order');
+const Address = require('./Address');
 
 const userSchema = new Schema({
     // everyone starts off as a Consumer
@@ -43,6 +44,17 @@ const userSchema = new Schema({
         default: '',
         trim: true, 
     },
+    // Users who are also selling will have objects of their produce & sharebox
+    vendorStore: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Produce'
+        },
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Sharebox'
+        },
+    ],
     pickupLocation: {
         type: String, 
         default: '',
@@ -53,26 +65,46 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
-    vendorAddress: {
-        type: addressSchema,
-        default: '',
-    },
+    vendorAddress: [{
+        street: {
+            type: String, 
+            default: '',
+            trim: true, 
+        }, 
+        city: {
+            type: String, 
+            default: '',
+            trim: true, 
+        },
+        state: {
+            type: String, 
+            default: '',
+            trim: true, 
+        },
+        zipcode: {
+            type: Number,
+            default: '',
+            trim: true,
+        },
+    }]
 });
 
-// set up pre-save middleware to create password
-userSchema.pre('save', async function (next) {
-    if (this.isNew || this.isModified('password')) {
-        const saltRounds = 10;
-        this.password = await bcrypt.hash(this.password, saltRounds);
-    }
+// TO DO: virtuals for concat address
 
-    next();
-});
+// // set up pre-save middleware to create password
+// userSchema.pre('save', async function (next) {
+//     if (this.isNew || this.isModified('password')) {
+//         const saltRounds = 10;
+//         this.password = await bcrypt.hash(this.password, saltRounds);
+//     }
 
-// compare the incoming password with the hashed password
-userSchema.methods.isCorrectPassword = async function (password) {
-    return await bcrypt.compare(password, this.password);
-};
+//     next();
+// });
+
+// // compare the incoming password with the hashed password
+// userSchema.methods.isCorrectPassword = async function (password) {
+//     return await bcrypt.compare(password, this.password);
+// };
 
 const User = model('User', userSchema);
 

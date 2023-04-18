@@ -1,0 +1,25 @@
+[
+    {
+    "firstName": "MaSandra",
+    "lastName": "Ewing",
+    "email": "mewing123@gmail.com",
+    "password": "password1",
+    "vendorStatus": "true",
+    "vendorStore": [ 
+        "643e1cd3e7937142a7724bd9", 
+        "643e9e3f5bc4f06a215c6873"
+    ],
+    "vendorAddress": [{
+        "street": "123 Main Street",
+        "city": "Bethesda",
+        "state": "Maryland",
+        "zipcode": "22012"
+    }]
+    },
+    {
+    "firstName": "Test",
+    "lastName": "Testing",
+    "email": "tester@gmail.com",
+    "password": "password12"
+    }
+]  
