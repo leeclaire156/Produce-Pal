@@ -18,8 +18,8 @@ const produceSchema = new Schema({
     producePrice: {
         type: Number, 
         required: true, 
-        get: getPrice, 
-        set: setPrice, 
+        // get: getPrice, 
+        // set: setPrice, 
     },
     // units example lbs, oz, ea.
     produceUnits: {
@@ -46,9 +46,9 @@ const produceSchema = new Schema({
     },
 });
 
-const Product = mongoose.model('Produce', produceSchema);
+const Produce = model('Produce', produceSchema);
 
-module.exports = Product;
+module.exports = Produce;
 
 // function getPrice(num){
 //     return (num/100.toFixed(2);

@@ -5,28 +5,28 @@ const { Schema, model } = require('mongoose');
 const addressSchema = new Schema({
     street: {
         type: String, 
-        required: true, 
+        default: '',
         trim: true, 
     }, 
     city: {
         type: String, 
-        required: true, 
+        default: '',
         trim: true, 
     },
     state: {
         type: String, 
-        required: true, 
+        default: '',
         trim: true, 
     },
     zipcode: {
         type: Number,
-        required: true,
+        default: '',
         trim: true,
     },
 });
 
 // TO DO: virtuals for concat
 
-const Address = mongoose.model('Address', addressSchema);
+const Address = model('Address', addressSchema);
 
-module.exports = addressSchema, Address;
+module.exports = Address;

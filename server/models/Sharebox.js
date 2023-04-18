@@ -18,8 +18,8 @@ const shareboxSchema = new Schema({
     shareboxPrice: {
         type: Number, 
         required: true, 
-        get: getPrice, 
-        set: setPrice, 
+        // get: getPrice, 
+        // set: setPrice, 
     },
     shareboxAllergens: {
         type: String, 
@@ -42,7 +42,7 @@ const shareboxSchema = new Schema({
     // you can put term length under description
 });
 
-const Sharebox = mongoose.model('Sharebox', shareboxSchema);
+const Sharebox = model('Sharebox', shareboxSchema);
 
 module.exports = Sharebox;
 
