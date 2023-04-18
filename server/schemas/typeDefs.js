@@ -6,7 +6,7 @@ type User {
     name: String!
 }
 
-type Product {
+type Produce {
     _id: ID!
     name: String!
     price: Int
@@ -14,11 +14,11 @@ type Product {
 
 type Query {
     user: [User]
-    product: [Product]
+    produce: [Produce]
 }
 
 type Mutation {
-    createProduct(name: String!, price: Int!): Product
+    createProduce(name: String!, price: Int!): Produce
 }
 `;
 
