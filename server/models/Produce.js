@@ -22,9 +22,15 @@ const produceSchema = new Schema({
         // get: getPrice, 
         // set: setPrice, 
     },
+    // Number in inventory of produce
+    produceInventory: {
+        type: Number, 
+        // required: true, 
+    },
     // units example lbs, oz, ea.
     produceUnits: {
         type: String, 
+        // required: true, 
     },
     produceAllergens: {
         type: String, 
@@ -44,6 +50,7 @@ const produceSchema = new Schema({
         type: String,
     },
 });
+
 
 const Produce = model('Produce', produceSchema);
 

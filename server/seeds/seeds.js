@@ -1,8 +1,9 @@
 const db = require('../config/connection');
-const { User, Produce, Sharebox } = require('../models');
+const { User, Produce, Sharebox, Order } = require('../models');
 const userSeeds = require('./userSeeds.json');
 const produceSeeds = require('./produceSeeds.json');
 const shareboxSeeds = require('./shareboxSeeds.json');
+const orderSeeds = require('./orderSeeds.json');
 
 db.once('open', async () => {
     try {
@@ -13,6 +14,8 @@ db.once('open', async () => {
         await Produce.create(produceSeeds);
         await Sharebox.deleteMany({});
         await Sharebox.create(shareboxSeeds);
+        await Order.deleteMany({});
+        await Order.create(orderSeeds);
     } catch (err) {
         console.error(err);
         process.exit(1);

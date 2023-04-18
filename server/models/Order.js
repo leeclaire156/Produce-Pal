@@ -3,10 +3,12 @@ const { Schema, model } = require('mongoose');
 const orderSchema = new Schema({
     orderId: {
         type: Number,
+        required: true, 
     },
     purchaseDate: {
         type: Date,
         default: Date.now,
+        required: true, 
     },
     orderContents: [
         {

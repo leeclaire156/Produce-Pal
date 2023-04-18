@@ -3,7 +3,12 @@
     "firstName": "MaSandra",
     "lastName": "Ewing",
     "email": "mewing123@gmail.com",
-    "password": "password1"
+    "password": "password1",
+    "vendorStatus": "true",
+    "vendorStore": [ 
+        "643e1cd3e7937142a7724bd9", 
+        "643e9e3f5bc4f06a215c6873"
+        ]
     },
     {
     "firstName": "Test",
