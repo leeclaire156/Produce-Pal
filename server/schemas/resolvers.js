@@ -1,18 +1,18 @@
-const { User, Produce, Sharebox, Order } = require('../models');
+const { User, Product, Order } = require('../models');
 
 const resolvers = {
     Query: {
         users: async () => {
             return await User.find({});
         },
-        produces: async () => {
-            return await Produce.find({});
+        products: async () => {
+            return await Product.find({});
         },
     },
     // Mutation: {
-    //     createProduce: async (parent, args) => {
-    //         const produce = await Produce.create(args);
-    //         return produce;
+    //     createProduct: async (parent, args) => {
+    //         const product = await Product.create(args);
+    //         return product;
     //     },
     // },
 };

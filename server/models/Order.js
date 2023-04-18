@@ -14,11 +14,7 @@ const orderSchema = new Schema(
         orderContents: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'Produce'
-            },
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Sharebox'
+                ref: 'Product'
             },
         ],
         // For Order type: Pending, Paid, Ready, Closed

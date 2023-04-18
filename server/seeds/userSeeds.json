@@ -1,25 +1,31 @@
 [
     {
-    "firstName": "MaSandra",
+    "firstName": "MaSandra the Farmer",
     "lastName": "Ewing",
     "email": "mewing123@gmail.com",
     "password": "password1",
     "vendorStatus": "true",
+    "vendorName": "The CoOp",
+    "vendorDescription": "We work with other farms to compile great products.",
     "vendorStore": [ 
         "643e1cd3e7937142a7724bd9", 
         "643e9e3f5bc4f06a215c6873"
     ],
-    "vendorAddress": [{
-        "street": "123 Main Street",
-        "city": "Bethesda",
-        "state": "Maryland",
-        "zipcode": "22012"
-    }]
+    "pickupLocation": "Mosaic Farmer's Market",
+    "vendorTelephone": "2026759012",
+    "vendorAddress": 
+        [{
+            "street": "123 Main Street",
+            "city": "Bethesda",
+            "state": "Maryland",
+            "zipcode": "22012"
+        }]
     },
     {
-    "firstName": "Atlas test",
+    "firstName": "Claire the Buyer",
     "lastName": "Lee",
-    "email": "tester@gmail.com",
-    "password": "password12"
+    "email": "claire456@gmail.com",
+    "password": "password2",
+    "vendorStatus": "false"
     }
 ]  

@@ -6,25 +6,37 @@ type User {
     firstName: String!
     lastName: String!
     email: String!
-    # orders: String!
+    orders: [Order]
     vendorStatus: Boolean
+    vendorName: String!
+    vendorDescription: String!
+    vendorStore: [Product]
+    pickupLocation: String!
+    vendorTelephone: Int
+    vendorAddress: String!
 }
 
-type Produce {
+type Product {
     _id: ID
-    produceId: Int
-    produceName: String
-    producePrice: Int
-    produceType: String
+    productId: Int
+    productName: String!
+    productType: Boolean
+    productPrice: Int
+    productCategory: String!
+    productInventory: Int
+    productUnits: String!
+    productAllergens: String!
+    productAvailability: Boolean
+    productDescription: String!
 }
 
 type Query {
     users: [User]
-    produces: [Produce]
+    products: [Product]
 }
 
 # type Mutation {
-#     createProduce(name: String!, price: Int!): Produce
+#     createProduct(name: String!, price: Int!): Produce
 # }
 `;
 

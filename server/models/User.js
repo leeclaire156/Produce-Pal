@@ -28,7 +28,7 @@ const userSchema = new Schema({
     },
     orders: [Order.schema],
     
-    // IF vendorStatus is true for boolean, then additional fields below can be edited in the front end
+    // IF vendorStatus is false (default) -> buyer. If true -> both buyer and farmer
     vendorStatus: {
         type: Boolean,
         default: false,
@@ -47,11 +47,7 @@ const userSchema = new Schema({
     vendorStore: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Produce'
-        },
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Sharebox'
+            ref: 'Product'
         },
     ],
     pickupLocation: {
@@ -81,7 +77,7 @@ const userSchema = new Schema({
             trim: true, 
         },
         zipcode: {
-            type: Number,
+            type: String,
             default: '',
             trim: true,
         },

@@ -1,60 +1,67 @@
 const { Schema, model } = require('mongoose');
 
-const produceSchema = new Schema({
-    produceId: {    
+const productSchema = new Schema({
+    productId: {    
         type: Number, 
         required: true, 
     },
-    produceName: {
+    productName: {
         type: String, 
         required: true, 
         trim: true,
     },
-    // For Produce type: vegetable, meat, egg, dairy, fruits, etc.
-    produceType: {
-        type: String,
+    // Default is false so produce. If true, Sharebox type chosen.
+    productType: {
+        type: Boolean,
         required: true,
-        trim: true
+        default: false,
     },
-    producePrice: {
+    productPrice: {
         type: Number, 
         required: true, 
         // get: getPrice, 
         // set: setPrice, 
     },
-    // Number in inventory of produce
-    produceInventory: {
+    // For Sharebox: weekly, biweekly, monthly
+    // For Produce: vegetable, meat, egg, dairy, fruits, etc.
+    productCategory: {
+        type: String,
+        trim: true
+    },
+    // Number in inventory of product
+    productInventory: {
         type: Number, 
         // required: true, 
     },
     // units example lbs, oz, ea.
-    produceUnits: {
+    productUnits: {
         type: String, 
         // required: true, 
     },
-    produceAllergens: {
+    productAllergens: {
         type: String, 
         trim: true,
     },
     // boolean defaults to true (in stock) & user/vendor can change it to false
-    produceAvailability: {
+    productAvailability: {
         type: Boolean, 
         default: true,
     },
     // open ended field in the front end
-    produceDescription: {
+    productDescription: {
         type: String, 
         trim: true, 
     },
-    produceImage: {
+    productImage: {
         type: String,
+        default: '',
     },
 });
 
 
-const Produce = model('Produce', produceSchema);
+const Product = model('Product', productSchema);
 
-module.exports = Produce;
+module.exports = Product;
 
 // function getPrice(num){
 //     return (num/100.toFixed(2);
