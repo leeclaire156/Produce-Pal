@@ -1,6 +1,6 @@
 // Contact Info can be used by other models
 
-/* const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const addressSchema = new Schema({
     street: {
@@ -25,7 +25,8 @@ const addressSchema = new Schema({
     },
 });
 
+// TO DO: virtuals for concat
+
 const Address = mongoose.model('Address', addressSchema);
 
 module.exports = addressSchema, Address;
-*/
