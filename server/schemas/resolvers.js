@@ -1,12 +1,9 @@
-/* const { Vendor, Consumer, Product } = require('../models');
+const { Vendor, Consumer, Product } = require('../models');
 
 const resolvers = {
     Query: {
-        vendor: async () => {
-            return Vendor.find({});
-        },
-        consumer: async () => {
-            return Consumer.find({});
+        user: async () => {
+            return User.find({});
         },
         product: async () => {
             return Product.find({});
@@ -21,4 +18,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-*/
