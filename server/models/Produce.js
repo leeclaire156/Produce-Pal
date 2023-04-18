@@ -10,10 +10,11 @@ const produceSchema = new Schema({
         required: true, 
         trim: true,
     },
-    // For Produce categories: vegetable, meat, egg, dairy, fruits, etc.
-    produceCategory: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category',
+    // For Produce type: vegetable, meat, egg, dairy, fruits, etc.
+    produceType: {
+        type: String,
+        required: true,
+        trim: true
     },
     producePrice: {
         type: Number, 
@@ -27,14 +28,12 @@ const produceSchema = new Schema({
     },
     produceAllergens: {
         type: String, 
-        required: true, 
         trim: true,
     },
     // boolean defaults to true (in stock) & user/vendor can change it to false
     produceAvailability: {
         type: Boolean, 
         default: true,
-        required: true, 
     },
     // open ended field in the front end
     produceDescription: {

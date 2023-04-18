@@ -18,11 +18,12 @@ const orderSchema = new Schema({
             ref: 'Sharebox'
         },
     ],
-    // For Order categories: pending, paid, ready, closed
-    orderCategory: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category',
-    }
+    // For Order type: Pending, Paid, Ready, Closed
+    orderType: {
+        type: String,
+        required: true,
+        trim: true
+    },
 });
 
 // add virtual for the aggregate using $group

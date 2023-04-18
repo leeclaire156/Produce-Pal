@@ -10,10 +10,11 @@ const shareboxSchema = new Schema({
         required: true, 
         trim: true,
     },
-    // For Sharebox categories: weekly, biweekly, monthly
-    shareboxCategory: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category',
+    // For Sharebox type: weekly, biweekly, monthly
+    shareboxType: {
+        type: String,
+        required: true,
+        trim: true
     },
     shareboxPrice: {
         type: Number, 
@@ -32,6 +33,7 @@ const shareboxSchema = new Schema({
     },
     shareboxImage: {
         type: String,
+        default: '',
     },
     // // in stock or out of stock
     // shareboxAvailability: {
