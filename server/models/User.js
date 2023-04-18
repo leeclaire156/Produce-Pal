@@ -65,8 +65,31 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
-    vendorAddress: [Address.schema],
+    vendorAddress: [{
+        street: {
+            type: String, 
+            default: '',
+            trim: true, 
+        }, 
+        city: {
+            type: String, 
+            default: '',
+            trim: true, 
+        },
+        state: {
+            type: String, 
+            default: '',
+            trim: true, 
+        },
+        zipcode: {
+            type: Number,
+            default: '',
+            trim: true,
+        },
+    }]
 });
+
+// TO DO: virtuals for concat address
 
 // // set up pre-save middleware to create password
 // userSchema.pre('save', async function (next) {
