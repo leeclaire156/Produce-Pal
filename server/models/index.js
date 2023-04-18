@@ -1,9 +1,6 @@
-/*
-const Vendor = require('./Vendor');
-const Consumer = require('./Consumer');
-const Product = require('./Product');
+const User = require('./User');
+const Produce = require('./Produce');
 const Sharebox = require('./Sharebox');
-const Cart = require('./Cart');
+const Order = require('./Order');
 
-module.exports = { Vendor, Consumer, Product, Sharebox, Cart };
-*/
+module.exports = { User, Produce, Sharebox, Order };

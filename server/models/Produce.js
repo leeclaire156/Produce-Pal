@@ -1,50 +1,54 @@
 const { Schema, model } = require('mongoose');
 
-const shareboxSchema = new Schema({
-    shareboxId: {    
+const produceSchema = new Schema({
+    produceId: {    
         type: Number, 
         required: true, 
     },
-    shareboxName: {
+    produceName: {
         type: String, 
         required: true, 
         trim: true,
     },
-    // For Sharebox categories: weekly, biweekly, monthly
-    shareboxCategory: {
+    // For Produce categories: vegetable, meat, egg, dairy, fruits, etc.
+    produceCategory: {
         type: Schema.Types.ObjectId,
         ref: 'Category',
     },
-    shareboxPrice: {
+    producePrice: {
         type: Number, 
         required: true, 
         get: getPrice, 
         set: setPrice, 
     },
-    shareboxAllergens: {
+    // units example lbs, oz, ea.
+    produceUnits: {
+        type: String, 
+    },
+    produceAllergens: {
         type: String, 
         required: true, 
         trim: true,
     },
-    shareboxDescription: {
+    // boolean defaults to true (in stock) & user/vendor can change it to false
+    produceAvailability: {
+        type: Boolean, 
+        default: true,
+        required: true, 
+    },
+    // open ended field in the front end
+    produceDescription: {
         type: String, 
         trim: true, 
     },
-    shareboxImage: {
+    produceImage: {
         type: String,
     },
-    // // in stock or out of stock
-    // shareboxAvailability: {
-    //     type: Boolean, 
-    //     required: true, 
-    //     trim: true,
-    // },
-    // you can put term length under description
 });
 
-const Sharebox = mongoose.model('Sharebox', shareboxSchema);
+const Product = mongoose.model('Produce', produceSchema);
 
-module.exports = Sharebox;
+module.exports = Product;
 
 // function getPrice(num){
 //     return (num/100.toFixed(2);
