@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 // const bcrypt = require('bcrypt');
 const Order = require('./Order');
-const Address = require('./Address');
+// const Address = require('./Address');
 
 const userSchema = new Schema({
     // everyone starts off as a Consumer
