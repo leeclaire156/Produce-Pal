@@ -4,7 +4,11 @@ dotenv.config();
 
 try {
     // added useNewUrlParser and useUnifiedTopology due to Deprecation Warnings
-    mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/localproducepal', {
+    
+    // // works for seeding locally but doesn't work with npm start
+    // mongoose.connect(process.env.MONGODB_URI && 'mongodb://127.0.0.1:27017/localproducepal', {
+    // works for seeding Atlas but graphql pulls locally
+    mongoose.connect('mongodb://127.0.0.1:27017/localproducepal', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
