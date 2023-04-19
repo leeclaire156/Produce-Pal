@@ -18,16 +18,17 @@ type User {
 
 type Product {
     _id: ID
-    productId: Int
+    productId: Int!
     productName: String!
     productType: Boolean
-    productPrice: Float
-    productCategory: String!
+    productPrice: Float!
+    productCategory: String
     productInventory: Int
-    productUnits: String!
-    productAllergens: String!
+    productUnits: String
+    productAllergens: String
     productAvailability: Boolean
-    productDescription: String!
+    productDescription: String
+    productImage: String
 }
 
 type Order {
@@ -46,9 +47,22 @@ type Query {
     # order(_id: ID!): Order
 }
 
-# type Mutation {
-#     createProduct(name: String!, price: Int!): Product
-# }
+type Mutation {
+    # createProduct(name: String!, price: Int!): Product
+    addProduct(
+        _id: ID,
+    productId: Int!,
+    productName: String!,
+    productType: Boolean,
+    productPrice: Float!,
+    productCategory: String,
+    productInventory: Int,
+    productUnits: String,
+    productAllergens: String,
+    productAvailability: Boolean,
+    productDescription: String,
+    productImage: String): Product
+}
 `;
 
 module.exports = typeDefs;

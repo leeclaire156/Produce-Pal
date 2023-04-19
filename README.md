@@ -122,4 +122,5 @@ PWAeditor application is covered by MIT license.
 1. [Store price in Mongoose](https://stackoverflow.com/questions/13304129/how-should-i-store-a-price-in-mongoose)
 2. [Shopping cart items for MongoDB using Mongoose](https://copyprogramming.com/howto/insert-online-shopping-cart-items-into-mongodb-using-mongoose)
 3. [Nested objects in Mongoose schemas](https://stackoverflow.com/questions/39596625/nested-objects-in-mongoose-schemas)
+4. [Converting value into `Number` type in form handler](https://stackoverflow.com/questions/66132421/updating-input-type-number-in-react-form)
 

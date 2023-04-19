@@ -1,4 +1,3 @@
-// This text is to allow GitHub to recognize this file and it parent folder's existence
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express')
 const path = require('path');
@@ -25,12 +24,6 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-
-// db.once('open', () => {
-//     app.listen(PORT, () => {
-//         console.log(`API server running on port ${PORT}!`);
-//         // console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-//     })})
 
 const startApolloServer = async (typeDefs, resolvers) => {
     await server.start();
