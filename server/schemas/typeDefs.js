@@ -36,7 +36,7 @@ type Query {
 }
 
 # type Mutation {
-#     createProduct(name: String!, price: Int!): Produce
+#     createProduct(name: String!, price: Int!): Product
 # }
 `;
 
