@@ -15,33 +15,9 @@ const resolvers = {
         //     return product;
         // },
 
-        addProduce: async (parent, {
-            _id,
-            produceId,
-            produceName,
-            produceType,
-            producePrice,
-            produceInventory,
-            produceUnits,
-            produceAllergens,
-            produceAvailability,
-            produceDescription,
-            produceImage
-        }) => {
-            const produce = await Produce.create({
-                _id,
-                produceId,
-                produceName,
-                produceType,
-                producePrice,
-                produceInventory,
-                produceUnits,
-                produceAllergens,
-                produceAvailability,
-                produceDescription,
-                produceImage
-            });
-            return [produce];
+        addProduce: async (parent, { _id, produceId, produceName, produceType, producePrice, produceInventory, produceUnits, produceAllergens, produceAvailability, produceDescription, produceImage }) => {
+            const produce = await Produce.create({ _id, produceId, produceName, produceType, producePrice, produceInventory, produceUnits, produceAllergens, produceAvailability, produceDescription, produceImage });
+            return { produce };
         }
     },
 };

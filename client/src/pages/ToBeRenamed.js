@@ -29,13 +29,6 @@ export default function Upload() {
         const { name, type, value } = event.target;
         // setProduceFormData({ ...produceFormData, [name]: value }); //sets name for each variable produceFormData into what the user input
 
-        //    [ type='text'
-        //     placeholder='true'
-        //     name='produceAvailability'
-        //     onChange={handleInputChange}
-        //     value={produceFormData.produceAvailability}
-        //     className='produceAvailability']
-
         setProduceFormData(input => {
             const produceFormData = { ...input }
 
@@ -56,16 +49,27 @@ export default function Upload() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(produceFormData) //form contents work
-
+        console.log(produceFormData.produceId)
 
         try {
             const { data } = addProduce({
-                variables: { ...produceFormData }, //adds produce to database based on input form information stored in produceFormData variable
+                variables: {
+                    produceId: produceFormData.produceId,
+                    produceName: produceFormData.produceName,
+                    produceType: produceFormData.produceType,
+                    producePrice: produceFormData.producePrice,
+                    produceInventory: produceFormData.produceInventory,
+                    produceUnits: produceFormData.produceUnits,
+                    produceAllergens: produceFormData.produceAllergens,
+                    // produceAvailability: produceFormData.produceAvailability,
+                    produceDescription: produceFormData.produceDescription,
+                    produceImage: produceFormData.produceImage,
+                }, //adds produce to database based on input form information stored in produceFormData variable
             });
+            return data;
         } catch (err) {
             console.error(err);
             console.log(produceFormData) //form contents work
-            console.log(produceFormData.produceAllergens) //form contents work
         }
 
         // setProduceFormData({
