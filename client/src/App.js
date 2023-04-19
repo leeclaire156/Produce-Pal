@@ -9,6 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 // import Navbar from './components/Navbar';
 import Upload from './components/addProductTest'; //Claire's testing ground for cloudinary
+import Cloudinary from './components/UploadImage'; //Claire's testing ground for cloudinary
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -41,7 +42,8 @@ function App() {
       <Router>
         <>
           <Switch>
-            <Route exact path='/Test' component={Upload} />
+            <Route exact path='/test' component={Upload} />
+            <Route exact path='/2nd-test' component={Cloudinary} />
             {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
           </Switch>
         </>

@@ -26,8 +26,6 @@ export default function Upload() {
 
     const handleInputChange = (event) => {
         const { name, type, value } = event.target;
-        // setProductFormData({ ...productFormData, [name]: value }); //sets name for each variable productFormData into what the user input
-
         setProductFormData(input => {
             const productFormData = { ...input }
 
@@ -48,8 +46,6 @@ export default function Upload() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(productFormData)
-        console.log(productFormData.productId)
-
         try {
             //adds product to database based on input form information stored in productFormData variable
             const { data } = addProduct({
@@ -88,16 +84,11 @@ export default function Upload() {
         // });
     };
 
-    // async function handleImageUpload() {
-    //     const data = new FormData()
-    //     data.append("file", image)
-    // }
-
     return (
         <Container>
             <Form onSubmit={handleFormSubmit} className="d-flex flex-column">
                 <Form.Group>
-                    <Form.Label>ID</Form.Label>
+                    <Form.Label>ID REQUIRED</Form.Label>
                     <Form.Control
                         type='number'
                         placeholder='12345'
@@ -109,7 +100,7 @@ export default function Upload() {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label>Name REQUIRED</Form.Label>
                     <Form.Control
                         type='text'
                         placeholder='Name'
@@ -121,7 +112,7 @@ export default function Upload() {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Price</Form.Label>
+                    <Form.Label>Price REQUIRED</Form.Label>
                     <Form.Control
                         type='number'
                         placeholder='12.99'
@@ -181,7 +172,7 @@ export default function Upload() {
 
                 {/* <Form.Group>
                     <Form.Label>Available</Form.Label>
-                     <Form.Control
+                    <Form.Control
                         type='text'
                         placeholder='true'
                         name='productAvailability'

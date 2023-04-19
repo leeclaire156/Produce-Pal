@@ -54,7 +54,7 @@ db.once('open', async () => {
         vendorStatus: true,
         vendorName: 'The CoOp',
         vendorDescription: 'We work with other farms to compile great products.',
-        vendorStore: [
+        products: [
             products[0]._id, 
             products[0]._id, 
             products[1]._id, 
