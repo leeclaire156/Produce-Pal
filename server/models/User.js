@@ -60,28 +60,11 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
-    vendorAddress: [{
-        street: {
-            type: String, 
-            default: '',
-            trim: true, 
-        }, 
-        city: {
-            type: String, 
-            default: '',
-            trim: true, 
-        },
-        state: {
-            type: String, 
-            default: '',
-            trim: true, 
-        },
-        zipcode: {
-            type: String,
-            default: '',
-            trim: true,
-        },
-    }]
+    vendorAddress: {
+        type: String, 
+        default: '',
+        trim: true, 
+    }
 });
 
 // TO DO: virtuals for concat address
