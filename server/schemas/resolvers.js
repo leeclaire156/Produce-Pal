@@ -12,7 +12,8 @@ const resolvers = {
             });
         },
         orders: async () => {
-            return await Order.find({}).populate('products');
+            return await Order.find({})
+            .populate('products');
         },
         products: async () => {
             return await Product.find({});
