@@ -6,11 +6,11 @@ type User {
     firstName: String!
     lastName: String!
     email: String!
-    orders: [Order]
+    # orders: [Order]
     vendorStatus: Boolean
     vendorName: String!
     vendorDescription: String!
-    vendorStore: [Product]
+    # vendorStore: [Product]
     pickupLocation: String!
     vendorTelephone: Int
     vendorAddress: String!
@@ -21,7 +21,7 @@ type Product {
     productId: Int
     productName: String!
     productType: Boolean
-    productPrice: Int
+    productPrice: Float
     productCategory: String!
     productInventory: Int
     productUnits: String!
