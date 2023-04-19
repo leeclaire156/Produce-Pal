@@ -13,7 +13,7 @@ const productSchema = new Schema({
     // Default is false so produce. If true, Sharebox type chosen.
     productType: {
         type: Boolean,
-        required: true,
+        // required: true,
         default: false,
     },
     productPrice: {

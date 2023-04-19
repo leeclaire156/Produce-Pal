@@ -20,7 +20,7 @@ type Product {
     _id: ID
     productId: Int!
     productName: String!
-    productType: Boolean!
+    productType: Boolean
     productPrice: Float!
     productCategory: String
     productInventory: Int
@@ -42,7 +42,7 @@ type Mutation {
         _id: ID,
     productId: Int!,
     productName: String!,
-    productType: Boolean!,
+    productType: Boolean,
     productPrice: Float!,
     productCategory: String,
     productInventory: Int,

@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 // import Navbar from './components/Navbar';
-import Upload from './pages/ToBeRenamed';
+import Upload from './pages/addProductTest'; //Claire's testing ground for cloudinary
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

@@ -1,45 +1,44 @@
-// This text is to allow GitHub to recognize this file and it parent folder's existence
-// This text is to allow GitHub to recognize this file and it parent folder's existence
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
-import { ADD_PRODUCE } from '../utils/mutations';
+import { ADD_PRODUCT } from '../utils/mutations';
 
 
 export default function Upload() {
     // set initial form state
-    const [produceFormData, setProduceFormData] = useState({
-        produceId: '',
-        produceName: '',
-        produceType: '',
-        producePrice: '',
-        produceInventory: '',
-        produceUnits: '',
-        produceAllergens: '',
-        // produceAvailability: '',
-        produceDescription: '',
-        produceImage: '',
+    const [productFormData, setProductFormData] = useState({
+        productId: '',
+        productName: '',
+        // productType: '',
+        productPrice: '',
+        productCategory: '',
+        productInventory: '',
+        productUnits: '',
+        productAllergens: '',
+        // productAvailability: '', //issue: value returns as string and database will not accept because its not boolean. NEED FUNCTION TO CONVERT.
+        productDescription: '',
+        productImage: '',
     });
 
     // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_USER mutation
-    const [addProduce] = useMutation(ADD_PRODUCE);
+    const [addProduct] = useMutation(ADD_PRODUCT);
 
     const handleInputChange = (event) => {
         const { name, type, value } = event.target;
-        // setProduceFormData({ ...produceFormData, [name]: value }); //sets name for each variable produceFormData into what the user input
+        // setProductFormData({ ...productFormData, [name]: value }); //sets name for each variable productFormData into what the user input
 
-        setProduceFormData(input => {
-            const produceFormData = { ...input }
+        setProductFormData(input => {
+            const productFormData = { ...input }
 
             switch (type) {
                 case 'number':
-                    produceFormData[name] = Number(value);
+                    productFormData[name] = Number(value);
                     break;
                 default:
-                    produceFormData[name] = value;
+                    productFormData[name] = value;
             }
-            return produceFormData;
+            return productFormData;
         });
 
 
@@ -48,41 +47,44 @@ export default function Upload() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(produceFormData) //form contents work
-        console.log(produceFormData.produceId)
+        console.log(productFormData)
+        console.log(productFormData.productId)
 
         try {
-            const { data } = addProduce({
+            //adds product to database based on input form information stored in productFormData variable
+            const { data } = addProduct({
                 variables: {
-                    produceId: produceFormData.produceId,
-                    produceName: produceFormData.produceName,
-                    produceType: produceFormData.produceType,
-                    producePrice: produceFormData.producePrice,
-                    produceInventory: produceFormData.produceInventory,
-                    produceUnits: produceFormData.produceUnits,
-                    produceAllergens: produceFormData.produceAllergens,
-                    // produceAvailability: produceFormData.produceAvailability,
-                    produceDescription: produceFormData.produceDescription,
-                    produceImage: produceFormData.produceImage,
-                }, //adds produce to database based on input form information stored in produceFormData variable
+                    productId: productFormData.productId,
+                    productName: productFormData.productName,
+                    // productType: productFormData.productType,
+                    productPrice: productFormData.productPrice,
+                    productCategory: productFormData.productCategory,
+                    productInventory: productFormData.productInventory,
+                    productUnits: productFormData.productUnits,
+                    productAllergens: productFormData.productAllergens,
+                    // productAvailability: productFormData.productAvailability,
+                    productDescription: productFormData.productDescription,
+                    productImage: productFormData.productImage,
+                },
             });
             return data;
         } catch (err) {
             console.error(err);
-            console.log(produceFormData) //form contents work
+            console.log(productFormData)
         }
 
-        // setProduceFormData({
-        //     produceId: '',
-        //     produceName: '',
-        //     produceType: '',
-        //     producePrice: '',
-        //     produceInventory: '',
-        //     produceUnits: '',
-        //     produceAllergens: '',
-        //     produceAvailability: '',
-        //     produceDescription: '',
-        //     produceImage: '',
+        // setProductFormData({
+        //     productId: '',
+        //     productName: '',
+        //     productType: '',
+        //     productPrice: '',
+        //     productCategory: '',
+        //     productInventory: '',
+        //     productUnits: '',
+        //     productAllergens: '',
+        //     productAvailability: '',
+        //     productDescription: '',
+        //     productImage: '',
         // });
     };
 
@@ -99,11 +101,11 @@ export default function Upload() {
                     <Form.Control
                         type='number'
                         placeholder='12345'
-                        name='produceId'
+                        name='productId'
                         onChange={handleInputChange}
-                        value={produceFormData.produceId}
+                        value={productFormData.productId}
                         required
-                        className='produceId' />
+                        className='productId' />
                 </Form.Group>
 
                 <Form.Group>
@@ -111,23 +113,11 @@ export default function Upload() {
                     <Form.Control
                         type='text'
                         placeholder='Name'
-                        name='produceName'
+                        name='productName'
                         onChange={handleInputChange}
-                        value={produceFormData.produceName}
+                        value={productFormData.productName}
                         required
-                        className='produceName' />
-                </Form.Group>
-
-                <Form.Group>
-                    <Form.Label>Type</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='vegetable'
-                        name='produceType'
-                        onChange={handleInputChange}
-                        value={produceFormData.produceType}
-                        required
-                        className='produceType' />
+                        className='productName' />
                 </Form.Group>
 
                 <Form.Group>
@@ -135,11 +125,23 @@ export default function Upload() {
                     <Form.Control
                         type='number'
                         placeholder='12.99'
-                        name='producePrice'
+                        name='productPrice'
                         onChange={handleInputChange}
-                        value={produceFormData.producePrice}
+                        value={productFormData.productPrice}
                         required
-                        className='producePrice' />
+                        className='productPrice' />
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>Category</Form.Label>
+                    <Form.Control
+                        type='text'
+                        placeholder='vegetable'
+                        name='productCategory'
+                        onChange={handleInputChange}
+                        value={productFormData.productCategory}
+                        required
+                        className='productCategory' />
                 </Form.Group>
 
                 <Form.Group>
@@ -147,10 +149,10 @@ export default function Upload() {
                     <Form.Control
                         type='number'
                         placeholder='99'
-                        name='produceInventory'
+                        name='productInventory'
                         onChange={handleInputChange}
-                        value={produceFormData.produceInventory}
-                        className='produceInventory' />
+                        value={productFormData.productInventory}
+                        className='productInventory' />
                 </Form.Group>
 
                 <Form.Group>
@@ -158,10 +160,10 @@ export default function Upload() {
                     <Form.Control
                         type='text'
                         placeholder='oz'
-                        name='produceUnits'
+                        name='productUnits'
                         onChange={handleInputChange}
-                        value={produceFormData.produceUnits}
-                        className='produceUnits'
+                        value={productFormData.productUnits}
+                        className='productUnits'
                     />
                 </Form.Group>
 
@@ -170,10 +172,10 @@ export default function Upload() {
                     <Form.Control
                         type='text'
                         placeholder='nuts'
-                        name='produceAllergens'
+                        name='productAllergens'
                         onChange={handleInputChange}
-                        value={produceFormData.produceAllergens}
-                        className='produceAllergens'
+                        value={productFormData.productAllergens}
+                        className='productAllergens'
                     ></Form.Control>
                 </Form.Group>
 
@@ -182,21 +184,21 @@ export default function Upload() {
                      <Form.Control
                         type='text'
                         placeholder='true'
-                        name='produceAvailability'
+                        name='productAvailability'
                         onChange={handleInputChange}
-                        value={produceFormData.produceAvailability}
-                        className='produceAvailability'
+                        value={productFormData.productAvailability}
+                        className='productAvailability'
                     />
                     <Form.Check
                         type="radio"
-                        name='produceAvailability'
+                        name='productAvailability'
                         label="Yes"
                         onChange={handleInputChange}
                         value="true"
                     />
                     <Form.Check
                         type="radio"
-                        name='produceAvailability'
+                        name='productAvailability'
                         label="No"
                         onChange={handleInputChange}
                         value="false"
@@ -208,10 +210,10 @@ export default function Upload() {
                     <Form.Control
                         type='text'
                         placeholder='Apple a day keeps the doc away.'
-                        name='produceDescription'
+                        name='productDescription'
                         onChange={handleInputChange}
-                        value={produceFormData.produceDescription}
-                        className='produceDescription'
+                        value={productFormData.productDescription}
+                        className='productDescription'
                     />
                 </Form.Group>
 
@@ -222,10 +224,10 @@ export default function Upload() {
                         </div>
                         <Form.Control
                             type="file"
-                            name='produceImage'
+                            name='productImage'
                             onChange={handleInputChange}
-                            value={produceFormData.produceImage}
-                            className='produceImage'
+                            value={productFormData.productImage}
+                            className='productImage'
                         />
                     </Form.Label>
                 </Form.Group>
