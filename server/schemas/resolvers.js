@@ -3,13 +3,19 @@ const { User, Product, Order } = require('../models');
 const resolvers = {
     Query: {
         users: async () => {
-            return await User.find({});
+            return await User.find({})
+            .populate('products')
+            .populate('orders')
+            .populate({
+                path: 'orders',
+                populate: 'products'
+            });
+        },
+        orders: async () => {
+            return await Order.find({}).populate('products');
         },
         products: async () => {
             return await Product.find({});
-        },
-        orders: async () => {
-            return await Order.find({});
         },
     },
     Mutation: {
