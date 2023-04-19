@@ -1,6 +1,5 @@
 const User = require('./User');
-const Produce = require('./Produce');
-const Sharebox = require('./Sharebox');
+const Product = require('./Product');
 const Order = require('./Order');
 
-module.exports = { User, Produce, Sharebox, Order };
+module.exports = { User, Product, Order };
