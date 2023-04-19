@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 // import Navbar from './components/Navbar';
-import Upload from './pages/addProductTest'; //Claire's testing ground for cloudinary
+import Upload from './components/addProductTest'; //Claire's testing ground for cloudinary
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -41,7 +41,7 @@ function App() {
       <Router>
         <>
           <Switch>
-            <Upload />
+            <Route exact path='/' component={Upload} />
             {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
           </Switch>
         </>
