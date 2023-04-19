@@ -6,11 +6,11 @@ type User {
     firstName: String!
     lastName: String!
     email: String!
-    # orders: [Order]
+    orders: [Order]
     vendorStatus: Boolean
     vendorName: String!
     vendorDescription: String!
-    # vendorStore: [Product]
+    vendorStore: [Product]
     pickupLocation: String!
     vendorTelephone: Int
     vendorAddress: String!
@@ -30,9 +30,20 @@ type Product {
     productDescription: String!
 }
 
+type Order {
+    _id: ID
+    orderId: Int
+    purchaseDate: String!
+    products: [Product]
+    orderType: String!
+}
+
 type Query {
     users: [User]
     products: [Product]
+    orders: [Order]
+    # product(_id: ID!): Product
+    # order(_id: ID!): Order
 }
 
 # type Mutation {

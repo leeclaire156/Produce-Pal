@@ -1,8 +1,5 @@
 const db = require('../config/connection');
 const { User, Product, Order } = require('../models');
-// const userSeeds = require('./userSeeds.json');
-// const productSeeds = require('./productSeeds.json');
-// const orderSeeds = require('./orderSeeds.json');
 
 db.once('open', async () => {
 
@@ -57,22 +54,15 @@ db.once('open', async () => {
         vendorStatus: true,
         vendorName: 'The CoOp',
         vendorDescription: 'We work with other farms to compile great products.',
-        // TO DO: Need to revisit how to write this code.
-        // vendorStore: [ 
-        //     {
-        //         products: [products[0]._id, products[0]._id, products[1]._id, products[2]._id]
-        //     }
-        // ],
+        vendorStore: [
+            products[0]._id, 
+            products[0]._id, 
+            products[1]._id, 
+            products[2]._id
+        ],
         pickupLocation: 'Mosaic Farmers Market',
         vendorTelephone: '2026759012',
-        vendorAddress: [
-            {
-                street: '123 Main Street',
-                city: 'Bethesda',
-                state: 'Maryland',
-                zipcode: '22012'
-            }
-        ]
+        vendorAddress: '123 Main Street, Bethesda, MD, 22012'
     });
 
     await User.create({
@@ -93,17 +83,3 @@ db.once('open', async () => {
     console.log('SEEDING done!');
     process.exit(0);
 });
-
-    // try {
-    //     // delete all and then create from seed
-    //     await User.deleteMany({});
-    //     await Order.deleteMany({});
-
-    //     // create the seed
-    //     await User.create(userSeeds);
-    //     await Product.create(productSeeds);
-    //     await Order.create(orderSeeds);
-    // } catch (err) {
-    //     console.error(err);
-    //     process.exit(1);
-    // }
