@@ -41,7 +41,7 @@ function App() {
       <Router>
         <>
           <Switch>
-            <Route exact path='/' component={Upload} />
+            <Route exact path='/Test' component={Upload} />
             {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
           </Switch>
         </>
