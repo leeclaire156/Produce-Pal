@@ -16,39 +16,41 @@ type User {
     vendorAddress: String!
 }
 
-type Produce {
+type Product {
     _id: ID
-    produceId: Int!
-    produceName: String!
-    produceType: String!
-    producePrice: Float!
-    produceInventory: Int
-    produceUnits: String
-    produceAllergens: String
-    produceAvailability: Boolean
-    produceDescription: String
-    produceImage: String
+    productId: Int!
+    productName: String!
+    productType: Boolean!
+    productPrice: Float!
+    productCategory: String
+    productInventory: Int
+    productUnits: String
+    productAllergens: String
+    productAvailability: Boolean
+    productDescription: String
+    productImage: String
 }
 
 type Query {
-    user: [User]
-    produce: [Produce]
+    users: [User]
+    products: [Product]
 }
 
 type Mutation {
-    # createProduce(name: String!, price: Int!): Produce
-    addProduce(
-        _id: ID
-    produceId: Int!
-    produceName: String!
-    produceType: String!
-    producePrice: Float!
-    produceInventory: Int
-    produceUnits: String
-    produceAllergens: String
-    produceAvailability: Boolean
-    produceDescription: String
-    produceImage: String): Produce
+    # createProduct(name: String!, price: Int!): Product
+    addProduct(
+        _id: ID,
+    productId: Int!,
+    productName: String!,
+    productType: Boolean!,
+    productPrice: Float!,
+    productCategory: String,
+    productInventory: Int,
+    productUnits: String,
+    productAllergens: String,
+    productAvailability: Boolean,
+    productDescription: String,
+    productImage: String): Product
 }
 `;
 
