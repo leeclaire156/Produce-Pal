@@ -47,8 +47,9 @@ type Query {
     users: [User]
     products: [Product]
     orders: [Order]
-    # product(_id: ID!): Product
-    # order(_id: ID!): Order
+    product(_id: ID!): Product
+    order(_id: ID!): Order
+    user(_id: ID!): User
 }
 
 type Mutation {

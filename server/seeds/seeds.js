@@ -59,7 +59,8 @@ db.once('open', async () => {
         {
             orderId: 0002,
             products: [
-                products[1]._id
+                products[1]._id,
+                products[2]._id
             ],
             orderType: 'Paid'
         }
@@ -98,6 +99,10 @@ db.once('open', async () => {
         ],
         vendorStatus: "false"
     });                              
+
+    // // for my products, I want to see the orders
+    // products.orders.push(orders[0]._id, orders[1]._id);
+    // await products.save();
 
     console.log('users seeded');
 
