@@ -10,7 +10,7 @@ type User {
     vendorStatus: Boolean
     vendorName: String!
     vendorDescription: String!
-    vendorStore: [Product]
+    products: [Product]
     pickupLocation: String!
     vendorTelephone: Int
     vendorAddress: String!

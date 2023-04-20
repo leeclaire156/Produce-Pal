@@ -44,7 +44,7 @@ const userSchema = new Schema({
         trim: true, 
     },
     // Users who are also selling will have objects of their produce & sharebox
-    vendorStore: [
+    products: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Product'
