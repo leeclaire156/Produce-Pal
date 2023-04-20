@@ -100,7 +100,7 @@ type Mutation {
         productImage: String): Product
     addOrder(
         products: [ID]!,
-        users: [ID]!): Order
+        user: [ID]!): Order
 
 }
 `;

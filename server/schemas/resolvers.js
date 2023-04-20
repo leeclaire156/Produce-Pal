@@ -63,10 +63,11 @@ const resolvers = {
         },
 
         // CREATE ORDER
+        // TO DO: Figure out why the new order is not being pushed to the args user
         addOrder: async (parent, args) => {
             const products = args.products;
             const order = await Order.create({ products });
-            await User.findByIdAndUpdate(args.users._id, { $push: { orders: order } }, { new:true });
+            await User.findByIdAndUpdate(args.user._id, { $push: { orders: order } }, { new: true });
             return order;
         },
         // // TO DO! Once we have front end logging in and auth, use below
