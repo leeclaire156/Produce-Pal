@@ -24,6 +24,7 @@ const resolvers = {
             // .populate('users')
             // ;
         },
+        // READ BY ID
         user: async (parent, { _id }) => {
             return await User.findById(_id)
                 .populate('products')
@@ -34,21 +35,29 @@ const resolvers = {
                 });;
         },
         order: async (parent, { _id }) => {
-            return await Order.findById(_id)                
+            return await Order.findById(_id)
                 .populate('products')
-            ;
+                ;
         },
         product: async (parent, { _id }) => {
             return await Product.findById(_id);
         },
-
     },
-// MUTATION
+    // MUTATION
     Mutation: {
-        // createProduct: async (parent, args) => {
-        //     const product = await Product.create(args);
-        //     return product;
+        // CREATE USER
+        addUser: async (parent, args) => {
+            return await User.create(args);
+        },
+
+        // // TO DO! When tokens are ready, use below for adding a User
+        // addUser: async (parent, args) => {
+        //     const user = await User.create(args);
+        //     const token = signToken(user);
+        //     return { token, user };
         // },
+
+        // CREATE PRODUCT
         addProduct: async (parent, { _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage }) => {
             const product = await Product.create({ _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage });
             return { product };

@@ -43,6 +43,12 @@ type Order {
     orderType: String!
 }
 
+# # TO DO! when tokens are ready, use below for adding a User
+# type Auth {
+#     token: ID
+#     user: User
+# }
+
 type Query {
     users: [User]
     products: [Product]
@@ -53,19 +59,45 @@ type Query {
 }
 
 type Mutation {
-    # createProduct(name: String!, price: Int!): Product
+    addUser(    
+        _id: ID
+        firstName: String!
+        lastName: String!
+        email: String!
+        password: String!
+        vendorStatus: Boolean!
+        vendorName: String
+        vendorDescription: String
+        pickupLocation: String
+        vendorTelephone: Int
+        vendorAddress: String): User
+    # # TO DO! when tokens are ready, use below for adding a User
+    # addUser(    
+    #     _id: ID
+    #     firstName: String!
+    #     lastName: String!
+    #     email: String!
+    #     orders: [Order]
+    #     vendorStatus: Boolean
+    #     vendorName: String
+    #     vendorDescription: String
+    #     products: [Product]
+    #     pickupLocation: String
+    #     vendorTelephone: Int
+    #     vendorAddress: String): Auth
+
     addProduct(
-        _id: ID,
-    productId: Int!,
-    productName: String!,
-    productType: Boolean,
-    productPrice: Float!,
-    productCategory: String,
-    productInventory: Int,
-    productUnits: String,
-    productAllergens: String,
-    productAvailability: Boolean,
-    productDescription: String,
+    _id: ID, 
+    productId: Int!, 
+    productName: String!, 
+    productType: Boolean, 
+    productPrice: Float!, 
+    productCategory: String, 
+    productInventory: Int, 
+    productUnits: String, 
+    productAllergens: String, 
+    productAvailability: Boolean, 
+    productDescription: String, 
     productImage: String): Product
 }
 `;
