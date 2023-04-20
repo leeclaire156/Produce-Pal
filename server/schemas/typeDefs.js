@@ -36,7 +36,7 @@ type Product {
 }
 
 type Order {
-    _id: ID
+    _id: ID!
     orderId: Int
     purchaseDate: String!
     products: [Product]
@@ -85,20 +85,23 @@ type Mutation {
     #     pickupLocation: String
     #     vendorTelephone: Int
     #     vendorAddress: String): Auth
-
     addProduct(
-    _id: ID, 
-    productId: Int!, 
-    productName: String!, 
-    productType: Boolean, 
-    productPrice: Float!, 
-    productCategory: String, 
-    productInventory: Int, 
-    productUnits: String, 
-    productAllergens: String, 
-    productAvailability: Boolean, 
-    productDescription: String, 
-    productImage: String): Product
+        _id: ID, 
+        productId: Int!, 
+        productName: String!, 
+        productType: Boolean, 
+        productPrice: Float!, 
+        productCategory: String, 
+        productInventory: Int, 
+        productUnits: String, 
+        productAllergens: String, 
+        productAvailability: Boolean, 
+        productDescription: String, 
+        productImage: String): Product
+    addOrder(
+        products: [ID]!,
+        users: [ID]!): Order
+
 }
 `;
 

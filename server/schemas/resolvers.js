@@ -1,5 +1,4 @@
 const { User, Product, Order } = require('../models');
-const { findOne } = require('../models/Order');
 
 const resolvers = {
     Query: {
@@ -62,6 +61,24 @@ const resolvers = {
             const product = await Product.create({ _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage });
             return { product };
         },
+
+        // CREATE ORDER
+        addOrder: async (parent, args) => {
+            const products = args.products;
+            const order = await Order.create({ products });
+            await User.findByIdAndUpdate(args.users._id, { $push: { orders: order } }, { new:true });
+            return order;
+        },
+        // // TO DO! Once we have front end logging in and auth, use below
+        // addOrder: async (parent, { products }, context) => {
+        //     console.log(context);
+        //     if (context.user) {
+        //         const order = new Order({ products });
+        //         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+        //         return order;
+        //     }
+        //     throw new AuthenticationError('Not logged in');
+        // },
     },
 };
 
