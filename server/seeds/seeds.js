@@ -45,6 +45,28 @@ db.once('open', async () => {
 
     console.log('products seeded');
 
+    await Order.deleteMany();
+    const orders = await Order.insertMany([
+        {
+            orderId: 0001,
+            products: [
+                products[0]._id, 
+                products[0]._id, 
+                products[1]._id
+            ],
+            orderType: 'Pending'
+        },
+        {
+            orderId: 0002,
+            products: [
+                products[1]._id
+            ],
+            orderType: 'Paid'
+        }
+    ])
+
+    console.log('orders seeded');
+
     await User.deleteMany();
     await User.create({
         firstName: 'MaSandra the Farmer',
@@ -71,9 +93,8 @@ db.once('open', async () => {
         email: 'claire456@gmail.com',
         password: 'password2',
         orders: [
-            {
-                products: [products[0]._id, products[0]._id, products[1]._id]
-            }
+            orders[0]._id, 
+            orders[1]._id
         ],
         vendorStatus: "false"
     });                              

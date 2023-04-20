@@ -13,10 +13,14 @@ const resolvers = {
         },
         orders: async () => {
             return await Order.find({})
-            .populate('products');
+            .populate('products')
+            ;
         },
         products: async () => {
-            return await Product.find({});
+            return await Product.find({})
+            // .populate('orders')
+            // .populate('users')
+            // ;
         },
     },
     Mutation: {

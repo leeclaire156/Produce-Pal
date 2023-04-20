@@ -31,6 +31,8 @@ type Product {
     productAvailability: Boolean
     productDescription: String
     productImage: String
+    # orders: [Order]
+    # users: [User]
 }
 
 type Order {
