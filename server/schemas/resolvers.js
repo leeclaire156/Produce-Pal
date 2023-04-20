@@ -88,7 +88,7 @@ const resolvers = {
             const order = args.order;
             return await Order.findByIdAndUpdate(order, args, { new: true })
                 .populate('products');
-        }
+        },
     }
 };
 
