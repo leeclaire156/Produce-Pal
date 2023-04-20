@@ -64,22 +64,13 @@ const resolvers = {
 
         // CREATE ORDER
         // TO DO: Figure out why the new order is not being pushed to the args user
+        // // TO DO! Once we have front end logging in and auth, add logged in auth
         addOrder: async (parent, args) => {
             const products = args.products;
             const order = await Order.create({ products });
             await User.findByIdAndUpdate(args.user._id, { $push: { orders: order } }, { new: true });
             return order;
         },
-        // // TO DO! Once we have front end logging in and auth, use below
-        // addOrder: async (parent, { products }, context) => {
-        //     console.log(context);
-        //     if (context.user) {
-        //         const order = new Order({ products });
-        //         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-        //         return order;
-        //     }
-        //     throw new AuthenticationError('Not logged in');
-        // },
     },
 };
 
