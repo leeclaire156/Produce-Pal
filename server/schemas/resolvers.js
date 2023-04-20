@@ -1,7 +1,7 @@
 const { User, Product, Order } = require('../models');
-const { findOne } = require('../models/Order');
 
 const resolvers = {
+// QUERIES
     Query: {
         // READ ALL ...
         users: async () => {
@@ -24,6 +24,7 @@ const resolvers = {
             // .populate('users')
             // ;
         },
+        // READ BY ID
         user: async (parent, { _id }) => {
             return await User.findById(_id)
                 .populate('products')
@@ -34,26 +35,61 @@ const resolvers = {
                 });;
         },
         order: async (parent, { _id }) => {
-            return await Order.findById(_id)                
+            return await Order.findById(_id)
                 .populate('products')
-            ;
+                ;
         },
         product: async (parent, { _id }) => {
             return await Product.findById(_id);
         },
-
     },
-// MUTATION
+// MUTATIONS
     Mutation: {
-        // createProduct: async (parent, args) => {
-        //     const product = await Product.create(args);
+    // CREATE 
+        addUser: async (parent, args) => {
+            return await User.create(args);
+        // // TO DO! When tokens are ready, use below for adding a User
+        // addUser: async (parent, args) => {
+        //     const user = await User.create(args);
+        //     const token = signToken(user);
+        //     return { token, user };
+        // },
+        },
+        // CREATE PRODUCT
+        // addProduct: async (parent, { _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage }) => {
+        //     const product = await Product.create({ _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage });
         //     return product;
         // },
-        addProduct: async (parent, { _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage }) => {
-            const product = await Product.create({ _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage });
-            return { product };
+        addProduct: async (parent, args) => {
+            const user = args.user;
+            const product = await Product.create(args);
+            await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true } );
+            return product;
         },
-    },
+        addOrder: async (parent, args) => {
+            const products = args.products;
+            const user = args.user;
+            const order = await Order.create({ products });
+            await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true } );
+            return order.populate('products');
+        },
+    // UPDATE 
+        updateUser: async (parent, args) => {
+            const user = args.user;
+            return await User.findByIdAndUpdate(user, args, { new: true })
+                .populate('products')
+                .populate('orders')
+                .populate({
+                    path: 'orders',
+                    populate: 'products'
+                });
+        },
+        updateOrder: async (parent, args) => {
+            const order = args.order;
+            return await Order.findByIdAndUpdate(order, args, { new: true })
+                .populate('products');
+        }
+    }
 };
 
-module.exports = resolvers;
+    module.exports = resolvers;
