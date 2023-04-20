@@ -1,5 +1,7 @@
 const { gql } = require('apollo-server-express');
 
+// "!" means "required: true" -> make sure it matches the model
+
 const typeDefs = gql`
 type User {
     _id: ID!
@@ -8,16 +10,16 @@ type User {
     email: String!
     orders: [Order]
     vendorStatus: Boolean
-    vendorName: String!
-    vendorDescription: String!
+    vendorName: String
+    vendorDescription: String
     products: [Product]
-    pickupLocation: String!
+    pickupLocation: String
     vendorTelephone: Int
-    vendorAddress: String!
+    vendorAddress: String
 }
 
 type Product {
-    _id: ID
+    _id: ID!
     productId: Int!
     productName: String!
     productType: Boolean
@@ -29,6 +31,8 @@ type Product {
     productAvailability: Boolean
     productDescription: String
     productImage: String
+    # orders: [Order]
+    # users: [User]
 }
 
 type Order {
@@ -43,8 +47,9 @@ type Query {
     users: [User]
     products: [Product]
     orders: [Order]
-    # product(_id: ID!): Product
-    # order(_id: ID!): Order
+    product(_id: ID!): Product
+    order(_id: ID!): Order
+    user(_id: ID!): User
 }
 
 type Mutation {

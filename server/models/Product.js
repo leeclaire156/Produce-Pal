@@ -56,6 +56,18 @@ const productSchema = new Schema({
         type: String,
         default: '',
     },
+    // orders: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Order'
+    //     },
+    // ],
+    // users: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'User'
+    //     },
+    // ],
 });
 
 
