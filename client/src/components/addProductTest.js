@@ -4,6 +4,7 @@ import { Form, Button, Container } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { ADD_PRODUCT } from '../utils/mutations';
 
+import axios from "axios";
 
 export default function Upload() {
     // set initial form state
@@ -18,11 +19,68 @@ export default function Upload() {
         productAllergens: '',
         // productAvailability: '', //issue: value returns as string and database will not accept because its not boolean. NEED FUNCTION TO CONVERT.
         productDescription: '',
-        productImage: '',
+        // productImage: '',
     });
 
-    // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_USER mutation
-    const [addProduct] = useMutation(ADD_PRODUCT);
+    const [loading, setLoading] = useState(false);
+    const [url, setUrl] = useState("");
+
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
+    function uploadSingleImage(base64) {
+        setLoading(true);
+        axios
+            .post("http://localhost:3000/uploadImage", { image: base64 })
+            .then((res) => {
+                setUrl(res.data);
+                alert(`Image uploaded Succesfully. Url is ${url}`);
+            })
+            .then(() => setLoading(false))
+            .catch(console.log);
+    }
+
+    function uploadMultipleImages(images) {
+        setLoading(true);
+        axios
+            .post("http://localhost:3000/uploadMultipleImages", { images })
+            .then((res) => {
+                setUrl(res.data);
+                alert("Image uploaded Succesfully");
+            })
+            .then(() => setLoading(false))
+            .catch(console.log);
+    }
+
+    const uploadImage = async (event) => {
+        const files = event.target.files;
+        console.log(files.length);
+
+        if (files.length === 1) {
+            const base64 = await convertBase64(files[0]);
+            uploadSingleImage(base64);
+            return;
+        }
+
+        const base64s = [];
+        for (var i = 0; i < files.length; i++) {
+            var base = await convertBase64(files[i]);
+            base64s.push(base);
+        }
+        uploadMultipleImages(base64s);
+    };
 
     const handleInputChange = (event) => {
         const { name, type, value } = event.target;
@@ -38,10 +96,10 @@ export default function Upload() {
             }
             return productFormData;
         });
-
-
     };
 
+    // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_USER mutation
+    const [addProduct] = useMutation(ADD_PRODUCT);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -60,7 +118,7 @@ export default function Upload() {
                     productAllergens: productFormData.productAllergens,
                     // productAvailability: productFormData.productAvailability,
                     productDescription: productFormData.productDescription,
-                    productImage: productFormData.productImage,
+                    productImage: url,
                 },
             });
             return data;
@@ -214,15 +272,20 @@ export default function Upload() {
                             Upload
                         </div>
                         <Form.Control
+                            id="dropzone-file"
                             type="file"
                             name='productImage'
-                            onChange={handleInputChange}
-                            value={productFormData.productImage}
+                            onChange={uploadImage}
                             className='productImage'
+                            multiple
                         />
                     </Form.Label>
                 </Form.Group>
-                <Button type="submit">Submit</Button>
+                {loading ? (
+                    <Button type="submit" disabled>Submit</Button>
+                ) : (
+                    <Button type="submit">Submit</Button>
+                )}
             </Form>
         </Container>
     )
