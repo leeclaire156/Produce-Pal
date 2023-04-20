@@ -95,6 +95,7 @@ const resolvers = {
         },
         updateProductInventory: async (parent, args) => {
             const product = args.product;
+            const productInventory = args.productInventory;
             const decrement = Math.abs(productInventory) * -1;
             return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new:true} );
         },
