@@ -2,15 +2,17 @@
 import { gql } from '@apollo/client';
 
 export const ADD_PRODUCT = gql`
-mutation Mutation($productId: Int!, $productName: String!, $productPrice: Float!, $productImage: String, $productDescription: String, $productAllergens: String, $productUnits: String, $productInventory: Int, $productCategory: String) {
-  addProduct(productId: $productId, productName: $productName, productPrice: $productPrice, productImage: $productImage, productDescription: $productDescription, productAllergens: $productAllergens, productUnits: $productUnits, productInventory: $productInventory, productCategory: $productCategory) {
+mutation Mutation($productId: Int!, $productName: String!, $productType: Boolean!, $productPrice: Float!, $productImage: String, $productDescription: String, $productAllergens: String, $productUnits: String, $productInventory: Int, $productCategory: String, $productAvailability: Boolean) {
+  addProduct(productId: $productId, productName: $productName, productType:$productType, productPrice: $productPrice, productImage: $productImage, productDescription: $productDescription, productAllergens: $productAllergens, productUnits: $productUnits, productInventory: $productInventory, productCategory: $productCategory, productAvailability: $productAvailability) {
     productId
     productName
+    productType
     productPrice
     productCategory
     productInventory
     productUnits
     productAllergens
+    productAvailability
     productDescription
     productImage
   }
