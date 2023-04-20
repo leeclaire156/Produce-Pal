@@ -1,6 +1,7 @@
 const { User, Product, Order } = require('../models');
 
 const resolvers = {
+// QUERIES
     Query: {
         // READ ALL ...
         users: async () => {
@@ -42,9 +43,9 @@ const resolvers = {
             return await Product.findById(_id);
         },
     },
-    // MUTATION
+// MUTATIONS
     Mutation: {
-        // CREATE USER
+    // CREATE 
         addUser: async (parent, args) => {
             return await User.create(args);
         // // TO DO! When tokens are ready, use below for adding a User
@@ -55,11 +56,16 @@ const resolvers = {
         // },
         },
         // CREATE PRODUCT
-        addProduct: async (parent, { _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage }) => {
-            const product = await Product.create({ _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage });
+        // addProduct: async (parent, { _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage }) => {
+        //     const product = await Product.create({ _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage });
+        //     return product;
+        // },
+        addProduct: async (parent, args) => {
+            const user = args.user;
+            const product = await Product.create(args);
+            await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true } );
             return product;
         },
-        // CREATE ORDER
         addOrder: async (parent, args) => {
             const products = args.products;
             const user = args.user;
@@ -67,10 +73,21 @@ const resolvers = {
             await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true } );
             return order.populate('products');
         },
-        // UPDATE USER
+    // UPDATE 
         updateUser: async (parent, args) => {
             const user = args.user;
-            return await User.findByIdAndUpdate(user, args, { new: true });
+            return await User.findByIdAndUpdate(user, args, { new: true })
+                .populate('products')
+                .populate('orders')
+                .populate({
+                    path: 'orders',
+                    populate: 'products'
+                });
+        },
+        updateOrder: async (parent, args) => {
+            const order = args.order;
+            return await Order.findByIdAndUpdate(order, args, { new: true })
+                .populate('products');
         }
     }
 };

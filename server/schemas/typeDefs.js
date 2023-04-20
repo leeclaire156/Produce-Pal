@@ -70,21 +70,10 @@ type Mutation {
         vendorDescription: String
         pickupLocation: String
         vendorTelephone: Int
+        # # TO DO! when tokens are ready, use below for last line
+        # vendorAddress: String): Auth
         vendorAddress: String): User
-    # # TO DO! when tokens are ready, use below for adding a User
-    # addUser(    
-    #     _id: ID
-    #     firstName: String!
-    #     lastName: String!
-    #     email: String!
-    #     orders: [Order]
-    #     vendorStatus: Boolean
-    #     vendorName: String
-    #     vendorDescription: String
-    #     products: [Product]
-    #     pickupLocation: String
-    #     vendorTelephone: Int
-    #     vendorAddress: String): Auth
+
     addProduct(
         _id: ID, 
         productId: Int!, 
@@ -97,7 +86,8 @@ type Mutation {
         productAllergens: String, 
         productAvailability: Boolean, 
         productDescription: String, 
-        productImage: String): Product
+        productImage: String
+        user: [ID]!): Product
     addOrder(
         products: [ID]!,
         user: [ID]!): Order
@@ -106,14 +96,23 @@ type Mutation {
         firstName: String
         lastName: String
         email: String
+        # orders: [ID]
         password: String
         vendorStatus: Boolean
         vendorName: String
         vendorDescription: String
+        # products: [ID]
         pickupLocation: String
         vendorTelephone: Int
         vendorAddress: String
         user: [ID]!): User
+    updateOrder(
+        _id: ID
+        orderId: Int
+        purchaseDate: String
+        products: [ID]
+        orderType: String
+        order: [ID]!): Order
 }
 `;
 
