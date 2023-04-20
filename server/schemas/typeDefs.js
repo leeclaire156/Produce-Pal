@@ -113,6 +113,25 @@ type Mutation {
         products: [ID]
         orderType: String
         order: [ID]!): Order
+    updateProduct(
+        _id: ID
+        productId: Int
+        productName: String
+        productType: Boolean
+        productPrice: Float
+        productCategory: String
+        productInventory: Int
+        productUnits: String
+        productAllergens: String
+        productAvailability: Boolean
+        productDescription: String
+        productImage: String
+        product: [ID]!): Product
+    # function decrementing the inventory number of products
+    updateProductInventory(
+        _id: ID
+        productInventory: Int!
+        product: [ID]!): Product
 }
 `;
 

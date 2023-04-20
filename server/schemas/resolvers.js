@@ -89,6 +89,15 @@ const resolvers = {
             return await Order.findByIdAndUpdate(order, args, { new: true })
                 .populate('products');
         },
+        updateProduct: async (parent, args) => {
+            const product = args.product;
+            return await Product.findByIdAndUpdate(product, args, { new: true })
+        },
+        updateProductInventory: async (parent, args) => {
+            const product = args.product;
+            const decrement = Math.abs(productInventory) * -1;
+            return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new:true} );
+        },
     }
 };
 
