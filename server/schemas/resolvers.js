@@ -47,37 +47,31 @@ const resolvers = {
         // CREATE USER
         addUser: async (parent, args) => {
             return await User.create(args);
-        },
-
         // // TO DO! When tokens are ready, use below for adding a User
         // addUser: async (parent, args) => {
         //     const user = await User.create(args);
         //     const token = signToken(user);
         //     return { token, user };
         // },
-
+        },
         // CREATE PRODUCT
         addProduct: async (parent, { _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage }) => {
             const product = await Product.create({ _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage });
-            return { product };
+            return product;
         },
-
         // CREATE ORDER
-        // TO DO: Figure out why the new order is not being pushed to the args user
-        // // TO DO! Once we have front end logging in and auth, add logged in auth
-        // addOrder: async (parent, args) => {
-        //     const products = args.products;
-        //     const order = await Order.create({ products });
-        //     await User.findByIdAndUpdate(args.user._id, { $push: { orders: order } }, { new: true });
-        //     return order;
-        // },
         addOrder: async (parent, args) => {
-                const products = args.products;
-                const user = args.user;
-                const order = await Order.create({ products });
-                await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true } );
-                return order.populate('products');
+            const products = args.products;
+            const user = args.user;
+            const order = await Order.create({ products });
+            await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true } );
+            return order.populate('products');
         },
+        // UPDATE USER
+        updateUser: async (parent, args) => {
+            const user = args.user;
+            return await User.findByIdAndUpdate(user, args, { new: true });
+        }
     }
 };
 

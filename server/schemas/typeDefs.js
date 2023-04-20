@@ -101,7 +101,19 @@ type Mutation {
     addOrder(
         products: [ID]!,
         user: [ID]!): Order
-
+    updateUser(
+        _id: ID
+        firstName: String
+        lastName: String
+        email: String
+        password: String
+        vendorStatus: Boolean
+        vendorName: String
+        vendorDescription: String
+        pickupLocation: String
+        vendorTelephone: Int
+        vendorAddress: String
+        user: [ID]!): User
 }
 `;
 
