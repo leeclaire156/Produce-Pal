@@ -11,15 +11,15 @@ export default function Upload() {
     const [productFormData, setProductFormData] = useState({
         productId: '',
         productName: '',
-        // productType: '',
+        productType: '',
         productPrice: '',
         productCategory: '',
         productInventory: '',
         productUnits: '',
         productAllergens: '',
-        // productAvailability: '', //issue: value returns as string and database will not accept because its not boolean. NEED FUNCTION TO CONVERT.
+        productAvailability: '',
         productDescription: '',
-        // productImage: '',
+        productImage: '',
     });
 
     const [loading, setLoading] = useState(false);
@@ -91,6 +91,9 @@ export default function Upload() {
                 case 'number':
                     productFormData[name] = Number(value);
                     break;
+                case 'radio':
+                    if (value == "true") { productFormData[name] = true } else { productFormData[name] = false }
+                    break;
                 default:
                     productFormData[name] = value;
             }
@@ -110,13 +113,13 @@ export default function Upload() {
                 variables: {
                     productId: productFormData.productId,
                     productName: productFormData.productName,
-                    // productType: productFormData.productType,
+                    productType: productFormData.productType,
                     productPrice: productFormData.productPrice,
                     productCategory: productFormData.productCategory,
                     productInventory: productFormData.productInventory,
                     productUnits: productFormData.productUnits,
                     productAllergens: productFormData.productAllergens,
-                    // productAvailability: productFormData.productAvailability,
+                    productAvailability: productFormData.productAvailability,
                     productDescription: productFormData.productDescription,
                     productImage: url,
                 },
@@ -167,6 +170,24 @@ export default function Upload() {
                         value={productFormData.productName}
                         required
                         className='productName' />
+                </Form.Group>
+
+                <Form.Group>
+                    <Form.Label>Type REQUIRED</Form.Label>
+                    <Form.Check
+                        type="radio"
+                        name='productType'
+                        label="Sharebox"
+                        onChange={handleInputChange}
+                        value="true"
+                    />
+                    <Form.Check
+                        type="radio"
+                        name='productType'
+                        label="Produce"
+                        onChange={handleInputChange}
+                        value="false"
+                    />
                 </Form.Group>
 
                 <Form.Group>
@@ -228,16 +249,8 @@ export default function Upload() {
                     ></Form.Control>
                 </Form.Group>
 
-                {/* <Form.Group>
-                    <Form.Label>Available</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='true'
-                        name='productAvailability'
-                        onChange={handleInputChange}
-                        value={productFormData.productAvailability}
-                        className='productAvailability'
-                    />
+                <Form.Group>
+                    <Form.Label>Availability</Form.Label>
                     <Form.Check
                         type="radio"
                         name='productAvailability'
@@ -252,7 +265,7 @@ export default function Upload() {
                         onChange={handleInputChange}
                         value="false"
                     />
-                </Form.Group> */}
+                </Form.Group>
 
                 <Form.Group>
                     <Form.Label>Description</Form.Label>
