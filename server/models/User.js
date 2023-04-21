@@ -41,6 +41,12 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
+    memberships: [
+        {
+            type: Schema.Types.ObjectId, 
+            ref: 'User'
+        },
+    ],
     sales: [
         {
             type: Schema.Types.ObjectId,

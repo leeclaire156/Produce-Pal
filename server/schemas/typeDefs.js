@@ -11,6 +11,7 @@ type User {
     address: String
     biography: String
     phone: String
+    memberships: [User]
     sales: [Order]
     orders: [Order]
     vendorStatus: Boolean
