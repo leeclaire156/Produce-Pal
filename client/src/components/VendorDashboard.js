@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBook, faCarrot } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email, vendorTelephone }) {
     return (
@@ -19,7 +20,9 @@ function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email
                             <h5 className="card-title mt-3">About Us</h5>
                             {/* click edit button to create and modify my farm information. Show placeholder information if the user has no farm yet*/}
                             <p className="card-text">{vendorDescription}</p>
-                            <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#VendorInfoModal">Edit</button>
+                            <Link to="/vendor-profile">
+                                <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#VendorInfoModal">Edit</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
