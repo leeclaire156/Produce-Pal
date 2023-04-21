@@ -99,6 +99,12 @@ const resolvers = {
             const decrement = Math.abs(productInventory) * -1;
             return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new:true} );
         },
+    // DELETE
+        // deleteUser: async (parent, args) => {
+        //     const user = args.user; 
+        //     await User.findByIdAndDelete(user, args, { new: true } );
+        //     console.log("User successfully deleted");
+        // },
     }
 };
 

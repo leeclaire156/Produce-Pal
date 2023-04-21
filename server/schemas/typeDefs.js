@@ -132,6 +132,8 @@ type Mutation {
         _id: ID
         productInventory: Int!
         product: [ID]!): Product
+    deleteUser(
+        user: [ID]!): User
 }
 `;
 
