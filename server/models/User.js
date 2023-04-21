@@ -26,6 +26,21 @@ const userSchema = new Schema({
         required: true,
         minLength: 5
     },
+    address: {
+        type: String, 
+        default: '',
+        trim: true,
+    },
+    biography: {
+        type: String, 
+        default: '',
+        trim: true,
+    },
+    phone: {
+        type: String, 
+        default: '',
+        trim: true,
+    },
     sales: [
         {
             type: Schema.Types.ObjectId,
@@ -67,7 +82,7 @@ const userSchema = new Schema({
         trim: true, 
     },
     vendorTelephone: {
-        type: Number, 
+        type: String, 
         default: '',
         trim: true,
     },
