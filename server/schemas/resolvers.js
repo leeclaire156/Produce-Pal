@@ -7,6 +7,11 @@ const resolvers = {
         users: async () => {
             return await User.find({})
                 .populate('products')
+                .populate('sales')
+                .populate({
+                    path: 'sales.orders',
+                    populate: 'products'
+                })
                 .populate('orders')
                 .populate({
                     path: 'orders',
@@ -28,11 +33,16 @@ const resolvers = {
         user: async (parent, { _id }) => {
             return await User.findById(_id)
                 .populate('products')
+                .populate('sales')
+                .populate({
+                    path: 'sales.orders',
+                    populate: 'products'
+                })
                 .populate('orders')
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                });;
+                });
         },
         order: async (parent, { _id }) => {
             return await Order.findById(_id)
@@ -48,18 +58,9 @@ const resolvers = {
     // CREATE 
         addUser: async (parent, args) => {
             return await User.create(args);
-        // // TO DO! When tokens are ready, use below for adding a User
-        // addUser: async (parent, args) => {
-        //     const user = await User.create(args);
-        //     const token = signToken(user);
-        //     return { token, user };
-        // },
+        // // TO DO! When tokens are ready, add tokens
         },
         // CREATE PRODUCT
-        // addProduct: async (parent, { _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage }) => {
-        //     const product = await Product.create({ _id, productId, productName, productType, productPrice, productCategory, productInventory, productUnits, productAllergens, productAvailability, productDescription, productImage });
-        //     return product;
-        // },
         addProduct: async (parent, args) => {
             const user = args.user;
             const product = await Product.create(args);
@@ -69,8 +70,12 @@ const resolvers = {
         addOrder: async (parent, args) => {
             const products = args.products;
             const user = args.user;
+            const seller = args.seller;
             const order = await Order.create({ products });
+            // When buyer pays, then send the buyer's user id to orders array
             await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true } );
+            // When buyer pays, then also send the seller's user id to sales array
+            await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true } );
             return order.populate('products');
         },
     // UPDATE 
@@ -78,6 +83,11 @@ const resolvers = {
             const user = args.user;
             return await User.findByIdAndUpdate(user, args, { new: true })
                 .populate('products')
+                .populate('sales')
+                .populate({
+                    path: 'sales.orders',
+                    populate: 'products'
+                })
                 .populate('orders')
                 .populate({
                     path: 'orders',
