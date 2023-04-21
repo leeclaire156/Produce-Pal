@@ -20,7 +20,6 @@ export default function Upload() {
         productAvailability: '',
         productDescription: '',
         productImage: '',
-        user: '64404cdddab04f21017abbd2'
     });
 
     const [loading, setLoading] = useState(false);
@@ -47,7 +46,7 @@ export default function Upload() {
             .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
                 setUrl(res.data);
-                alert(`Image uploaded Successfully.`);
+                alert(`Image uploaded Succesfully. Url is ${url}`);
             })
             .then(() => setLoading(false))
             .catch(console.log);
@@ -123,7 +122,6 @@ export default function Upload() {
                     productAvailability: productFormData.productAvailability,
                     productDescription: productFormData.productDescription,
                     productImage: url,
-                    user: productFormData.user
                 },
             });
             return data;

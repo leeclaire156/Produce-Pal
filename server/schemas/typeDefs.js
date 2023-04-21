@@ -8,13 +8,18 @@ type User {
     firstName: String!
     lastName: String!
     email: String!
+    address: String
+    biography: String
+    phone: String
+    memberships: [User]
+    sales: [Order]
     orders: [Order]
     vendorStatus: Boolean
     vendorName: String
     vendorDescription: String
     products: [Product]
     pickupLocation: String
-    vendorTelephone: Int
+    vendorTelephone: String
     vendorAddress: String
 }
 
@@ -52,6 +57,7 @@ type Order {
 type Query {
     users: [User]
     products: [Product]
+    sales: [Order]
     orders: [Order]
     product(_id: ID!): Product
     order(_id: ID!): Order
@@ -65,15 +71,17 @@ type Mutation {
         lastName: String!
         email: String!
         password: String!
+        address: String
+        biography: String
+        phone: String
         vendorStatus: Boolean!
         vendorName: String
         vendorDescription: String
         pickupLocation: String
-        vendorTelephone: Int
+        vendorTelephone: String
         # # TO DO! when tokens are ready, use below for last line
         # vendorAddress: String): Auth
         vendorAddress: String): User
-
     addProduct(
         _id: ID, 
         productId: Int!, 
@@ -90,20 +98,22 @@ type Mutation {
         user: [ID]!): Product
     addOrder(
         products: [ID]!,
-        user: [ID]!): Order
+        user: [ID]!,
+        seller: [ID]!): Order
     updateUser(
         _id: ID
         firstName: String
         lastName: String
         email: String
-        # orders: [ID]
         password: String
+        address: String
+        biography: String
+        phone: String        
         vendorStatus: Boolean
         vendorName: String
         vendorDescription: String
-        # products: [ID]
         pickupLocation: String
-        vendorTelephone: Int
+        vendorTelephone: String
         vendorAddress: String
         user: [ID]!): User
     updateOrder(
@@ -113,6 +123,27 @@ type Mutation {
         products: [ID]
         orderType: String
         order: [ID]!): Order
+    updateProduct(
+        _id: ID
+        productId: Int
+        productName: String
+        productType: Boolean
+        productPrice: Float
+        productCategory: String
+        productInventory: Int
+        productUnits: String
+        productAllergens: String
+        productAvailability: Boolean
+        productDescription: String
+        productImage: String
+        product: [ID]!): Product
+    # function decrementing the inventory number of products
+    updateProductInventory(
+        _id: ID
+        productInventory: Int!
+        product: [ID]!): Product
+    # deleteUser(
+    #     user: [ID]!): User
 }
 `;
 
