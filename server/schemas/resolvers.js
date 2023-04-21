@@ -7,17 +7,14 @@ const resolvers = {
         users: async () => {
             return await User.find({})
                 .populate('products')
-                .populate('memberships')
                 .populate({
-                    path: 'memberships.users',
-                    populate: 'users'
-                })
-                .populate('sales')
-                .populate({
-                    path: 'sales.orders',
+                    path: 'memberships',
                     populate: 'products'
                 })
-                .populate('orders')
+                .populate({
+                    path: 'sales',
+                    populate: 'products'
+                })
                 .populate({
                     path: 'orders',
                     populate: 'products'
@@ -25,30 +22,23 @@ const resolvers = {
         },
         orders: async () => {
             return await Order.find({})
-                .populate('products')
-                ;
+                .populate('products');
         },
         products: async () => {
             return await Product.find({})
-            // .populate('orders')
-            // .populate('users')
-            // ;
         },
         // READ BY ID
         user: async (parent, { _id }) => {
             return await User.findById(_id)
                 .populate('products')
-                .populate('memberships')
                 .populate({
-                    path: 'memberships.users',
-                    populate: 'users'
-                })
-                .populate('sales')
-                .populate({
-                    path: 'sales.orders',
+                    path: 'memberships',
                     populate: 'products'
                 })
-                .populate('orders')
+                .populate({
+                    path: 'sales',
+                    populate: 'products'
+                })
                 .populate({
                     path: 'orders',
                     populate: 'products'

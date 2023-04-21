@@ -134,7 +134,6 @@ db.once('open', async () => {
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
             phone: '234-109-5786',
             memberships: [
-                users[0]._id,
             ],  
             sales: [
                 orders[2]._id, 
@@ -162,7 +161,6 @@ db.once('open', async () => {
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
             phone: '123-456-7890',
             memberships: [
-                users[0]._id,
             ],  
             orders: [
                 orders[0]._id
@@ -178,14 +176,25 @@ db.once('open', async () => {
             biography: 'I supoort my local CSAs!',
             phone: '321-654-6789',
             memberships: [
-                users[1]._id,
+                // users[1]._id,
             ],  
             orders: [
                 orders[2]._id
             ],
             vendorStatus: "false"
         },
-    ]);
+    ], { ordered: true } );
+
+    // Add MaSandra to Jenny's membership array since she ordered from MaSandra
+    users[1].memberships.push(users[0]._id)
+    await users[1].save()
+    // Add MaSandra to Claire's membership array since she ordered from MaSandra
+    users[2].memberships.push(users[0]._id)
+    await users[2].save()
+    // Add Jenny to Zhihao's membership array since he ordered from Jenny
+    users[3].memberships.push(users[1]._id)
+    await users[3].save()
+
     console.log('users seeded');
 
     console.log('SEEDING done!');
