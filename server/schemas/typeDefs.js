@@ -8,6 +8,7 @@ type User {
     firstName: String!
     lastName: String!
     email: String!
+    sales: [Order]
     orders: [Order]
     vendorStatus: Boolean
     vendorName: String
@@ -52,6 +53,7 @@ type Order {
 type Query {
     users: [User]
     products: [Product]
+    sales: [Order]
     orders: [Order]
     product(_id: ID!): Product
     order(_id: ID!): Order
@@ -73,7 +75,6 @@ type Mutation {
         # # TO DO! when tokens are ready, use below for last line
         # vendorAddress: String): Auth
         vendorAddress: String): User
-
     addProduct(
         _id: ID, 
         productId: Int!, 
@@ -90,7 +91,8 @@ type Mutation {
         user: [ID]!): Product
     addOrder(
         products: [ID]!,
-        user: [ID]!): Order
+        user: [ID]!,
+        seller: [ID]!): Order
     updateUser(
         _id: ID
         firstName: String
@@ -113,6 +115,27 @@ type Mutation {
         products: [ID]
         orderType: String
         order: [ID]!): Order
+    updateProduct(
+        _id: ID
+        productId: Int
+        productName: String
+        productType: Boolean
+        productPrice: Float
+        productCategory: String
+        productInventory: Int
+        productUnits: String
+        productAllergens: String
+        productAvailability: Boolean
+        productDescription: String
+        productImage: String
+        product: [ID]!): Product
+    # function decrementing the inventory number of products
+    updateProductInventory(
+        _id: ID
+        productInventory: Int!
+        product: [ID]!): Product
+    # deleteUser(
+    #     user: [ID]!): User
 }
 `;
 

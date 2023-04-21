@@ -26,6 +26,12 @@ const userSchema = new Schema({
         required: true,
         minLength: 5
     },
+    sales: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Order'
+        },
+    ],
     orders: [
         {
             type: Schema.Types.ObjectId,
