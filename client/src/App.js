@@ -9,6 +9,9 @@ import {
 import { setContext } from '@apollo/client/link/context';
 // import Navbar from './components/Navbar';
 import Upload from './components/addProductTest'; //Claire's testing ground for cloudinary
+import Home from './pages/Home.js'
+import Dashboard from './pages/Dashboard.js'
+import ConsumerProfile from './pages/ConsumerProfile.js'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -42,6 +45,9 @@ function App() {
         <>
           <Switch>
             <Route exact path='/test' component={Upload} />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/consumer-profile' component={ConsumerProfile} />
             {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
           </Switch>
         </>

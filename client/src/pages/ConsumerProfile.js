@@ -4,7 +4,7 @@ import ConsumerInfo from '../components/consumerInfo/ConsumerInfo';
 import NavBar from '../components/NavBar';
 
 
-function App() {
+function ConsumerProfile() {
 
     const [vendorStatus, setVendorStatus] = useState(false);
 
@@ -42,4 +42,4 @@ function App() {
     );
 }
 
-export default App;
+export default ConsumerProfile;
