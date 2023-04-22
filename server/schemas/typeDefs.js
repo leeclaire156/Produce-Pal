@@ -1,7 +1,5 @@
 const { gql } = require('apollo-server-express');
 
-// "!" means "required: true" -> make sure it matches the model
-
 const typeDefs = gql`
 type User {
     _id: ID!
@@ -24,11 +22,11 @@ type User {
 }
 
 type Product {
-    _id: ID!
-    productId: Int!
-    productName: String!
+    _id: ID
+    productId: Int
+    productName: String
     productType: Boolean
-    productPrice: Float!
+    productPrice: Float
     productCategory: String
     productInventory: Int
     productUnits: String
@@ -36,8 +34,6 @@ type Product {
     productAvailability: Boolean
     productDescription: String
     productImage: String
-    # orders: [Order]
-    # users: [User]
 }
 
 type Order {
@@ -48,6 +44,22 @@ type Order {
     orderType: String!
 }
 
+type Checkout {
+    session: ID
+    _id: ID
+    productId: Int
+    productName: String
+    productType: Boolean
+    productPrice: Float
+    productCategory: String
+    productInventory: Int
+    productUnits: String
+    productAllergens: String
+    productAvailability: Boolean
+    productDescription: String
+    productImage: String
+    products: [Product]
+}
 # # TO DO! when tokens are ready, use below for adding a User. UNCOMMENT line 52-55, 59, swap 86 for 85, and uncomment 149
 # type Auth {
 #     token: ID
@@ -64,6 +76,7 @@ type Query {
     product(_id: ID!): Product
     order(_id: ID!): Order
     user(_id: ID!): User
+    checkout(products: [ID]!): Checkout
 }
 
 type Mutation {
