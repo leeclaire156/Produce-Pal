@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const Order = require('./Order');
 
 const userSchema = new Schema({
@@ -27,23 +27,23 @@ const userSchema = new Schema({
         minLength: 5
     },
     address: {
-        type: String, 
+        type: String,
         default: '',
         trim: true,
     },
     biography: {
-        type: String, 
+        type: String,
         default: '',
         trim: true,
     },
     phone: {
-        type: String, 
+        type: String,
         default: '',
         trim: true,
     },
     memberships: [
         {
-            type: Schema.Types.ObjectId, 
+            type: Schema.Types.ObjectId,
             ref: 'User'
         },
     ],
@@ -59,21 +59,21 @@ const userSchema = new Schema({
             ref: 'Order'
         },
     ],
-    
+
     // IF vendorStatus is false (default) -> buyer. If true -> both buyer and farmer
     vendorStatus: {
         type: Boolean,
         default: false,
     },
     vendorName: {
-        type: String, 
+        type: String,
         default: '',
         trim: true,
     },
     vendorDescription: {
-        type: String, 
+        type: String,
         default: '',
-        trim: true, 
+        trim: true,
     },
     // Users who are also selling will have objects of their produce & sharebox
     products: [
@@ -83,25 +83,25 @@ const userSchema = new Schema({
         },
     ],
     pickupLocation: {
-        type: String, 
+        type: String,
         default: '',
-        trim: true, 
+        trim: true,
     },
     vendorTelephone: {
-        type: String, 
+        type: String,
         default: '',
         trim: true,
     },
     vendorAddress: {
-        type: String, 
+        type: String,
         default: '',
-        trim: true, 
+        trim: true,
     }
 });
 
 // TO DO: virtuals for concat address
 
-// // set up pre-save middleware to create password
+// // set up pre-save middleware to create password, UNCOMMENT 105-117 for logging in and out
 // userSchema.pre('save', async function (next) {
 //     if (this.isNew || this.isModified('password')) {
 //         const saltRounds = 10;
@@ -111,9 +111,9 @@ const userSchema = new Schema({
 //     next();
 // });
 
-// // compare the incoming password with the hashed password
+// // // compare the incoming password with the hashed password
 // userSchema.methods.isCorrectPassword = async function (password) {
-//     return await bcrypt.compare(password, this.password);
+//     return bcrypt.compare(password, this.password);
 // };
 
 const User = model('User', userSchema);

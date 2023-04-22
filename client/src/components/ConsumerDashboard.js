@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBook, faCarrot } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function ConsumerDashboard({ firstName, lastName, address }) {
     return (
@@ -19,7 +20,9 @@ function ConsumerDashboard({ firstName, lastName, address }) {
                             <h5 className="card-title mt-3">My profile</h5>
                             <p className="card-text">This is my profile description.</p>
                             {/* This edit button navigates to 'ConsumerProfile.js' component */}
-                            <button className="btn btn-primary">View</button>
+                            <Link to="/consumer-profile">
+                                <button className="btn btn-primary">View</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

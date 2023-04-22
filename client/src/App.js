@@ -7,8 +7,14 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import Navbar from './components/Navbar';
+
 import Upload from './components/addProductTest'; //Claire's testing ground for cloudinary
+import Home from './pages/Home.js'
+import Dashboard from './pages/Dashboard.js'
+import ConsumerProfile from './pages/ConsumerProfile.js'
+// import VendorProfile from './pages/VendorProfile.js'
+import Login from './components/LoginForm.js'
+import Signup from './components/SignupForm.js'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -102,14 +108,21 @@ const Message = ({ message }) => (
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <>
-          <Switch>
-            <Route exact path='/test' component={Upload} />
-            {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
-          </Switch>
-        </>
-      </Router>
+        <Router>
+          <>
+            <Switch>
+              <Route exact path='/test' component={Upload} />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={Signup} />
+              <Route exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/consumer-profile' component={ConsumerProfile} />
+              {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
+              {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
+              {/* <Route path="*" component={Error404} /> */}
+            </Switch>
+          </>
+        </Router>
     </ApolloProvider>
   );
 }
