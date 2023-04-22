@@ -144,6 +144,7 @@ type Mutation {
         product: [ID]!): Product
     # deleteUser(
     #     user: [ID]!): User
+    login(email: String!, password: String!): Auth
 }
 `;
 
