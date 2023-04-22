@@ -40,9 +40,32 @@ db.once('open', async () => {
             productAllergens: 'Eggs',
             productAvailability: true,
             productDescription: 'Eggs are from different farms that are free range.'
+        },
+        {
+            productId: 567,
+            productName: 'Apple Pie',
+            productType: false,
+            productPrice: 5.99,
+            productCategory: 'Baked',
+            productInventory: 9,
+            productUnits: 'each',
+            productAllergens: 'Gluten',
+            productAvailability: true,
+            productDescription: 'My special blend of spices with a hint of rum.'
+        },
+        {
+            productId: 568,
+            productName: 'Sharebox of Baked Goods from Other Bakers',
+            productType: true,
+            productPrice: 39.99,
+            productCategory: 'Monthly',
+            productInventory: 4,
+            productUnits: 'each',
+            productAllergens: 'Gluten, Eggs, Nuts, Milk',
+            productAvailability: true,
+            productDescription: 'A month supply of apple pies from different bakers. Keep frozen and throw in the oven when ready to serve.'
         }
     ])
-
     console.log('products seeded');
 
     await Order.deleteMany();
@@ -63,46 +86,114 @@ db.once('open', async () => {
                 products[2]._id
             ],
             orderType: 'Paid'
+        },
+        {
+            orderId: 383,
+            products: [
+                products[3]._id,
+                products[4]._id
+            ],
+            orderType: 'Ready'
         }
     ])
-
     console.log('orders seeded');
 
     await User.deleteMany();
-    await User.create({
-        firstName: 'MaSandra the Farmer',
-        lastName: 'Ewing',
-        email: 'mewing123@gmail.com',
-        password: 'password1',
-        vendorStatus: true,
-        vendorName: 'The CoOp',
-        vendorDescription: 'We work with other farms to compile great products.',
-        products: [
-            products[0]._id, 
-            products[0]._id, 
-            products[1]._id, 
-            products[2]._id
-        ],
-        pickupLocation: 'Mosaic Farmers Market',
-        vendorTelephone: '2026759012',
-        vendorAddress: '123 Main Street, Bethesda, MD, 22012'
-    });
+    const users = await User.insertMany([
+        {
+            firstName: 'MaSandra the Farmer',
+            lastName: 'Vendor',
+            email: 'mewing123@gmail.com',
+            password: 'password1',
+            address: '89123 Glen Rd, Potomac, MD 20856',
+            biography: 'I love long walks on the beach with my family.',
+            phone: '386-019-4824',
+            sales: [
+                orders[0]._id, 
+                orders[1]._id
+            ],
+            vendorStatus: true,
+            vendorName: 'The CoOp',
+            vendorDescription: 'We have single produce items and we work with other farms to compile great products.',
+            products: [
+                products[0]._id, 
+                products[0]._id, 
+                products[1]._id, 
+                products[2]._id
+            ],
+            pickupLocation: 'Mosaic Farmers Market',
+            vendorTelephone: '202-675-9012',
+            vendorAddress: '123 Main Street, Bethesda, MD, 22012'
+        },
+        {
+            firstName: 'Jenny The Seller and Buyer',
+            lastName: 'Both',
+            email: 'JennyBaker@gmail.com',
+            password: '12345',
+            address: '45678 Main Street, Fairfax, Virginia, 22030',
+            biography: 'I enjoy sight seeing and traveling to tropical destinations.',
+            phone: '234-109-5786',
+            memberships: [
+            ],  
+            sales: [
+                orders[2]._id, 
+            ],
+            orders: [
+                orders[1]._id
+            ],
+            vendorStatus: true,
+            vendorName: 'Jenny Baked Goodies',
+            vendorDescription: 'From apple pies to meat pies, if it can be baked, I have it!',
+            products: [
+                products[3]._id, 
+                products[4]._id
+            ],
+            pickupLocation: 'Mosaic Farmers Market',
+            vendorTelephone: '202-456-1908',
+            vendorAddress: '9475 Maryland Drive, Bethesda, Maryland, 20844'
+        },
+        {
+            firstName: 'Claire The Buyer',
+            lastName: 'Buyer',
+            email: 'claire456@gmail.com',
+            password: 'password2',
+            address: '28495 Florida Ave, Rockville, Maryland, 29867',
+            biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
+            phone: '123-456-7890',
+            memberships: [
+            ],  
+            orders: [
+                orders[0]._id
+            ],
+            vendorStatus: "false"
+        },
+        {
+            firstName: 'Zhihao The Buyer #2',
+            lastName: 'Buyer',
+            email: 'zhihaobuying@gmail.com',
+            password: 'password234',
+            address: '67890 Texas St, Washington, DC, 20568',
+            biography: 'I supoort my local CSAs!',
+            phone: '321-654-6789',
+            memberships: [
+                // users[1]._id,
+            ],  
+            orders: [
+                orders[2]._id
+            ],
+            vendorStatus: "false"
+        },
+    ], { ordered: true } );
 
-    await User.create({
-        firstName: 'Claire the Buyer',
-        lastName: 'Lee',
-        email: 'claire456@gmail.com',
-        password: 'password2',
-        orders: [
-            orders[0]._id, 
-            orders[1]._id
-        ],
-        vendorStatus: "false"
-    });                              
-
-    // // for my products, I want to see the orders
-    // products.orders.push(orders[0]._id, orders[1]._id);
-    // await products.save();
+    // Add MaSandra to Jenny's membership array since she ordered from MaSandra
+    users[1].memberships.push(users[0]._id)
+    await users[1].save()
+    // Add MaSandra to Claire's membership array since she ordered from MaSandra
+    users[2].memberships.push(users[0]._id)
+    await users[2].save()
+    // Add Jenny to Zhihao's membership array since he ordered from Jenny
+    users[3].memberships.push(users[1]._id)
+    await users[3].save()
 
     console.log('users seeded');
 

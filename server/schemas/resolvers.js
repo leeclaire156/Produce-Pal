@@ -7,12 +7,14 @@ const resolvers = {
         users: async () => {
             return await User.find({})
                 .populate('products')
-                .populate('sales')
                 .populate({
-                    path: 'sales.orders',
+                    path: 'memberships',
                     populate: 'products'
                 })
-                .populate('orders')
+                .populate({
+                    path: 'sales',
+                    populate: 'products'
+                })
                 .populate({
                     path: 'orders',
                     populate: 'products'
@@ -20,25 +22,23 @@ const resolvers = {
         },
         orders: async () => {
             return await Order.find({})
-                .populate('products')
-                ;
+                .populate('products');
         },
         products: async () => {
             return await Product.find({})
-            // .populate('orders')
-            // .populate('users')
-            // ;
         },
         // READ BY ID
         user: async (parent, { _id }) => {
             return await User.findById(_id)
                 .populate('products')
-                .populate('sales')
                 .populate({
-                    path: 'sales.orders',
+                    path: 'memberships',
                     populate: 'products'
                 })
-                .populate('orders')
+                .populate({
+                    path: 'sales',
+                    populate: 'products'
+                })
                 .populate({
                     path: 'orders',
                     populate: 'products'
@@ -72,10 +72,13 @@ const resolvers = {
             const user = args.user;
             const seller = args.seller;
             const order = await Order.create({ products });
-            // When buyer pays, then send the buyer's user id to orders array
+            // When buyer pays, then:
+            // send the buyer's ID to orders array
             await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true } );
-            // When buyer pays, then also send the seller's user id to sales array
+            // also send the seller's user ID to sales array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true } );
+            // also send the seller's ID to the buyer's membership array
+            await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true } );
             return order.populate('products');
         },
     // UPDATE 
