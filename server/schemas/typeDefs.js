@@ -49,12 +49,24 @@ type Order {
 }
 
 # # TO DO! when tokens are ready, use below for adding a User
-# type Auth {
-#     token: ID
-#     user: User
+type Auth {
+    token: ID
+    user: User
+}
+
+# type Query {
+#     users: [User]
+#     products: [Product]
+#     sales: [Order]
+#     orders: [Order]
+#     product(_id: ID!): Product
+#     order(_id: ID!): Order
+#     user(_id: ID!): User
 # }
 
 type Query {
+    # Because we have the context functionality in our resolvers.js Query function in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
+    me: User
     users: [User]
     products: [Product]
     sales: [Order]
@@ -80,8 +92,8 @@ type Mutation {
         pickupLocation: String
         vendorTelephone: String
         # # TO DO! when tokens are ready, use below for last line
-        # vendorAddress: String): Auth
-        vendorAddress: String): User
+        vendorAddress: String): Auth
+        # vendorAddress: String): User
     addProduct(
         _id: ID, 
         productId: Int!, 

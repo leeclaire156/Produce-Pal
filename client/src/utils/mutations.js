@@ -25,6 +25,7 @@ export const LOGIN = gql`
       token
       user {
         _id
+        email
       }
     }
   }
@@ -34,6 +35,7 @@ export const ADD_USER = gql`
 mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $vendorStatus: Boolean!, $address: String, $biography: String, $phone: String, $vendorName: String, $vendorDescription: String, $pickupLocation: String, $vendorTelephone: String, $vendorAddress: String) {
   addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, vendorStatus: $vendorStatus, address: $address, biography: $biography, phone: $phone, vendorName: $vendorName, vendorDescription: $vendorDescription, pickupLocation: $pickupLocation, vendorTelephone: $vendorTelephone, vendorAddress: $vendorAddress) {
     token
+    user {
     firstName
     lastName
     email
@@ -46,6 +48,7 @@ mutation addUser($firstName: String!, $lastName: String!, $email: String!, $pass
     pickupLocation
     vendorTelephone
     vendorAddress
+            }
   }
 }
 `;

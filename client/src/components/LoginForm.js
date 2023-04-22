@@ -11,11 +11,11 @@ function Login(props) {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
-            const mutationResponse = await login({
-                variables: { email: formState.email, password: formState.password },
+            const { data } = await login({
+                variables: { ...formState },
             });
-            const token = mutationResponse.data.login.token;
-            Auth.login(token);
+
+            Auth.login(data.login.token);
         } catch (e) {
             console.log(e);
         }
@@ -23,10 +23,7 @@ function Login(props) {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
+        setFormState({ ...formState, [name]: value });
     };
 
     return (
@@ -43,6 +40,7 @@ function Login(props) {
                         type="email"
                         id="email"
                         onChange={handleChange}
+                        value={formState.email}
                     />
                 </div>
                 <div className="flex-row space-between my-2">
@@ -53,6 +51,7 @@ function Login(props) {
                         type="password"
                         id="pwd"
                         onChange={handleChange}
+                        value={formState.password}
                     />
                 </div>
                 {error ? (
