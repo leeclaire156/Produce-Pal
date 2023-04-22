@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import Auth from "../utils/auth";
 
 function NavBar({ currentPage, handlePageChange }) {
 
@@ -8,6 +8,30 @@ function NavBar({ currentPage, handlePageChange }) {
   const toggleNavbar = () => {
     setIsExpanded(!isExpanded);
   };
+
+  function logInOut() {
+    if (Auth.loggedIn()) {
+      return (
+        <li className="nav-item">
+          <a href="/" onClick={() => Auth.logout()}
+            className={'nav-link'} >Logout</a>
+        </li>
+      );
+    } else {
+      return (
+        <>
+          <li className="nav-item">
+            <a href="/signup"
+              className={'nav-link'} >Signup</a>
+          </li>
+          <li className="nav-item">
+            <a href="/login"
+              className={'nav-link'} >Login</a>
+          </li>
+        </>
+      );
+    }
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -39,13 +63,10 @@ function NavBar({ currentPage, handlePageChange }) {
             <li className="nav-item">
               <a href="#"
                 className={'nav-link'} >
-                <i class="fas fa-shopping-cart me-2"></i>
+                <i className="fas fa-shopping-cart me-2"></i>
                 Cart</a>
             </li>
-            <li className="nav-item">
-              <a href="#"
-                className={'nav-link'} >Logout</a>
-            </li>
+            {logInOut()}
           </ul>
         </div>
       </div>
