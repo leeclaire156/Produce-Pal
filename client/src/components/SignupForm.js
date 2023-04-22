@@ -2,35 +2,35 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
+// import { ADD_USER } from '../utils/mutations';
 import { Form, Button, Container } from 'react-bootstrap';
 
 function Signup(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
-    const [addUser] = useMutation(ADD_USER);
+    // const [addUser] = useMutation(ADD_USER);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
-        const mutationResponse = await addUser({
-            variables: {
-                firstName: formState.firstName,
-                lastName: formState.lastName,
-                email: formState.email,
-                password: formState.password,
-                address: formState.address,
-                biography: formState.biography,
-                phone: formState.phone,
-                vendorStatus: formState.vendorStatus,
-                vendorName: formState.vendorName,
-                vendorDescription: formState.vendorDescription,
-                pickupLocation: formState.pickupLocation,
-                vendorTelephone: formState.vendorTelephone,
-                vendorAddress: formState.vendorAddress,
-            },
-        });
-        const token = mutationResponse.data.addUser.token;
-        Auth.login(token);
+        // const mutationResponse = await addUser({
+        //     variables: {
+        //         firstName: formState.firstName,
+        //         lastName: formState.lastName,
+        //         email: formState.email,
+        //         password: formState.password,
+        //         address: formState.address,
+        //         biography: formState.biography,
+        //         phone: formState.phone,
+        //         vendorStatus: formState.vendorStatus,
+        //         vendorName: formState.vendorName,
+        //         vendorDescription: formState.vendorDescription,
+        //         pickupLocation: formState.pickupLocation,
+        //         vendorTelephone: formState.vendorTelephone,
+        //         vendorAddress: formState.vendorAddress,
+        //     },
+        // });
+        // const token = mutationResponse.data.addUser.token;
+        // Auth.login(token);
     };
 
     const handleChange = (event) => {
@@ -39,9 +39,6 @@ function Signup(props) {
             const formState = { ...input }
 
             switch (type) {
-                // case 'number':
-                //     formState[name] = Number(value);
-                //     break;
                 case 'radio':
                     if (value == "true") { formState[name] = true } else { formState[name] = false }
                     break;
