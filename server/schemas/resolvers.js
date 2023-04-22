@@ -1,8 +1,19 @@
+const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
-// QUERIES
+    // QUERIES
     Query: {
+        // UNCOMMENT LINES 10-15, COMMENT OUT 71, UNCOMMENT 73-75 and 135-151
+        // // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+        // me: async (parent, args, context) => {
+        //     if (context.user) {
+        //         return User.findOne({ _id: context.user._id });
+        //     }
+        //     throw new AuthenticationError('Please log in.');
+        // },
+
         // READ ALL ...
         users: async () => {
             return await User.find({})
@@ -53,18 +64,21 @@ const resolvers = {
             return await Product.findById(_id);
         },
     },
-// MUTATIONS
+    // MUTATIONS
     Mutation: {
-    // CREATE 
+        // CREATE 
         addUser: async (parent, args) => {
             return await User.create(args);
-        // // TO DO! When tokens are ready, add tokens
+            // // TO DO! When tokens are ready, add tokens
+            // const user = await User.create(args);
+            // const token = signToken(user);
+            // return { token, user };
         },
         // CREATE PRODUCT
         addProduct: async (parent, args) => {
             const user = args.user;
             const product = await Product.create(args);
-            await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true } );
+            await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true });
             return product;
         },
         addOrder: async (parent, args) => {
@@ -74,14 +88,14 @@ const resolvers = {
             const order = await Order.create({ products });
             // When buyer pays, then:
             // send the buyer's ID to orders array
-            await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true } );
+            await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
             // also send the seller's user ID to sales array
-            await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true } );
+            await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
             // also send the seller's ID to the buyer's membership array
-            await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true } );
+            await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
             return order.populate('products');
         },
-    // UPDATE 
+        // UPDATE 
         updateUser: async (parent, args) => {
             const user = args.user;
             return await User.findByIdAndUpdate(user, args, { new: true })
@@ -110,15 +124,32 @@ const resolvers = {
             const product = args.product;
             const productInventory = args.productInventory;
             const decrement = Math.abs(productInventory) * -1;
-            return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new:true} );
+            return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new: true });
         },
-    // DELETE
+        // DELETE
         // deleteUser: async (parent, args) => {
         //     const user = args.user; 
         //     await User.findByIdAndDelete(user, args, { new: true } );
         //     console.log("User successfully deleted");
         // },
+        // login: async (parent, { email, password }) => {
+        //     const user = await User.findOne({ email });
+
+        //     if (!user) {
+        //         throw new AuthenticationError('Incorrect username or password! Please try again.')
+        //     }
+
+        //     const correctPassword = await user.isCorrectPassword(password);
+
+        //     if (!correctPassword) {
+        //         throw new AuthenticationError('Incorrect username or password! Please try again.');
+        //     }
+
+        //     const token = signToken(user);
+
+        //     return { token, user };
+        // },
     }
 };
 
-    module.exports = resolvers;
+module.exports = resolvers;

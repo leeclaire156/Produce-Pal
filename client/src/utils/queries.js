@@ -18,3 +18,12 @@ query Product {
     productImage
     }
 }`
+// For login/signup uncomment below
+// export const GET_ME = gql`
+//     query me{
+//         me{
+//             _id
+//             email
+//         }
+//     }
+// `;

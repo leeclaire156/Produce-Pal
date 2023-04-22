@@ -25,7 +25,7 @@ function Dashboard() {
     };
 
     return (
-        <div>
+        <div className='container'>
             <NavBar />
             <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
             {vendorStatus ? <VendorDashboard {...user} /> : <ConsumerDashboard {...user} />}
