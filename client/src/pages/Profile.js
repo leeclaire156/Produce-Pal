@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import UserToggle from '../components/UserToggle';
 import ConsumerInfo from '../components/consumerInfo/ConsumerInfo';
 import NavBar from '../components/NavBar';
+// add this to nav bar conditional renderings
 
-
-function ConsumerProfile() {
+function Profile() {
 
     const [vendorStatus, setVendorStatus] = useState(false);
 
@@ -30,8 +30,9 @@ function ConsumerProfile() {
         setVendorStatus(!vendorStatus);
     };
 
+    // if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.
     return (
-        <div>
+        <div className='container'>
             <NavBar />
             {/* this toggle button needs to be removed when implementing */}
             <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
@@ -40,6 +41,7 @@ function ConsumerProfile() {
             </div>
         </div>
     );
+    // }
 }
 
-export default ConsumerProfile;
+export default Profile;

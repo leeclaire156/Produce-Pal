@@ -48,7 +48,7 @@ function App() {
 
             <h2>Total: ${total}</h2>
             <button onClick={handleCheckout}>Checkout</button>
-      <button onClick={() => handleAddToCart(4)}>Add to Cart</button> {/* Example for adding a new item */}
+            <button onClick={() => handleAddToCart(4)}>Add to Cart</button> {/* Example for adding a new item */}
 
         </div>
     );
