@@ -290,7 +290,6 @@ export default function Upload() {
                             name='productImage'
                             onChange={uploadImage}
                             className='productImage'
-                            multiple
                         />
                     </Form.Label>
                 </Form.Group>
