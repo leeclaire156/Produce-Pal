@@ -195,6 +195,20 @@ db.once('open', async () => {
     users[3].memberships.push(users[1]._id)
     await users[3].save()
 
+    // PUSH buyer and seller names to respective orders
+    // Order [0]
+    orders[0].buyerName.push(users[2])
+    orders[0].sellerName.push(users[0])
+    await orders[0].save()
+    //Order [1]
+    orders[1].buyerName.push(users[1])
+    orders[1].sellerName.push(users[0])
+    await orders[1].save()
+    //Order [2]
+    orders[2].buyerName.push(users[3])
+    orders[2].sellerName.push(users[1])
+    await orders[2].save()
+
     console.log('users seeded');
 
     console.log('SEEDING done!');

@@ -10,6 +10,18 @@ const orderSchema = new Schema(
             default: Date.now,
             required: true,
         },
+        buyerName: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            },
+        ],
+        sellerName: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            },
+        ],
         products: [
             {
                 type: Schema.Types.ObjectId,

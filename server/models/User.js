@@ -44,10 +44,7 @@ const userSchema = new Schema({
     userImage: {
         type: String,
         default: '',
-<<<<<<< HEAD
         trim: true,
-=======
->>>>>>> d38a7081e792c33ce5e204f2716e4b512a3b7550
     },
     memberships: [
         {
@@ -108,12 +105,8 @@ const userSchema = new Schema({
     vendorImage: {
         type: String,
         default: '',
-<<<<<<< HEAD
         trim: true,
     }
-=======
-    },
->>>>>>> d38a7081e792c33ce5e204f2716e4b512a3b7550
 });
 
 // TO DO: virtuals for concat address
