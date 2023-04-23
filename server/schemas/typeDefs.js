@@ -11,6 +11,7 @@ type User {
     address: String
     biography: String
     phone: String
+    userImage: String
     memberships: [User]
     sales: [Order]
     orders: [Order]
@@ -21,6 +22,7 @@ type User {
     pickupLocation: String
     vendorTelephone: String
     vendorAddress: String
+    vendorImage: String
 }
 
 type Product {
@@ -76,6 +78,7 @@ type Mutation {
         address: String
         biography: String
         phone: String
+        userImage: String
         vendorStatus: Boolean!
         vendorName: String
         vendorDescription: String
@@ -83,7 +86,8 @@ type Mutation {
         vendorTelephone: String
         # # TO DO! when tokens are ready, use below for last line
         # vendorAddress: String): Auth
-        vendorAddress: String): User
+        vendorAddress: String
+        vendorImage: String): User
     addProduct(
         _id: ID, 
         productId: Int!, 
@@ -110,13 +114,15 @@ type Mutation {
         password: String
         address: String
         biography: String
-        phone: String        
+        phone: String  
+        userImage: String    
         vendorStatus: Boolean
         vendorName: String
         vendorDescription: String
         pickupLocation: String
         vendorTelephone: String
         vendorAddress: String
+        vendorImage: String
         user: [ID]!): User
     updateOrder(
         _id: ID

@@ -41,6 +41,11 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
+    userImage: {
+        type: String,
+        default: '',
+        trim: true,
+    },
     memberships: [
         {
             type: Schema.Types.ObjectId,
@@ -93,6 +98,11 @@ const userSchema = new Schema({
         trim: true,
     },
     vendorAddress: {
+        type: String,
+        default: '',
+        trim: true,
+    },
+    vendorImage: {
         type: String,
         default: '',
         trim: true,
