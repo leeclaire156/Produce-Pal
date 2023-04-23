@@ -50,6 +50,10 @@ query Users {
     }
     vendorStatus
     vendorName
+    vendorTelephone
+    vendorAddress
+    pickupLocation
+    vendorDescription
     sales {
       _id
       orderType
@@ -63,6 +67,22 @@ query Users {
       _id
       productName
     }
+  }
+}
+`;
+
+export const QUERY_USER = gql `
+query User($id: ID!) {
+  user(_id: $id) {
+    firstName
+    lastName
+    email
+    address
+    vendorName
+    vendorAddress
+    vendorTelephone
+    vendorDescription
+    vendorStatus
   }
 }
 `;
