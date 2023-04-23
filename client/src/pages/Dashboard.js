@@ -7,6 +7,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 
 
+// should be conditionally rendered for context user
 function Dashboard() {
     const { loading, data } = useQuery(QUERY_USER);
     // const user = data?.user || []
