@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import UserToggle from '../components/UserToggle';
 import ConsumerInfo from '../components/consumerInfo/ConsumerInfo';
 import NavBar from '../components/NavBar';
+// add this to nav bar conditional renderings
 
-
-function ConsumerProfile() {
+function Profile() {
 
     const [vendorStatus, setVendorStatus] = useState(false);
 
@@ -42,4 +42,4 @@ function ConsumerProfile() {
     );
 }
 
-export default ConsumerProfile;
+export default Profile;

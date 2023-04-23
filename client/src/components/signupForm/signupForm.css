@@ -1,0 +1,19 @@
+.signup-header {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.signup-pg-btns {
+    width: 20%;
+    margin-top: .5rem;
+    margin-left: .5rem;
+}
+
+#signup-btn {
+    margin-right: 1rem;
+}
+
+.signup-pg {
+    display: flex;
+    flex-direction: column;
+}

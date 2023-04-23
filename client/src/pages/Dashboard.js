@@ -3,7 +3,7 @@ import VendorDashboard from '../components/VendorDashboard';
 import ConsumerDashboard from '../components/ConsumerDashboard';
 import NavBar from '../components/NavBar';
 import UserToggle from '../components/UserToggle';
-
+// should be conditionally rendered for context user
 function Dashboard() {
 
     const [vendorStatus, setVendorStatus] = useState(false);
