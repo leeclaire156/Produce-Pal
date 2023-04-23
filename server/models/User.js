@@ -41,6 +41,10 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
+    userImage: {
+        type: String,
+        default: '',
+    },
     memberships: [
         {
             type: Schema.Types.ObjectId,
@@ -96,7 +100,11 @@ const userSchema = new Schema({
         type: String,
         default: '',
         trim: true,
-    }
+    },
+    vendorImage: {
+        type: String,
+        default: '',
+    },
 });
 
 // TO DO: virtuals for concat address

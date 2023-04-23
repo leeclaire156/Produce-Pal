@@ -85,7 +85,7 @@ function ConsumerInfo(props) {
             </div>
 
             {/* <!-- Edit consumer profile Modal --> */}
-            <div className="modal fade" id="consumerModal" tabindex="-1" aria-labelledby="consumerModalLabel" aria-hidden="true">
+            <div className="modal fade" id="consumerModal" tabIndex="-1" aria-labelledby="consumerModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">

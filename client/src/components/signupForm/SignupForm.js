@@ -7,6 +7,7 @@ import { Form, Button, Container } from 'react-bootstrap';
 import './signupForm.css';
 import eye from '../assets/eye_icongeek26.png'
 import blindeye from '../assets/blind-eye_icongeek26.png'
+import NavBar from '../NavBar';
 
 function Signup(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
@@ -151,8 +152,8 @@ function Signup(props) {
     }
 
     return (
-        <div className="container my-1 signup-pg">
-            <Link to="/">← Home</Link>
+        <div className="container signup-pg">
+            <NavBar />
             <Form.Label className='signup-header'>Sign up for a free account</Form.Label>
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="flex-row space-between my-2">

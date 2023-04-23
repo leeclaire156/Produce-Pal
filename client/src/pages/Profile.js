@@ -30,8 +30,9 @@ function Profile() {
         setVendorStatus(!vendorStatus);
     };
 
+    // if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.
     return (
-        <div>
+        <div className='container'>
             <NavBar />
             {/* this toggle button needs to be removed when implementing */}
             <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
@@ -40,6 +41,7 @@ function Profile() {
             </div>
         </div>
     );
+    // }
 }
 
 export default Profile;
