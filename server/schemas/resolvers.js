@@ -36,7 +36,15 @@ const resolvers = {
         },
         orders: async () => {
             return await Order.find({})
-                .populate('products');
+                .populate('products')
+                .populate({
+                    path: 'buyerName',
+                    populate: 'products'
+                })
+                .populate({
+                    path: 'sellerName',
+                    populate: 'products'
+                });
         },
         products: async () => {
             return await Product.find({})
@@ -97,7 +105,14 @@ const resolvers = {
         order: async (parent, { _id }) => {
             return await Order.findById(_id)
                 .populate('products')
-                ;
+                .populate({
+                    path: 'buyerName',
+                    populate: 'products'
+                })
+                .populate({
+                    path: 'sellerName',
+                    populate: 'products'
+                });
         },
         product: async (parent, { _id }) => {
             return await Product.findById(_id);
@@ -169,10 +184,12 @@ const resolvers = {
             // When buyer pays, then:
             // send the buyer's ID to orders array
             await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
-            // also send the seller's user ID to sales array
+            // also send the seller's user ID to sales array & the sellerName array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
-            // also send the seller's ID to the buyer's membership array
+            await User.findByIdAndUpdate(seller, { $push: { sellerName: user } }, { new: true });
+            // also send the buyer's ID to the buyer's membership array & the buyerName array
             await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+            await User.findByIdAndUpdate(user, { $push: { buyerName: user } }, { new: true });
             return order.populate('products');
         },
         // UPDATE 

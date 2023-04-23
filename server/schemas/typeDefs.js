@@ -42,6 +42,8 @@ type Order {
     _id: ID!
     orderId: Int
     purchaseDate: String!
+    buyerName: [User]
+    sellerName: [User]
     products: [Product]
     orderType: String!
 }
@@ -127,8 +129,8 @@ type Mutation {
         password: String
         address: String
         biography: String
-        phone: String
-        userImage: String        
+        phone: String  
+        userImage: String    
         vendorStatus: Boolean
         vendorName: String
         vendorDescription: String
