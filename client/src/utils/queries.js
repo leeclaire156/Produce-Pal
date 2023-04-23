@@ -3,21 +3,70 @@ import { gql } from '@apollo/client';
 
 export const QUERY_PRODUCT = gql`
 query Product {
-    product {
-    _id
-    productId
-    productName
-    productType
-    productPrice
-    productCategory
-    productInventory
-    productUnits
-    productAllergens
-    productAvailability
-    productDescription
-    productImage
+        product {
+            _id
+            productId
+            productName
+            productType
+            productPrice
+            productCategory
+            productInventory
+            productUnits
+            productAllergens
+            productAvailability
+            productDescription
+            productImage
+        }
     }
-}`
+`;
+
+export const QUERY_USERS = gql`
+query Users {
+  users {
+    _id
+    firstName
+    lastName
+    email
+    address
+    biography
+    phone
+    memberships {
+      _id
+      firstName
+      vendorName
+      products {
+        _id
+        productName
+      }
+    }
+    orders {
+      _id
+      orderType
+      purchaseDate
+      products {
+        _id
+        productName
+      }
+    }
+    vendorStatus
+    vendorName
+    sales {
+      _id
+      orderType
+      purchaseDate
+      products {
+        _id
+        productName
+      }
+    }
+    products {
+      _id
+      productName
+    }
+  }
+}
+`;
+
 // For login/signup uncomment below
 // export const GET_ME = gql`
 //     query me{
