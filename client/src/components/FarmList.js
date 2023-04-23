@@ -8,8 +8,10 @@ import FarmCard from './FarmCard';
 //     { id: '4', vendorName: 'Farm D', vendorAddress: 'Chicago', vendorDescription: 'Organic crops in the farmland of corns near Chicago.', },
 // ];
 
+// TO DO - Add conditional rendering to only show vendorStatus = true
 const FarmList = ({ farms }) => {
-    
+    console.log(farms)
+
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [searchError, setSearchError] = useState('');

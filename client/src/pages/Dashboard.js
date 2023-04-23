@@ -3,8 +3,15 @@ import VendorDashboard from '../components/VendorDashboard';
 import ConsumerDashboard from '../components/ConsumerDashboard';
 import NavBar from '../components/NavBar';
 import UserToggle from '../components/UserToggle';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER } from '../utils/queries';
+
+
 // should be conditionally rendered for context user
 function Dashboard() {
+    const { loading, data } = useQuery(QUERY_USER);
+    // const user = data?.user || []
+    // console.log(user)
 
     const [vendorStatus, setVendorStatus] = useState(false);
 
