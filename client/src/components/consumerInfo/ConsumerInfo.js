@@ -5,6 +5,7 @@ import { faUser, faPhone, faMedal, faCamera } from '@fortawesome/free-solid-svg-
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function ConsumerInfo(props) {
+    console.log(props)
 
     const [showCamera, setShowCamera] = useState(false);
 
