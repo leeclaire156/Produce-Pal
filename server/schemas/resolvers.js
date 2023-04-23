@@ -212,23 +212,23 @@ const resolvers = {
         //     await User.findByIdAndDelete(user, args, { new: true } );
         //     console.log("User successfully deleted");
         // },
-        // login: async (parent, { email, password }) => {
-        //     const user = await User.findOne({ email });
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
 
-        //     if (!user) {
-        //         throw new AuthenticationError('Incorrect username or password! Please try again.')
-        //     }
+            if (!user) {
+                throw new AuthenticationError('Incorrect username or password! Please try again.')
+            }
 
-        //     const correctPassword = await user.isCorrectPassword(password);
+            const correctPassword = await user.isCorrectPassword(password);
 
-        //     if (!correctPassword) {
-        //         throw new AuthenticationError('Incorrect username or password! Please try again.');
-        //     }
+            if (!correctPassword) {
+                throw new AuthenticationError('Incorrect username or password! Please try again.');
+            }
 
-        //     const token = signToken(user);
+            const token = signToken(user);
 
-        //     return { token, user };
-        // },
+            return { token, user };
+        },
     }
 };
 
