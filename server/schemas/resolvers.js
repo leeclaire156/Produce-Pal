@@ -244,6 +244,10 @@ const resolvers = {
             const vendorAddress = args.vendorAddress;
             return await Address.findByIdAndUpdate(vendorAddress, args, { new: true })
         },
+        updatePickupAddress: async (parent, args) => {
+            const pickupAddress = args.pickupAddress;
+            return await Address.findByIdAndUpdate(pickupAddress, args, { new: true })
+        },
         updateOrder: async (parent, args) => {
             const order = args.order;
             return await Order.findByIdAndUpdate(order, args, { new: true })
