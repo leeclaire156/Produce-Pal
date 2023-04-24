@@ -7,7 +7,7 @@ import { Form, Button, Dropdown } from 'react-bootstrap';
 import './signupForm.css';
 import eye from '../assets/eye_icongeek26.png'
 import blindeye from '../assets/blind-eye_icongeek26.png'
-import NavBar from '../NavBar';
+
 import axios from 'axios';
 
 function Signup(props) {
@@ -260,7 +260,7 @@ function Signup(props) {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label className='UploadImg mt-4 mb-5'>
+                        <Form.Label className='UploadImg mt-4 mb-2'>
                             <div>
                                 Upload a picture of your business
                             </div>
@@ -271,6 +271,7 @@ function Signup(props) {
                                 onChange={uploadImage}
                                 className='vendorImage'
                             />
+                            {vendorUrl ? <img className="user-img-preview preview-img" src={vendorUrl} height={100} width={100} /> : <></>}
                         </Form.Label>
                     </Form.Group>
                     <Form.Group className="flex-row space-between my-2">
@@ -324,7 +325,6 @@ function Signup(props) {
 
     return (
         <div className="container signup-pg">
-            <NavBar />
             <Form.Label className='signup-header'>Sign up for a free account</Form.Label>
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="flex-row space-between my-2">
@@ -429,7 +429,7 @@ function Signup(props) {
                     />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label className='UploadImg mt-4 mb-5'>
+                    <Form.Label className='UploadImg mt-4 mb-2'>
                         <div>
                             Upload a picture of you!
                         </div>
@@ -440,6 +440,7 @@ function Signup(props) {
                             onChange={uploadImage}
                             className='userImage'
                         />
+                        {userUrl ? <img className="user-img-preview preview-img" src={userUrl} height={100} width={100} /> : <></>}
                     </Form.Label>
                 </Form.Group>
                 <Form.Group className="flex-row space-between my-2">
