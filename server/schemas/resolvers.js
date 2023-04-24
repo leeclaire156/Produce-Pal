@@ -92,13 +92,13 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                })                
+                })
                 .populate('address')
                 .populate('vendorAddress');
         },
         // // When front end is ready for testing, 
-            // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
-            // // MAY REPLACE with authentication when DEPLOYING
+        // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
+        // // MAY REPLACE with authentication when DEPLOYING
         // order: async (parent, { _id }, context) => {
         //     if (context.user) {
         //         const user = await User.findById(context.user._id)
@@ -163,7 +163,7 @@ const resolvers = {
             */
 
             // DELETE below return for when you deploy; need this for graphql only
-            return order.populate('products');        
+            return order.populate('products');
         }
     },
     // MUTATIONS
@@ -178,17 +178,17 @@ const resolvers = {
         },
         // create address
         addAddress: async (parent, args) => {
-            const user = args.user;
+            const email = args.email;
             const address = await Address.create(args);
-            await User.findByIdAndUpdate(user, { $push: { addresses: address } }, { new: true });
-            return address;
+            await User.findOneAndUpdate({ email }, { $push: { address: address } }, { new: true })
+            return address
         },
         // create vendor address
         addVendorAddress: async (parent, args) => {
-            const user = args.user;
+            const email = args.email;
             const address = await Address.create(args);
-            await User.findByIdAndUpdate(user, { $push: { vendorAddress: address } }, { new: true });
-            return address;
+            await User.findOneAndUpdate({ email }, { $push: { vendorAddress: address } }, { new: true })
+            return address
         },
         // CREATE PRODUCT
         addProduct: async (parent, args) => {
@@ -230,11 +230,11 @@ const resolvers = {
                 });
         },
         updateAddress: async (parent, args) => {
-            const address = args.address; 
+            const address = args.address;
             return await Address.findByIdAndUpdate(address, args, { new: true })
         },
         updateVendorAddress: async (parent, args) => {
-            const vendorAddress = args.vendorAddress; 
+            const vendorAddress = args.vendorAddress;
             return await Address.findByIdAndUpdate(vendorAddress, args, { new: true })
         },
         updateOrder: async (parent, args) => {

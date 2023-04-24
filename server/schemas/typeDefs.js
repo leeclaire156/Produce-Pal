@@ -99,13 +99,13 @@ type Mutation {
         state: String!
         street: String!
         zipcode: String!
-        user: [ID]!): Address
+        email: String!): Address
     addVendorAddress(
         city: String!
         state: String!
         street: String!
         zipcode: String!
-        user: [ID]!): Address
+        email: String!): Address
     addUser(    
         _id: ID
         firstName: String!
