@@ -292,6 +292,7 @@ export default function Upload() {
                             onChange={uploadImage}
                             className='productImage'
                         />
+                        {url ? <img className="product-img-preview preview-img" src={url} height={100} width={100} /> : <></>}
                     </Form.Label>
                 </Form.Group>
                 {loading ? (
