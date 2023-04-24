@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import FarmCard from './FarmCard';
 
-const farms = [
-    { id: '1', vendorName: 'Farm A', vendorAddress: 'New York', vendorDescription: 'Grass-fed beef in rural farm near New York.', },
-    { id: '2', vendorName: 'Farm B', vendorAddress: 'Los Angeles', vendorDescription: 'Organic produce in the hills of California near Los Angeles.', },
-    { id: '3', vendorName: 'Farm C', vendorAddress: 'San Francisco', vendorDescription: 'Sustainable produce in farms near San Francisco', },
-    { id: '4', vendorName: 'Farm D', vendorAddress: 'Chicago', vendorDescription: 'Organic crops in the farmland of corns near Chicago.', },
-];
+// const farms = [
+//     { id: '1', vendorName: 'Farm A', vendorAddress: 'New York', vendorDescription: 'Grass-fed beef in rural farm near New York.', },
+//     { id: '2', vendorName: 'Farm B', vendorAddress: 'Los Angeles', vendorDescription: 'Organic produce in the hills of California near Los Angeles.', },
+//     { id: '3', vendorName: 'Farm C', vendorAddress: 'San Francisco', vendorDescription: 'Sustainable produce in farms near San Francisco', },
+//     { id: '4', vendorName: 'Farm D', vendorAddress: 'Chicago', vendorDescription: 'Organic crops in the farmland of corns near Chicago.', },
+// ];
 
-const FarmList = () => {
+// TO DO - Add conditional rendering to only show vendorStatus = true
+const FarmList = ({ farms }) => {
+    console.log(farms)
+
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [searchError, setSearchError] = useState('');

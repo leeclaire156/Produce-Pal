@@ -20,7 +20,7 @@ function ConsumerDashboard({ firstName, lastName, address }) {
                             <h5 className="card-title mt-3">My profile</h5>
                             <p className="card-text">This is my profile description.</p>
                             {/* This edit button navigates to 'ConsumerProfile.js' component */}
-                            <Link to="/consumer-profile">
+                            <Link to="/profile">
                                 <button className="btn btn-primary">View</button>
                             </Link>
                         </div>

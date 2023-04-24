@@ -9,6 +9,18 @@ function NavBar({ currentPage, handlePageChange }) {
     setIsExpanded(!isExpanded);
   };
 
+  function dashboard() {
+    if (Auth.loggedIn()) {
+    return (
+      <li className="nav-item">
+        <a href="/dashboard"
+          // onClick={() => handlePageChange('Dashboard')}
+          className={currentPage === 'Dashboard' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Dashboard' ? 'dashboard' : 'dashboard-fade'}>Dashboard</a>
+      </li>
+    )
+    }
+  }
+
   function logInOut() {
     if (Auth.loggedIn()) {
       return (
@@ -55,15 +67,11 @@ function NavBar({ currentPage, handlePageChange }) {
                 // onClick={() => handlePageChange('Home')}
                 className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Home' ? 'home' : 'home-fade'}>Home</a>
             </li>
-            <li className="nav-item">
-              <a href="/dashboard"
-                // onClick={() => handlePageChange('Dashboard')}
-                className={currentPage === 'Portfolio' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Dashboard' ? 'dashboard' : 'dashboard-fade'}>Dashboard</a>
-            </li>
+            {dashboard()}
             <li className="nav-item">
               <a href="#"
                 className={'nav-link'} >
-                <i className="fas fa-shopping-cart me-2"></i>
+                <i className="fas fa-shopping-cart"></i>
                 Cart</a>
             </li>
             {logInOut()}
