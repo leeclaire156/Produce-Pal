@@ -101,13 +101,13 @@ type Mutation {
         street: String!
         zipcode: String!
         email: String!): Address
-    addPickupAddress(
+    addVendorAddress(
         city: String!
         state: String!
         street: String!
         zipcode: String!
         email: String!): Address
-    addVendorAddress(
+    addPickupAddress(
         city: String!
         state: String!
         street: String!
