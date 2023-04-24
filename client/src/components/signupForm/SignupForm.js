@@ -36,7 +36,7 @@ function Signup(props) {
                 vendorStatus: formState.vendorStatus,
                 vendorName: formState.vendorName,
                 vendorDescription: formState.vendorDescription,
-                pickupLocation: formState.pickupLocation,
+                marketName: formState.marketName,
                 vendorTelephone: formState.vendorTelephone,
                 vendorImage: formState.vendorImage,
 
@@ -46,17 +46,18 @@ function Signup(props) {
                 zipcode: formState.zipcode,
                 addAddressEmail2: formState.email,
 
+                addPickupAddressStreet2: formState.addPickupAddressStreet2,
+                addPickupAddressCity2: formState.addPickupAddressCity2,
+                addPickupAddressState2: formState.addPickupAddressState2,
+                addPickupAddressZipcode2: formState.addPickupAddressZipcode2,
+                addPickupAddressEmail2: formState.email,
+
                 addVendorAddressStreet2: formState.addVendorAddressStreet2,
                 addVendorAddressCity2: formState.addVendorAddressCity2,
                 addVendorAddressState2: formState.addVendorAddressState2,
                 addVendorAddressZipcode2: formState.addVendorAddressZipcode2,
                 addVendorAddressEmail2: formState.email,
 
-                addPickupAddressStreet2: formState.addPickupAddressStreet2,
-                addPickupAddressCity2: formState.addPickupAddressCity2,
-                addPickupAddressState2: formState.addPickupAddressState2,
-                addPickupAddressZipcode2: formState.addPickupAddressZipcode2,
-                addPickupAddressEmail2: formState.email,
             },
         });
 
@@ -199,16 +200,16 @@ function Signup(props) {
                             value={formState.vendorDescription}
                         />
                     </Form.Group>
-                    {/* <Form.Group className="flex-row space-between my-2">
+                    <Form.Group className="flex-row space-between my-2">
                         <Form.Control
-                            placeholder="Pick up Address"
-                            name="pickupLocation"
+                            placeholder="Market Name"
+                            name="marketName"
                             type="text"
-                            id="pickupLocation"
+                            id="marketName"
                             onChange={handleChange}
-                            value={formState.pickupLocation}
+                            value={formState.marketName}
                         />
-                    </Form.Group> */}
+                    </Form.Group>
                     <Form.Group className="flex-row space-between my-2">
                         <Form.Control
                             placeholder="Pick Up Address"
@@ -343,16 +344,6 @@ function Signup(props) {
                         <img src={eyeImage ? eye : blindeye} />
                     </Button>
                 </Form.Group>
-                {/* <Form.Group className="flex-row space-between my-2">
-                    <Form.Control
-                        placeholder="Address"
-                        name="address"
-                        type="text"
-                        id="address"
-                        onChange={handleChange}
-                        value={formState.address}
-                    />
-                </Form.Group> */}
                 <Form.Group className="flex-row space-between my-2">
                     <Form.Control
                         placeholder="Street Address"

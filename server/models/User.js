@@ -90,6 +90,11 @@ const userSchema = new Schema({
             ref: 'Product'
         },
     ],
+    marketName: {
+        type: String,
+        default: '',
+        trim: true,
+    },
     pickupAddress: [
         {
             type: Schema.Types.ObjectId,
