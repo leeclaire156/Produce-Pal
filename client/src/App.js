@@ -15,6 +15,8 @@ import Profile from './pages/Profile.js'
 // import VendorProfile from './pages/VendorProfile.js'
 import Login from './components/loginForm/LoginForm.js'
 import Signup from './components/signupForm/SignupForm.js'
+import ProductInventory from "./pages/ProductInventory.js"
+import { ProductProvider } from './utils/GlobalState.js'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -45,19 +47,24 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <>
-          <Switch>
-            <Route exact path='/test' component={Upload} />
-            <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/signup' component={Signup} />
-            <Route exact path='/dashboard' component={Dashboard} />
-            <Route exact path='/profile' component={Profile} />
-            {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
-            {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
-            {/* <Route path="*" component={Error404} /> */}
-          </Switch>
-        </>
+        <ProductProvider>
+          <>
+            <Switch>
+              <Route exact path='/test' component={Upload} />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={Signup} />
+              <Route exact path='/dashboard' component={Dashboard} />
+              <Route exact path='/profile' component={Profile} />
+              {/* my productInventory page */}
+              <Route exact path='/productinventory' component={ProductInventory} />
+
+              {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
+              {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
+              {/* <Route path="*" component={Error404} /> */}
+            </Switch>
+          </>
+        </ProductProvider>
       </Router>
     </ApolloProvider>
   );
