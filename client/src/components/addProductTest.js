@@ -46,19 +46,20 @@ export default function Upload() {
             .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
                 setUrl(res.data);
-                alert(`Image uploaded Succesfully. Url is ${url}`);
+                alert(`Image uploaded Successfully. Url is ${url}`);
             })
             .then(() => setLoading(false))
             .catch(console.log);
     }
 
+    // Ignore this but dont comment it out
     function uploadMultipleImages(images) {
         setLoading(true);
         axios
             .post("http://localhost:3000/uploadMultipleImages", { images })
             .then((res) => {
                 setUrl(res.data);
-                alert("Image uploaded Succesfully");
+                alert("Image uploaded Successfully");
             })
             .then(() => setLoading(false))
             .catch(console.log);

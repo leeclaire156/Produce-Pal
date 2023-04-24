@@ -29,34 +29,37 @@ function Signup(props) {
                 lastName: formState.lastName,
                 email: formState.email,
                 password: formState.password,
-                biography: formState.biography,
-                phone: formState.phone,
-                userImage: formState.userImage,
 
-                vendorStatus: formState.vendorStatus,
-                vendorName: formState.vendorName,
-                vendorDescription: formState.vendorDescription,
-                marketName: formState.marketName,
-                vendorTelephone: formState.vendorTelephone,
-                vendorImage: formState.vendorImage,
-
+                addAddressEmail2: formState.email,
                 street: formState.street,
                 city: formState.city,
                 state: formState.state,
                 zipcode: formState.zipcode,
-                addAddressEmail2: formState.email,
 
-                addPickupAddressStreet2: formState.addPickupAddressStreet2,
-                addPickupAddressCity2: formState.addPickupAddressCity2,
-                addPickupAddressState2: formState.addPickupAddressState2,
-                addPickupAddressZipcode2: formState.addPickupAddressZipcode2,
-                addPickupAddressEmail2: formState.email,
+                biography: formState.biography,
+                phone: formState.phone,
+                userImage: userUrl,
 
+
+                vendorStatus: formState.vendorStatus,
+                vendorName: formState.vendorName,
+
+                addVendorAddressEmail2: formState.email,
                 addVendorAddressStreet2: formState.addVendorAddressStreet2,
                 addVendorAddressCity2: formState.addVendorAddressCity2,
                 addVendorAddressState2: formState.addVendorAddressState2,
                 addVendorAddressZipcode2: formState.addVendorAddressZipcode2,
-                addVendorAddressEmail2: formState.email,
+
+                vendorDescription: formState.vendorDescription,
+                vendorTelephone: formState.vendorTelephone,
+                vendorImage: vendorUrl,
+
+                marketName: formState.marketName,
+                addPickupAddressEmail2: formState.email,
+                addPickupAddressStreet2: formState.addPickupAddressStreet2,
+                addPickupAddressCity2: formState.addPickupAddressCity2,
+                addPickupAddressState2: formState.addPickupAddressState2,
+                addPickupAddressZipcode2: formState.addPickupAddressZipcode2,
 
             },
         });
@@ -108,64 +111,74 @@ function Signup(props) {
     }
 
     const [loading, setLoading] = useState(false);
-    // const [url, setUrl] = useState("");
+    const [userUrl, setUserUrl] = useState("");
+    const [vendorUrl, setVendorUrl] = useState("");
 
-    // const convertBase64 = (file) => {
-    //     return new Promise((resolve, reject) => {
-    //         const fileReader = new FileReader();
-    //         fileReader.readAsDataURL(file);
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
 
-    //         fileReader.onload = () => {
-    //             resolve(fileReader.result);
-    //         };
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
 
-    //         fileReader.onerror = (error) => {
-    //             reject(error);
-    //         };
-    //     });
-    // };
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
 
-    // function uploadSingleImage(base64) {
-    //     setLoading(true);
-    //     axios
-    //         .post("http://localhost:3000/uploadImage", { image: base64 })
-    //         .then((res) => {
-    //             setUrl(res.data);
-    //             alert(`Image uploaded Succesfully. Url is ${url}`);
-    //         })
-    //         .then(() => setLoading(false))
-    //         .catch(console.log);
-    // }
+    function uploadSingleImage(base64, userOrVendor) {
+        setLoading(true);
+        axios
+            .post("http://localhost:3000/uploadImage", { image: base64 })
+            .then((res) => {
+                if (userOrVendor == "userImage") {
+                    setUserUrl(res.data);
+                    alert(`User Image uploaded Successfully.`);
+                } else {
+                    setVendorUrl(res.data);
+                    alert(`Vendor Image uploaded Successfully.`);
+                }
+            })
+            .then(() => setLoading(false))
+            .catch(console.log);
+    }
 
-    // function uploadMultipleImages(images) {
-    //     setLoading(true);
-    //     axios
-    //         .post("http://localhost:3000/uploadMultipleImages", { images })
-    //         .then((res) => {
-    //             setUrl(res.data);
-    //             alert("Image uploaded Succesfully");
-    //         })
-    //         .then(() => setLoading(false))
-    //         .catch(console.log);
-    // }
+    // Ignore this but dont comment it out
+    function uploadMultipleImages(images) {
+        setLoading(true);
+        axios
+            .post("http://localhost:3000/uploadMultipleImages", { images })
+            .then((res) => {
+                // setUrl(res.data);
+                alert("Image uploaded Succesfully");
+            })
+            .then(() => setLoading(false))
+            .catch(console.log);
+    }
 
-    // const uploadImage = async (event) => {
-    //     const files = event.target.files;
-    //     console.log(files.length);
+    const uploadImage = async (event) => {
+        const files = event.target.files;
+        console.log(files.length);
 
-    //     if (files.length === 1) {
-    //         const base64 = await convertBase64(files[0]);
-    //         uploadSingleImage(base64);
-    //         return;
-    //     }
+        const userOrVendor = event.target.name
+        console.log(userOrVendor);
 
-    //     const base64s = [];
-    //     for (var i = 0; i < files.length; i++) {
-    //         var base = await convertBase64(files[i]);
-    //         base64s.push(base);
-    //     }
-    //     uploadMultipleImages(base64s);
-    // };
+        if (files.length === 1) {
+            const base64 = await convertBase64(files[0]);
+            uploadSingleImage(base64, userOrVendor);
+            return;
+        }
+
+        const base64s = [];
+        for (var i = 0; i < files.length; i++) {
+            var base = await convertBase64(files[i]);
+            base64s.push(base);
+        }
+        uploadMultipleImages(base64s);
+    };
 
 
     // const filledOutCheck = () => {
@@ -192,13 +205,73 @@ function Signup(props) {
                     </Form.Group>
                     <Form.Group className="flex-row space-between my-2">
                         <Form.Control
+                            placeholder="Vendor Street Address"
+                            name="addVendorAddressStreet2"
+                            type="text"
+                            id="addVendorAddressStreet2"
+                            onChange={handleChange}
+                            value={formState.addVendorAddressStreet2}
+                        />
+                        <Form.Control
+                            placeholder="City"
+                            name="addVendorAddressCity2"
+                            type="text"
+                            id="addVendorAddressCity2"
+                            onChange={handleChange}
+                            value={formState.addVendorAddressCity2}
+                        />
+                        <Form.Control
+                            placeholder="State"
+                            name="addVendorAddressState2"
+                            type="text"
+                            id="addVendorAddressState2"
+                            onChange={handleChange}
+                            value={formState.addVendorAddressState2}
+                        />
+                        <Form.Control
+                            placeholder="Zip Code"
+                            name="addVendorAddressZipcode2"
+                            type="text"
+                            id="addVendorAddressZipcode2"
+                            onChange={handleChange}
+                            value={formState.addVendorAddressZipcode2}
+                        />
+                    </Form.Group>
+                    <Form.Group className="flex-row space-between my-2">
+                        <Form.Control
                             placeholder="Tell us about your company"
                             name="vendorDescription"
                             as="textarea"
+                            rows={6}
                             id="vendorDescription"
                             onChange={handleChange}
                             value={formState.vendorDescription}
                         />
+                    </Form.Group>
+                    <Form.Group className="flex-row space-between my-2">
+                        <Form.Control
+                            placeholder="Business Phone Number"
+                            name="vendorTelephone"
+                            type="text"
+                            id="vendorTelephone"
+                            onChange={handleChange}
+                            // onBlur={handlePhoneValidation}
+                            value={formState.vendorTelephone}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label className='UploadImg mt-4 mb-5'>
+                            <div>
+                                Upload a picture of your business
+                            </div>
+                            <Form.Control
+                                id="dropzone-file"
+                                type="file"
+                                name='vendorImage'
+                                onChange={uploadImage}
+                                className='vendorImage'
+                            />
+                        </Form.Label>
                     </Form.Group>
                     <Form.Group className="flex-row space-between my-2">
                         <Form.Control
@@ -242,51 +315,6 @@ function Signup(props) {
                             id="addPickupAddressZipcode2"
                             onChange={handleChange}
                             value={formState.addPickupAddressZipcode2}
-                        />
-                    </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
-                        <Form.Control
-                            placeholder="Business Phone Number"
-                            name="vendorTelephone"
-                            type="text"
-                            id="vendorTelephone"
-                            onChange={handleChange}
-                            // onBlur={handlePhoneValidation}
-                            value={formState.vendorTelephone}
-                        />
-                    </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
-                        <Form.Control
-                            placeholder="Vendor Street Address"
-                            name="addVendorAddressStreet2"
-                            type="text"
-                            id="addVendorAddressStreet2"
-                            onChange={handleChange}
-                            value={formState.addVendorAddressStreet2}
-                        />
-                        <Form.Control
-                            placeholder="City"
-                            name="addVendorAddressCity2"
-                            type="text"
-                            id="addVendorAddressCity2"
-                            onChange={handleChange}
-                            value={formState.addVendorAddressCity2}
-                        />
-                        <Form.Control
-                            placeholder="State"
-                            name="addVendorAddressState2"
-                            type="text"
-                            id="addVendorAddressState2"
-                            onChange={handleChange}
-                            value={formState.addVendorAddressState2}
-                        />
-                        <Form.Control
-                            placeholder="Zip Code"
-                            name="addVendorAddressZipcode2"
-                            type="text"
-                            id="addVendorAddressZipcode2"
-                            onChange={handleChange}
-                            value={formState.addVendorAddressZipcode2}
                         />
                     </Form.Group>
                 </>
@@ -383,6 +411,7 @@ function Signup(props) {
                         placeholder="Tell us about you"
                         name="biography"
                         as="textarea"
+                        rows={6}
                         id="biography"
                         onChange={handleChange}
                         value={formState.vendorAddress}
@@ -399,20 +428,20 @@ function Signup(props) {
                         value={formState.phone}
                     />
                 </Form.Group>
-                {/* <Form.Group>
+                <Form.Group>
                     <Form.Label className='UploadImg mt-4 mb-5'>
                         <div>
-                            Upload
+                            Upload a picture of you!
                         </div>
                         <Form.Control
                             id="dropzone-file"
                             type="file"
-                            name='vendorImage'
+                            name='userImage'
                             onChange={uploadImage}
-                            className='vendorImage'
+                            className='userImage'
                         />
                     </Form.Label>
-                </Form.Group> */}
+                </Form.Group>
                 <Form.Group className="flex-row space-between my-2">
                     <Form.Label htmlFor="vendorStatus">Are you a vendor?</Form.Label>
                     <Form.Check

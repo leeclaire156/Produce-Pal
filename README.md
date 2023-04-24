@@ -126,3 +126,4 @@ PWAeditor application is covered by MIT license.
 5. [Converting value into `Number` type in form handler](https://stackoverflow.com/questions/66132421/updating-input-type-number-in-react-form)
 6. [React Link](https://reactrouter.com/en/main/components/link-native)
 7. [Show Password](https://melvingeorge.me/blog/show-or-hide-password-ability-reactjs)
+8. [Affixing number of rows for textarea in React](https://www.pluralsight.com/guides/how-to-use-multiline-text-area-in-reactjs)
