@@ -54,8 +54,8 @@ mutation Mutation($productId: Int!, $productName: String!, $productType: Boolean
 // `;
 
 export const ADD_USER = gql`
-mutation Register($firstName: String!, $lastName: String!, $email: String!, $password: String!, $vendorStatus: Boolean!, $biography: String, $phone: String, $userImage: String, $vendorName: String, $vendorDescription: String, $pickupLocation: String, $vendorTelephone: String, $vendorImage: String, $addVendorAddressCity2: String!, $addVendorAddressState2: String!, $addVendorAddressStreet2: String!, $addVendorAddressZipcode2: String!, $addVendorAddressEmail2: String!, $city: String!, $state: String!, $street: String!, $zipcode: String!, $addAddressEmail2: String!) {
-  addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, vendorStatus: $vendorStatus, biography: $biography, phone: $phone, userImage: $userImage, vendorName: $vendorName, vendorDescription: $vendorDescription, pickupLocation: $pickupLocation, vendorTelephone: $vendorTelephone, vendorImage: $vendorImage) {
+mutation Register($firstName: String!, $lastName: String!, $email: String!, $password: String!, $vendorStatus: Boolean!, $biography: String, $phone: String, $userImage: String, $vendorName: String, $vendorDescription: String, $vendorTelephone: String, $vendorImage: String, $addVendorAddressCity2: String!, $addVendorAddressState2: String!, $addVendorAddressStreet2: String!, $addVendorAddressZipcode2: String!, $addVendorAddressEmail2: String!, $city: String!, $state: String!, $street: String!, $zipcode: String!, $addAddressEmail2: String!, $addPickupAddressCity2: String!, $addPickupAddressState2: String!, $addPickupAddressStreet2: String!, $addPickupAddressZipcode2: String!, $addPickupAddressEmail2: String!) {
+  addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, vendorStatus: $vendorStatus, biography: $biography, phone: $phone, userImage: $userImage, vendorName: $vendorName, vendorDescription: $vendorDescription, vendorTelephone: $vendorTelephone, vendorImage: $vendorImage) {
     firstName
     lastName
     email
@@ -72,7 +72,6 @@ mutation Register($firstName: String!, $lastName: String!, $email: String!, $pas
     vendorStatus
     vendorName
     vendorDescription
-    pickupLocation
     vendorTelephone
     vendorAddress {
       _id
@@ -95,33 +94,46 @@ mutation Register($firstName: String!, $lastName: String!, $email: String!, $pas
     state
     zipcode
   }
+  addPickupAddress(city: $addPickupAddressCity2, state: $addPickupAddressState2, street: $addPickupAddressStreet2, zipcode: $addPickupAddressZipcode2, email: $addPickupAddressEmail2) {
+    street
+    city
+    state
+    zipcode
+  }
 }
 `;
-// For the mutation above
+// for mutation above
 // {
-//   "firstName":"asdf",
-//   "lastName":"asdf",
-//   "email":"asdf7@email.com",
-//   "password":"asdfasdf",
-//   "biography":"asdf",
-//   "phone":"asdf",
-//   "userImage":"asdf",
-//   "vendorStatus":true,
-//   "vendorName":"asdf",
-//   "vendorDescription":"asdf",
-//   "pickupLocation":"asdf",
-//   "vendorTelephone":"asdf",
-//   "vendorImage": "asdf",
+//   "firstName": "ASD",
+//   "lastName": "ASDF",
 
-//   "city": "Chantilly",
-//   "state": "Virginia",
-//   "street": "12345 Main St",
-//   "zipcode": "23220",
-//   "addAddressEmail2": "asdf7@email.com",
+//   "email": "user1@gmail.com",
+//   "password": "password",
+//   "phone": "1112223333",
+//   "biography": "askdlfjlsajflasjfl;jsaldfjl;sajlfkjsldafj",
 
-//   "addVendorAddressCity2": "Baltimore",
-//   "addVendorAddressState2": "Maryland",
-//   "addVendorAddressStreet2": "54321 NotMain St",
-//   "addVendorAddressZipcode2": "43210",
-//   "addVendorAddressEmail2": "asdf7@email.com",
-// }
+//   "addAddressEmail2": "user1@gmail.com",
+//   "street": "12345 Kaskldfj St",
+//   "city": "Aklasfj",
+//   "state": "Cksdlafj",
+//   "zipcode": "11111",
+
+
+//   "vendorStatus": true,
+//   "vendorName": "Kklsdajfljasf",
+//   "vendorDescription": "asdflsadlfasllfsadkf;sa;dfk;sakdf",
+//   "vendorTelephone": "2223334444",
+
+//   "addPickupAddressEmail2": "user1@gmail.com",
+//   "addPickupAddressStreet2": "22345 Adksjflasjf Dr",
+//   "addPickupAddressCity2": "Bkasdljfa",
+//   "addPickupAddressState2": "Bsdkalfjlasdjf",
+//   "addPickupAddressZipcode2": "20202",
+
+
+//   "addVendorAddressEmail2": "user1@gmail.com"
+//   "addVendorAddressCity2": "Iaskjjlfj",
+//   "addVendorAddressState2": "Oasjkldf",
+//   "addVendorAddressStreet2": "33455 Bkdasljfla",
+//   "addVendorAddressZipcode2": "30303",
+//   }

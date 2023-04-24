@@ -183,6 +183,13 @@ const resolvers = {
             await User.findOneAndUpdate({ email }, { $push: { address: address } }, { new: true })
             return address
         },
+        // create pick up address
+        addPickupAddress: async (parent, args) => {
+            const email = args.email;
+            const address = await Address.create(args);
+            await User.findOneAndUpdate({ email }, { $push: { pickupAddress: address } }, { new: true })
+            return address
+        },
         // create vendor address
         addVendorAddress: async (parent, args) => {
             const email = args.email;

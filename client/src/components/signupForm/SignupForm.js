@@ -11,7 +11,7 @@ import NavBar from '../NavBar';
 import axios from 'axios';
 
 function Signup(props) {
-    const [formState, setFormState] = useState('');
+    const [formState, setFormState] = useState({ email: '', password: '' });
     const [errorEmailMessage, setEmailError] = useState(false);
     const [passwordType, setPasswordType] = useState(false)
     const [eyeImage, setEyeImage] = useState(true)
@@ -51,6 +51,12 @@ function Signup(props) {
                 addVendorAddressState2: formState.addVendorAddressState2,
                 addVendorAddressZipcode2: formState.addVendorAddressZipcode2,
                 addVendorAddressEmail2: formState.email,
+
+                addPickupAddressStreet2: formState.addPickupAddressStreet2,
+                addPickupAddressCity2: formState.addPickupAddressCity2,
+                addPickupAddressState2: formState.addPickupAddressState2,
+                addPickupAddressZipcode2: formState.addPickupAddressZipcode2,
+                addPickupAddressEmail2: formState.email,
             },
         });
 
@@ -185,7 +191,7 @@ function Signup(props) {
                     </Form.Group>
                     <Form.Group className="flex-row space-between my-2">
                         <Form.Control
-                            placeholder="Tell us about your products"
+                            placeholder="Tell us about your company"
                             name="vendorDescription"
                             as="textarea"
                             id="vendorDescription"
@@ -193,7 +199,7 @@ function Signup(props) {
                             value={formState.vendorDescription}
                         />
                     </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
+                    {/* <Form.Group className="flex-row space-between my-2">
                         <Form.Control
                             placeholder="Pick up Address"
                             name="pickupLocation"
@@ -202,41 +208,41 @@ function Signup(props) {
                             onChange={handleChange}
                             value={formState.pickupLocation}
                         />
-                    </Form.Group>
-                    {/* <Form.Group className="flex-row space-between my-2">
+                    </Form.Group> */}
+                    <Form.Group className="flex-row space-between my-2">
                         <Form.Control
                             placeholder="Pick Up Address"
-                            name="pickupLocation"
+                            name="addPickupAddressStreet2"
                             type="text"
-                            id="pickupLocation"
+                            id="addPickupAddressStreet2"
                             onChange={handleChange}
-                        // value={formState.vendorAddress}
+                            value={formState.addPickupAddressStreet2}
                         />
                         <Form.Control
                             placeholder="City"
-                            name="pickupCity"
+                            name="addPickupAddressCity2"
                             type="text"
-                            id="pickupCity"
+                            id="addPickupAddressCity2"
                             onChange={handleChange}
-                        // value={formState.vendorAddress}
+                            value={formState.addPickupAddressCity2}
                         />
                         <Form.Control
                             placeholder="State"
-                            name="pickupState"
+                            name="addPickupAddressState2"
                             type="text"
-                            id="pickupState"
+                            id="addPickupAddressState2"
                             onChange={handleChange}
-                        // value={formState.vendorAddress}
+                            value={formState.addPickupAddressState2}
                         />
                         <Form.Control
                             placeholder="Zip Code"
-                            name="pickupZipCode"
+                            name="addPickupAddressZipcode2"
                             type="text"
-                            id="pickupZipCode"
+                            id="addPickupAddressZipcode2"
                             onChange={handleChange}
-                        // value={formState.vendorAddress}
+                            value={formState.addPickupAddressZipcode2}
                         />
-                    </Form.Group> */}
+                    </Form.Group>
                     <Form.Group className="flex-row space-between my-2">
                         <Form.Control
                             placeholder="Business Phone Number"
