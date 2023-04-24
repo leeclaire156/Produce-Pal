@@ -7,6 +7,7 @@ import './LoginForm.css';
 import { Form, Button, Container, InputGroup } from 'react-bootstrap';
 import eye from '../assets/eye_icongeek26.png'
 import blindeye from '../assets/blind-eye_icongeek26.png'
+import NavBar from '../NavBar';
 
 function Login(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
@@ -50,8 +51,8 @@ function Login(props) {
     }
 
     return (
-        <div className="container my-1 login-pg">
-            <Link to="/">← Home</Link>
+        <div className="container login-pg">
+            <NavBar />
             <Form.Label className='login-header'>Login to your account</Form.Label>
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="flex-row space-between my-2">

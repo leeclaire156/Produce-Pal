@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Order } = require('../models');
+const { User, Product, Order, Address } = require('../models');
 const { signToken } = require('../utils/auth');
 // TO DO - Ask Jenny & Quin about stripe dependencies
 const stripe = require('stripe');
@@ -18,6 +18,9 @@ const resolvers = {
         // },
 
         // READ ALL 
+        addresses: async () => {
+            return await Address.find({})
+        },
         users: async () => {
             return await User.find({})
                 .populate('products')
@@ -32,11 +35,21 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                });
+                })
+                .populate('address')
+                .populate('vendorAddress')
         },
         orders: async () => {
             return await Order.find({})
-                .populate('products');
+                .populate('products')
+                .populate({
+                    path: 'buyerName',
+                    populate: 'products'
+                })
+                .populate({
+                    path: 'sellerName',
+                    populate: 'products'
+                });
         },
         products: async () => {
             return await Product.find({})
@@ -79,11 +92,13 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                });
+                })
+                .populate('address')
+                .populate('vendorAddress');
         },
         // // When front end is ready for testing, 
-            // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
-            // // MAY REPLACE with authentication when DEPLOYING
+        // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
+        // // MAY REPLACE with authentication when DEPLOYING
         // order: async (parent, { _id }, context) => {
         //     if (context.user) {
         //         const user = await User.findById(context.user._id)
@@ -97,7 +112,14 @@ const resolvers = {
         order: async (parent, { _id }) => {
             return await Order.findById(_id)
                 .populate('products')
-                ;
+                .populate({
+                    path: 'buyerName',
+                    populate: 'products'
+                })
+                .populate({
+                    path: 'sellerName',
+                    populate: 'products'
+                });
         },
         product: async (parent, { _id }) => {
             return await Product.findById(_id);
@@ -141,7 +163,7 @@ const resolvers = {
             */
 
             // DELETE below return for when you deploy; need this for graphql only
-            return order.populate('products');        
+            return order.populate('products');
         }
     },
     // MUTATIONS
@@ -153,6 +175,27 @@ const resolvers = {
             // const user = await User.create(args);
             // const token = signToken(user);
             // return { token, user };
+        },
+        // create address
+        addAddress: async (parent, args) => {
+            const email = args.email;
+            const address = await Address.create(args);
+            await User.findOneAndUpdate({ email }, { $push: { address: address } }, { new: true })
+            return address
+        },
+        // create pick up address
+        addPickupAddress: async (parent, args) => {
+            const email = args.email;
+            const address = await Address.create(args);
+            await User.findOneAndUpdate({ email }, { $push: { pickupAddress: address } }, { new: true })
+            return address
+        },
+        // create vendor address
+        addVendorAddress: async (parent, args) => {
+            const email = args.email;
+            const address = await Address.create(args);
+            await User.findOneAndUpdate({ email }, { $push: { vendorAddress: address } }, { new: true })
+            return address
         },
         // CREATE PRODUCT
         addProduct: async (parent, args) => {
@@ -169,10 +212,12 @@ const resolvers = {
             // When buyer pays, then:
             // send the buyer's ID to orders array
             await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
-            // also send the seller's user ID to sales array
+            // also send the seller's user ID to sales array & the sellerName array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
-            // also send the seller's ID to the buyer's membership array
+            await User.findByIdAndUpdate(seller, { $push: { sellerName: user } }, { new: true });
+            // also send the buyer's ID to the buyer's membership array & the buyerName array
             await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+            await User.findByIdAndUpdate(user, { $push: { buyerName: user } }, { new: true });
             return order.populate('products');
         },
         // UPDATE 
@@ -190,6 +235,18 @@ const resolvers = {
                     path: 'orders',
                     populate: 'products'
                 });
+        },
+        updateAddress: async (parent, args) => {
+            const address = args.address;
+            return await Address.findByIdAndUpdate(address, args, { new: true })
+        },
+        updateVendorAddress: async (parent, args) => {
+            const vendorAddress = args.vendorAddress;
+            return await Address.findByIdAndUpdate(vendorAddress, args, { new: true })
+        },
+        updatePickupAddress: async (parent, args) => {
+            const pickupAddress = args.pickupAddress;
+            return await Address.findByIdAndUpdate(pickupAddress, args, { new: true })
         },
         updateOrder: async (parent, args) => {
             const order = args.order;

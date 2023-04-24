@@ -11,13 +11,13 @@ function NavBar({ currentPage, handlePageChange }) {
 
   function dashboard() {
     if (Auth.loggedIn()) {
-      return (
-        <li className="nav-item">
-          <a href="/dashboard"
-            // onClick={() => handlePageChange('Dashboard')}
-            className={currentPage === 'Dashboard' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Dashboard' ? 'dashboard' : 'dashboard-fade'}>Dashboard</a>
-        </li>
-      )
+    return (
+      <li className="nav-item">
+        <a href="/dashboard"
+          // onClick={() => handlePageChange('Dashboard')}
+          className={currentPage === 'Dashboard' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Dashboard' ? 'dashboard' : 'dashboard-fade'}>Dashboard</a>
+      </li>
+    )
     }
   }
 
@@ -71,7 +71,7 @@ function NavBar({ currentPage, handlePageChange }) {
             <li className="nav-item">
               <a href="#"
                 className={'nav-link'} >
-                <i className="fas fa-shopping-cart me-2"></i>
+                <i className="fas fa-shopping-cart"></i>
                 Cart</a>
             </li>
             {logInOut()}

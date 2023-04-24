@@ -1,14 +1,23 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+type Address {
+    _id: ID!
+    street: String,
+    city: String, 
+    state: String, 
+    zipcode: String
+}
+
 type User {
     _id: ID!
     firstName: String!
     lastName: String!
     email: String!
-    address: String
+    address: [Address]
     biography: String
     phone: String
+    userImage: String
     memberships: [User]
     sales: [Order]
     orders: [Order]
@@ -16,9 +25,11 @@ type User {
     vendorName: String
     vendorDescription: String
     products: [Product]
-    pickupLocation: String
+    marketName: String
+    pickupAddress: [Address]
     vendorTelephone: String
-    vendorAddress: String
+    vendorAddress: [Address]
+    vendorImage: String
 }
 
 type Product {
@@ -40,6 +51,8 @@ type Order {
     _id: ID!
     orderId: Int
     purchaseDate: String!
+    buyerName: [User]
+    sellerName: [User]
     products: [Product]
     orderType: String!
 }
@@ -61,18 +74,20 @@ type Checkout {
     products: [Product]
 }
 # # TO DO! when tokens are ready, use below for adding a User. UNCOMMENT line 52-55, 59, swap 86 for 85, and uncomment 149
-type Auth {
-    token: ID
-    user: User
-}
+# type Auth {
+#     token: ID
+#     user: User
+# }
 
 type Query {
     # Because we have the context functionality in our resolvers.js Query function in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
-    me: User
+    # me: User
+    addresses: [Address]
     users: [User]
     products: [Product]
     sales: [Order]
     orders: [Order]
+    address(_id: ID!): Address
     product(_id: ID!): Product
     order(_id: ID!): Order
     user(_id: ID!): User
@@ -80,23 +95,42 @@ type Query {
 }
 
 type Mutation {
+    addAddress(
+        city: String!
+        state: String!
+        street: String!
+        zipcode: String!
+        email: String!): Address
+    addPickupAddress(
+        city: String!
+        state: String!
+        street: String!
+        zipcode: String!
+        email: String!): Address
+    addVendorAddress(
+        city: String!
+        state: String!
+        street: String!
+        zipcode: String!
+        email: String!): Address
     addUser(    
         _id: ID
         firstName: String!
         lastName: String!
         email: String!
         password: String!
-        address: String
         biography: String
         phone: String
+        userImage: String
         vendorStatus: Boolean!
         vendorName: String
         vendorDescription: String
-        pickupLocation: String
+        marketName: String
         vendorTelephone: String
+        vendorImage: String
         # # TO DO! when tokens are ready, use below for last line
-        vendorAddress: String): Auth
-        # vendorAddress: String): User
+        # ): Auth
+        ): User
     addProduct(
         _id: ID, 
         productId: Int!, 
@@ -121,16 +155,34 @@ type Mutation {
         lastName: String
         email: String
         password: String
-        address: String
         biography: String
-        phone: String        
+        phone: String  
+        userImage: String    
         vendorStatus: Boolean
         vendorName: String
         vendorDescription: String
-        pickupLocation: String
+        marketName: String
         vendorTelephone: String
-        vendorAddress: String
+        vendorImage: String
         user: [ID]!): User
+    updateAddress(
+        city: String
+        state: String
+        street: String
+        zipcode: String
+        address: [ID]!): Address
+    updatePickupAddress(
+        city: String
+        state: String
+        street: String
+        zipcode: String
+        address: [ID]!): Address
+    updateVendorAddress(
+        city: String
+        state: String
+        street: String
+        zipcode: String
+        address: [ID]!): Address
     updateOrder(
         _id: ID
         orderId: Int
@@ -159,7 +211,7 @@ type Mutation {
         product: [ID]!): Product
     # deleteUser(
     #     user: [ID]!): User
-    login(email: String!, password: String!): Auth
+    # login(email: String!, password: String!): Auth
 }
 `;
 
