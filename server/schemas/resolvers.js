@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Order } = require('../models');
+const { User, Product, Order, Address } = require('../models');
 const { signToken } = require('../utils/auth');
 // TO DO - Ask Jenny & Quin about stripe dependencies
 const stripe = require('stripe');
@@ -18,6 +18,9 @@ const resolvers = {
         // },
 
         // READ ALL 
+        addresses: async () => {
+            return await Address.find({})
+        },
         users: async () => {
             return await User.find({})
                 .populate('products')
@@ -32,7 +35,9 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                });
+                })
+                .populate('address')
+                .populate('vendorAddress')
         },
         orders: async () => {
             return await Order.find({})
@@ -168,6 +173,20 @@ const resolvers = {
             // const user = await User.create(args);
             // const token = signToken(user);
             // return { token, user };
+        },
+        // create address
+        addAddress: async (parent, args) => {
+            const user = args.user;
+            const address = await Address.create(args);
+            await User.findByIdAndUpdate(user, { $push: { addresses: address } }, { new: true });
+            return address;
+        },
+        // create vendor address
+        addVendorAddress: async (parent, args) => {
+            const user = args.user;
+            const address = await Address.create(args);
+            await User.findByIdAndUpdate(user, { $push: { vendorAddress: address } }, { new: true });
+            return address;
         },
         // CREATE PRODUCT
         addProduct: async (parent, args) => {

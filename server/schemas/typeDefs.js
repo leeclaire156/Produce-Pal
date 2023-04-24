@@ -1,12 +1,19 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+type Address {
+    street: String,
+    city: String, 
+    state: String, 
+    zipcode: String
+}
+
 type User {
     _id: ID!
     firstName: String!
     lastName: String!
     email: String!
-    address: String
+    address: [Address]
     biography: String
     phone: String
     userImage: String
@@ -19,7 +26,7 @@ type User {
     products: [Product]
     pickupLocation: String
     vendorTelephone: String
-    vendorAddress: String
+    vendorAddress: [Address]
     vendorImage: String
 }
 
@@ -73,6 +80,7 @@ type Checkout {
 type Query {
     # Because we have the context functionality in our resolvers.js Query function in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     # me: User
+    addresses: [Address]
     users: [User]
     products: [Product]
     sales: [Order]
@@ -84,13 +92,24 @@ type Query {
 }
 
 type Mutation {
+    addAddress(
+        city: String!
+        state: String!
+        street: String!
+        zipcode: String!
+        user: [ID]!): Address
+    addVendorAddress(
+        city: String!
+        state: String!
+        street: String!
+        zipcode: String!
+        user: [ID]!): Address
     addUser(    
         _id: ID
         firstName: String!
         lastName: String!
         email: String!
         password: String!
-        address: String
         biography: String
         phone: String
         userImage: String
@@ -101,8 +120,8 @@ type Mutation {
         vendorTelephone: String
         vendorImage: String
         # # TO DO! when tokens are ready, use below for last line
-        # vendorAddress: String): Auth
-        vendorAddress: String): User
+        # ): Auth
+        ): User
     addProduct(
         _id: ID, 
         productId: Int!, 
@@ -127,7 +146,6 @@ type Mutation {
         lastName: String
         email: String
         password: String
-        address: String
         biography: String
         phone: String  
         userImage: String    
@@ -136,9 +154,14 @@ type Mutation {
         vendorDescription: String
         pickupLocation: String
         vendorTelephone: String
-        vendorAddress: String
         vendorImage: String
         user: [ID]!): User
+    updateAddress(
+
+    )
+    updateVendorAddress(
+        
+    )
     updateOrder(
         _id: ID
         orderId: Int
