@@ -1,0 +1,19 @@
+.profile-image {
+    /* border-radius: 50%; */
+    position: relative;
+}
+
+.camera-overlay {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+}
