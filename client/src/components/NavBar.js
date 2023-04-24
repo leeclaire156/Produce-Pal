@@ -46,7 +46,7 @@ function NavBar({ currentPage, handlePageChange }) {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light">
+    <nav className="navbar navbar-expand-lg navbar-light container">
       <div className="container-fluid">
         <a className="navbar-brand" href="/" id='nav-brand-text'>ProducePal</a>
         <button
