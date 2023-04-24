@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
-// import { ADD_USER } from '../utils/mutations';
+import { ADD_USER } from '../../utils/mutations';
 import { Form, Button, Dropdown } from 'react-bootstrap';
 import './signupForm.css';
 import eye from '../assets/eye_icongeek26.png'
@@ -11,35 +11,51 @@ import NavBar from '../NavBar';
 import axios from 'axios';
 
 function Signup(props) {
-    const [formState, setFormState] = useState({ email: '', password: '' });
+    const [formState, setFormState] = useState('');
     const [errorEmailMessage, setEmailError] = useState(false);
     const [passwordType, setPasswordType] = useState(false)
     const [eyeImage, setEyeImage] = useState(true)
     const [notFilled, setFilledStatus] = useState(false)
-    // const [addUser] = useMutation(ADD_USER);
+    const [addUser] = useMutation(ADD_USER);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(formState);
-        // const mutationResponse = await addUser({
-        //     variables: {
-        //         firstName: formState.firstName,
-        //         lastName: formState.lastName,
-        //         email: formState.email,
-        //         password: formState.password,
-        //         address: formState.address,
-        //         biography: formState.biography,
-        //         phone: formState.phone,
-        //         vendorStatus: formState.vendorStatus,
-        //         vendorName: formState.vendorName,
-        //         vendorDescription: formState.vendorDescription,
-        //         pickupLocation: formState.pickupLocation,
-        //         vendorTelephone: formState.vendorTelephone,
-        //         vendorAddress: formState.vendorAddress,
-        //     },
-        // });
-        // const token = mutationResponse.data.addUser.token;
-        // Auth.login(token);
+        // const mutationResponse =
+        await addUser({
+            variables: {
+
+                firstName: formState.firstName,
+                lastName: formState.lastName,
+                email: formState.email,
+                password: formState.password,
+                biography: formState.biography,
+                phone: formState.phone,
+                userImage: formState.userImage,
+
+                vendorStatus: formState.vendorStatus,
+                vendorName: formState.vendorName,
+                vendorDescription: formState.vendorDescription,
+                pickupLocation: formState.pickupLocation,
+                vendorTelephone: formState.vendorTelephone,
+                vendorImage: formState.vendorImage,
+
+                street: formState.street,
+                city: formState.city,
+                state: formState.state,
+                zipcode: formState.zipcode,
+                addAddressEmail2: formState.email,
+
+                addVendorAddressStreet2: formState.addVendorAddressStreet2,
+                addVendorAddressCity2: formState.addVendorAddressCity2,
+                addVendorAddressState2: formState.addVendorAddressState2,
+                addVendorAddressZipcode2: formState.addVendorAddressZipcode2,
+                addVendorAddressEmail2: formState.email,
+            },
+        });
+
+        // // const token = mutationResponse.data.addUser.token;
+        // // Auth.login(token);
     };
 
     const handleChange = (event) => {
@@ -187,7 +203,7 @@ function Signup(props) {
                             value={formState.pickupLocation}
                         />
                     </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
+                    {/* <Form.Group className="flex-row space-between my-2">
                         <Form.Control
                             placeholder="Pick Up Address"
                             name="pickupLocation"
@@ -220,7 +236,7 @@ function Signup(props) {
                             onChange={handleChange}
                         // value={formState.vendorAddress}
                         />
-                    </Form.Group>
+                    </Form.Group> */}
                     <Form.Group className="flex-row space-between my-2">
                         <Form.Control
                             placeholder="Business Phone Number"
@@ -234,36 +250,36 @@ function Signup(props) {
                     </Form.Group>
                     <Form.Group className="flex-row space-between my-2">
                         <Form.Control
-                            placeholder="Business Address"
-                            name="vendorAddress"
+                            placeholder="Vendor Street Address"
+                            name="addVendorAddressStreet2"
                             type="text"
-                            id="vendorAddress"
+                            id="addVendorAddressStreet2"
                             onChange={handleChange}
-                            value={formState.vendorAddress}
+                            value={formState.addVendorAddressStreet2}
                         />
                         <Form.Control
                             placeholder="City"
-                            name="vendorCity"
+                            name="addVendorAddressCity2"
                             type="text"
-                            id="vendorAddress"
+                            id="addVendorAddressCity2"
                             onChange={handleChange}
-                            value={formState.vendorAddress}
+                            value={formState.addVendorAddressCity2}
                         />
                         <Form.Control
                             placeholder="State"
-                            name="vendorState"
+                            name="addVendorAddressState2"
                             type="text"
-                            id="vendorAddress"
+                            id="addVendorAddressState2"
                             onChange={handleChange}
-                            value={formState.vendorAddress}
+                            value={formState.addVendorAddressState2}
                         />
                         <Form.Control
                             placeholder="Zip Code"
-                            name="vendorZipCode"
+                            name="addVendorAddressZipcode2"
                             type="text"
-                            id="vendorAddress"
+                            id="addVendorAddressZipcode2"
                             onChange={handleChange}
-                            value={formState.vendorAddress}
+                            value={formState.addVendorAddressZipcode2}
                         />
                     </Form.Group>
                 </>
@@ -321,7 +337,7 @@ function Signup(props) {
                         <img src={eyeImage ? eye : blindeye} />
                     </Button>
                 </Form.Group>
-                <Form.Group className="flex-row space-between my-2">
+                {/* <Form.Group className="flex-row space-between my-2">
                     <Form.Control
                         placeholder="Address"
                         name="address"
@@ -329,6 +345,40 @@ function Signup(props) {
                         id="address"
                         onChange={handleChange}
                         value={formState.address}
+                    />
+                </Form.Group> */}
+                <Form.Group className="flex-row space-between my-2">
+                    <Form.Control
+                        placeholder="Street Address"
+                        name="street"
+                        type="text"
+                        id="street"
+                        onChange={handleChange}
+                        value={formState.street}
+                    />
+                    <Form.Control
+                        placeholder="City"
+                        name="city"
+                        type="text"
+                        id="city"
+                        onChange={handleChange}
+                        value={formState.city}
+                    />
+                    <Form.Control
+                        placeholder="State"
+                        name="state"
+                        type="text"
+                        id="state"
+                        onChange={handleChange}
+                        value={formState.state}
+                    />
+                    <Form.Control
+                        placeholder="Zip Code"
+                        name="zipcode"
+                        type="text"
+                        id="zipcode"
+                        onChange={handleChange}
+                        value={formState.zipcode}
                     />
                 </Form.Group>
                 <Form.Group className="flex-row space-between my-2">
