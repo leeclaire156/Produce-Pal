@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Order } = require('../models');
+const { User, Product, Order, Address } = require('../models');
 const { signToken } = require('../utils/auth');
 // TO DO - Ask Jenny & Quin about stripe dependencies
 const stripe = require('stripe');
@@ -18,6 +18,9 @@ const resolvers = {
         // },
 
         // READ ALL 
+        addresses: async () => {
+            return await Address.find({})
+        },
         users: async () => {
             return await User.find({})
                 .populate('products')
@@ -32,7 +35,9 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                });
+                })
+                .populate('address')
+                .populate('vendorAddress')
         },
         orders: async () => {
             return await Order.find({})
@@ -87,7 +92,9 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                });
+                })                
+                .populate('address')
+                .populate('vendorAddress');
         },
         // // When front end is ready for testing, 
             // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
@@ -169,6 +176,20 @@ const resolvers = {
             // const token = signToken(user);
             // return { token, user };
         },
+        // create address
+        addAddress: async (parent, args) => {
+            const user = args.user;
+            const address = await Address.create(args);
+            await User.findByIdAndUpdate(user, { $push: { addresses: address } }, { new: true });
+            return address;
+        },
+        // create vendor address
+        addVendorAddress: async (parent, args) => {
+            const user = args.user;
+            const address = await Address.create(args);
+            await User.findByIdAndUpdate(user, { $push: { vendorAddress: address } }, { new: true });
+            return address;
+        },
         // CREATE PRODUCT
         addProduct: async (parent, args) => {
             const user = args.user;
@@ -207,6 +228,14 @@ const resolvers = {
                     path: 'orders',
                     populate: 'products'
                 });
+        },
+        updateAddress: async (parent, args) => {
+            const address = args.address; 
+            return await Address.findByIdAndUpdate(address, args, { new: true })
+        },
+        updateVendorAddress: async (parent, args) => {
+            const vendorAddress = args.vendorAddress; 
+            return await Address.findByIdAndUpdate(vendorAddress, args, { new: true })
         },
         updateOrder: async (parent, args) => {
             const order = args.order;
