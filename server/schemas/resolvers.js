@@ -92,7 +92,9 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                });
+                })                
+                .populate('address')
+                .populate('vendorAddress');
         },
         // // When front end is ready for testing, 
             // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
@@ -226,6 +228,14 @@ const resolvers = {
                     path: 'orders',
                     populate: 'products'
                 });
+        },
+        updateAddress: async (parent, args) => {
+            const address = args.address; 
+            return await Address.findByIdAndUpdate(address, args, { new: true })
+        },
+        updateVendorAddress: async (parent, args) => {
+            const vendorAddress = args.vendorAddress; 
+            return await Address.findByIdAndUpdate(vendorAddress, args, { new: true })
         },
         updateOrder: async (parent, args) => {
             const order = args.order;

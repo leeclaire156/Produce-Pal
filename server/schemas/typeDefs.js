@@ -2,6 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 type Address {
+    _id: ID!
     street: String,
     city: String, 
     state: String, 
@@ -85,6 +86,7 @@ type Query {
     products: [Product]
     sales: [Order]
     orders: [Order]
+    address(_id: ID!): Address
     product(_id: ID!): Product
     order(_id: ID!): Order
     user(_id: ID!): User
@@ -157,11 +159,17 @@ type Mutation {
         vendorImage: String
         user: [ID]!): User
     updateAddress(
-
-    )
+        city: String
+        state: String
+        street: String
+        zipcode: String
+        address: [ID]!): Address
     updateVendorAddress(
-        
-    )
+        city: String
+        state: String
+        street: String
+        zipcode: String
+        address: [ID]!): Address
     updateOrder(
         _id: ID
         orderId: Int
