@@ -2,6 +2,8 @@ const { Schema, model } = require('mongoose');
 
 const bcrypt = require('bcrypt');
 const Order = require('./Order');
+const Product = require('./Product');
+const Address = require('./Address');
 
 const userSchema = new Schema({
     // everyone starts off as a Consumer
@@ -26,17 +28,23 @@ const userSchema = new Schema({
         required: true,
         minLength: 5
     },
-    address: {
-        type: String,
-        default: '',
-        trim: true,
-    },
+    address: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Address'
+        },
+    ],
     biography: {
         type: String,
         default: '',
         trim: true,
     },
     phone: {
+        type: String,
+        default: '',
+        trim: true,
+    },
+    userImage: {
         type: String,
         default: '',
         trim: true,
@@ -82,17 +90,29 @@ const userSchema = new Schema({
             ref: 'Product'
         },
     ],
-    pickupLocation: {
+    marketName: {
         type: String,
         default: '',
         trim: true,
     },
+    pickupAddress: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Address'
+        },
+    ],
     vendorTelephone: {
         type: String,
         default: '',
         trim: true,
     },
-    vendorAddress: {
+    vendorAddress: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Address'
+        },
+    ],
+    vendorImage: {
         type: String,
         default: '',
         trim: true,
