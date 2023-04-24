@@ -25,7 +25,8 @@ type User {
     vendorName: String
     vendorDescription: String
     products: [Product]
-    pickupLocation: String
+    marketName: String
+    pickupAddress: [Address]
     vendorTelephone: String
     vendorAddress: [Address]
     vendorImage: String
@@ -99,13 +100,19 @@ type Mutation {
         state: String!
         street: String!
         zipcode: String!
-        user: [ID]!): Address
+        email: String!): Address
+    addPickupAddress(
+        city: String!
+        state: String!
+        street: String!
+        zipcode: String!
+        email: String!): Address
     addVendorAddress(
         city: String!
         state: String!
         street: String!
         zipcode: String!
-        user: [ID]!): Address
+        email: String!): Address
     addUser(    
         _id: ID
         firstName: String!
@@ -118,7 +125,7 @@ type Mutation {
         vendorStatus: Boolean!
         vendorName: String
         vendorDescription: String
-        pickupLocation: String
+        marketName: String
         vendorTelephone: String
         vendorImage: String
         # # TO DO! when tokens are ready, use below for last line
@@ -154,11 +161,17 @@ type Mutation {
         vendorStatus: Boolean
         vendorName: String
         vendorDescription: String
-        pickupLocation: String
+        marketName: String
         vendorTelephone: String
         vendorImage: String
         user: [ID]!): User
     updateAddress(
+        city: String
+        state: String
+        street: String
+        zipcode: String
+        address: [ID]!): Address
+    updatePickupAddress(
         city: String
         state: String
         street: String
