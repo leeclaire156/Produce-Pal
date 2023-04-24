@@ -1,5 +1,5 @@
 const db = require('../config/connection');
-const { User, Product, Order } = require('../models');
+const { User, Product, Order, Address } = require('../models');
 
 db.once('open', async () => {
 
@@ -72,6 +72,7 @@ db.once('open', async () => {
     const orders = await Order.insertMany([
         {
             orderId: 0001,
+            buyerName: "",
             products: [
                 products[0]._id, 
                 products[0]._id, 
@@ -105,7 +106,6 @@ db.once('open', async () => {
             lastName: 'Vendor',
             email: 'mewing123@gmail.com',
             password: 'password1',
-            address: '89123 Glen Rd, Potomac, MD 20856',
             biography: 'I love long walks on the beach with my family.',
             phone: '386-019-4824',
             sales: [
@@ -123,14 +123,12 @@ db.once('open', async () => {
             ],
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
-            vendorAddress: '123 Main Street, Bethesda, MD, 22012'
         },
         {
             firstName: 'Jenny The Seller and Buyer',
             lastName: 'Both',
             email: 'JennyBaker@gmail.com',
             password: '12345',
-            address: '45678 Main Street, Fairfax, Virginia, 22030',
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
             phone: '234-109-5786',
             memberships: [
@@ -150,14 +148,12 @@ db.once('open', async () => {
             ],
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-456-1908',
-            vendorAddress: '9475 Maryland Drive, Bethesda, Maryland, 20844'
         },
         {
             firstName: 'Claire The Buyer',
             lastName: 'Buyer',
             email: 'claire456@gmail.com',
             password: 'password2',
-            address: '28495 Florida Ave, Rockville, Maryland, 29867',
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
             phone: '123-456-7890',
             memberships: [
@@ -172,11 +168,9 @@ db.once('open', async () => {
             lastName: 'Buyer',
             email: 'zhihaobuying@gmail.com',
             password: 'password234',
-            address: '67890 Texas St, Washington, DC, 20568',
             biography: 'I supoort my local CSAs!',
             phone: '321-654-6789',
             memberships: [
-                // users[1]._id,
             ],  
             orders: [
                 orders[2]._id
@@ -195,7 +189,78 @@ db.once('open', async () => {
     users[3].memberships.push(users[1]._id)
     await users[3].save()
 
+    // PUSH buyer and seller names to respective orders
+    // Order [0]
+    orders[0].buyerName.push(users[2])
+    orders[0].sellerName.push(users[0])
+    await orders[0].save()
+    //Order [1]
+    orders[1].buyerName.push(users[1])
+    orders[1].sellerName.push(users[0])
+    await orders[1].save()
+    //Order [2]
+    orders[2].buyerName.push(users[3])
+    orders[2].sellerName.push(users[1])
+    await orders[2].save()
+
     console.log('users seeded');
+
+    await Address.deleteMany();
+    const addresses = await Address.insertMany([
+        {
+            street: '9945 Falls Rd',
+            city: 'Potomac',
+            state: 'MD',
+            zipcode: '20854',
+        },
+        {
+            street: '8270 Greensboro Dr Suite #120',
+            city: 'McLean',
+            state: 'Virginia',
+            zipcode: '22102',
+        },
+        {
+            street: '1381 Beverly Rd',
+            city: 'McLean',
+            state: 'Virginia',
+            zipcode: '22101',
+        },
+        {
+            street: '5601 River Rd',
+            city: 'Bethesda',
+            state: 'Maryland',
+            zipcode: '20816',
+        },
+        {
+            street: '5700 Bou Ave',
+            city: 'Rockville',
+            state: 'Maryland',
+            zipcode: '20852',
+        },
+        {
+            street: '3001 Connecticut Ave NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20008',
+        }
+    ])
+
+    // Add addresses in order
+    users[0].address.push(addresses[0]._id)
+    users[0].vendorAddress.push(addresses[1]._id)
+    await users[0].save()
+
+    users[1].address.push(addresses[2]._id)
+    users[1].vendorAddress.push(addresses[3]._id)
+    await users[1].save()
+
+    users[2].address.push(addresses[4]._id)
+    await users[2].save()
+
+    users[3].address.push(addresses[5]._id)
+    await users[3].save()
+
+    console.log('addresses seeded');
 
     console.log('SEEDING done!');
     process.exit(0);
