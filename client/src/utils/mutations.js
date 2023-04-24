@@ -68,13 +68,13 @@ mutation Register($firstName: String!, $lastName: String!, $email: String!, $pas
     state
     zipcode
   }
-  addPickupAddress(city: $addPickupAddressCity2, state: $addPickupAddressState2, street: $addPickupAddressStreet2, zipcode: $addPickupAddressZipcode2, email: $addPickupAddressEmail2) {
+  addVendorAddress(city: $addVendorAddressCity2, state: $addVendorAddressState2, street: $addVendorAddressStreet2, zipcode: $addVendorAddressZipcode2, email: $addVendorAddressEmail2) {
     street
     city
     state
     zipcode
   }
-  addVendorAddress(city: $addVendorAddressCity2, state: $addVendorAddressState2, street: $addVendorAddressStreet2, zipcode: $addVendorAddressZipcode2, email: $addVendorAddressEmail2) {
+  addPickupAddress(city: $addPickupAddressCity2, state: $addPickupAddressState2, street: $addPickupAddressStreet2, zipcode: $addPickupAddressZipcode2, email: $addPickupAddressEmail2) {
     street
     city
     state
@@ -101,6 +101,13 @@ mutation Register($firstName: String!, $lastName: String!, $email: String!, $pas
 
 //   "vendorStatus": true,
 //   "vendorName": "Kklsdajfljasf",
+
+//   "addVendorAddressEmail2": "user1@gmail.com"
+//   "addVendorAddressCity2": "Iaskjjlfj",
+//   "addVendorAddressState2": "Oasjkldf",
+//   "addVendorAddressStreet2": "33455 Bkdasljfla",
+//   "addVendorAddressZipcode2": "30303",
+
 //   "vendorDescription": "asdflsadlfasllfsadkf;sa;dfk;sakdf",
 //   "vendorTelephone": "2223334444",
 
@@ -111,10 +118,4 @@ mutation Register($firstName: String!, $lastName: String!, $email: String!, $pas
 //   "addPickupAddressState2": "Bsdkalfjlasdjf",
 //   "addPickupAddressZipcode2": "20202",
 
-
-//   "addVendorAddressEmail2": "user1@gmail.com"
-//   "addVendorAddressCity2": "Iaskjjlfj",
-//   "addVendorAddressState2": "Oasjkldf",
-//   "addVendorAddressStreet2": "33455 Bkdasljfla",
-//   "addVendorAddressZipcode2": "30303",
 //   }
