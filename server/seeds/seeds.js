@@ -122,24 +122,12 @@ db.once('open', async () => {
             ],
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
-            // vendorAddress: {
-            //     street: '8270 Greensboro Dr Suite #120',
-            //     city: 'McLean',
-            //     state: 'Virginia',
-            //     zipcode: '22102',
-            // },
         },
         {
             firstName: 'Jenny The Seller and Buyer',
             lastName: 'Both',
             email: 'JennyBaker@gmail.com',
             password: '12345',
-            // address: {
-            //     street: '1381 Beverly Rd',
-            //     city: 'McLean',
-            //     state: 'Virginia',
-            //     zipcode: '22101',
-            // },
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
             phone: '234-109-5786',
             memberships: [
@@ -159,24 +147,12 @@ db.once('open', async () => {
             ],
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-456-1908',
-            // vendorAddress: {
-            //     street: '5601 River Rd',
-            //     city: 'Bethesda',
-            //     state: 'Maryland',
-            //     zipcode: '20816',
-            // }
         },
         {
             firstName: 'Claire The Buyer',
             lastName: 'Buyer',
             email: 'claire456@gmail.com',
             password: 'password2',
-            // address: {
-            //     street: '5700 Bou Ave',
-            //     city: 'Rockville',
-            //     state: 'Maryland',
-            //     zipcode: '20852',
-            // },
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
             phone: '123-456-7890',
             memberships: [
@@ -191,16 +167,9 @@ db.once('open', async () => {
             lastName: 'Buyer',
             email: 'zhihaobuying@gmail.com',
             password: 'password234',
-            // address: {
-            //     street: '3001 Connecticut Ave NW',
-            //     city: 'Washington',
-            //     state: 'District of Columbia',
-            //     zipcode: '20008',
-            // },
             biography: 'I supoort my local CSAs!',
             phone: '321-654-6789',
             memberships: [
-                // users[1]._id,
             ],  
             orders: [
                 orders[2]._id
@@ -221,16 +190,16 @@ db.once('open', async () => {
 
     // PUSH buyer and seller names to respective orders
     // Order [0]
-    orders[0].buyerName.push(users[2])
-    orders[0].sellerName.push(users[0])
+    orders[0].buyerName.push(users[2]._id)
+    orders[0].sellerName.push(users[0]._id)
     await orders[0].save()
     //Order [1]
-    orders[1].buyerName.push(users[1])
-    orders[1].sellerName.push(users[0])
+    orders[1].buyerName.push(users[1]._id)
+    orders[1].sellerName.push(users[0]._id)
     await orders[1].save()
     //Order [2]
-    orders[2].buyerName.push(users[3])
-    orders[2].sellerName.push(users[1])
+    orders[2].buyerName.push(users[3]._id)
+    orders[2].sellerName.push(users[1]._id)
     await orders[2].save()
 
     console.log('users seeded');
