@@ -64,10 +64,10 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.address.street}</p>
-                                    <p>{props.address.city}</p>
-                                    <p>{props.address.state}</p>
-                                    <p>{props.address.zipcode}</p>
+                                    <p>{props.address[0].street}</p>
+                                    <p>{props.address[0].city}</p>
+                                    <p>{props.address[0].state}</p>
+                                    <p>{props.address[0].zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
