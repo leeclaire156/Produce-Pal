@@ -88,7 +88,7 @@ function VendorInfo(props) {
             </div>
 
             {/* <!-- Edit consumer profile Modal --> */}
-            <div className="modal fade" id="consumerModal" tabindex="-1" aria-labelledby="consumerModalLabel" aria-hidden="true">
+            <div className="modal fade" id="consumerModal" tabIndex="-1" aria-labelledby="consumerModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -98,23 +98,23 @@ function VendorInfo(props) {
                         <div className="modal-body">
                             <div className="form-group">
                                 <label>Farm name</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" value={props.vendorName} />
+                                <input type="text" className="form-control text-muted" id="full-name-input" defaultValue={props.vendorName} />
                             </div>
                             <div className="form-group">
                                 <label>Farm address</label>
-                                <input type="text" className="form-control text-muted" id="address-input" value={props.vendorAddress} />
+                                <input type="text" className="form-control text-muted" id="address-input" defaultValue={props.vendorAddress} />
                             </div>
                             <div className="form-group">
                                 <label>Contact</label>
-                                <input type="text" className="form-control text-muted" id="contact-input" value={props.email} />
+                                <input type="text" className="form-control text-muted" id="contact-input" defaultValue={props.email} />
                             </div>
                             <div className="form-group">
                                 <label>Pickup location</label>
-                                <input type="text" className="form-control text-muted" id="pickupLocation-input" value={props.pickupLocation} />
+                                <input type="text" className="form-control text-muted" id="pickupLocation-input" defaultValue={props.pickupLocation} />
                             </div>
                             <div className="form-group">
                                 <label>About</label>
-                                <textarea className="form-control text-muted" id="description-input" rows="5" value={props.vendorDescription}></textarea>
+                                <textarea className="form-control text-muted" id="description-input" rows="5" defaultValue={props.vendorDescription}></textarea>
                             </div>
                         </div>
                         <div className="modal-footer">

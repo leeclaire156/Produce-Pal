@@ -52,7 +52,7 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
 
 
             {/* <!-- Edit Vendor/Farm Information Modal --> */}
-            <div className="modal fade" id="VendorInfoModal" tabindex="-1" aria-labelledby="VendorInfoModalLabel" aria-hidden="true">
+            <div className="modal fade" id="VendorInfoModal" tabIndex="-1" aria-labelledby="VendorInfoModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
