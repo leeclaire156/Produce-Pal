@@ -44,9 +44,11 @@ function ConsumerInfo(props) {
     function uploadSingleImage(base64) {
         axios
             .post("http://localhost:3000/uploadImage", { image: base64 })
+
             .then((res) => {
+                // trigger refetch function in here
                 const uploadUrl = res.data
-                setUserUrl(uploadUrl);
+                // setUserUrl(uploadUrl);
                 updateUserImage({
                     variables: {
                         user: props._id,
@@ -81,6 +83,9 @@ function ConsumerInfo(props) {
                 </div>
             </div>
             <div className="row align-items-center">
+
+
+
                 <label className="col-md-6 profile-image"
                     onMouseEnter={handleProfileImageMouseEnter}
                     onMouseLeave={handleProfileImageMouseLeave}
@@ -97,8 +102,18 @@ function ConsumerInfo(props) {
                             <FontAwesomeIcon icon={faCamera} />
                         </div>
                     )}
+
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
+
+
                 </label>
+
+
+
+
+
+
+
                 <div className="col-md-6">
                     <div className="">
                         <div className="">

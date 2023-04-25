@@ -10,6 +10,7 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 
 function Profile() {
     const { profileId } = useParams();
+    // destructure refetch function and pass as a prop to consumerinfo component, then in that 
     const { loading, data } = useQuery(
         profileId ? QUERY_SINGLE_PROFILE : GET_ME,
         {
