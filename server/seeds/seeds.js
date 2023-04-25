@@ -116,7 +116,6 @@ db.once('open', async () => {
             vendorDescription: 'We have single produce items and we work with other farms to compile great products.',
             products: [
                 products[0]._id, 
-                products[0]._id, 
                 products[1]._id, 
                 products[2]._id
             ],
