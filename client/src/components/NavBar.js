@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Auth from "../utils/auth";
 
 function NavBar({ currentPage, handlePageChange }) {
 
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Changes document title
+  useEffect(() => {
+    document.title = "ProducePal"
+  })
 
   const toggleNavbar = () => {
     setIsExpanded(!isExpanded);
@@ -11,13 +16,13 @@ function NavBar({ currentPage, handlePageChange }) {
 
   function dashboard() {
     if (Auth.loggedIn()) {
-    return (
-      <li className="nav-item">
-        <a href="/dashboard"
-          // onClick={() => handlePageChange('Dashboard')}
-          className={currentPage === 'Dashboard' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Dashboard' ? 'dashboard' : 'dashboard-fade'}>Dashboard</a>
-      </li>
-    )
+      return (
+        <li className="nav-item">
+          <a href="/dashboard"
+            // onClick={() => handlePageChange('Dashboard')}
+            className={currentPage === 'Dashboard' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Dashboard' ? 'dashboard' : 'dashboard-fade'}>Dashboard</a>
+        </li>
+      )
     }
   }
 

@@ -6,6 +6,7 @@ import UserToggle from '../components/UserToggle';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 import Auth from "../utils/auth";
+import { Redirect } from 'react-router-dom'
 
 // should be conditionally rendered for context user
 function Dashboard() {
@@ -32,13 +33,16 @@ function Dashboard() {
     };
 
     if (Auth.loggedIn()) { // should render dashboard only if user is logged in. ...should.
-    return (
-        <div className='container'>
+        return (
+            <div className='container'>
 
-            <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
-            {vendorStatus ? <VendorDashboard {...user} /> : <ConsumerDashboard {...user} />}
-        </div>
-    );
+                <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
+                {vendorStatus ? <VendorDashboard {...user} /> : <ConsumerDashboard {...user} />}
+            </div>
+        );
+    } else {
+        return (
+            <Redirect to={{ pathname: '/login' }}></Redirect>)
     }
 }
 
