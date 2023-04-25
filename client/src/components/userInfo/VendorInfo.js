@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './userInfo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faCarrot, faCamera } from '@fortawesome/free-solid-svg-icons';
+import 'bootstrap';
+import 'react-bootstrap';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function VendorInfo(props) {
@@ -86,14 +88,14 @@ function VendorInfo(props) {
             </div>
 
             {/* <!-- Edit consumer profile Modal --> */}
-            <div class="modal fade" id="consumerModal" tabindex="-1" aria-labelledby="consumerModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="consumerModalLabel">Edit my profile</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal fade" id="consumerModal" tabindex="-1" aria-labelledby="consumerModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-lg">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="consumerModalLabel">Edit my profile</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <div className="form-group">
                                 <label>Farm name</label>
                                 <input type="text" className="form-control text-muted" id="full-name-input" value={props.vendorName} />
@@ -115,9 +117,9 @@ function VendorInfo(props) {
                                 <textarea className="form-control text-muted" id="description-input" rows="5" value={props.vendorDescription}></textarea>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
