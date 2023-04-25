@@ -15,12 +15,27 @@ function Profile() {
         biography: 'I am John Doe.',
         vendorName: 'CSA Providence Farm',
         vendorDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit sapien eu neque blandit, vel finibus urna tincidunt. Vivamus vel magna vestibulum, feugiat quam sed, molestie quam.',
-        address: '123 Main St, Providence RI, USA',
-        street: '123 Main Street',
-        city: 'Providence',
-        state: 'RI',
-        zipcode: '02909',
-        vendorAddress: '456 Water St, Providence RI, USA',
+        address: {
+            '_id': 9990,
+            'street': '123 Main Street',
+            'city': 'Providence',
+            'state': 'RI',
+            'zipcode': '02909'
+        },
+        vendorAddress: {
+            '_id': 9999,
+            'street': '789 Water Street',
+            'city': 'Pawtucket',
+            'state': 'RI',
+            'zipcode': '02901'
+        },
+        pickupAddress: {
+            '_id': 9998,
+            'street': '789 Ocean Ave',
+            'city': 'Newport',
+            'state': 'RI',
+            'zipcode': '02900'
+        },
         email: 'johndoe@gmail.com',
         phone: '888-888-8888',
         memberships: 'Silver Tier',

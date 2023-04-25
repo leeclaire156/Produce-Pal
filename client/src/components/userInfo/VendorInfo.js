@@ -21,13 +21,19 @@ function VendorInfo(props) {
     return (
         <div className="container-fluid">
             <div className="toggle-container text-end">
-                {props.currentUser
+
+                <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                    Edit
+                </button>
+                {/* the code below is to verify if the current loggedIn user matches this profile owner. user can only edit profile if 
+            the loggedIn user id matches the profile owner id. */}
+                {/* {props.currentUser
                     ? <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit
                     </button>
                     : <button className="btn btn-primary visually-hidden">
                         Hidden
-                    </button>}
+                    </button>} */}
             </div>
             <div className="row">
                 <div className="col-12 text-center mb-5">
@@ -65,7 +71,7 @@ function VendorInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.vendorAddress}</p>
+                                    <p>{props.vendorAddress.street}, {props.vendorAddress.city}, {props.vendorAddress.state}, {props.vendorAddress.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -92,25 +98,62 @@ function VendorInfo(props) {
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="consumerModalLabel">Edit my profile</h1>
+                            <h1 className="modal-title fs-5" id="consumerModalLabel">Edit my farm profile</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <div className="form-group">
+                            <div className="form-group mb-3">
                                 <label>Farm name</label>
                                 <input type="text" className="form-control text-muted" id="full-name-input" defaultValue={props.vendorName} />
                             </div>
-                            <div className="form-group">
+
+                            <div className="form-group mb-3">
                                 <label>Farm address</label>
-                                <input type="text" className="form-control text-muted" id="address-input" defaultValue={props.vendorAddress} />
+                                <div className="row">
+                                    <div className="form-group col-md-6">
+                                        <label>Street</label>
+                                        <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.vendorAddress.street} />
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label>City</label>
+                                        <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.vendorAddress.city} />
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label>State</label>
+                                        <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.vendorAddress.state} />
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label>Zipcode</label>
+                                        <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.vendorAddress.zipcode} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="form-group">
+
+
+                            <div className="form-group mb-3">
                                 <label>Contact</label>
-                                <input type="text" className="form-control text-muted" id="contact-input" defaultValue={props.email} />
+                                <input type="text" className="form-control text-muted" id="contact-input" defaultValue={props.phone} />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group mb-3">
                                 <label>Pickup location</label>
-                                <input type="text" className="form-control text-muted" id="pickupLocation-input" defaultValue={props.pickupLocation} />
+                                <div className="row">
+                                    <div className="form-group col-md-6">
+                                        <label>Street</label>
+                                        <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.pickupAddress.street} />
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label>City</label>
+                                        <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.pickupAddress.city} />
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label>State</label>
+                                        <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.pickupAddress.state} />
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label>Zipcode</label>
+                                        <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.pickupAddress.zipcode} />
+                                    </div>
+                                </div>
                             </div>
                             <div className="form-group">
                                 <label>About</label>
