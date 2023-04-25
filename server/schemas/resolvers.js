@@ -16,7 +16,6 @@ const resolvers = {
             }
             throw new AuthenticationError('Please log in.');
         },
-
         // READ ALL 
         addresses: async () => {
             return await Address.find({})
@@ -56,9 +55,30 @@ const resolvers = {
         },
         // READ BY ID
         // // WILL REPLACE with authentication when DEPLOYING
-        user: async (parent, args, context) => {
-            if (context.user) {
-                const user = await User.findById(context.user_id)
+        // user: async (parent, args, context) => {
+        //     if (context.user) {
+        //         const user = await User.findById(context.user_id)
+        //         .populate('products')
+        //         .populate({
+        //             path: 'memberships',
+        //             populate: 'products'
+        //         })
+        //         .populate({
+        //             path: 'sales',
+        //             populate: 'products'
+        //         })
+        //         .populate({
+        //             path: 'orders',
+        //             populate: 'products'
+        //         });
+        //         user.orders.sort((a, b) => b.purchaseDate - a. purchaseDate);
+        //         return user;
+        //     }
+
+        //     throw new AuthenticationError('Please log in!')
+        // },
+        profile: async (parent, { profileId }) => {
+                return User.findOne({ _id: profileId})
                 .populate('products')
                 .populate({
                     path: 'memberships',
@@ -72,11 +92,6 @@ const resolvers = {
                     path: 'orders',
                     populate: 'products'
                 });
-                user.orders.sort((a, b) => b.purchaseDate - a. purchaseDate);
-                return user;
-            }
-
-            throw new AuthenticationError('Please log in!')
         },
         // user: async (parent, { _id }) => {
         //     return await User.findById(_id)

@@ -90,7 +90,7 @@ type Query {
     address(_id: ID!): Address
     product(_id: ID!): Product
     order(_id: ID!): Order
-    user(_id: ID!): User
+    profile(profileId: ID!): User
     checkout(products: [ID]!): Checkout
 }
 
