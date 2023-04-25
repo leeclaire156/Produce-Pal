@@ -7,6 +7,7 @@ import 'react-bootstrap';
 import axios from 'axios';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER_IMAGE } from '../../utils/mutations';
+import { QUERY_USERS } from '../../utils/queries';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function ConsumerInfo(props) {
@@ -52,8 +53,8 @@ function ConsumerInfo(props) {
                         userImage: uploadUrl
                     }
                 })
-                alert(`User Image uploaded Successfully.`);
-                
+                // alert(`User Image uploaded Successfully.`);
+                window.location.reload(false);
             })
             .catch(console.log);
     }
@@ -76,7 +77,7 @@ function ConsumerInfo(props) {
             </div>
             <div className="row">
                 <div className="col-12 text-center mb-5">
-                    <h1 onClick={() => { console.log(newuserUrl, props.userImage) }}>{props.firstName} {props.lastName}</h1>
+                    <h1>{props.firstName} {props.lastName}</h1>
                 </div>
             </div>
             <div className="row align-items-center">
@@ -85,7 +86,7 @@ function ConsumerInfo(props) {
                     onMouseLeave={handleProfileImageMouseLeave}
                 >
                     <img
-                        src={props.userImage?props.userImage:"https://placehold.co/600x600"}
+                        src={props.userImage ? props.userImage : "https://placehold.co/600x600"}
                         alt=""
                         className="img-fluid "
                         height={600}
