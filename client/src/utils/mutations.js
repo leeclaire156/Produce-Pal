@@ -31,8 +31,11 @@ export const LOGIN = gql`
   }
 `;
 
+// Note to Claire: for the addresses, can they add their addresses in their dashboard? Like have a button that then triggers 
+// the addAddress mutation for whatever address they want to edit? 
+
 export const ADD_USER = gql`
-mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $vendorStatus: Boolean!, $biography: String, $phone: String, $userImage: String, $vendorName: String, $vendorDescription: String, $marketName: String, $vendorTelephone: String, $vendorImage: String, $city: String!, $state: String!, $street: String!, $zipcode: String!, $addAddressEmail2: String!, $addVendorAddressCity2: String!, $addVendorAddressState2: String!, $addVendorAddressStreet2: String!, $addVendorAddressZipcode2: String!, $addVendorAddressEmail2: String!, $addPickupAddressCity2: String!, $addPickupAddressState2: String!, $addPickupAddressStreet2: String!, $addPickupAddressZipcode2: String!, $addPickupAddressEmail2: String!) {
+mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $vendorStatus: Boolean!, $biography: String, $phone: String, $userImage: String, $vendorName: String, $vendorDescription: String, $marketName: String, $vendorTelephone: String, $vendorImage: String, $city: String, $state: String, $street: String, $zipcode: String, $addAddressEmail2: String!, $addVendorAddressCity2: String, $addVendorAddressState2: String, $addVendorAddressStreet2: String, $addVendorAddressZipcode2: String, $addVendorAddressEmail2: String!, $addPickupAddressCity2: String, $addPickupAddressState2: String, $addPickupAddressStreet2: String, $addPickupAddressZipcode2: String, $addPickupAddressEmail2: String!) {
   addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, vendorStatus: $vendorStatus, biography: $biography, phone: $phone, userImage: $userImage, vendorName: $vendorName, vendorDescription: $vendorDescription, marketName: $marketName, vendorTelephone: $vendorTelephone, vendorImage: $vendorImage) {
     token
     user {
@@ -88,41 +91,4 @@ mutation addUser($firstName: String!, $lastName: String!, $email: String!, $pass
     zipcode
   }
 }
-`;
-// for mutation above
-// {
-//   "firstName": "ASD",
-//   "lastName": "ASDF",
-
-//   "email": "user1@gmail.com",
-//   "password": "password",
-//   "phone": "1112223333",
-//   "biography": "askdlfjlsajflasjfl;jsaldfjl;sajlfkjsldafj",
-
-//   "addAddressEmail2": "user1@gmail.com",
-//   "street": "12345 Kaskldfj St",
-//   "city": "Aklasfj",
-//   "state": "Cksdlafj",
-//   "zipcode": "11111",
-
-
-//   "vendorStatus": true,
-//   "vendorName": "Kklsdajfljasf",
-
-//   "addVendorAddressEmail2": "user1@gmail.com"
-//   "addVendorAddressCity2": "Iaskjjlfj",
-//   "addVendorAddressState2": "Oasjkldf",
-//   "addVendorAddressStreet2": "33455 Bkdasljfla",
-//   "addVendorAddressZipcode2": "30303",
-
-//   "vendorDescription": "asdflsadlfasllfsadkf;sa;dfk;sakdf",
-//   "vendorTelephone": "2223334444",
-
-//   "marketName":"Marketpalooza"
-//   "addPickupAddressEmail2": "user1@gmail.com",
-//   "addPickupAddressStreet2": "22345 Adksjflasjf Dr",
-//   "addPickupAddressCity2": "Bkasdljfa",
-//   "addPickupAddressState2": "Bsdkalfjlasdjf",
-//   "addPickupAddressZipcode2": "20202",
-
-//   }
+`

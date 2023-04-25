@@ -96,22 +96,22 @@ type Query {
 
 type Mutation {
     addAddress(
-        city: String!
-        state: String!
-        street: String!
-        zipcode: String!
+        city: String
+        state: String
+        street: String
+        zipcode: String
         email: String!): Address
     addPickupAddress(
-        city: String!
-        state: String!
-        street: String!
-        zipcode: String!
+        city: String
+        state: String
+        street: String
+        zipcode: String
         email: String!): Address
     addVendorAddress(
-        city: String!
-        state: String!
-        street: String!
-        zipcode: String!
+        city: String
+        state: String
+        street: String
+        zipcode: String
         email: String!): Address
     addUser(    
         _id: ID
