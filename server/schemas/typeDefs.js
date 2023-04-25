@@ -27,6 +27,7 @@ type User {
     products: [Product]
     marketName: String
     pickupAddress: [Address]
+    pickupTime: String
     vendorTelephone: String
     vendorAddress: [Address]
     vendorImage: String
@@ -164,6 +165,7 @@ type Mutation {
         marketName: String
         vendorTelephone: String
         vendorImage: String
+        pickupTime: String
         user: [ID]!): User
     updateAddress(
         city: String

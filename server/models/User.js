@@ -77,7 +77,6 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
-
     vendorTelephone: {
         type: String,
         default: '',
@@ -105,6 +104,11 @@ const userSchema = new Schema({
             ref: 'Address'
         },
     ],
+    pickupTime: {
+        type: String,
+        default: '',
+        trim: true,
+    },
     // Users who are also selling will have objects of their produce & sharebox
     products: [
         {
