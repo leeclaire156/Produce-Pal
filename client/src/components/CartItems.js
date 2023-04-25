@@ -69,7 +69,7 @@ const CartItem = ({ item }) => {
                                 className='ms-2'
                                 type="number"
                                 placeholder=""
-                                value={item.purchaseQuantity}
+                                defaultValue={item.purchaseQuantity}
                                 onChange={onChange}
                             />
                         </div>
