@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom'
 
 // should be conditionally rendered for context user
 function Dashboard() {
-    const { loading, data } = useQuery(QUERY_USER);
+    // const { loading, data } = useQuery(QUERY_USER);
     // const user = data?.user || []
     // console.log(user)
 
