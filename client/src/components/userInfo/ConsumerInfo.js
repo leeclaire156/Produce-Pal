@@ -97,7 +97,7 @@ function ConsumerInfo(props) {
                         <div className="modal-body">
                             <div className="form-group">
                                 <label>First Name</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" defaultValue={props.firstName} />
+                                <input type="text" className="form-control text-muted" id="first-name-input" defaultValue={props.firstName} />
                             </div>
                             <div className="form-group">
                                 <label>Last Name</label>
@@ -123,7 +123,7 @@ function ConsumerInfo(props) {
                             </div>
                             <div className="form-group">
                                 <label>Phone</label>
-                                <input type="text" className="form-control text-muted" id="contact-input" defaultValue={props.phone} />
+                                <input type="text" className="form-control text-muted" id="phone-input" defaultValue={props.phone} />
                             </div>
                             {/* <div className="form-group">
                                 <label>Memberships</label>

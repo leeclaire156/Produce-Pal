@@ -104,7 +104,7 @@ function VendorInfo(props) {
                         <div className="modal-body">
                             <div className="form-group mb-3">
                                 <label>Farm name</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" defaultValue={props.vendorName} />
+                                <input type="text" className="form-control text-muted" id="farm-name-input" defaultValue={props.vendorName} />
                             </div>
 
                             <div className="form-group mb-3">
@@ -112,19 +112,19 @@ function VendorInfo(props) {
                                 <div className="row">
                                     <div className="form-group col-md-6">
                                         <label>Street</label>
-                                        <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.vendorAddress.street} />
+                                        <input type="text" className="form-control text-muted" id="farm-street-input" defaultValue={props.vendorAddress.street} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>City</label>
-                                        <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.vendorAddress.city} />
+                                        <input type="text" className="form-control text-muted" id="farm-city-input" defaultValue={props.vendorAddress.city} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>State</label>
-                                        <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.vendorAddress.state} />
+                                        <input type="text" className="form-control text-muted" id="farm-state-input" defaultValue={props.vendorAddress.state} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>Zipcode</label>
-                                        <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.vendorAddress.zipcode} />
+                                        <input type="text" className="form-control text-muted" id="farm-zipcode-input" defaultValue={props.vendorAddress.zipcode} />
                                     </div>
                                 </div>
                             </div>
@@ -132,26 +132,26 @@ function VendorInfo(props) {
 
                             <div className="form-group mb-3">
                                 <label>Contact</label>
-                                <input type="text" className="form-control text-muted" id="contact-input" defaultValue={props.phone} />
+                                <input type="text" className="form-control text-muted" id="phone-input" defaultValue={props.phone} />
                             </div>
                             <div className="form-group mb-3">
                                 <label>Pickup location</label>
                                 <div className="row">
                                     <div className="form-group col-md-6">
                                         <label>Street</label>
-                                        <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.pickupAddress.street} />
+                                        <input type="text" className="form-control text-muted" id="pickup-street-input" defaultValue={props.pickupAddress.street} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>City</label>
-                                        <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.pickupAddress.city} />
+                                        <input type="text" className="form-control text-muted" id="pickup-city-input" defaultValue={props.pickupAddress.city} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>State</label>
-                                        <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.pickupAddress.state} />
+                                        <input type="text" className="form-control text-muted" id="pickup-state-input" defaultValue={props.pickupAddress.state} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>Zipcode</label>
-                                        <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.pickupAddress.zipcode} />
+                                        <input type="text" className="form-control text-muted" id="pickup-zipcode-input" defaultValue={props.pickupAddress.zipcode} />
                                     </div>
                                 </div>
                             </div>
