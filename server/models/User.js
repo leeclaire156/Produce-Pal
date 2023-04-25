@@ -55,12 +55,6 @@ const userSchema = new Schema({
             ref: 'User'
         },
     ],
-    sales: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Order'
-        },
-    ],
     orders: [
         {
             type: Schema.Types.ObjectId,
@@ -83,24 +77,7 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
-    // Users who are also selling will have objects of their produce & sharebox
-    products: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Product'
-        },
-    ],
-    marketName: {
-        type: String,
-        default: '',
-        trim: true,
-    },
-    pickupAddress: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Address'
-        },
-    ],
+
     vendorTelephone: {
         type: String,
         default: '',
@@ -116,7 +93,31 @@ const userSchema = new Schema({
         type: String,
         default: '',
         trim: true,
-    }
+    },
+    marketName: {
+        type: String,
+        default: '',
+        trim: true,
+    },
+    pickupAddress: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Address'
+        },
+    ],
+    // Users who are also selling will have objects of their produce & sharebox
+    products: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Product'
+        },
+    ],
+    sales: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Order'
+        },
+    ],
 });
 
 // TO DO: virtuals for concat address

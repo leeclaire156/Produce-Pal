@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import VendorDashboard from '../components/VendorDashboard';
 import ConsumerDashboard from '../components/ConsumerDashboard';
-import NavBar from '../components/NavBar';
+
 import UserToggle from '../components/UserToggle';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
@@ -34,7 +34,7 @@ function Dashboard() {
     // if (Auth.loggedIn()) { // should render dashboard only if user is logged in. ...should.
     return (
         <div className='container'>
-            <NavBar />
+
             <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
             {vendorStatus ? <VendorDashboard {...user} /> : <ConsumerDashboard {...user} />}
         </div>

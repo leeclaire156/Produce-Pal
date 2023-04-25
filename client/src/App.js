@@ -8,6 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+import NavBar from './components/NavBar';
 import Upload from './components/addProductTest'; //Claire's testing ground for cloudinary
 import Home from './pages/Home.js'
 import Dashboard from './pages/Dashboard.js'
@@ -46,6 +47,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      <NavBar />
       <Router>
         <ProductProvider>
           <>
@@ -60,7 +62,7 @@ function App() {
               <Route exact path='/productinventory' component={ProductInventory} />
 
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
-              {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
+              <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
               {/* <Route path="*" component={Error404} /> */}
             </Switch>
           </>
