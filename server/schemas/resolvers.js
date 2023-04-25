@@ -9,13 +9,13 @@ const resolvers = {
     // QUERIES
     Query: {
         // UNCOMMENT LINES 10-15, COMMENT OUT 71, UNCOMMENT 73-75 and 135-151
-        // // By adding context to our query, we can retrieve the logged in user without specifically searching for them
-        // me: async (parent, args, context) => {
-        //     if (context.user) {
-        //         return User.findOne({ _id: context.user._id });
-        //     }
-        //     throw new AuthenticationError('Please log in.');
-        // },
+        // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOne({ _id: context.user._id });
+            }
+            throw new AuthenticationError('Please log in.');
+        },
 
         // READ ALL 
         addresses: async () => {
@@ -56,30 +56,9 @@ const resolvers = {
         },
         // READ BY ID
         // // WILL REPLACE with authentication when DEPLOYING
-        // user: async (parent, args, context) => {
-        //     if (context.user) {
-        //         const user = await User.findById(context.user_id)
-        //         .populate('products')
-        //         .populate({
-        //             path: 'memberships',
-        //             populate: 'products'
-        //         })
-        //         .populate({
-        //             path: 'sales',
-        //             populate: 'products'
-        //         })
-        //         .populate({
-        //             path: 'orders',
-        //             populate: 'products'
-        //         });
-        //         user.orders.sort((a, b) => b.purchaseDate - a. purchaseDate);
-        //         return user;
-        //     }
-
-        //     throw new AuthenticationError('Please log in!')
-        // },
-        user: async (parent, { _id }) => {
-            return await User.findById(_id)
+        user: async (parent, args, context) => {
+            if (context.user) {
+                const user = await User.findById(context.user_id)
                 .populate('products')
                 .populate({
                     path: 'memberships',
@@ -92,10 +71,32 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                })
-                .populate('address')
-                .populate('vendorAddress');
+                });
+                user.orders.sort((a, b) => b.purchaseDate - a. purchaseDate);
+                return user;
+            }
+
+            throw new AuthenticationError('Please log in!')
         },
+        // user: async (parent, { _id }) => {
+        //     return await User.findById(_id)
+        //         .populate('products')
+        //         .populate({
+        //             path: 'memberships',
+        //             populate: 'products'
+        //         })
+        //         .populate({
+        //             path: 'sales',
+        //             populate: 'products'
+        //         })
+        //         .populate({
+        //             path: 'orders',
+        //             populate: 'products'
+        //         })
+        //         .populate('address')
+        //         .populate('vendorAddress');
+        // },
+        
         // // When front end is ready for testing, 
         // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
         // // MAY REPLACE with authentication when DEPLOYING
@@ -170,11 +171,11 @@ const resolvers = {
     Mutation: {
         // CREATE 
         addUser: async (parent, args) => {
-            return await User.create(args);
-            // // TO DO! When tokens are ready, add tokens
-            // const user = await User.create(args);
-            // const token = signToken(user);
-            // return { token, user };
+            // return await User.create(args);
+            // TO DO! When tokens are ready, add tokens
+            const user = await User.create(args);
+            const token = signToken(user);
+            return { token, user };
         },
         // create address
         addAddress: async (parent, args) => {
@@ -269,23 +270,23 @@ const resolvers = {
         //     await User.findByIdAndDelete(user, args, { new: true } );
         //     console.log("User successfully deleted");
         // },
-        // login: async (parent, { email, password }) => {
-        //     const user = await User.findOne({ email });
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
 
-        //     if (!user) {
-        //         throw new AuthenticationError('Incorrect username or password! Please try again.')
-        //     }
+            if (!user) {
+                throw new AuthenticationError('Incorrect username or password! Please try again.')
+            }
 
-        //     const correctPassword = await user.isCorrectPassword(password);
+            const correctPassword = await user.isCorrectPassword(password);
 
-        //     if (!correctPassword) {
-        //         throw new AuthenticationError('Incorrect username or password! Please try again.');
-        //     }
+            if (!correctPassword) {
+                throw new AuthenticationError('Incorrect username or password! Please try again.');
+            }
 
-        //     const token = signToken(user);
+            const token = signToken(user);
 
-        //     return { token, user };
-        // },
+            return { token, user };
+        },
     }
 };
 

@@ -115,7 +115,7 @@ function ProductSingle(item) {
                             </div>
                             <div className="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" id={`product-description-input-${_id}`} rows="3" placeholder={productDescription}></textarea>
+                                <textarea className="form-control" id={`product-description-input-${_id}`} rows="3" placeholder={productDescription}></textarea>
                             </div>
                         </div>
                         {vendorStatus ?

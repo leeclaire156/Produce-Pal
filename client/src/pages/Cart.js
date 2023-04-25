@@ -1,5 +1,5 @@
 // import React, { useState } from 'react';
-// import NavBar from '../components/NavBar';
+
 
 // function App() {
 //     // place holders for now until handleAddToCart gets hooked up
@@ -33,7 +33,6 @@
 
 //     return (
 //         <div style={{ textAlign: "center" }}>
-//             <NavBar />
 //             <h1>My Cart</h1>
 
             

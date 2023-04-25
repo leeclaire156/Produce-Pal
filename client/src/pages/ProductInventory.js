@@ -186,7 +186,7 @@ const ProductInventory = () => {
                             </div>
                             <div className="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" id='create-product-description' rows="3" placeholder='Describe your product...'></textarea>
+                                <textarea className="form-control" id='create-product-description' rows="3" placeholder='Describe your product...'></textarea>
                             </div>
                         </div>
                         {vendorStatus ?

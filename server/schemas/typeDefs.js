@@ -74,14 +74,14 @@ type Checkout {
     products: [Product]
 }
 # # TO DO! when tokens are ready, use below for adding a User. UNCOMMENT line 52-55, 59, swap 86 for 85, and uncomment 149
-# type Auth {
-#     token: ID
-#     user: User
-# }
+type Auth {
+    token: ID
+    user: User
+}
 
 type Query {
     # Because we have the context functionality in our resolvers.js Query function in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
-    # me: User
+    me: User
     addresses: [Address]
     users: [User]
     products: [Product]
@@ -96,22 +96,22 @@ type Query {
 
 type Mutation {
     addAddress(
-        city: String!
-        state: String!
-        street: String!
-        zipcode: String!
+        city: String
+        state: String
+        street: String
+        zipcode: String
         email: String!): Address
     addPickupAddress(
-        city: String!
-        state: String!
-        street: String!
-        zipcode: String!
+        city: String
+        state: String
+        street: String
+        zipcode: String
         email: String!): Address
     addVendorAddress(
-        city: String!
-        state: String!
-        street: String!
-        zipcode: String!
+        city: String
+        state: String
+        street: String
+        zipcode: String
         email: String!): Address
     addUser(    
         _id: ID
@@ -129,8 +129,8 @@ type Mutation {
         vendorTelephone: String
         vendorImage: String
         # # TO DO! when tokens are ready, use below for last line
-        # ): Auth
-        ): User
+        ): Auth
+        # ): User
     addProduct(
         _id: ID, 
         productId: Int!, 
@@ -210,8 +210,8 @@ type Mutation {
         productInventory: Int!
         product: [ID]!): Product
     # deleteUser(
-    #     user: [ID]!): User
-    # login(email: String!, password: String!): Auth
+        # user: [ID]!): User
+    login(email: String!, password: String!): Auth
 }
 `;
 

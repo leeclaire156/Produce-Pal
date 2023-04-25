@@ -1,29 +1,28 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-// import { LOGIN } from '../utils/mutations';
+import { LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import './LoginForm.css';
 import { Form, Button, Container, InputGroup } from 'react-bootstrap';
 import eye from '../assets/eye_icongeek26.png'
 import blindeye from '../assets/blind-eye_icongeek26.png'
-import NavBar from '../NavBar';
 
 function Login(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [errorEmailMessage, setEmailError] = useState(false);
     const [passwordType, setPasswordType] = useState(false)
     const [image, setImage] = useState(true)
-    // const [login, { error }] = useMutation(LOGIN);
+    const [login, { error }] = useMutation(LOGIN);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
-            // const { data } = await login({
-            //     variables: { ...formState },
-            // });
+            const { data } = await login({
+                variables: { ...formState },
+            });
 
-            // Auth.login(data.login.token);
+            Auth.login(data.login.token);
         } catch (e) {
             console.log(e);
         }
@@ -52,7 +51,6 @@ function Login(props) {
 
     return (
         <div className="container login-pg">
-            <NavBar />
             <Form.Label className='login-header'>Login to your account</Form.Label>
             <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="flex-row space-between my-2">

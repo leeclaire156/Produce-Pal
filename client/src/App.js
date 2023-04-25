@@ -8,6 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+import NavBar from './components/NavBar';
 import Upload from './components/addProductTest'; //Claire's testing ground for cloudinary
 import Home from './pages/Home.js'
 import Dashboard from './pages/Dashboard.js'
@@ -39,13 +40,13 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
-  // link: httpLink,
   cache: new InMemoryCache(),
 });
 
 function App() {
   return (
     <ApolloProvider client={client}>
+      <NavBar />
       <Router>
         <ProductProvider>
           <>
@@ -60,7 +61,7 @@ function App() {
               <Route exact path='/productinventory' component={ProductInventory} />
 
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
-              {/* <Route render={() => <h1 className='display-2'>Wrong page!</h1>} /> */}
+              <Route render={() => <h1 className='display-2 container'>Wrong page!</h1>} />
               {/* <Route path="*" component={Error404} /> */}
             </Switch>
           </>
