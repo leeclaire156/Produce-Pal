@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBook, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email, vendorTelephone }) {
+function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, vendorTelephone }) {
+
     return (
         <div className="container">
             <div className="row">
                 <div className="col">
                     <h2>{vendorName}</h2>
-                    <p>{vendorAddress}</p>
+                    <p>About us: {vendorDescription}</p>
+                    <p>Vendor Telephone: {vendorTelephone}</p>
                 </div>
             </div>
             <div className="row">
@@ -91,4 +93,4 @@ function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email
     );
 }
 
-export default ConsumerDashboard;
+export default VendorDashboard;

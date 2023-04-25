@@ -71,18 +71,47 @@ query Users {
 }
 `;
 
-export const QUERY_USER = gql `
-query User($id: ID!) {
-  user(_id: $id) {
+export const QUERY_SINGLE_PROFILE = gql `
+query singleProfile($profileId: ID!) {
+  profile(profileId: $profileId) {
+    _id
     firstName
     lastName
     email
-    address
-    vendorName
-    vendorAddress
-    vendorTelephone
-    vendorDescription
+    address {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    biography
+    phone
+    userImage
+    memberships {
+      _id
+    }
+    sales {
+      _id
+    }
+    orders {
+      _id
+    }
     vendorStatus
+    vendorName
+    vendorDescription
+    products {
+      _id
+    }
+    marketName
+    pickupAddress {
+      _id
+    }
+    vendorTelephone
+    vendorAddress {
+      _id
+    }
+    vendorImage
   }
 }
 `;
@@ -91,8 +120,44 @@ query User($id: ID!) {
 export const GET_ME = gql`
     query me{
         me{
-            _id
-            email
+              _id
+        firstName
+        lastName
+        email
+        # address {
+        #   _id
+        #   street
+        #   city
+        #   state
+        #   zipcode
+        # }
+        biography
+        phone
+        userImage
+        memberships {
+          _id
+        }
+        sales {
+          _id
+        }
+        orders {
+          _id
+        }
+        vendorStatus
+        vendorName
+        vendorDescription
+        products {
+          _id
+        }
+        marketName
+        # pickupAddress {
+        #   _id
+        # }
+        vendorTelephone
+        # vendorAddress {
+        #   _id
+        # }
+        vendorImage
         }
     }
 `;

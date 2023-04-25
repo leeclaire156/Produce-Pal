@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBook, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-function ConsumerDashboard({ firstName, lastName, address }) {
+function ConsumerDashboard({ firstName, lastName, phone, biography }) {
     return (
         <div className="container">
             <div className="row">
                 <div className="col">
                     <h2>{firstName} {lastName}</h2>
-                    <p>{address}</p>
+                    <p>{phone}</p>
+                    <p>About me: {biography}</p>
                 </div>
             </div>
             <div className="row">
