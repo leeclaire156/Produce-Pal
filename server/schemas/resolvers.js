@@ -186,8 +186,6 @@ const resolvers = {
     Mutation: {
         // CREATE 
         addUser: async (parent, args) => {
-            // return await User.create(args);
-            // TO DO! When tokens are ready, add tokens
             const user = await User.create(args);
             const token = signToken(user);
             return { token, user };
@@ -214,12 +212,43 @@ const resolvers = {
             return address
         },
         // CREATE PRODUCT
+        // addProduct using context (the signed in user) - when adding a new product to my farm storefront is ready, uncomment below and comment out addProduct without context
+        // addProduct: async (parent, context) => {
+        //     if(context.user){
+        //         const product = await Product.create(args);
+        //         await User.findByIdAndUpdate(context.user._id, { $push: { products: product } }, { new: true } );
+        //     throw new AuthenticationError('Not logged in');
+        //     }
+        // },
         addProduct: async (parent, args) => {
             const user = args.user;
             const product = await Product.create(args);
             await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true });
             return product;
         },
+        // addOrder using context (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
+        // addOrder: async (parent, { products }, context, seller) => {
+        //     const seller = args.seller;
+
+        //     console.log(context);
+        //     console.log(seller);
+
+        //     if(context.user) {
+        //         const order = await Order.create({ products });
+        //         // When buyer pays, then:
+        //         // send the buyer's ID to orders array
+        //         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } }, { new: true });
+        //         // also send the seller's user ID to sales array & the sellerName array
+        //         await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
+        //         await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
+        //         // also send the buyer's ID to the buyer's membership array & the buyerName array
+        //         await User.findByIdAndUpdate(context.user._id, { $push: { memberships: seller } }, { new: true });
+        //         await User.findByIdAndUpdate(context.user._id, { $push: { buyerName: context.user._id } }, { new: true });
+        //         return order.populate('products');
+        //     }
+        //     throw new AuthenticationError('Not logged in');
+        // },
+        // For Apollo back end testing
         addOrder: async (parent, args) => {
             const products = args.products;
             const user = args.user;
@@ -230,13 +259,31 @@ const resolvers = {
             await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
             // also send the seller's user ID to sales array & the sellerName array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
-            await User.findByIdAndUpdate(seller, { $push: { sellerName: user } }, { new: true });
+            await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
             // also send the buyer's ID to the buyer's membership array & the buyerName array
             await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
             await User.findByIdAndUpdate(user, { $push: { buyerName: user } }, { new: true });
             return order.populate('products');
         },
         // UPDATE 
+        // updateUser using context (the signed in user) - when updating user info form is ready, uncomment below and comment out updateUser without context
+        // updateUser: async (parent, args, context) => {
+        //     if(context.user) {
+        //         return await User.findByIdAndUpdate(context.user._id, args, { new: true })
+        //         .populate('products')
+        //         .populate('sales')
+        //         .populate({
+        //             path: 'sales.orders',
+        //             populate: 'products'
+        //         })
+        //         .populate('orders')
+        //         .populate({
+        //             path: 'orders',
+        //             populate: 'products'
+        //         });
+        //     }
+        //     throw new AuthenticationError('Not logged in');
+        // },
         updateUser: async (parent, args) => {
             const user = args.user;
             return await User.findByIdAndUpdate(user, args, { new: true })
@@ -252,23 +299,29 @@ const resolvers = {
                     populate: 'products'
                 });
         },
+        // We may not need context for updateAddress because the function is looking for the address ObjectID 
         updateAddress: async (parent, args) => {
             const address = args.address;
             return await Address.findByIdAndUpdate(address, args, { new: true })
         },
+        // We may not need context for updateVendorAddress because the function is looking for the vendorAddress ObjectID 
         updateVendorAddress: async (parent, args) => {
             const vendorAddress = args.vendorAddress;
             return await Address.findByIdAndUpdate(vendorAddress, args, { new: true })
         },
+        // We may not need context for updatePickupAddress because the function is looking for the pickupAddress ObjectID
         updatePickupAddress: async (parent, args) => {
             const pickupAddress = args.pickupAddress;
             return await Address.findByIdAndUpdate(pickupAddress, args, { new: true })
         },
+        // We may not need context for updateOrder because the edit button for an order will only be available on the array rendering sales
+        // note that the order ObjectID is also being pushed to the orders array in the buyer user
         updateOrder: async (parent, args) => {
             const order = args.order;
             return await Order.findByIdAndUpdate(order, args, { new: true })
                 .populate('products');
         },
+        // We may not need an updateProduct with context param since the edit button for said product will only show up in the farmer's dashboard
         updateProduct: async (parent, args) => {
             const product = args.product;
             return await Product.findByIdAndUpdate(product, args, { new: true })
@@ -280,6 +333,7 @@ const resolvers = {
             return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new: true });
         },
         // DELETE
+        // SOFT DELETE functionality approved!
         // deleteUser: async (parent, args) => {
         //     const user = args.user; 
         //     await User.findByIdAndDelete(user, args, { new: true } );
