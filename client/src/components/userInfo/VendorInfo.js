@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './userInfo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faCarrot, faCamera } from '@fortawesome/free-solid-svg-icons';
+import 'bootstrap';
+import 'react-bootstrap';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function VendorInfo(props) {
