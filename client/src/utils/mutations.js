@@ -97,3 +97,10 @@ mutation updateUserImage($user: [ID]!, $userImage: String) {
   }
 }
 `
+export const UPDATE_VENDOR_IMAGE = gql`
+mutation updateVendorImage($user: [ID]!, $vendorImage: String) {
+  updateUser(user: $user, vendorImage: $vendorImage) {
+    vendorImage
+  }
+}
+`

@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faCarrot, faCamera } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap';
 import 'react-bootstrap';
+import axios from 'axios';
+import { useMutation } from '@apollo/client';
+import { UPDATE_VENDOR_IMAGE } from '../../utils/mutations';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function VendorInfo(props) {
@@ -17,6 +20,50 @@ function VendorInfo(props) {
     const handleProfileImageMouseLeave = () => {
         setShowCamera(false);
     };
+
+
+    const [newuserUrl, setUserUrl] = useState("");
+    const [updateVendorImage] = useMutation(UPDATE_VENDOR_IMAGE);
+
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
+    function uploadSingleImage(base64) {
+        axios
+            .post("http://localhost:3000/uploadImage", { image: base64 })
+            .then((res) => {
+                const uploadVendorUrl = res.data
+                setUserUrl(uploadVendorUrl);
+                updateVendorImage({
+                    variables: {
+                        user: props._id,
+                        vendorImage: uploadVendorUrl
+                    }
+                })
+                // alert(`Vendor Image uploaded Successfully.`);
+                window.location.reload(false);
+            })
+            .catch(console.log);
+    }
+
+    const uploadImage = async (event) => {
+        const files = event.target.files;
+        const base64 = await convertBase64(files[0]);
+        uploadSingleImage(base64);
+    };
+
 
     return (
         <div className="container-fluid">
@@ -41,22 +88,24 @@ function VendorInfo(props) {
                 </div>
             </div>
             <div className="row align-items-center">
-                <div className="col-md-6 profile-image"
+                <label className="col-md-6 profile-image"
                     onMouseEnter={handleProfileImageMouseEnter}
                     onMouseLeave={handleProfileImageMouseLeave}
                 >
                     <img
-                        src="https://placehold.co/600x600"
+                        src={props.vendorImage ? props.vendorImage : "https://placehold.co/600x600"}
                         alt=""
                         className="img-fluid "
+                        height={600}
+                        width={600}
                     />
                     {props.currentUser && showCamera && (
                         <div className="camera-overlay">
                             <FontAwesomeIcon icon={faCamera} />
                         </div>
                     )}
-
-                </div>
+                    <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
+                </label>
                 <div className="col-md-6">
                     <div className="">
                         <div className="">
@@ -71,10 +120,10 @@ function VendorInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.vendorAddress.street}</p>
-                                    <p>{props.vendorAddress.city}</p>
-                                    <p>{props.vendorAddress.state}</p>
-                                    <p>{props.vendorAddress.zipcode}</p>
+                                    <p>{props.vendorAddress?.street}</p>
+                                    <p>{props.vendorAddress?.city}</p>
+                                    <p>{props.vendorAddress?.state}</p>
+                                    <p>{props.vendorAddress?.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -115,19 +164,19 @@ function VendorInfo(props) {
                                 <div className="row">
                                     <div className="form-group col-md-6">
                                         <label>Street</label>
-                                        <input type="text" className="form-control text-muted" id="farm-street-input" defaultValue={props.vendorAddress.street} />
+                                        <input type="text" className="form-control text-muted" id="farm-street-input" defaultValue={props.vendorAddress?.street} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>City</label>
-                                        <input type="text" className="form-control text-muted" id="farm-city-input" defaultValue={props.vendorAddress.city} />
+                                        <input type="text" className="form-control text-muted" id="farm-city-input" defaultValue={props.vendorAddress?.city} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>State</label>
-                                        <input type="text" className="form-control text-muted" id="farm-state-input" defaultValue={props.vendorAddress.state} />
+                                        <input type="text" className="form-control text-muted" id="farm-state-input" defaultValue={props.vendorAddress?.state} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>Zipcode</label>
-                                        <input type="text" className="form-control text-muted" id="farm-zipcode-input" defaultValue={props.vendorAddress.zipcode} />
+                                        <input type="text" className="form-control text-muted" id="farm-zipcode-input" defaultValue={props.vendorAddress?.zipcode} />
                                     </div>
                                 </div>
                             </div>
@@ -142,19 +191,19 @@ function VendorInfo(props) {
                                 <div className="row">
                                     <div className="form-group col-md-6">
                                         <label>Street</label>
-                                        <input type="text" className="form-control text-muted" id="pickup-street-input" defaultValue={props.pickupAddress.street} />
+                                        <input type="text" className="form-control text-muted" id="pickup-street-input" defaultValue={props.pickupAddress?.street} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>City</label>
-                                        <input type="text" className="form-control text-muted" id="pickup-city-input" defaultValue={props.pickupAddress.city} />
+                                        <input type="text" className="form-control text-muted" id="pickup-city-input" defaultValue={props.pickupAddress?.city} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>State</label>
-                                        <input type="text" className="form-control text-muted" id="pickup-state-input" defaultValue={props.pickupAddress.state} />
+                                        <input type="text" className="form-control text-muted" id="pickup-state-input" defaultValue={props.pickupAddress?.state} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>Zipcode</label>
-                                        <input type="text" className="form-control text-muted" id="pickup-zipcode-input" defaultValue={props.pickupAddress.zipcode} />
+                                        <input type="text" className="form-control text-muted" id="pickup-zipcode-input" defaultValue={props.pickupAddress?.zipcode} />
                                     </div>
                                 </div>
                             </div>
