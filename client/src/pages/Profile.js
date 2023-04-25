@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import UserToggle from '../components/UserToggle';
 import ConsumerInfo from '../components/userInfo/ConsumerInfo';
 import VendorInfo from '../components/userInfo/VendorInfo';
-
+import Auth from '../utils/auth';
 // add this to nav bar conditional renderings
 
 function Profile() {
@@ -31,7 +31,7 @@ function Profile() {
         setVendorStatus(!vendorStatus);
     };
 
-    // if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
+    if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
     return (
         <div className='container'>
             {/* this toggle button needs to be moved to navBar when implementing */}
@@ -41,7 +41,7 @@ function Profile() {
             </div>
         </div>
     );
-    // }
+    }
 }
 
 export default Profile;

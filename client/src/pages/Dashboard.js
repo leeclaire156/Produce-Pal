@@ -31,7 +31,7 @@ function Dashboard() {
         setVendorStatus(!vendorStatus);
     };
 
-    // if (Auth.loggedIn()) { // should render dashboard only if user is logged in. ...should.
+    if (Auth.loggedIn()) { // should render dashboard only if user is logged in. ...should.
     return (
         <div className='container'>
 
@@ -39,7 +39,7 @@ function Dashboard() {
             {vendorStatus ? <VendorDashboard {...user} /> : <ConsumerDashboard {...user} />}
         </div>
     );
-    // }
+    }
 }
 
 export default Dashboard;

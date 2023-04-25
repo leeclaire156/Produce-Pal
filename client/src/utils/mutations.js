@@ -19,48 +19,55 @@ mutation Mutation($productId: Int!, $productName: String!, $productType: Boolean
 }
 `;
 // For login/signup uncomment below
-// export const LOGIN = gql`
-//   mutation login($email: String!, $password: String!) {
-//     login(email: $email, password: $password) {
-//       token
-//       user {
-//         _id
-//         email
-//       }
-//     }
-//   }
-// `;
+export const LOGIN = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        email
+      }
+    }
+  }
+`;
 
 export const ADD_USER = gql`
-mutation Register($firstName: String!, $lastName: String!, $email: String!, $password: String!, $vendorStatus: Boolean!, $biography: String, $phone: String, $userImage: String, $vendorName: String, $vendorDescription: String, $vendorTelephone: String, $vendorImage: String, $addVendorAddressCity2: String!, $addVendorAddressState2: String!, $addVendorAddressStreet2: String!, $addVendorAddressZipcode2: String!, $addVendorAddressEmail2: String!, $city: String!, $state: String!, $street: String!, $zipcode: String!, $addAddressEmail2: String!, $addPickupAddressCity2: String!, $addPickupAddressState2: String!, $addPickupAddressStreet2: String!, $addPickupAddressZipcode2: String!, $addPickupAddressEmail2: String!, $marketName: String) {
-  addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, vendorStatus: $vendorStatus, biography: $biography, phone: $phone, userImage: $userImage, vendorName: $vendorName, vendorDescription: $vendorDescription, vendorTelephone: $vendorTelephone, vendorImage: $vendorImage, marketName: $marketName) {    
-    # token #for authorization
-    firstName
-    lastName
-    email
-    address {
+mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!, $vendorStatus: Boolean!, $biography: String, $phone: String, $userImage: String, $vendorName: String, $vendorDescription: String, $marketName: String, $vendorTelephone: String, $vendorImage: String, $city: String!, $state: String!, $street: String!, $zipcode: String!, $addAddressEmail2: String!, $addVendorAddressCity2: String!, $addVendorAddressState2: String!, $addVendorAddressStreet2: String!, $addVendorAddressZipcode2: String!, $addVendorAddressEmail2: String!, $addPickupAddressCity2: String!, $addPickupAddressState2: String!, $addPickupAddressStreet2: String!, $addPickupAddressZipcode2: String!, $addPickupAddressEmail2: String!) {
+  addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password, vendorStatus: $vendorStatus, biography: $biography, phone: $phone, userImage: $userImage, vendorName: $vendorName, vendorDescription: $vendorDescription, marketName: $marketName, vendorTelephone: $vendorTelephone, vendorImage: $vendorImage) {
+    token
+    user {
       _id
-      street
-      city
-      state
-      zipcode
+      firstName
+      lastName
+      email
+      address {
+        street
+        city
+        state
+        zipcode
+      }
+      biography
+      phone
+      userImage
+      vendorStatus
+      vendorName
+      vendorDescription
+      marketName
+      pickupAddress {
+        street
+        city
+        state
+        zipcode
+      }
+      vendorTelephone
+      vendorAddress {
+        street
+        city
+        state
+        zipcode
+      }
+      vendorImage
     }
-    biography
-    phone
-    userImage
-    vendorStatus
-    vendorName
-    vendorDescription
-    marketName
-    vendorTelephone
-    vendorAddress {
-      _id
-      street
-      city
-      state
-      zipcode
-    }
-    vendorImage
   }
   addAddress(city: $city, state: $state, street: $street, zipcode: $zipcode, email: $addAddressEmail2) {
     street
