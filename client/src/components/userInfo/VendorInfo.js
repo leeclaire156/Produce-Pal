@@ -65,7 +65,10 @@ function VendorInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.vendorAddress}</p>
+                                    <p>{props.vendorAddress.street}</p>
+                                    <p>{props.vendorAddress.city}</p>
+                                    <p>{props.vendorAddress.state}</p>
+                                    <p>{props.vendorAddress.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
