@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-// import { LOGIN } from '../utils/mutations';
+import { LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import './LoginForm.css';
 import { Form, Button, Container, InputGroup } from 'react-bootstrap';
@@ -13,16 +13,16 @@ function Login(props) {
     const [errorEmailMessage, setEmailError] = useState(false);
     const [passwordType, setPasswordType] = useState(false)
     const [image, setImage] = useState(true)
-    // const [login, { error }] = useMutation(LOGIN);
+    const [login, { error }] = useMutation(LOGIN);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
-            // const { data } = await login({
-            //     variables: { ...formState },
-            // });
+            const { data } = await login({
+                variables: { ...formState },
+            });
 
-            // Auth.login(data.login.token);
+            Auth.login(data.login.token);
         } catch (e) {
             console.log(e);
         }

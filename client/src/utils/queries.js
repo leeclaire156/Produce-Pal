@@ -88,11 +88,11 @@ query User($id: ID!) {
 `;
 
 // For login/signup uncomment below
-// export const GET_ME = gql`
-//     query me{
-//         me{
-//             _id
-//             email
-//         }
-//     }
-// `;
+export const GET_ME = gql`
+    query me{
+        me{
+            _id
+            email
+        }
+    }
+`;
