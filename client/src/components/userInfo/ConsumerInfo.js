@@ -21,9 +21,8 @@ function ConsumerInfo(props) {
         setShowCamera(false);
     };
 
-    const [loading, setLoading] = useState(false);
-    const [userUrl, setUserUrl] = useState("");
-    const [vendorUrl, setVendorUrl] = useState("");
+
+    const [newuserUrl, setUserUrl] = useState("");
     const [updateUserImage] = useMutation(UPDATE_USER_IMAGE);
 
     const convertBase64 = (file) => {
@@ -41,62 +40,28 @@ function ConsumerInfo(props) {
         });
     };
 
-    function uploadSingleImage(base64, userOrVendor) {
-        setLoading(true);
+    function uploadSingleImage(base64) {
         axios
             .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
-                if (userOrVendor == "userImage") {
-                    setUserUrl(res.data);
-                    alert(`User Image uploaded Successfully.`);
-                } else {
-                    setVendorUrl(res.data);
-                    alert(`Vendor Image uploaded Successfully.`);
-                }
+                const uploadUrl = res.data
+                setUserUrl(uploadUrl);
+                updateUserImage({
+                    variables: {
+                        user: props._id,
+                        userImage: uploadUrl
+                    }
+                })
+                alert(`User Image uploaded Successfully.`);
+                
             })
-            .then(() => setLoading(false))
-            .catch(console.log);
-    }
-
-    // Ignore this but dont comment it out
-    function uploadMultipleImages(images) {
-        setLoading(true);
-        axios
-            .post("http://localhost:3000/uploadMultipleImages", { images })
-            .then((res) => {
-                // setUrl(res.data);
-                alert("Image uploaded Succesfully");
-            })
-            .then(() => setLoading(false))
             .catch(console.log);
     }
 
     const uploadImage = async (event) => {
         const files = event.target.files;
-        console.log(files.length);
-
-        const userOrVendor = event.target.name
-        console.log(userOrVendor);
-
-        if (files.length === 1) {
-            const base64 = await convertBase64(files[0]);
-            uploadSingleImage(base64, userOrVendor);
-            console.log(props._id)
-            console.log(userUrl)
-            await updateUserImage({
-                variables: {
-                    user: props._id,
-                    userImage: userUrl
-                }
-            })
-        }
-
-        const base64s = [];
-        for (var i = 0; i < files.length; i++) {
-            var base = await convertBase64(files[i]);
-            base64s.push(base);
-        }
-        uploadMultipleImages(base64s);
+        const base64 = await convertBase64(files[0]);
+        uploadSingleImage(base64);
     };
 
     return (
@@ -111,7 +76,7 @@ function ConsumerInfo(props) {
             </div>
             <div className="row">
                 <div className="col-12 text-center mb-5">
-                    <h1>{props.firstName} {props.lastName}</h1>
+                    <h1 onClick={() => { console.log(newuserUrl, props.userImage) }}>{props.firstName} {props.lastName}</h1>
                 </div>
             </div>
             <div className="row align-items-center">
@@ -120,7 +85,7 @@ function ConsumerInfo(props) {
                     onMouseLeave={handleProfileImageMouseLeave}
                 >
                     <img
-                        src="https://placehold.co/600x600"
+                        src={props.userImage?props.userImage:"https://placehold.co/600x600"}
                         alt=""
                         className="img-fluid "
                         height={600}
@@ -131,7 +96,7 @@ function ConsumerInfo(props) {
                             <FontAwesomeIcon icon={faCamera} />
                         </div>
                     )}
-                    <input name='userImage' type="file" onChange={uploadImage} hidden></input>
+                    <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
                 </label>
                 <div className="col-md-6">
                     <div className="">
@@ -147,10 +112,10 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.address.street}</p>
-                                    <p>{props.address.city}</p>
-                                    <p>{props.address.state}</p>
-                                    <p>{props.address.zipcode}</p>
+                                    <p>{props.address?.street}</p>
+                                    <p>{props.address?.city}</p>
+                                    <p>{props.address?.state}</p>
+                                    <p>{props.address?.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -192,19 +157,19 @@ function ConsumerInfo(props) {
                             <div className="row">
                                 <div className="form-group col-md-6">
                                     <label>Street</label>
-                                    <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.address.street} />
+                                    <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.address?.street} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>City</label>
-                                    <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.address.city} />
+                                    <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.address?.city} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>State</label>
-                                    <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.address.state} />
+                                    <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.address?.state} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>Zipcode</label>
-                                    <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.address.zipcode} />
+                                    <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.address?.zipcode} />
                                 </div>
                             </div>
                             <div className="form-group">
