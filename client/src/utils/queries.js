@@ -20,6 +20,17 @@ query Product {
     }
 `;
 
+export const QUERY_ADDRESSES = gql`
+query Addresses {
+  addresses {
+    city
+    state
+    street
+    zipcode
+  }
+}
+`;
+
 export const QUERY_USERS = gql`
 query Users {
   users {
@@ -106,10 +117,18 @@ query singleProfile($profileId: ID!) {
     marketName
     pickupAddress {
       _id
+      street
+      city
+      state
+      zipcode
     }
     vendorTelephone
     vendorAddress {
       _id
+      street
+      city
+      state
+      zipcode
     }
     vendorImage
   }
@@ -119,18 +138,18 @@ query singleProfile($profileId: ID!) {
 // For login/signup uncomment below
 export const GET_ME = gql`
     query me{
-        me{
-              _id
+      me{
+        _id
         firstName
         lastName
         email
-        # address {
-        #   _id
-        #   street
-        #   city
-        #   state
-        #   zipcode
-        # }
+        address {
+          _id
+          street
+          city
+          state
+          zipcode
+        }
         biography
         phone
         userImage
@@ -150,14 +169,22 @@ export const GET_ME = gql`
           _id
         }
         marketName
-        # pickupAddress {
-        #   _id
-        # }
-        vendorTelephone
-        # vendorAddress {
-        #   _id
-        # }
-        vendorImage
+        pickupAddress {
+          _id
+          street
+          city
+          state
+          zipcode
         }
+        vendorTelephone
+        vendorAddress {
+          _id
+          street
+          city
+          state
+          zipcode
+        }
+        vendorImage
+      }
     }
 `;

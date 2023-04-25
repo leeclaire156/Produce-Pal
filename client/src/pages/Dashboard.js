@@ -11,7 +11,6 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import Auth from "../utils/auth";
 import { Redirect } from 'react-router-dom'
 
-// should be conditionally rendered for context user
 function Dashboard() {
     const { profileId } = useParams();
 
