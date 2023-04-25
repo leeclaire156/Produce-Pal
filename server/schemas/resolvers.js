@@ -171,8 +171,6 @@ const resolvers = {
     Mutation: {
         // CREATE 
         addUser: async (parent, args) => {
-            // return await User.create(args);
-            // TO DO! When tokens are ready, add tokens
             const user = await User.create(args);
             const token = signToken(user);
             return { token, user };
@@ -286,24 +284,29 @@ const resolvers = {
                     populate: 'products'
                 });
         },
+        // We may not need context for updateAddress because the function is looking for the address ObjectID 
         updateAddress: async (parent, args) => {
             const address = args.address;
             return await Address.findByIdAndUpdate(address, args, { new: true })
         },
+        // We may not need context for updateVendorAddress because the function is looking for the vendorAddress ObjectID 
         updateVendorAddress: async (parent, args) => {
             const vendorAddress = args.vendorAddress;
             return await Address.findByIdAndUpdate(vendorAddress, args, { new: true })
         },
+        // We may not need context for updatePickupAddress because the function is looking for the pickupAddress ObjectID
         updatePickupAddress: async (parent, args) => {
             const pickupAddress = args.pickupAddress;
             return await Address.findByIdAndUpdate(pickupAddress, args, { new: true })
         },
+        // We may not need context for updateOrder because the edit button for an order will only be available on the array rendering sales
+        // note that the order ObjectID is also being pushed to the orders array in the buyer user
         updateOrder: async (parent, args) => {
             const order = args.order;
             return await Order.findByIdAndUpdate(order, args, { new: true })
                 .populate('products');
         },
-        // We may not need an updateProduct with context param since the edit button will only show up in the storefront?
+        // We may not need an updateProduct with context param since the edit button for said product will only show up in the farmer's dashboard
         updateProduct: async (parent, args) => {
             const product = args.product;
             return await Product.findByIdAndUpdate(product, args, { new: true })
@@ -315,6 +318,7 @@ const resolvers = {
             return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new: true });
         },
         // DELETE
+        // SOFT DELETE functionality approved!
         // deleteUser: async (parent, args) => {
         //     const user = args.user; 
         //     await User.findByIdAndDelete(user, args, { new: true } );
