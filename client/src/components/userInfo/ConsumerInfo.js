@@ -5,9 +5,9 @@ import { faUser, faPhone, faMedal, faCamera } from '@fortawesome/free-solid-svg-
 import 'bootstrap';
 import 'react-bootstrap';
 import axios from 'axios';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_USER_IMAGE } from '../../utils/mutations';
-import { QUERY_USERS } from '../../utils/queries';
+import { QUERY_USERS, GET_IMAGE } from '../../utils/queries';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function ConsumerInfo(props) {
@@ -53,10 +53,10 @@ function ConsumerInfo(props) {
                     variables: {
                         user: props._id,
                         userImage: uploadUrl
-                    }
+                    }, refetchQueries:[{query: GET_IMAGE}]
                 })
                 // alert(`User Image uploaded Successfully.`);
-                window.location.reload(false);
+                // window.location.reload(false);
             })
             .catch(console.log);
     }

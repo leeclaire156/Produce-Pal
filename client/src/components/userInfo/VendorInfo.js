@@ -5,8 +5,9 @@ import { faUser, faPhone, faCarrot, faCamera } from '@fortawesome/free-solid-svg
 import 'bootstrap';
 import 'react-bootstrap';
 import axios from 'axios';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_VENDOR_IMAGE } from '../../utils/mutations';
+import { QUERY_USERS, GET_VENDOR_IMAGE } from '../../utils/queries';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function VendorInfo(props) {
@@ -50,10 +51,10 @@ function VendorInfo(props) {
                     variables: {
                         user: props._id,
                         vendorImage: uploadVendorUrl
-                    }
+                    }, refetchQueries: [{ query: GET_VENDOR_IMAGE }]
                 })
                 // alert(`Vendor Image uploaded Successfully.`);
-                window.location.reload(false);
+                // window.location.reload(false);
             })
             .catch(console.log);
     }
