@@ -641,8 +641,8 @@ db.once('open', async () => {
             vendorTelephone: '703-555-1234',
         },
         {
-            firstName: 'Ralph Thompson',
-            lastName: 'Vendor',
+            firstName: 'Ralph',
+            lastName: 'Thompson',
             email: 'rthompson123@gmail.com',
             password: 'password1',
             biography: 'I am looking forward to meeting other farmers on ProducePal!',
@@ -671,8 +671,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Miguel Martinez',
-            lastName: 'Vendor',
+            firstName: 'Miguel',
+            lastName: 'Martinez',
             email: 'mmartinez24@gmail.com',
             password: 'password1',
             biography: 'I love to play baseball and try new foods.',
@@ -691,8 +691,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Adam Anderson',
-            lastName: 'Vendor',
+            firstName: 'Adam',
+            lastName: 'Anderson',
             email: 'aanderson46@gmail.com',
             password: 'password1',
             biography: 'I like to spend my freetime with my family and explore the outdoors',
@@ -711,8 +711,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Aveesh Patel',
-            lastName: 'Vendor',
+            firstName: 'Aveesh',
+            lastName: 'Patel',
             email: 'apatel@gmail.com',
             password: 'password1',
             biography: 'I love to restore classic cars and spend time with my partner.',
@@ -732,8 +732,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Andrew Williams',
-            lastName: 'Vendor',
+            firstName: 'Andrew',
+            lastName: 'Williams',
             email: 'awilliams42223@gmail.com',
             password: 'password1',
             biography: 'I was born and raised in Vancouver and I am looing to share my love of the outdoors with my new commmunity here in the DMV',
@@ -753,8 +753,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Joe Turner',
-            lastName: 'Vendor',
+            firstName: 'Joe',
+            lastName: 'Turner',
             email: 'jturner22@gmail.com',
             password: 'password1',
             biography: 'In my free time I like to ride my ATV and sip on mountain dew, and I also enjoy saltwater fishing',
@@ -774,8 +774,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'River Song',
-            lastName: 'Vendor',
+            firstName: 'River',
+            lastName: 'Song',
             email: 'rsong420@gmail.com',
             password: 'password1',
             biography: 'For 8 months of the year my girlfriend of 12 years and I follow jam bands on tour and exclusively wear ethically sourced hempfiber based tie dye outerwear.',
@@ -785,7 +785,7 @@ db.once('open', async () => {
             ],
             vendorStatus: true,
             vendorName: 'Herbaceous Hills Exotic Herb Garden',
-            vendorDescription: 'Namaste. During an ayahuasca yoga retreat in the jungles of rural Ecuador, I determined that my purpose in life is to farm herbs to save mankind.',
+            vendorDescription: 'Namaste. During a yoga retreat in the jungles of rural Ecuador, I determined that my purpose in life is to farm herbs to save mankind.',
             products: [
                 //rosemary and basil
                 products[12]._id,
@@ -795,8 +795,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Travis Cooper',
-            lastName: 'Vendor',
+            firstName: 'Travis',
+            lastName: 'Cooper',
             email: 'tcoop123@gmail.com',
             password: 'password1',
             biography: 'I spend most of my freetime volunteering with sheltered animals',
