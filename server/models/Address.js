@@ -3,18 +3,22 @@ const { Schema, model } = require('mongoose');
 const addressSchema = new Schema({
     street: {
         type: String,
+        default: '',
         trim: true,
     },
     city: {
         type: String,
+        default: '',
         trim: true,
     },
     state: {
         type: String,
+        default: '',
         trim: true,
     }, 
     zipcode: {
         type: String,
+        default: '',
         trim: true,
     }
 },

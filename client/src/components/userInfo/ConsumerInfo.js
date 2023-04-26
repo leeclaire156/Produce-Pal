@@ -70,12 +70,17 @@ function ConsumerInfo(props) {
     return (
         <div className="container-fluid">
             <div className="toggle-container text-end">
-                {props.vendorStatus ?
+
+            <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                    Edit
+                </button>
+                {/* {props.vendorStatus ?
                     <button className="btn btn-primary visually-hidden">
                         Hidden
                     </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit
-                    </button>}
+                    </button>} */}
+
             </div>
             <div className="row">
                 <div className="col-12 text-center mb-5">
@@ -128,10 +133,7 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.address?.street}</p>
-                                    <p>{props.address?.city}</p>
-                                    <p>{props.address?.state}</p>
-                                    <p>{props.address?.zipcode}</p>
+                                    <p>{props.address[0]?.street}, {props.address[0]?.city}, {props.address[0]?.state}, {props.address[0]?.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
