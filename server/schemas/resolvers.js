@@ -54,19 +54,20 @@ const resolvers = {
                 })
                 .populate({
                     path: 'orders',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate('address')
                 .populate('vendorAddress')
                 .populate('pickupAddress')
-                .populate({
-                    path: 'sales.buyerName',
-                    populate: 'users'
-                })
-                .populate({
-                    path: 'orders.sellerName',
-                    populate: 'users'
-                })
+                // .populate({
+                //     path: 'orders.buyerName',
+                //     populate: 'users'
+
+                // })
+                // .populate({
+                //     path: 'sellerName',
+                //     populate: 'products'
+                // })
                 ;
         },
         farms: async (parent, vendorStatus) => {
