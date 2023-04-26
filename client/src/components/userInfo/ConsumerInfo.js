@@ -175,19 +175,19 @@ function ConsumerInfo(props) {
                             <div className="row">
                                 <div className="form-group col-md-6">
                                     <label>Street</label>
-                                    <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.address?.street} />
+                                    <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.address[0]?.street} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>City</label>
-                                    <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.address?.city} />
+                                    <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.address[0]?.city} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>State</label>
-                                    <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.address?.state} />
+                                    <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.address[0]?.state} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>Zipcode</label>
-                                    <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.address?.zipcode} />
+                                    <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.address[0]?.zipcode} />
                                 </div>
                             </div>
                             <div className="form-group">

@@ -95,6 +95,70 @@ query Query {
 }
 `;
 
+export const QUERY_ONLY_FARMS = gql `
+query farms($vendorStatus: Boolean) {
+  farms(vendorStatus: $vendorStatus) {
+    _id
+    firstName
+    lastName
+    email
+    address {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    biography
+    phone
+    userImage
+    memberships {
+      _id
+      vendorName
+      vendorTelephone
+      vendorAddress {
+        _id
+        city
+        state
+        street
+        zipcode
+      }
+      vendorDescription
+    }
+    vendorStatus
+    vendorName
+    vendorDescription
+    products {
+      _id
+      productName
+    }
+    marketName
+    pickupAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorTelephone
+    vendorAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorImage
+    sales {
+      _id
+    }
+    orders {
+      _id
+    }
+  }
+}
+`;
+
 export const QUERY_SINGLE_PROFILE = gql `
 query singleProfile($profileId: ID!) {
   profile(profileId: $profileId) {

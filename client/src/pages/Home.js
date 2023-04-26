@@ -1,11 +1,12 @@
 import React from 'react';
 import FarmList from '../components/FarmList';
 import { useQuery } from '@apollo/client';
-import { QUERY_USERS } from '../utils/queries';
+import { QUERY_ONLY_FARMS } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_USERS);
-  const farms = data?.users || [];
+  const { loading, data } = useQuery(QUERY_ONLY_FARMS);
+  console.log(data)
+  const farms = data?.farms || [];
   console.log(farms)
 
 

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import FarmCard from './FarmCard';
 
-
-// TO DO - Add conditional rendering to only show vendorStatus = true
+// only shows cards with vendorStatus true
 const FarmList = ({ farms }) => {
     console.log(farms)
 
