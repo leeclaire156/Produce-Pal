@@ -128,3 +128,4 @@ PWAeditor application is covered by MIT license.
 7. [Show Password](https://melvingeorge.me/blog/show-or-hide-password-ability-reactjs)
 8. [Affixing number of rows for textarea in React](https://www.pluralsight.com/guides/how-to-use-multiline-text-area-in-reactjs)
 9. [Redirecting if user isn't logged in](https://stackoverflow.com/questions/47476186/when-user-is-not-logged-in-redirect-to-login-reactjs)
+10. [Making image as upload file input](https://youtu.be/dTFXufTgfOE?t=7418)
