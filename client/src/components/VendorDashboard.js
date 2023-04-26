@@ -25,6 +25,9 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                             <Link to="/profile">
                                 <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#VendorInfoModal">Edit</button>
                             </Link>
+                            {/* <Link to="/profile">
+                                <button className="btn btn-primary">View</button>
+                            </Link> */}
                         </div>
                     </div>
                 </div>
