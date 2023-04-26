@@ -104,3 +104,41 @@ mutation updateVendorImage($user: [ID]!, $vendorImage: String) {
   }
 }
 `
+// export const UPDATE_USER = gql`
+// mutation updateUser($user: [ID]!, $firstName: String!, $lastName: String!, $phone: String, $biography: String, $city: String, $state: String, $street: String, $zipcode: String, $address: [ID]!) {
+//   updateUser(user: $user, firstName: $firstName, lastName: $lastName, phone: $phone, biography: $biography) {
+//     user { 
+//       _id
+//       firstName
+//       lastName
+//       address {
+//         street
+//         city
+//         state
+//         zipcode
+//       }
+//       biography
+//       phone
+//     }
+//   }
+//   updateAddress(city: $city, state: $state, street: $street, zipcode: $zipcode, address: $address) {
+//     street
+//     city
+//     state
+//     zipcode
+//   }
+// }
+// `
+
+// Below works
+export const UPDATE_USER = gql`
+mutation updateUser($user: [ID]!, $firstName: String!, $lastName: String!, $phone: String, $biography: String) {
+  updateUser(user: $user, firstName: $firstName, lastName: $lastName, phone: $phone, biography: $biography) {
+      _id
+      firstName
+      lastName
+      biography
+      phone
+    }
+}
+`

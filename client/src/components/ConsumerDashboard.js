@@ -33,7 +33,9 @@ function ConsumerDashboard({ firstName, lastName, phone, biography }) {
                             <FontAwesomeIcon icon={faBook} size="3x" />
                             <h5 className="card-title mt-3">Order history</h5>
                             <p className="card-text">Review my order history.</p>
-                            <button className="btn btn-primary">View</button>
+                            <Link to="/order-history">
+                                <button className="btn btn-primary">View</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

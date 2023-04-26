@@ -17,6 +17,7 @@ import Profile from './pages/Profile.js'
 import Login from './components/loginForm/LoginForm.js'
 import Signup from './components/signupForm/SignupForm.js'
 import ProductInventory from "./pages/ProductInventory.js"
+import OrderHistory from './pages/OrderHistory'
 import { ProductProvider } from './utils/GlobalState.js'
 
 // Construct our main GraphQL API endpoint
@@ -57,6 +58,7 @@ function App() {
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/profile' component={Profile} />
+              <Route exact path='/order-history' component={OrderHistory} />
               {/* my productInventory page */}
               <Route exact path='/productinventory' component={ProductInventory} />
 

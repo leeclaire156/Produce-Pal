@@ -281,3 +281,21 @@ query Me {
   }
 }
 `
+export const GET_USER = gql`
+query Me {
+  me{
+        firstName
+        lastName
+        email
+        address {
+          _id
+          street
+          city
+          state
+          zipcode
+        }
+        biography
+        phone
+}
+}
+`
