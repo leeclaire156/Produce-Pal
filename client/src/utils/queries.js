@@ -20,69 +20,194 @@ query Product {
     }
 `;
 
+export const QUERY_ADDRESSES = gql`
+query Addresses {
+  addresses {
+    city
+    state
+    street
+    zipcode
+  }
+}
+`;
+
 export const QUERY_USERS = gql`
-query Users {
+query Query {
   users {
     _id
     firstName
     lastName
     email
-    address
+    address {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
     biography
     phone
+    userImage
     memberships {
       _id
-      firstName
       vendorName
-      products {
+      vendorTelephone
+      vendorAddress {
         _id
-        productName
+        city
+        state
+        street
+        zipcode
       }
-    }
-    orders {
-      _id
-      orderType
-      purchaseDate
-      products {
-        _id
-        productName
-      }
+      vendorDescription
     }
     vendorStatus
     vendorName
-    vendorTelephone
-    vendorAddress
-    pickupLocation
     vendorDescription
-    sales {
-      _id
-      orderType
-      purchaseDate
-      products {
-        _id
-        productName
-      }
-    }
     products {
       _id
       productName
+    }
+    marketName
+    pickupAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorTelephone
+    vendorAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorImage
+    sales {
+      _id
+    }
+    orders {
+      _id
     }
   }
 }
 `;
 
-export const QUERY_USER = gql `
-query User($id: ID!) {
-  user(_id: $id) {
+export const QUERY_ONLY_FARMS = gql`
+query farms($vendorStatus: Boolean) {
+  farms(vendorStatus: $vendorStatus) {
+    _id
     firstName
     lastName
     email
-    address
-    vendorName
-    vendorAddress
-    vendorTelephone
-    vendorDescription
+    address {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    biography
+    phone
+    userImage
+    memberships {
+      _id
+      vendorName
+      vendorTelephone
+      vendorAddress {
+        _id
+        city
+        state
+        street
+        zipcode
+      }
+      vendorDescription
+    }
     vendorStatus
+    vendorName
+    vendorDescription
+    products {
+      _id
+      productName
+    }
+    marketName
+    pickupAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorTelephone
+    vendorAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorImage
+    sales {
+      _id
+    }
+    orders {
+      _id
+    }
+  }
+}
+`;
+
+export const QUERY_SINGLE_PROFILE = gql`
+query singleProfile($profileId: ID!) {
+  profile(profileId: $profileId) {
+    _id
+    firstName
+    lastName
+    email
+    address {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    biography
+    phone
+    userImage
+    memberships {
+      _id
+    }
+    sales {
+      _id
+    }
+    orders {
+      _id
+    }
+    vendorStatus
+    vendorName
+    vendorDescription
+    products {
+      _id
+    }
+    marketName
+    pickupAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    vendorTelephone
+    vendorAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    vendorImage
   }
 }
 `;
@@ -90,9 +215,69 @@ query User($id: ID!) {
 // For login/signup uncomment below
 export const GET_ME = gql`
     query me{
-        me{
-            _id
-            email
+      me{
+        _id
+        firstName
+        lastName
+        email
+        address {
+          _id
+          street
+          city
+          state
+          zipcode
         }
+        biography
+        phone
+        userImage
+        memberships {
+          _id
+        }
+        sales {
+          _id
+        }
+        orders {
+          _id
+        }
+        vendorStatus
+        vendorName
+        vendorDescription
+        products {
+          _id
+        }
+        marketName
+        pickupAddress {
+          _id
+          street
+          city
+          state
+          zipcode
+        }
+        vendorTelephone
+        vendorAddress {
+          _id
+          street
+          city
+          state
+          zipcode
+        }
+        vendorImage
+      }
     }
 `;
+
+export const GET_IMAGE = gql`
+query Me {
+  me {
+    userImage
+  }
+}
+`
+
+export const GET_VENDOR_IMAGE = gql`
+query Me {
+  me {
+    vendorImage
+  }
+}
+`

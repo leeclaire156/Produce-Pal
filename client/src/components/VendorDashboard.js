@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBook, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email, vendorTelephone }) {
+function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, vendorTelephone }) {
+
     return (
         <div className="container">
             <div className="row">
                 <div className="col">
                     <h2>{vendorName}</h2>
-                    <p>{vendorAddress}</p>
+                    <p>About us: {vendorDescription}</p>
+                    <p>Vendor Telephone: {vendorTelephone}</p>
                 </div>
             </div>
             <div className="row">
@@ -20,9 +22,12 @@ function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email
                             <h5 className="card-title mt-3">About Us</h5>
                             {/* click edit button to create and modify my farm information. Show placeholder information if the user has no farm yet*/}
                             <p className="card-text">{vendorDescription}</p>
-                            <Link to="/vendor-profile">
+                            <Link to="/profile">
                                 <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#VendorInfoModal">Edit</button>
                             </Link>
+                            {/* <Link to="/profile">
+                                <button className="btn btn-primary">View</button>
+                            </Link> */}
                         </div>
                     </div>
                 </div>
@@ -42,7 +47,9 @@ function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email
                             <FontAwesomeIcon icon={faCarrot} size="3x" />
                             <h5 className="card-title mt-3">Product Inventory</h5>
                             <p className="card-text">Review and manage my product inventory</p>
-                            <button className="btn btn-primary">View</button>
+                            <Link to="/productInventory">
+                                <button className="btn btn-primary">View</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -50,7 +57,7 @@ function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email
 
 
             {/* <!-- Edit Vendor/Farm Information Modal --> */}
-            <div className="modal fade" id="VendorInfoModal" tabindex="-1" aria-labelledby="VendorInfoModalLabel" aria-hidden="true">
+            <div className="modal fade" id="VendorInfoModal" tabIndex="-1" aria-labelledby="VendorInfoModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -91,4 +98,4 @@ function ConsumerDashboard({ vendorName, vendorAddress, vendorDescription, email
     );
 }
 
-export default ConsumerDashboard;
+export default VendorDashboard;
