@@ -84,6 +84,7 @@ type Query {
     me: User
     addresses: [Address]
     users: [User]
+    farms(vendorStatus: Boolean): [User]
     products: [Product]
     sales: [Order]
     orders: [Order]

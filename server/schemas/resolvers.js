@@ -69,6 +69,32 @@ const resolvers = {
                 })
                 ;
         },
+        farms: async (parent, vendorStatus) => {
+            const params = {};
+
+            if (vendorStatus) {
+                params.vendorStatus = true;
+            }
+
+            return await User.find(params)
+            .populate('products')
+            .populate({
+                path: 'memberships',
+                populate: 'products'
+            })
+            .populate({
+                path: 'sales',
+                populate: 'products'
+            })
+            .populate({
+                path: 'orders',
+                populate: 'products'
+            })
+            .populate('address')
+            .populate('vendorAddress')
+            .populate('pickupAddress')
+            ;
+        },
         orders: async () => {
             return await Order.find({})
                 .populate('products')
