@@ -101,8 +101,8 @@ db.once('open', async () => {
     await User.deleteMany();
     const users = await User.insertMany([
         {
-            firstName: 'MaSandra the Farmer',
-            lastName: 'Vendor',
+            firstName: 'MaSandra',
+            lastName: 'Schembor',
             email: 'mewing123@gmail.com',
             password: 'password1',
             biography: 'I love long walks on the beach with my family.',
@@ -124,8 +124,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Jenny The Seller and Buyer',
-            lastName: 'Both',
+            firstName: 'Jenny',
+            lastName: 'Harrington',
             email: 'JennyBaker@gmail.com',
             password: '12345',
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
@@ -149,8 +149,8 @@ db.once('open', async () => {
             vendorTelephone: '202-456-1908',
         },
         {
-            firstName: 'Claire The Buyer',
-            lastName: 'Buyer',
+            firstName: 'Claire',
+            lastName: 'James',
             email: 'claire456@gmail.com',
             password: 'password2',
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
@@ -163,8 +163,8 @@ db.once('open', async () => {
             vendorStatus: "false"
         },
         {
-            firstName: 'Zhihao The Buyer #2',
-            lastName: 'Buyer',
+            firstName: 'Zhihao',
+            lastName: 'Chang',
             email: 'zhihaobuying@gmail.com',
             password: 'password234',
             biography: 'I supoort my local CSAs!',
