@@ -106,8 +106,7 @@ function ConsumerInfo(props) {
 
                 biography: formState.biography,
                 phone: formState.phone,
-            }
-            // , refetchQueries: [{ query: GET_USER }]
+            }, refetchQueries: [{ query: GET_USER }]
         });
     };
 
