@@ -37,7 +37,8 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                             <FontAwesomeIcon icon={faBook} size="3x" />
                             <h5 className="card-title mt-3">Consumer Orders</h5>
                             <p className="card-text">Review and manage consumer orders.</p>
-                            <Link to="/order-history">
+                            <Link to="/">
+                                {/* Wait for Zhihao's vendor sale history component */}
                                 <button className="btn btn-primary">View</button>
                             </Link>
                         </div>
