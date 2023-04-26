@@ -129,3 +129,5 @@ PWAeditor application is covered by MIT license.
 8. [Affixing number of rows for textarea in React](https://www.pluralsight.com/guides/how-to-use-multiline-text-area-in-reactjs)
 9. [Redirecting if user isn't logged in](https://stackoverflow.com/questions/47476186/when-user-is-not-logged-in-redirect-to-login-reactjs)
 10. [Making image as upload file input](https://youtu.be/dTFXufTgfOE?t=7418)
+11. [Refetching data](https://www.apollographql.com/docs/react/data/queries/#refetching)
+(https://thinkster.io/tutorials/boost-your-react-apps-with-apollo-fetching-updating-data/refetching-queries-after-mutations)

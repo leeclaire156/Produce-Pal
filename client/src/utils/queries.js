@@ -95,7 +95,7 @@ query Query {
 }
 `;
 
-export const QUERY_ONLY_FARMS = gql `
+export const QUERY_ONLY_FARMS = gql`
 query farms($vendorStatus: Boolean) {
   farms(vendorStatus: $vendorStatus) {
     _id
@@ -159,7 +159,7 @@ query farms($vendorStatus: Boolean) {
 }
 `;
 
-export const QUERY_SINGLE_PROFILE = gql `
+export const QUERY_SINGLE_PROFILE = gql`
 query singleProfile($profileId: ID!) {
   profile(profileId: $profileId) {
     _id
@@ -265,3 +265,19 @@ export const GET_ME = gql`
       }
     }
 `;
+
+export const GET_IMAGE = gql`
+query Me {
+  me {
+    userImage
+  }
+}
+`
+
+export const GET_VENDOR_IMAGE = gql`
+query Me {
+  me {
+    vendorImage
+  }
+}
+`
