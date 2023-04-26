@@ -69,9 +69,12 @@ function VendorInfo(props) {
         <div className="container-fluid">
             <div className="toggle-container text-end">
 
-                <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
-                    Edit
-                </button>
+                {props.vendorStatus ?
+                    <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                        Edit
+                    </button> : <button className="btn btn-primary visually-hidden">
+                        Hidden
+                    </button>}
                 {/* the code below is to verify if the current loggedIn user matches this profile owner. user can only edit profile if 
             the loggedIn user id matches the profile owner id. */}
                 {/* {props.currentUser

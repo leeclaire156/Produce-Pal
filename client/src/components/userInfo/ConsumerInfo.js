@@ -70,12 +70,17 @@ function ConsumerInfo(props) {
     return (
         <div className="container-fluid">
             <div className="toggle-container text-end">
-                {props.vendorStatus ?
+
+            <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                    Edit
+                </button>
+                {/* {props.vendorStatus ?
                     <button className="btn btn-primary visually-hidden">
                         Hidden
                     </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit
-                    </button>}
+                    </button>} */}
+
             </div>
             <div className="row">
                 <div className="col-12 text-center mb-5">
