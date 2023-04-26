@@ -2,19 +2,19 @@
 import { gql } from '@apollo/client';
 
 export const ADD_PRODUCT = gql`
-mutation Mutation($productId: Int!, $productName: String!, $productType: Boolean!, $productPrice: Float!, $productImage: String, $productDescription: String, $productAllergens: String, $productUnits: String, $productInventory: Int, $productCategory: String, $productAvailability: Boolean) {
-  addProduct(productId: $productId, productName: $productName, productType:$productType, productPrice: $productPrice, productImage: $productImage, productDescription: $productDescription, productAllergens: $productAllergens, productUnits: $productUnits, productInventory: $productInventory, productCategory: $productCategory, productAvailability: $productAvailability) {
-    productId
-    productName
-    productType
-    productPrice
-    productCategory
-    productInventory
-    productUnits
+mutation addProduct($productId: Int!, $productName: String!, $productPrice: Float!, $user: [ID]!, $productType: Boolean, $productCategory: String, $productInventory: Int, $productUnits: String, $productAllergens: String, $productDescription: String, $productAvailability: Boolean, $productImage: String) {
+  addProduct(productId: $productId, productName: $productName, productPrice: $productPrice, user: $user, productType: $productType, productCategory: $productCategory, productInventory: $productInventory, productUnits: $productUnits, productAllergens: $productAllergens, productDescription: $productDescription, productAvailability: $productAvailability, productImage: $productImage) {
     productAllergens
     productAvailability
+    productCategory
     productDescription
+    productId
     productImage
+    productInventory
+    productName
+    productPrice
+    productType
+    productUnits
   }
 }
 `;

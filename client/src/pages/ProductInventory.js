@@ -11,6 +11,12 @@ import Cart from '../components/Cart';
 import { idbPromise } from '../utils/helpers';
 import UserToggle from '../components/UserToggle';
 
+import axios from "axios";
+
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_PRODUCT } from '../utils/mutations';
+import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
+import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
 
@@ -27,14 +33,14 @@ const ProductInventory = () => {
             // create a new category list with 'ALL' and unique category names
             const categoriesList = ['All', ...uniqueCategories];
             // convert array to an object to use reducer dispatch
-            const categogiesListObject = categoriesList.map((item, index) => {
+            const categoriesListObject = categoriesList.map((item, index) => {
                 return { _id: index, name: item };
             });
-            console.log(categogiesListObject);
+            console.log(categoriesListObject);
             // console.log(categoriesList);
 
             dispatch({ type: UPDATE_PRODUCTS, products: data });
-            dispatch({ type: UPDATE_CATEGORIES, categories: categogiesListObject });
+            dispatch({ type: UPDATE_CATEGORIES, categories: categoriesListObject });
             data.forEach((product) => {
                 idbPromise('products', 'put', product);
             });
@@ -70,6 +76,133 @@ const ProductInventory = () => {
     };
 
     console.log(vendorStatus);
+
+    const { profileId } = useParams();
+    const { data } = useQuery(
+        profileId ? QUERY_SINGLE_PROFILE : GET_ME,
+        {
+            variables: { profileId: profileId },
+        },
+    );
+    const profile = data?.me || data?.profile || {};
+
+    const [addProduct] = useMutation(ADD_PRODUCT);
+    const [url, setUrl] = useState("");
+    const [productFormData, setProductFormData] = useState({
+        productId: '',
+        productName: '',
+        productType: '',
+        productPrice: '',
+        productCategory: '',
+        productInventory: '',
+        productUnits: '',
+        productAllergens: '',
+        productAvailability: '',
+        productDescription: '',
+        productImage: url,
+        user: profile._id,
+    });
+
+    const [loading, setLoading] = useState(false);
+
+
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
+    function uploadSingleImage(base64) {
+        setLoading(true);
+        axios
+            .post("http://localhost:3000/uploadImage", { image: base64 })
+            .then((res) => {
+                setUrl(`${res.data}`);
+                alert(`Image uploaded Successfully. Url is ${url} or ${res.data}`);
+            })
+            .then(() => setLoading(false))
+            .catch(console.log);
+    }
+
+    const uploadImage = async (event) => {
+        const files = event.target.files;
+        if (files.length === 1) {
+            const base64 = await convertBase64(files[0]);
+            uploadSingleImage(base64);
+            return;
+        }
+    };
+
+    const handleInputChange = (event) => {
+        const { name, type, value } = event.target;
+        setProductFormData(input => {
+            const productFormData = { ...input }
+
+            switch (type) {
+                case 'number':
+                    productFormData[name] = Number(value);
+                    break;
+                case 'radio':
+                    if (value == "true") { productFormData[name] = true } else { productFormData[name] = false }
+                    break;
+                default:
+                    productFormData[name] = value;
+            }
+            return productFormData;
+        });
+    };
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        console.log(productFormData)
+        try {
+            //adds product to database based on input form information stored in productFormData variable
+            const { data } = addProduct({
+                variables: {
+                    productId: productFormData.productId,
+                    productName: productFormData.productName,
+                    productType: productFormData.productType,
+                    productPrice: productFormData.productPrice,
+                    productCategory: productFormData.productCategory,
+                    productInventory: productFormData.productInventory,
+                    productUnits: productFormData.productUnits,
+                    productAllergens: productFormData.productAllergens,
+                    productAvailability: productFormData.productAvailability,
+                    productDescription: productFormData.productDescription,
+                    productImage: url,
+                    user: profile._id
+                },
+            });
+            return data;
+        } catch (err) {
+            console.error(err);
+            console.log(productFormData)
+        }
+
+        // setProductFormData({
+        //     productId: '',
+        //     productName: '',
+        //     productType: '',
+        //     productPrice: '',
+        //     productCategory: '',
+        //     productInventory: '',
+        //     productUnits: '',
+        //     productAllergens: '',
+        //     productAvailability: '',
+        //     productDescription: '',
+        //     productImage: '',
+        // });
+    };
+
 
     return (
 
@@ -142,7 +275,7 @@ const ProductInventory = () => {
 
 
             {/* <!-- "create a product" Modal (enable in vendorStatus: true )--> */}
-            <div className="modal modal-lg fade" id="createProductModal" tabIndex="-1" aria-labelledby='createProductModalLabel' aria-hidden="true">
+            <form className="modal modal-lg fade" id="createProductModal" tabIndex="-1" aria-labelledby='createProductModalLabel' aria-hidden="true" onSubmit={handleFormSubmit}>
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -151,48 +284,88 @@ const ProductInventory = () => {
                         </div>
                         <div className="modal-body">
                             <div className="form-group">
-                                <label>Product name</label>
-                                <input type="text" className="form-control text-muted" id='create-product-name' defaultValue='Enter a product name' />
+                                <label>Product ID*</label>
+                                <input type="number" className="form-control text-muted productId" id='create-product-name' placeholder='12345' name='productId' onChange={handleInputChange}
+                                    value={productFormData.productId} required />
                             </div>
                             <div className="form-group">
-                                <label>Category</label>
-                                <input type="text" className="form-control text-muted" id='create-product-category' defaultValue='Enter a product category' />
+                                <label>Product name*</label>
+                                <input type="text" className="form-control text-muted productName" id='create-product-name' placeholder='Enter a product name' name='productName' onChange={handleInputChange}
+                                    value={productFormData.productName} required />
                             </div>
                             <div className="form-group">
-                                <label>Inventory</label>
-                                <input type="number" className="form-control text-muted" id='create-product-inventory' defaultValue='0' />
+                                <label>Category*</label>
+                                <input type="text" className="form-control text-muted productCategory" id='create-product-category' placeholder='Enter a product category' name='productCategory' onChange={handleInputChange}
+                                    value={productFormData.productCategory} required />
                             </div>
                             <div className="form-group">
-                                <label>Unit Price (USD)</label>
-                                <input type="number" className="form-control text-muted" id='create-product-price' defaultValue='0' />
+                                <label>Inventory*</label>
+                                <input type="number" className="form-control text-muted productInventory" id='create-product-inventory' placeholder='0' name='productInventory' onChange={handleInputChange}
+                                    value={productFormData.productInventory} required />
                             </div>
                             <div className="form-group">
-                                <label>Units</label>
-                                <input type="text" className="form-control text-muted" id='create-product-units' defaultValue='Enter product units' />
+                                <label>Unit Price* (USD)</label>
+                                <input type="number" className="form-control text-muted productPrice" id='create-product-price' placeholder='0' name='productPrice' onChange={handleInputChange}
+                                    value={productFormData.productPrice} required />
                             </div>
                             <div className="form-group">
-                                <label>Type</label>
-                                <select className="form-select" aria-label="select-type" id='create-product-type'>
-                                    <option value='true'>weekly box</option>
-                                    <option value='false'>produce</option>
-                                </select>
+                                <label>Units*</label>
+                                <input type="text" className="form-control text-muted productUnits" id='create-product-units' placeholder='Enter product units' name='productUnits' onChange={handleInputChange}
+                                    value={productFormData.productUnits} required />
                             </div>
                             <div className="form-group">
-                                <label>Availability</label>
-                                <select className="form-select" aria-label="select-availability" id='create-product-availability'>
-                                    <option value='true'>In-stock</option>
-                                    <option value='false'>Out-stock</option>
-                                </select>
+                                <div>Type*</div>
+                                {/* <select className="form-select" aria-label="select-type" id='create-product-type' name="productType" onChange={handleInputChange}>
+                                    <option value="true">weekly box</option>
+                                    <option value="false">produce</option>
+                                </select> */}
+                                <div>
+                                    <input type="radio" id='weekly-box' name="productType" onChange={handleInputChange} value="true" />
+                                    <label className="ms-1" htmlFor="weekly-box">Weekly box</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id='produce' name="productType" onChange={handleInputChange} value="false" />
+                                    <label className="ms-1" htmlFor="weekly-box">Produce</label>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div>Availability</div>
+                                {/* <select className="form-select" aria-label="select-availability" id='create-product-availability' name="productAvailability" onChange={handleInputChange}>
+                                    <option value="true">In-stock</option>
+                                    <option value="false">Out-stock</option>
+                                </select> */}
+                                <div>
+                                    <input type="radio" id='in-stock' name="productAvailability" onChange={handleInputChange} value="true" />
+                                    <label className="ms-1" htmlFor="in-stock">In-stock</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id='out-stock' name="productAvailability" onChange={handleInputChange} value="false" />
+                                    <label className="ms-1" htmlFor="out-stock">Out-stock</label>
+                                </div>
                             </div>
                             <div className="form-group">
                                 <label>Description</label>
-                                <textarea className="form-control" id='create-product-description' rows="3" placeholder='Describe your product...'></textarea>
+                                <textarea className="form-control productDescription" id='create-product-description' rows={3} placeholder='Describe your product...' name='productDescription' onChange={handleInputChange}
+                                    value={productFormData.productDescription}></textarea>
+                            </div>
+                            <div className="form-group">
+                                <label>Allergen</label>
+                                <input type="text" className="form-control text-muted productAllergens" id='create-product-allergens' placeholder='Peanuts, Nuts' name='productAllergens' onChange={handleInputChange}
+                                    value={productFormData.productAllergens} />
+                            </div>
+                            <div className="form-group mt-3">
+                                <label>Image Upload</label>
+                                <input type="file"
+                                    name='productImage'
+                                    onChange={uploadImage}
+                                    className='productImage'></input>
+                                {url ? <img className="product-img-preview preview-img" src={url} height={100} width={100} /> : <></>}
                             </div>
                         </div>
                         {vendorStatus ?
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" className="btn btn-primary">Save</button>
+                                {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary"> Save</button>}
                             </div>
                             : <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
@@ -201,13 +374,7 @@ const ProductInventory = () => {
                         }
                     </div>
                 </div>
-            </div>
-
-
-
-
-
-
+            </form>
         </div>
         // console.log(state)
 

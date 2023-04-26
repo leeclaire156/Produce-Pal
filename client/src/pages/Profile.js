@@ -7,6 +7,8 @@ import { Redirect } from 'react-router-dom'
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
+import { useProductContext } from '../utils/GlobalState';
+import { TOGGLE_VENDOR_STATUS } from '../utils/actions';
 
 function Profile() {
     const { profileId } = useParams();
@@ -21,7 +23,12 @@ function Profile() {
     const profile = data?.me || data?.profile || {};
     console.log(profile);
 
-    const [vendorStatus, setVendorStatus] = useState(false);
+    // const [vendorStatus, setVendorStatus] = useState(false);
+    const [state, dispatch] = useProductContext();
+    const { vendorStatus } = state;
+    const toggleVendorStatus = () => {
+        dispatch({type: TOGGLE_VENDOR_STATUS})
+    };
 
     // const user = {
     //     firstName: 'John',
@@ -41,9 +48,10 @@ function Profile() {
         console.log('need data from database');
     };
 
-    const toggleVendorStatus = () => {
-        setVendorStatus(!vendorStatus);
-    };
+    // // Old version
+    // const toggleVendorStatus = () => {
+    //     setVendorStatus(!vendorStatus);
+    // };
 
     if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
         return (
