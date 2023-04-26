@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import FarmCard from './FarmCard';
 
-// const farms = [
-//     { id: '1', vendorName: 'Farm A', vendorAddress: 'New York', vendorDescription: 'Grass-fed beef in rural farm near New York.', },
-//     { id: '2', vendorName: 'Farm B', vendorAddress: 'Los Angeles', vendorDescription: 'Organic produce in the hills of California near Los Angeles.', },
-//     { id: '3', vendorName: 'Farm C', vendorAddress: 'San Francisco', vendorDescription: 'Sustainable produce in farms near San Francisco', },
-//     { id: '4', vendorName: 'Farm D', vendorAddress: 'Chicago', vendorDescription: 'Organic crops in the farmland of corns near Chicago.', },
-// ];
 
 // TO DO - Add conditional rendering to only show vendorStatus = true
 const FarmList = ({ farms }) => {
@@ -28,10 +22,10 @@ const FarmList = ({ farms }) => {
         } else {
             const filteredResults = farms
                 .filter((farm) =>
-                    farm.vendorAddress.toLowerCase().includes(value.toLowerCase())
+                    farm.vendorAddress[0]?.city.toLowerCase().includes(value.toLowerCase())
                 )
                 .slice(0, 6)
-                .map((farm) => farm.vendorAddress);
+                .map((farm) => farm.vendorAddress[0]?.city);
             setSearchResults(filteredResults);
         }
     };
@@ -47,7 +41,7 @@ const FarmList = ({ farms }) => {
             setSearchResults([]);
         } else {
             const filteredFarms = farms.filter((farm) =>
-                farm.vendorAddress.toLowerCase().includes(searchTerm.toLowerCase())
+                farm.vendorAddress[0]?.city.toLowerCase().includes(searchTerm.toLowerCase())
             );
             setSelectedResult(filteredFarms);
             setSearchError(filteredFarms.length === 0 ? 'No results found' : '');
@@ -100,11 +94,11 @@ const FarmList = ({ farms }) => {
                     {/* if the user selected a result from the dropdown list, it will show the farm location that matches the selected Result */}
                     {selectedResult.length > 0 ? (
                         selectedResult.map((farm) => (
-                            <FarmCard key={farm.id} farm={farm} />
+                            <FarmCard key={farm._id} farm={farm} />
                         ))
                     ) :
                         (farms.map((farm) => (
-                            <FarmCard key={farm.id} farm={farm} />
+                            <FarmCard key={farm._id} farm={farm} />
                         )))}
                 </div>
             </div>

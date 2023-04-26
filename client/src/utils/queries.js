@@ -32,51 +32,64 @@ query Addresses {
 `;
 
 export const QUERY_USERS = gql`
-query Users {
+query Query {
   users {
     _id
     firstName
     lastName
     email
-    address
+    address {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
     biography
     phone
+    userImage
     memberships {
       _id
-      firstName
       vendorName
-      products {
+      vendorTelephone
+      vendorAddress {
         _id
-        productName
+        city
+        state
+        street
+        zipcode
       }
-    }
-    orders {
-      _id
-      orderType
-      purchaseDate
-      products {
-        _id
-        productName
-      }
+      vendorDescription
     }
     vendorStatus
     vendorName
-    vendorTelephone
-    vendorAddress
-    pickupLocation
     vendorDescription
-    sales {
-      _id
-      orderType
-      purchaseDate
-      products {
-        _id
-        productName
-      }
-    }
     products {
       _id
       productName
+    }
+    marketName
+    pickupAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorTelephone
+    vendorAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorImage
+    sales {
+      _id
+    }
+    orders {
+      _id
     }
   }
 }
