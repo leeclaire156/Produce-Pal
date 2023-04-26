@@ -19,6 +19,10 @@ const resolvers = {
         // READ ALL 
         addresses: async () => {
             return await Address.find({})
+            // .populate('street')
+            // .populate('city')
+            // .populate('state')
+            // .populate('zipcode')
         },
         users: async () => {
             return await User.find({})
@@ -37,6 +41,20 @@ const resolvers = {
                 })
                 .populate('address')
                 .populate('vendorAddress')
+                .populate('pickupAddress')
+                // .populate({
+                //     path: 'address',
+                //     populate: 'addresses'
+                // })
+                // .populate({
+                //     path: 'pickupAddress',
+                //     populate: 'addresses'
+                // })
+                // .populate({
+                //     path: 'vendorAddress',
+                //     populate: 'addresses'
+                // })
+                ;
         },
         orders: async () => {
             return await Order.find({})
@@ -91,7 +109,23 @@ const resolvers = {
                 .populate({
                     path: 'orders',
                     populate: 'products'
-                });
+                })
+                .populate('address')
+                .populate('vendorAddress')
+                .populate('pickupAddress')
+                // .populate({
+                //     path: 'address',
+                //     populate: 'addresses'
+                // })
+                // .populate({
+                //     path: 'pickupAddress',
+                //     populate: 'addresses'
+                // })
+                // .populate({
+                //     path: 'vendorAddress',
+                //     populate: 'addresses'
+                // })
+                ;
         },
         // user: async (parent, { _id }) => {
         //     return await User.findById(_id)

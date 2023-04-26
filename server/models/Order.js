@@ -31,7 +31,7 @@ const orderSchema = new Schema(
         // For Order type: Pending, Paid, Ready, Closed
         orderType: {
             type: String,
-            default: '',
+            default: 'Paid',
             trim: true
         },
     },

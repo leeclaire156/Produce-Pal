@@ -4,6 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faMedal, faCamera } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap';
 import 'react-bootstrap';
+import axios from 'axios';
+import { useMutation } from '@apollo/client';
+import { UPDATE_USER_IMAGE } from '../../utils/mutations';
+import { QUERY_USERS } from '../../utils/queries';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function ConsumerInfo(props) {
@@ -16,6 +20,51 @@ function ConsumerInfo(props) {
 
     const handleProfileImageMouseLeave = () => {
         setShowCamera(false);
+    };
+
+
+    const [newuserUrl, setUserUrl] = useState("");
+    const [updateUserImage] = useMutation(UPDATE_USER_IMAGE);
+
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
+    function uploadSingleImage(base64) {
+        axios
+            .post("http://localhost:3000/uploadImage", { image: base64 })
+
+            .then((res) => {
+                // trigger refetch function in here
+                const uploadUrl = res.data
+                // setUserUrl(uploadUrl);
+                updateUserImage({
+                    variables: {
+                        user: props._id,
+                        userImage: uploadUrl
+                    }
+                })
+                // alert(`User Image uploaded Successfully.`);
+                window.location.reload(false);
+            })
+            .catch(console.log);
+    }
+
+    const uploadImage = async (event) => {
+        const files = event.target.files;
+        const base64 = await convertBase64(files[0]);
+        uploadSingleImage(base64);
     };
 
     return (
@@ -34,14 +83,19 @@ function ConsumerInfo(props) {
                 </div>
             </div>
             <div className="row align-items-center">
-                <div className="col-md-6 profile-image"
+
+
+
+                <label className="col-md-6 profile-image"
                     onMouseEnter={handleProfileImageMouseEnter}
                     onMouseLeave={handleProfileImageMouseLeave}
                 >
                     <img
-                        src="https://placehold.co/600x600"
+                        src={props.userImage ? props.userImage : "https://placehold.co/600x600"}
                         alt=""
                         className="img-fluid "
+                        height={600}
+                        width={600}
                     />
                     {!props.vendorStatus && showCamera && (
                         <div className="camera-overlay">
@@ -49,7 +103,17 @@ function ConsumerInfo(props) {
                         </div>
                     )}
 
-                </div>
+                    <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
+
+
+                </label>
+
+
+
+
+
+
+
                 <div className="col-md-6">
                     <div className="">
                         <div className="">
@@ -64,7 +128,10 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.address.street}, {props.address.city}, {props.address.state}, {props.address.zipcode}</p>
+                                    <p>{props.address?.street}</p>
+                                    <p>{props.address?.city}</p>
+                                    <p>{props.address?.state}</p>
+                                    <p>{props.address?.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -106,19 +173,19 @@ function ConsumerInfo(props) {
                             <div className="row">
                                 <div className="form-group col-md-6">
                                     <label>Street</label>
-                                    <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.address.street} />
+                                    <input type="text" className="form-control text-muted" id="street-input" defaultValue={props.address?.street} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>City</label>
-                                    <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.address.city} />
+                                    <input type="text" className="form-control text-muted" id="city-input" defaultValue={props.address?.city} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>State</label>
-                                    <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.address.state} />
+                                    <input type="text" className="form-control text-muted" id="state-input" defaultValue={props.address?.state} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>Zipcode</label>
-                                    <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.address.zipcode} />
+                                    <input type="text" className="form-control text-muted" id="zipcode-input" defaultValue={props.address?.zipcode} />
                                 </div>
                             </div>
                             <div className="form-group">

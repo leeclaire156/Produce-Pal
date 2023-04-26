@@ -4,43 +4,37 @@ import ConsumerInfo from '../components/userInfo/ConsumerInfo';
 import VendorInfo from '../components/userInfo/VendorInfo';
 import Auth from '../utils/auth';
 import { Redirect } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 
 function Profile() {
+    const { profileId } = useParams();
+    // destructure refetch function and pass as a prop to consumerinfo component, then in that 
+    const { loading, data } = useQuery(
+        profileId ? QUERY_SINGLE_PROFILE : GET_ME,
+        {
+            variables: { profileId: profileId },
+        },
+    );
+
+    const profile = data?.me || data?.profile || {};
+    console.log(profile);
 
     const [vendorStatus, setVendorStatus] = useState(false);
 
-    const user = {
-        firstName: 'John',
-        lastName: 'Doe',
-        biography: 'I am John Doe.',
-        vendorName: 'CSA Providence Farm',
-        vendorDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit sapien eu neque blandit, vel finibus urna tincidunt. Vivamus vel magna vestibulum, feugiat quam sed, molestie quam.',
-        address: {
-            '_id': 9990,
-            'street': '123 Main Street',
-            'city': 'Providence',
-            'state': 'RI',
-            'zipcode': '02909'
-        },
-        vendorAddress: {
-            '_id': 9999,
-            'street': '789 Water Street',
-            'city': 'Pawtucket',
-            'state': 'RI',
-            'zipcode': '02901'
-        },
-        pickupAddress: {
-            '_id': 9998,
-            'street': '789 Ocean Ave',
-            'city': 'Newport',
-            'state': 'RI',
-            'zipcode': '02900'
-        },
-        email: 'johndoe@gmail.com',
-        phone: '888-888-8888',
-        memberships: 'Silver Tier',
-        vendorStatus
-    };
+    // const user = {
+    //     firstName: 'John',
+    //     lastName: 'Doe',
+    //     biography: 'I am John Doe.',
+    //     vendorName: 'CSA Providence Farm',
+    //     vendorDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit sapien eu neque blandit, vel finibus urna tincidunt. Vivamus vel magna vestibulum, feugiat quam sed, molestie quam.',
+    //     address: '123 Main St, Providence RI, USA',
+    //     vendorAddress: '456 Water St, Providence RI, USA',
+    //     email: 'johndoe@gmail.com',
+    //     memberships: 'Silver Tier',
+    //     vendorStatus
+    // };
 
     const handleSave = (data) => {
         // setDescription(data.description);
@@ -57,7 +51,7 @@ function Profile() {
                 {/* this toggle button needs to be moved to navBar when implementing */}
                 <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
                 <div className="container mt-5">
-                    {vendorStatus ? <VendorInfo {...user} onSave={handleSave} /> : <ConsumerInfo {...user} onSave={handleSave} />}
+                    {vendorStatus ? <VendorInfo {...profile} onSave={handleSave} /> : <ConsumerInfo {...profile} onSave={handleSave} />}
                 </div>
             </div>
         );

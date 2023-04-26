@@ -1,6 +1,12 @@
 .profile-image {
     /* border-radius: 50%; */
     position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.profile-image:hover {
+    cursor: pointer;
 }
 
 .camera-overlay {
