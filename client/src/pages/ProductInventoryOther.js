@@ -139,7 +139,8 @@ const ProductInventoryOther = () => {
                             <ProductSingleOther
                                 key={product._id}
                                 _id={product._id}
-                                image={product.image}
+                                productId={product.productId}
+                                productImage={product.productImage}
                                 productName={product.productName}
                                 productDescription={product.productDescription}
                                 productCategory={product.productCategory}

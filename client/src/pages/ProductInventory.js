@@ -260,6 +260,7 @@ const ProductInventory = () => {
                             key={product._id}
                             _id={product._id}
                             productImage={product.productImage}
+                            productId={product.productId}
                             productName={product.productName}
                             productDescription={product.productDescription}
                             productCategory={product.productCategory}

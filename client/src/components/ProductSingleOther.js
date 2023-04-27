@@ -12,6 +12,7 @@ function ProductSingleOther(item) {
     const {
         productImage,
         _id,
+        productId,
         productName,
         productDescription,
         productCategory,
@@ -58,6 +59,7 @@ function ProductSingleOther(item) {
                 <div className="card-body">
                     <h5 className="card-title">{productName}</h5>
                     <p className="card-text">{productDescription}</p>
+                    <p className="card-text"><small>Product ID: {productId}</small></p>
                     <p className="card-text"><small>Category: {productCategory}</small></p>
                     <p className="card-text"><small>Inventory: {productInventory}</small></p>
                     <p className="card-text"><small>Price: ${productPrice} /{productUnits}</small></p>
