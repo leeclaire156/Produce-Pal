@@ -256,7 +256,7 @@ const ProductInventory = () => {
                         <ProductSingle
                             key={product._id}
                             _id={product._id}
-                            // image={product.image}
+                            image={product.image}
                             productName={product.productName}
                             productDescription={product.productDescription}
                             productCategory={product.productCategory}
@@ -364,7 +364,7 @@ const ProductInventory = () => {
 
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary"> Save</button>}
+                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary" data-bs-dismiss="modal"> Save</button>}
                         </div>
 
                     </div>

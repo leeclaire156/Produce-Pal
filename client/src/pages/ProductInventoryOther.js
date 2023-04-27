@@ -26,7 +26,7 @@ const ProductInventoryOther = () => {
     const { loading, error, data } = useQuery(STOREFRONT, {
         variables: { id }
     });
-
+    console.log(data)
     const storeData = data?.user || {};
     console.log(storeData)
 
@@ -83,64 +83,70 @@ const ProductInventoryOther = () => {
     // console.log(categories);
     // console.log(cart.length);
 
+    if (!loading) {
+        return (
+            <div className="container my-2">
+                <div className='row mb-3'>
+                </div>
+                <div className='row'>
+                    <Cart />
+                </div>
+                <h2 className='fs-2 mb-3 text-center'>{storeData.vendorName} Products</h2>
 
-    return (
-
-        <div className="container my-2">
-            <div className='row mb-3'>
-            </div>
-            <div className='row'>
-                <Cart />
-            </div>
-            <h2 className='fs-2 mb-3 text-center'>Co-op Farm Products</h2>
-
-            <div className='row mb-3'>
-                <div className="col-lg-12 d-flex justify-content-center justify-content-lg-between">
-                    {/* categories filter button/menu */}
-                    <div className="dropdown">
-                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownBtnCategory" data-bs-toggle="dropdown" aria-expanded="false">
-                            {currentCategoryName ? currentCategoryName : 'Select a category'}
-                        </button>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownBtnCategory">
-                            {categories.map((item) => (
-                                <li key={item._id}>
-                                    <a
-                                        href='#'
-                                        className="dropdown-item"
-                                        onClick={() => { handleClick(item._id) }}
-                                    >
-                                        {item.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                <div className='row mb-3'>
+                    <div className="col-lg-12 d-flex justify-content-center justify-content-lg-between">
+                        {/* categories filter button/menu */}
+                        <div className="dropdown">
+                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownBtnCategory" data-bs-toggle="dropdown" aria-expanded="false">
+                                {currentCategoryName ? currentCategoryName : 'Select a category'}
+                            </button>
+                            <ul className="dropdown-menu" aria-labelledby="dropdownBtnCategory">
+                                {categories.map((item) => (
+                                    <li key={item._id}>
+                                        <a
+                                            href='#'
+                                            className="dropdown-item"
+                                            onClick={() => { handleClick(item._id) }}
+                                        >
+                                            {item.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                {/* array of product cards */}
+                {productArrayData.length ? (
+                    <div className="row is-flex">
+                        {filterProducts().map((product) => (
+                            <ProductSingleOther
+                                key={product._id}
+                                _id={product._id}
+                                image={product.image}
+                                productName={product.productName}
+                                productDescription={product.productDescription}
+                                productCategory={product.productCategory}
+                                productInventory={product.productInventory}
+                                productPrice={product.productPrice}
+                                productUnits={product.productUnits}
+                                productType={product.productType}
+                                productAvailability={product.productAvailability}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <h3>No products in this farm yet !</h3>
+                )}
             </div>
-            {/* array of product cards */}
-            {productArrayData.length ? (
-                <div className="row is-flex">
-                    {filterProducts().map((product) => (
-                        <ProductSingleOther
-                            key={product._id}
-                            _id={product._id}
-                            image={product.image ? product.image : null}
-                            productName={product.productName}
-                            productDescription={product.productDescription}
-                            productCategory={product.productCategory}
-                            productInventory={product.productInventory}
-                            productPrice={product.productPrice}
-                            productUnits={product.productUnits}
-                            productType={product.productType}
-                            productAvailability={product.productAvailability}
-                        />
-                    ))}
-                </div>
-            ) : (
-                <h3>No products in this farm yet !</h3>
-            )}
-        </div>
-    );
+        );
+    } else {
+        return (
+            <h2 className="container d-flex justify-content-center align-items-center">
+                loading...
+            </h2>
+        )
+    }
 };
 
 export default ProductInventoryOther;
