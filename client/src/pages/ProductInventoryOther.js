@@ -6,7 +6,7 @@ import {
 } from '../utils/actions';
 // productData needs to be hidden when merging
 import productData from '../utils/products';
-import ProductSingle from '../components/ProductSingle';
+import ProductSingleOther from '../components/ProductSingleOther';
 import Cart from '../components/Cart';
 import { idbPromise } from '../utils/helpers';
 import UserToggle from '../components/UserToggle';
@@ -18,7 +18,7 @@ import { ADD_PRODUCT } from '../utils/mutations';
 import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
-const ProductInventory = () => {
+const ProductInventoryOther = () => {
 
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
@@ -212,19 +212,18 @@ const ProductInventory = () => {
                 {/* TEMPORARY FOR TESTING, NEED TO DELETE LATER */}
                 {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
             </div>
-            {/* <div className='row'>
-                {vendorStatus ? <br /> : <Cart />}
-            </div> */}
-            <h2 className='fs-2 mb-3 text-center'>My Farm Products</h2>
+            <div className='row'>
+                <Cart />
+            </div>
+            <h2 className='fs-2 mb-3 text-center'>Co-op Farm Products</h2>
 
             <div className='row mb-3'>
                 <div className="col-lg-12 d-flex justify-content-center justify-content-lg-between">
 
-
+                    {/* invisible as a placeholder. */}
                     <div>
-                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Create a product</button>
+                        <button type="button" className="btn btn-primary invisible">Create a product</button>
                     </div>
-
 
                     {/* categories filter button/menu */}
                     <div className="dropdown">
@@ -251,7 +250,7 @@ const ProductInventory = () => {
             {state.products.length ? (
                 <div className="row is-flex">
                     {filterProducts().map((product) => (
-                        <ProductSingle
+                        <ProductSingleOther
                             key={product._id}
                             _id={product._id}
                             // image={product.image}
@@ -271,7 +270,7 @@ const ProductInventory = () => {
             )}
 
 
-            {/* <!-- "create a product" Modal (enable in vendorStatus: true )--> */}
+            {/* <!-- "create a product" Modal (this modal below NEEDS TO BE DELETED LATER)--> */}
             <form className="modal modal-lg fade" id="createProductModal" tabIndex="-1" aria-labelledby='createProductModalLabel' aria-hidden="true" onSubmit={handleFormSubmit}>
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -359,12 +358,16 @@ const ProductInventory = () => {
                                 {url ? <img className="product-img-preview preview-img" src={url} height={100} width={100} /> : <></>}
                             </div>
                         </div>
-
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary"> Save</button>}
-                        </div>
-
+                        {vendorStatus ?
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary"> Save</button>}
+                            </div>
+                            : <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
+                                <button type="button" className="btn btn-primary">Checkout</button>
+                            </div>
+                        }
                     </div>
                 </div>
             </form>
@@ -374,4 +377,4 @@ const ProductInventory = () => {
     );
 };
 
-export default ProductInventory;
+export default ProductInventoryOther;
