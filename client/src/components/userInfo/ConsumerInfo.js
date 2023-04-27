@@ -68,20 +68,20 @@ function ConsumerInfo(props) {
     };
 
 
-    // console.log(props.address[0]?._id)
+    console.log(props.address[0]?._id)
     console.log(props)
 
 
-    // const initialAddress = props.address[0]
+    const initialAddress = props.address[0]
     const [formState, setFormState] = useState({
         user: `${props._id}`,
         firstName: `${props.firstName}`,
         lastName: `${props.lastName}`,
-        // address: `${initialAddress?._id}`,
-        // street: `${initialAddress?.street}`,
-        // city: `${initialAddress?.city}`,
-        // state: `${initialAddress?.state}`,
-        // zipcode: `${initialAddress?.zipcode}`,
+        address: `${initialAddress?._id}`,
+        street: `${initialAddress?.street}`,
+        city: `${initialAddress?.city}`,
+        state: `${initialAddress?.state}`,
+        zipcode: `${initialAddress?.zipcode}`,
         biography: `${props.biography}`,
         phone: `${props.phone}`,
     });
@@ -134,7 +134,6 @@ function ConsumerInfo(props) {
                     </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit
                     </button>} */}
-
             </div>
             <div className="row">
                 <div className="col-12 text-center mb-5">
@@ -142,9 +141,6 @@ function ConsumerInfo(props) {
                 </div>
             </div>
             <div className="row align-items-center">
-
-
-
                 <label className="col-md-6 profile-image"
                     onMouseEnter={handleProfileImageMouseEnter}
                     onMouseLeave={handleProfileImageMouseLeave}
@@ -161,17 +157,8 @@ function ConsumerInfo(props) {
                             <FontAwesomeIcon icon={faCamera} />
                         </div>
                     )}
-
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
-
-
                 </label>
-
-
-
-
-
-
 
                 <div className="col-md-6">
                     <div className="">
@@ -197,13 +184,13 @@ function ConsumerInfo(props) {
                                     <p>{props.phone}, {props.email}</p>
                                 </div>
                             </div>
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faMedal} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Memberships</h5>
-                                    <p>{props.memberships}</p>
+                                    {!props.memberships[0] ? <p>You have no subscriptions!</p> : props.memberships.map((memberships) => (<p>{memberships}</p>))}
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -226,7 +213,7 @@ function ConsumerInfo(props) {
                                 <label>Last Name</label>
                                 <input type="text" className="form-control text-muted" id="full-name-input" onChange={handleChange} name="lastName" value={formState.lastName} />
                             </div>
-                            {/* <div className="row">
+                            <div className="row">
                                 <div className="form-group col-md-6">
                                     <label>Street</label>
                                     <input type="text" className="form-control text-muted" id="street-input" placeholder={props.address[0]?.street} onChange={handleChange} name="street" value={formState.street} />
@@ -243,7 +230,7 @@ function ConsumerInfo(props) {
                                     <label>Zipcode</label>
                                     <input type="text" className="form-control text-muted" id="zipcode-input" placeholder={props.address[0]?.zipcode} onChange={handleChange} name="zipcode" value={formState.zipcode} />
                                 </div>
-                            </div> */}
+                            </div>
                             <div className="form-group">
                                 <label>Phone</label>
                                 <input type="text" className="form-control text-muted" id="phone-input" onChange={handleChange} name="phone" value={formState.phone} />
@@ -259,7 +246,7 @@ function ConsumerInfo(props) {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary">Save changes</button>
+                            <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                 </div>
