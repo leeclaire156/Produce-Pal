@@ -6,7 +6,7 @@ db.once('open', async () => {
     await Product.deleteMany();
     const products = await Product.insertMany([
         {
-            productId: 12,
+            productId: '12',
             productName: 'Carrots',
             productType: false,
             productPrice: 10.15,
@@ -18,7 +18,7 @@ db.once('open', async () => {
             productDescription: 'Colorful carrots.'
         },
         {
-            productId: 1234,
+            productId: '1234',
             productName: 'Cabbage',
             productType: false,
             productPrice: 5.75,
@@ -30,7 +30,7 @@ db.once('open', async () => {
             productDescription: 'Purple cabbage.'
         },
         {
-            productId: 901,
+            productId: '901',
             productName: 'Sharebox of Organic Eggs',
             productType: true,
             productPrice: 25.99,
@@ -42,7 +42,7 @@ db.once('open', async () => {
             productDescription: 'Eggs are from different farms that are free range.'
         },
         {
-            productId: 567,
+            productId: '567',
             productName: 'Apple Pie',
             productType: false,
             productPrice: 5.99,
@@ -54,7 +54,7 @@ db.once('open', async () => {
             productDescription: 'My special blend of spices with a hint of rum.'
         },
         {
-            productId: 568,
+            productId: '568',
             productName: 'Sharebox of Baked Goods from Other Bakers',
             productType: true,
             productPrice: 39.99,
@@ -71,7 +71,7 @@ db.once('open', async () => {
     await Order.deleteMany();
     const orders = await Order.insertMany([
         {
-            orderId: 0001,
+            orderId: '0001',
             products: [
                 products[0]._id, 
                 products[0]._id, 
@@ -80,7 +80,7 @@ db.once('open', async () => {
             orderType: 'Pending'
         },
         {
-            orderId: 0002,
+            orderId: '0002',
             products: [
                 products[1]._id,
                 products[2]._id
@@ -88,7 +88,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: 383,
+            orderId: '383',
             products: [
                 products[3]._id,
                 products[4]._id
