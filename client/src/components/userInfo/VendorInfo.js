@@ -196,6 +196,13 @@ function VendorInfo(props) {
                                 </div>
                             </div>
                             <div className="row">
+                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
+                                <div className="col-lg-10 col-md-10">
+                                    <h5>Find us at {props.marketName}</h5>
+                                    <p>{props.pickupAddress[0]?.street}, {props.pickupAddress[0]?.city}, {props.pickupAddress[0]?.state}, {props.pickupAddress[0]?.zipcode}</p>
+                                </div>
+                            </div>
+                            <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Contact</h5>
