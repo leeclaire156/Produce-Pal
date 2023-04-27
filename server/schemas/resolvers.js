@@ -175,10 +175,6 @@ const resolvers = {
         user: async (parent, { _id }) => {
             return await User.findById(_id)
                 .populate('products')
-                // .populate({
-                //     path: 'memberships',
-                //     populate: 'products'
-                // })
                 .populate({
                     path: 'sales',
                     populate: 'products'
@@ -307,7 +303,7 @@ const resolvers = {
             await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true });
             return product;
         },
-        // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
+        // // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
         // addOrder: async (parent, { products }, context, seller) => {
         //     const seller = args.seller;
 
@@ -319,6 +315,7 @@ const resolvers = {
         //         // When buyer pays, then:
         //         // send the buyer's ID to orders array
         //         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } }, { new: true });
+        //         
         //         // also send the seller's user ID to sales array & the sellerName array
         //         await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
         //         await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
@@ -329,6 +326,7 @@ const resolvers = {
         //     }
         //     throw new AuthenticationError('Not logged in');
         // },
+
         // For Apollo back end testing
         addOrder: async (parent, args) => {
             const products = args.products;

@@ -22,6 +22,7 @@ import OrderHistory from './pages/OrderHistory'
 import ProfileOtherVendor from './pages/ProfileOtherVendor'
 import ProfileOtherConsumer from './pages/ProfileOtherConsumer'
 import { ProductProvider } from './utils/GlobalState.js'
+import Success from './pages/Success';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -65,16 +66,17 @@ function App() {
               <Route exact path='/order-history' component={OrderHistory} />
               {/* my productInventory page */}
               {/* this route is for vendor to manage the product inventory */}
-              <Route exact path='/product-inventory' component={ProductInventory} />
+              <Route exact path='/productinventory' component={ProductInventory} />
               {/* this route is for consumer to buy farmer products */}
-              {/* <Route exact path='/product-inventory/:id' component={ProductInventoryOther} /> */}
+              {/* <Route exact path='/productinventory/:id' component={ProductInventoryOther} /> */}
               {/* this route is for testing */}
-              <Route exact path='/store/:id' component={ProductInventoryOther} />
+              <Route exact path='/productInventoryother/:id' component={ProductInventoryOther} />
               {/* this route is for the consumer to view vendor/farm's profile information */}
               <Route exact path='/profile/vendor/:id' component={ProfileOtherVendor} />
               {/* this route is for farmer to view their consumers who bought their products */}
               <Route exact path='/profile/consumer/:id' component={ProfileOtherConsumer} />
-
+              {/* this route is for the success Stripe payment made page and where addOrder function is called */}
+              <Route exact path='/success' component={Success} />
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
               <Route render={() => <h1 className='display-2 container'>Wrong page!</h1>} />
               {/* <Route path="*" component={Error404} /> */}
