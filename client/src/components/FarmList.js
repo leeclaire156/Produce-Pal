@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import FarmCard from './FarmCard';
 
 // only shows cards with vendorStatus true

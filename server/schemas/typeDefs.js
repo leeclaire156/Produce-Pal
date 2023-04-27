@@ -18,7 +18,7 @@ type User {
     biography: String
     phone: String
     userImage: String
-    memberships: [User]
+    # memberships: [User]
     sales: [Order]
     orders: [Order]
     vendorStatus: Boolean
@@ -34,7 +34,7 @@ type User {
 
 type Product {
     _id: ID
-    productId: Int
+    productId: String
     productName: String
     productType: Boolean
     productPrice: Float
@@ -49,7 +49,7 @@ type Product {
 
 type Order {
     _id: ID!
-    orderId: Int
+    orderId: String
     purchaseDate: String!
     buyerName: [User]
     sellerName: [User]
@@ -82,17 +82,19 @@ type Auth {
 type Query {
     # Because we have the context functionality in our resolvers.js Query function in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: User
+    # myprofile: User
     addresses: [Address]
     users: [User]
     farms(vendorStatus: Boolean): [User]
+    orders: [Order]
     products: [Product]
     sales: [Order]
-    orders: [Order]
-    address(_id: ID!): Address
-    product(_id: ID!): Product
-    order(_id: ID!): Order
     profile(profileId: ID!): User
+    user(_id: ID!): User
+    order(_id: ID!): Order
+    product(_id: ID!): Product
     checkout(products: [ID]!): Checkout
+    address(_id: ID!): Address
 }
 
 type Mutation {
@@ -177,13 +179,13 @@ type Mutation {
         state: String
         street: String
         zipcode: String
-        address: [ID]!): Address
+        vendorAddress: [ID]!): Address
     updatePickupAddress(
         city: String
         state: String
         street: String
         zipcode: String
-        address: [ID]!): Address
+        pickupAddress: [ID]!): Address
     updateOrder(
         _id: ID
         orderId: Int
@@ -191,7 +193,7 @@ type Mutation {
         products: [ID]
         orderType: String
         order: [ID]!): Order
-    updateProduct(
+    editProduct(
         _id: ID
         productId: Int
         productName: String
@@ -206,12 +208,13 @@ type Mutation {
         productImage: String
         product: [ID]!): Product
     # function decrementing the inventory number of products
-    updateProductInventory(
-        _id: ID
-        productInventory: Int!
-        product: [ID]!): Product
+    # updateProductInventory(
+    #     _id: ID
+    #     productInventory: Int!
+    #     product: [ID]!): Product
     # deleteUser(
         # user: [ID]!): User
+    updateProduct(_id: ID!, productInventory: Int!): Product
     login(email: String!, password: String!): Auth
 }
 `;

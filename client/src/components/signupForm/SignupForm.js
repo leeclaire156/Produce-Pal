@@ -413,7 +413,7 @@ function Signup(props) {
                         rows={6}
                         id="biography"
                         onChange={handleChange}
-                        value={formState.vendorAddress}
+                        value={formState.biography}
                     />
                 </Form.Group>
                 <Form.Group className="flex-row space-between my-2">

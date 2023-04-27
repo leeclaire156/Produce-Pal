@@ -26,40 +26,39 @@ function Profile() {
     console.log(profile);
 
     const [state, dispatch] = useProductContext();
-    // const [vendorStatus, setVendorStatus] = useState(false);
     const { vendorStatus } = state;
 
     // load current vendorStatus from IndexDB if there is one
-    const loadVendorStatus = async () => {
-        const vendorStatusIDB = await idbPromise('vendorStatus', 'get');
-        // console.log(vendorStatusIDB[0].vendorStatus);
-        if (vendorStatusIDB[0].vendorStatus === true || vendorStatusIDB[0].vendorStatus === false) {
-            dispatch({ type: UPDATE_VENDOR_STATUS, vendorStatus: vendorStatusIDB[0].vendorStatus });
-        } else {
-            const vendorStatusObj = { _id: 1, vendorStatus: vendorStatus };
-            idbPromise('vendorStatus', 'put', vendorStatusObj);
-        };
-        return;
-    };
+    // const loadVendorStatus = async () => {
+    //     const vendorStatusIDB = await idbPromise('vendorStatus', 'get');
+    //     // console.log(vendorStatusIDB[0].vendorStatus);
+    //     if (vendorStatusIDB[0].vendorStatus === true || vendorStatusIDB[0].vendorStatus === false) {
+    //         dispatch({ type: UPDATE_VENDOR_STATUS, vendorStatus: vendorStatusIDB[0].vendorStatus });
+    //     } else {
+    //         const vendorStatusObj = { _id: 1, vendorStatus: vendorStatus };
+    //         idbPromise('vendorStatus', 'put', vendorStatusObj);
+    //     };
+    //     return;
+    // };
     // only allow loadVendorStatus() function to run once when the page loading.
-    window.addEventListener('load', async function onLoad() {
-        loadVendorStatus();
-        window.removeEventListener('load', onLoad);
-    });
+    // window.addEventListener('load', async function onLoad() {
+    //     loadVendorStatus();
+    //     window.removeEventListener('load', onLoad);
+    // });
 
     console.log("global VendorStatus =" + vendorStatus);
     // toggleVendorStatus function to update the vendorStatus in globalState and IndexDB.
-    const toggleVendorStatus = async () => {
-        try {
-            // console.log(vendorStatus);
-            await dispatch({ type: TOGGLE_VENDOR_STATUS })
-            const vendorStatusObj = { _id: 1, vendorStatus: !vendorStatus };
-            await idbPromise('vendorStatus', 'put', vendorStatusObj);
-        } catch (error) {
-            console.error(error);
-            throw error;
-        }
-    };
+    // const toggleVendorStatus = async () => {
+    //     try {
+    //         // console.log(vendorStatus);
+    //         await dispatch({ type: TOGGLE_VENDOR_STATUS })
+    //         const vendorStatusObj = { _id: 1, vendorStatus: !vendorStatus };
+    //         await idbPromise('vendorStatus', 'put', vendorStatusObj);
+    //     } catch (error) {
+    //         console.error(error);
+    //         throw error;
+    //     }
+    // };
 
 
     // const user = {
@@ -91,9 +90,9 @@ function Profile() {
             return (
                 <div className='container'>
                     {/* this toggle button needs to be moved to navBar when implementing */}
-                    <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
+                    {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
                     <div className="container mt-5">
-                        {vendorStatus ? <VendorInfo {...profile} onSave={handleSave} /> : <ConsumerInfo {...profile} onSave={handleSave} />}
+                        <VendorInfo {...profile} onSave={handleSave} />
                     </div>
                 </div>
             );

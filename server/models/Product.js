@@ -2,23 +2,22 @@ const { Schema, model } = require('mongoose');
 
 const productSchema = new Schema({
     productId: {    
-        type: Number, 
-        required: true, 
+        type: String, 
+        default: '',
     },
     productName: {
         type: String, 
-        required: true, 
+        default: '',
         trim: true,
     },
     // Default is false so produce. If true, Sharebox type chosen.
     productType: {
         type: Boolean,
-        // required: true,
         default: false,
     },
     productPrice: {
         type: Number, 
-        required: true, 
+        default: '',
         // get: getPrice, 
         // set: setPrice, 
     },
@@ -26,20 +25,22 @@ const productSchema = new Schema({
     // For Produce: vegetable, meat, egg, dairy, fruits, herb, sweetener etc.
     productCategory: {
         type: String,
+        default: '',
         trim: true
     },
     // Number in inventory of product
     productInventory: {
         type: Number, 
-        // required: true, 
+        default: 0,
     },
     // units example lbs, oz, ea.
     productUnits: {
         type: String, 
-        // required: true, 
+        default: '',
     },
     productAllergens: {
         type: String, 
+        default: '',
         trim: true,
     },
     // boolean defaults to true (in stock) & user/vendor can change it to false
@@ -50,6 +51,7 @@ const productSchema = new Schema({
     // open ended field in the front end
     productDescription: {
         type: String, 
+        default: '',
         trim: true, 
     },
     productImage: {

@@ -6,7 +6,7 @@ db.once('open', async () => {
     await Product.deleteMany();
     const products = await Product.insertMany([
         {
-            productId: 12,
+            productId: '12',
             productName: 'Carrots',
             productType: false,
             productPrice: 10.15,
@@ -18,7 +18,7 @@ db.once('open', async () => {
             productDescription: 'Colorful carrots.'
         },
         {
-            productId: 1234,
+            productId: '1234',
             productName: 'Cabbage',
             productType: false,
             productPrice: 5.75,
@@ -30,7 +30,7 @@ db.once('open', async () => {
             productDescription: 'Purple cabbage.'
         },
         {
-            productId: 901,
+            productId: '901',
             productName: 'Sharebox of Organic Eggs',
             productType: true,
             productPrice: 25.99,
@@ -42,7 +42,7 @@ db.once('open', async () => {
             productDescription: 'Eggs are from different farms that are free range.'
         },
         {
-            productId: 567,
+            productId: '567',
             productName: 'Apple Pie',
             productType: false,
             productPrice: 5.99,
@@ -54,7 +54,7 @@ db.once('open', async () => {
             productDescription: 'My special blend of spices with a hint of rum.'
         },
         {
-            productId: 568,
+            productId: '568',
             productName: 'Sharebox of Baked Goods from Other Bakers',
             productType: true,
             productPrice: 39.99,
@@ -66,7 +66,7 @@ db.once('open', async () => {
             productDescription: 'A month supply of apple pies from different bakers. Keep frozen and throw in the oven when ready to serve.'
         },
         {
-            productId: 521,
+            productId: '521',
             productName: 'Grapes',
             productType: false,
             productPrice: 8.99,
@@ -78,7 +78,7 @@ db.once('open', async () => {
             productDescription: 'Seedless Green Grapes 3lbs'
         },
         {
-            productId: 522,
+            productId: '522',
             productName: 'Honeycrisp Apple',
             productType: false,
             productPrice: 1.89,
@@ -90,7 +90,7 @@ db.once('open', async () => {
             productDescription: 'Organic Honeycrisp Apple'
         },
         {
-            productId: 523,
+            productId: '523',
             productName: 'Bananas',
             productType: false,
             productPrice: 1.69,
@@ -102,7 +102,7 @@ db.once('open', async () => {
             productDescription: 'One Bunch of Organic Bananas'
         },
         {
-            productId: 524,
+            productId: '524',
             productName: 'Honey',
             productType: false,
             productPrice: 16.79,
@@ -114,7 +114,7 @@ db.once('open', async () => {
             productDescription: '16oz of Pure Raw Unfiltered Honey'
         },
         {
-            productId: 525,
+            productId: '525',
             productName: 'Sourdough Bread',
             productType: false,
             productPrice: 4.69,
@@ -126,7 +126,7 @@ db.once('open', async () => {
             productDescription: '24oz Loaf of Sourdough Bread'
         },
         {
-            productId: 526,
+            productId: '526',
             productName: 'Blueberry Jam',
             productType: false,
             productPrice: 5.79,
@@ -138,7 +138,7 @@ db.once('open', async () => {
             productDescription: '16oz Blueberry Preserves'
         },
         {
-            productId: 527,
+            productId: '527',
             productName: 'Eggs',
             productType: false,
             productPrice: 3.79,
@@ -150,7 +150,7 @@ db.once('open', async () => {
             productDescription: 'One Dozen Large Cage-Free White Eggs'
         },
         {
-            productId: 528,
+            productId: '528',
             productName: 'Rosemary',
             productType: false,
             productPrice: 1.99,
@@ -162,7 +162,7 @@ db.once('open', async () => {
             productDescription: '.5oz Fresh Organic Rosemary'
         },
         {
-            productId: 529,
+            productId: '529',
             productName: 'Goat Cheese',
             productType: false,
             productPrice: 5.99,
@@ -174,7 +174,7 @@ db.once('open', async () => {
             productDescription: '4oz Organic Plain Goat Cheese Log'
         },
         {
-            productId: 530,
+            productId: '530',
             productName: 'Maple Syrup',
             productType: false,
             productPrice: 9.69,
@@ -186,7 +186,7 @@ db.once('open', async () => {
             productDescription: '12oz Dark Amber Grade A Organic Maple Syrup'
         },
         {
-            productId: 532,
+            productId: '532',
             productName: 'Pickles',
             productType: false,
             productPrice: 5.99,
@@ -198,7 +198,7 @@ db.once('open', async () => {
             productDescription: '32oz Kosher Half Sour Extra Crunchy Pickles'
         },
         {
-            productId: 533,
+            productId: '533',
             productName: 'Sauerkraut',
             productType: false,
             productPrice: 4.51,
@@ -210,7 +210,7 @@ db.once('open', async () => {
             productDescription: 'Old Fashioned Sauerkraut 24oz'
         },
         {
-            productId: 534,
+            productId: '534',
             productName: 'Sugar Snap Peas',
             productType: false,
             productPrice: 3.95,
@@ -222,7 +222,7 @@ db.once('open', async () => {
             productDescription: '8oz Stringless Sugar Snap Peas'
         },
         {
-            productId: 535,
+            productId: '535',
             productName: 'Mushrooms',
             productType: false,
             productPrice: 5.38,
@@ -234,7 +234,7 @@ db.once('open', async () => {
             productDescription: 'One Pound of Sliced Baby Bella Mushrooms'
         },
         {
-            productId: 536,
+            productId: '536',
             productName: 'Onion',
             productType: false,
             productPrice: 2.69,
@@ -246,7 +246,7 @@ db.once('open', async () => {
             productDescription: '2lb Bag of Vidalia Onions'
         },
         {
-            productId: 537,
+            productId: '537',
             productName: 'Tomato',
             productType: false,
             productPrice: 1.99,
@@ -258,7 +258,7 @@ db.once('open', async () => {
             productDescription: 'One Pound of Fresh Roma Tomatoes'
         },
         {
-            productId: 538,
+            productId: '538',
             productName: 'Basil',
             productType: false,
             productPrice: 3.79,
@@ -270,7 +270,7 @@ db.once('open', async () => {
             productDescription: '3oz of Fresh Organic Basil'
         },
         {
-            productId: 539,
+            productId: '539',
             productName: 'Beet',
             productType: false,
             productPrice: 2.28,
@@ -282,7 +282,7 @@ db.once('open', async () => {
             productDescription: 'One Pound of Fresh Red Beets'
         },
         {
-            productId: 540,
+            productId: '540',
             productName: 'Eggpolant',
             productType: false,
             productPrice: 2.29,
@@ -294,7 +294,7 @@ db.once('open', async () => {
             productDescription: 'One Large Organic Eggplant'
         },
         {
-            productId: 541,
+            productId: '541',
             productName: 'Sweet Potato',
             productType: false,
             productPrice: 3.39,
@@ -306,7 +306,7 @@ db.once('open', async () => {
             productDescription: '3lb Bag of Sweet Potatoes'
         },
         {
-            productId: 542,
+            productId: '542',
             productName: 'Spinach',
             productType: false,
             productPrice: 2.49,
@@ -318,7 +318,7 @@ db.once('open', async () => {
             productDescription: '5oz of Organic Baby Spinach'
         },
         {
-            productId: 543,
+            productId: '543',
             productName: 'Bell Pepper',
             productType: false,
             productPrice: 1.49,
@@ -330,7 +330,7 @@ db.once('open', async () => {
             productDescription: 'One Oragnic Green Bell Pepper'
         },
         {
-            productId: 544,
+            productId: '544',
             productName: 'Okra',
             productType: false,
             productPrice: 1.69,
@@ -342,7 +342,7 @@ db.once('open', async () => {
             productDescription: '12oz of Cut Okra'
         },
         {
-            productId: 545,
+            productId: '545',
             productName: 'Swiss Chard',
             productType: false,
             productPrice: 4.29,
@@ -354,7 +354,7 @@ db.once('open', async () => {
             productDescription: 'One Bunch of Rainbow Chard'
         },
         {
-            productId: 546,
+            productId: '546',
             productName: 'Kale',
             productType: false,
             productPrice: 5.99,
@@ -366,7 +366,7 @@ db.once('open', async () => {
             productDescription: '12oz of Organic Chopped Kale'
         },
         {
-            productId: 547,
+            productId: '547',
             productName: 'Squash',
             productType: false,
             productPrice: 4.39,
@@ -378,7 +378,7 @@ db.once('open', async () => {
             productDescription: 'One Organic Butternut Squash'
         },
         {
-            productId: 548,
+            productId: '548',
             productName: 'Sharebox of Apples',
             productType: true,
             productPrice: 11.99,
@@ -390,7 +390,7 @@ db.once('open', async () => {
             productDescription: 'Sharebox of Organic Honey Crisp Apples'
         },
         {
-            productId: 549,
+            productId: '549',
             productName: 'Sharebox of Pears',
             productType: true,
             productPrice: 14.99,
@@ -402,7 +402,7 @@ db.once('open', async () => {
             productDescription: 'Sharebox of Organic Pears'
         },
         {
-            productId: 550,
+            productId: '550',
             productName: 'Sharebox of Oranges',
             productType: true,
             productPrice: 12.99,
@@ -414,7 +414,7 @@ db.once('open', async () => {
             productDescription: 'Sharebox of Organic Oranges'
         },
         {
-            productId: 551,
+            productId: '551',
             productName: 'Sharebox of Bananas',
             productType: true,
             productPrice: 16.99,
@@ -426,7 +426,7 @@ db.once('open', async () => {
             productDescription: 'Sharebox of Organic Bananas'
         },
         {
-            productId: 552,
+            productId: '552',
             productName: 'Sharebox of Organic Blackberries',
             productType: true,
             productPrice: 19.99,
@@ -444,16 +444,15 @@ db.once('open', async () => {
     await Order.deleteMany();
     const orders = await Order.insertMany([
         {
-            orderId: 0001,
+            orderId: '0001',
             products: [
-                products[0]._id, 
                 products[0]._id, 
                 products[1]._id
             ],
             orderType: 'Pending'
         },
         {
-            orderId: 0002,
+            orderId: '0002',
             products: [
                 products[1]._id,
                 products[2]._id
@@ -461,7 +460,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: 383,
+            orderId: '383',
             products: [
                 products[3]._id,
                 products[4]._id
@@ -469,14 +468,14 @@ db.once('open', async () => {
             orderType: 'Ready'
         },
         {
-            orderId: 0005,
+            orderId: '0005',
             products: [ 
                 products[5]._id
             ],
             orderType: 'Pending'
         },
         {
-            orderId: 0023,
+            orderId: '0023',
             products: [ 
                 products[6]._id,
                 products[6]._id,
@@ -496,7 +495,7 @@ db.once('open', async () => {
             orderType: 'Pending'
         },
         {
-            orderId: 0023,
+            orderId: '0023',
             products: [ 
                 products[7]._id,
                 products[9]._id,
@@ -512,14 +511,14 @@ db.once('open', async () => {
             orderType: 'Pending'
         },
         {
-            orderId: 0024,
+            orderId: '0024',
             products: [
                 products[8]._id
             ],
             orderType: 'Paid'
         },
         {
-            orderId: 0025,
+            orderId: '0025',
             products: [
                 products[11]._id,
                 products[11]._id,
@@ -531,7 +530,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: 0026,
+            orderId: '0026',
             products: [
                 products[12]._id,
                 products[12]._id,
@@ -541,7 +540,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: 0027,
+            orderId: '0027',
             products: [
                 products[27]._id,
                 products[27]._id,
@@ -551,7 +550,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: 0331,
+            orderId: '0331',
             products: [
                 products[25]._id,
                 products[25]._id,
@@ -561,7 +560,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: 0025,
+            orderId: '0025',
             products: [
                 products[22]._id,
                 products[22]._id,
@@ -573,7 +572,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: 0023,
+            orderId: '0023',
             products: [ 
                 products[20]._id,
                 products[20]._id,
@@ -589,7 +588,7 @@ db.once('open', async () => {
             orderType: 'Pending'
         },
         {
-            orderId: 0023,
+            orderId: '0023',
             products: [ 
                 products[10]._id,
                 products[10]._id,
@@ -612,6 +611,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I love long walks on the beach with my family.',
             phone: '386-019-4824',
+            userImage: '',
             address: [],
             vendorAddress: [],
             sales: [
@@ -622,7 +622,6 @@ db.once('open', async () => {
             vendorName: 'The CoOp',
             vendorDescription: 'We have single produce items and we work with other farms to compile great products.',
             products: [
-                products[0]._id, 
                 products[0]._id, 
                 products[1]._id, 
                 products[2]._id
@@ -637,8 +636,6 @@ db.once('open', async () => {
             password: '12345',
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
             phone: '234-109-5786',
-            memberships: [
-            ],  
             sales: [
                 orders[2]._id, 
             ],
@@ -667,8 +664,6 @@ db.once('open', async () => {
             password: 'password2',
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
             phone: '123-456-7890',
-            memberships: [
-            ],  
             orders: [
                 orders[0]._id,
                 orders[3]._id,
@@ -687,8 +682,6 @@ db.once('open', async () => {
             password: 'password234',
             biography: 'I supoort my local CSAs!',
             phone: '321-654-6789',
-            memberships: [
-            ],  
             orders: [
                 orders[2]._id
             ],
@@ -891,15 +884,15 @@ db.once('open', async () => {
 
     ], { ordered: true } );
 
-    // Add MaSandra to Jenny's membership array since she ordered from MaSandra (read right to left)
-    users[1].memberships.push(users[0]._id)
-    await users[1].save()
-    // Add MaSandra to Claire's membership array since she ordered from MaSandra
-    users[2].memberships.push(users[0]._id)
-    await users[2].save()
-    // Add Jenny to Zhihao's membership array since he ordered from Jenny
-    users[3].memberships.push(users[1]._id)
-    await users[3].save()
+    // // Add MaSandra to Jenny's membership array since she ordered from MaSandra
+    // users[1].memberships.push(users[0]._id)
+    // await users[1].save()
+    // // Add MaSandra to Claire's membership array since she ordered from MaSandra
+    // users[2].memberships.push(users[0]._id)
+    // await users[2].save()
+    // // Add Jenny to Zhihao's membership array since he ordered from Jenny
+    // users[3].memberships.push(users[1]._id)
+    // await users[3].save()
 
     // PUSH buyer and seller names to respective orders
     // Order [0]
@@ -1117,6 +1110,7 @@ db.once('open', async () => {
             state: 'District of Columbia',
             zipcode: '20002',
         },
+        //next 5 addresses are markets (pickup addresses) [25,6,7,8,9]
         {
             street: '717 8th St SE',
             city: 'Washington',
@@ -1147,6 +1141,79 @@ db.once('open', async () => {
             state: 'District of Columbia',
             zipcode: '20003',
         },
+        //next 12 are vendor addresses for hybrid accounts
+        {
+            street: '1310 Pennsylvania Ave SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '325 Pennsylvania Ave SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '729 8th St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '417 A St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '1001 E St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '1363 E St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '501 2nd St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '800 C St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '222 7th St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '1111 4th St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '1010 G St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '1433 D St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
         
     ])
 
@@ -1165,6 +1232,52 @@ db.once('open', async () => {
 
     users[3].address.push(addresses[5]._id)
     await users[3].save()
+
+    users[4].address.push(addresses[6]._id)
+    users[4].vendorAddress.push(addresses[30]._id)
+    users[0].pickupAddress.push(addresses[25]._id)
+    await users[4].save()
+
+    users[5].address.push(addresses[7]._id)
+    users[5].vendorAddress.push(addresses[31]._id)
+    users[0].pickupAddress.push(addresses[25]._id)
+    await users[5].save()
+    
+    users[6].address.push(addresses[8]._id)
+    users[6].vendorAddress.push(addresses[32]._id)
+    users[0].pickupAddress.push(addresses[26]._id)
+    await users[6].save()
+    
+    users[7].address.push(addresses[9]._id)
+    users[7].vendorAddress.push(addresses[33]._id)
+    users[0].pickupAddress.push(addresses[26]._id)
+    await users[7].save()
+    
+    users[8].address.push(addresses[10]._id)
+    users[8].vendorAddress.push(addresses[34]._id)
+    users[0].pickupAddress.push(addresses[27]._id)
+    await users[8].save()
+    
+    users[9].address.push(addresses[11]._id)
+    users[9].vendorAddress.push(addresses[35]._id)
+    users[0].pickupAddress.push(addresses[27]._id)
+    await users[9].save()
+    
+    users[10].address.push(addresses[12]._id)
+    users[10].vendorAddress.push(addresses[36]._id)
+    users[0].pickupAddress.push(addresses[28]._id)
+    await users[10].save()
+    
+    users[11].address.push(addresses[12]._id)
+    users[11].vendorAddress.push(addresses[37]._id)
+    users[0].pickupAddress.push(addresses[28]._id)
+    await users[11].save()
+    
+    users[12].address.push(addresses[13]._id)
+    users[12].vendorAddress.push(addresses[38]._id)
+    users[12].pickupAddress.push(addresses[29]._id)
+    await users[12].save()
+
 
     console.log('addresses seeded');
 

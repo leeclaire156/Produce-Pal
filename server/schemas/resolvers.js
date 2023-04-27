@@ -13,26 +13,37 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id })
-                .populate('products')
-                .populate({
-                    path: 'memberships',
-                    populate: 'products'
-                })
-                .populate({
-                    path: 'sales',
-                    populate: 'products'
-                })
-                .populate({
-                    path: 'orders',
-                    populate: 'products'
-                })
-                .populate('address')
-                .populate('vendorAddress')
-                .populate('pickupAddress')
-                ;
+                    .populate('products')
+                    // IT DOESN"T LIKE MEMBERSHIPS!
+                    // .populate({
+                    //     path: 'memberships',
+                    //     populate: ['sellerName']
+                    // })
+                    .populate({
+                        path: 'sales',
+                        populate: ['products', 'buyerName', 'sellerName']
+                    })
+                    .populate({
+                        path: 'orders',
+                        populate: ['products', 'buyerName', 'sellerName']
+                    })
+                    .populate('address')
+                    .populate('vendorAddress')
+                    .populate('pickupAddress')
+                    ;
             }
             throw new AuthenticationError('Please log in.');
         },
+        // myprofile: async (parent, args, context) => {
+        //     if(context.user) {
+        //         return User.findOne({ _id: context.user._id })
+        //         .populate('address')
+        //         .populate('vendorAddress')
+        //         .populate('pickupAddress')
+        //         ;
+        //     }
+        //     throw new AuthenticationError('Please log in.');
+        // },        
         // READ ALL 
         addresses: async () => {
             return await Address.find({})
@@ -44,10 +55,38 @@ const resolvers = {
         users: async () => {
             return await User.find({})
                 .populate('products')
+                // .populate('memberships')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: ['products', 'vendorAddress']
+                // })
                 .populate({
-                    path: 'memberships',
-                    populate: 'products'
+                    path: 'sales',
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
+                .populate({
+                    path: 'orders',
+                    populate: ['products', 'buyerName', 'sellerName']
+                })
+                .populate('address')
+                .populate('vendorAddress')
+                .populate('pickupAddress')
+                ;
+        },
+        // farms is for Home page in the front end query
+        farms: async (parent, vendorStatus) => {
+            const params = {};
+
+            if (vendorStatus) {
+                params.vendorStatus = true;
+            }
+
+            return await User.find(params)
+                .populate('products')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: 'products'
+                // })
                 .populate({
                     path: 'sales',
                     populate: 'products'
@@ -59,41 +98,7 @@ const resolvers = {
                 .populate('address')
                 .populate('vendorAddress')
                 .populate('pickupAddress')
-                .populate({
-                    path: 'sales.buyerName',
-                    populate: 'users'
-                })
-                .populate({
-                    path: 'orders.sellerName',
-                    populate: 'users'
-                })
                 ;
-        },
-        farms: async (parent, vendorStatus) => {
-            const params = {};
-
-            if (vendorStatus) {
-                params.vendorStatus = true;
-            }
-
-            return await User.find(params)
-            .populate('products')
-            .populate({
-                path: 'memberships',
-                populate: 'products'
-            })
-            .populate({
-                path: 'sales',
-                populate: 'products'
-            })
-            .populate({
-                path: 'orders',
-                populate: 'products'
-            })
-            .populate('address')
-            .populate('vendorAddress')
-            .populate('pickupAddress')
-            ;
         },
         orders: async () => {
             return await Order.find({})
@@ -135,10 +140,10 @@ const resolvers = {
         //     throw new AuthenticationError('Please log in!')
         // },
         profile: async (parent, { profileId }) => {
-                return User.findOne({ _id: profileId})
+            return User.findOne({ _id: profileId })
                 .populate('products')
                 .populate({
-                    path: 'memberships',
+                    // path: 'memberships',
                     populate: 'products'
                 })
                 .populate({
@@ -166,25 +171,28 @@ const resolvers = {
                 // })
                 ;
         },
-        // user: async (parent, { _id }) => {
-        //     return await User.findById(_id)
-        //         .populate('products')
-        //         .populate({
-        //             path: 'memberships',
-        //             populate: 'products'
-        //         })
-        //         .populate({
-        //             path: 'sales',
-        //             populate: 'products'
-        //         })
-        //         .populate({
-        //             path: 'orders',
-        //             populate: 'products'
-        //         })
-        //         .populate('address')
-        //         .populate('vendorAddress');
-        // },
-        
+        // USE TO RENDER STOREFRONTS of other users depending on the :id in route
+        user: async (parent, { _id }) => {
+            return await User.findById(_id)
+                .populate('products')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: 'products'
+                // })
+                .populate({
+                    path: 'sales',
+                    populate: 'products'
+                })
+                .populate({
+                    path: 'orders',
+                    populate: 'products'
+                })
+                .populate('address')
+                .populate('vendorAddress')
+                .populate('pickupAddress')
+                ;
+        },
+
         // // When front end is ready for testing, 
         // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
         // // MAY REPLACE with authentication when DEPLOYING
@@ -299,7 +307,7 @@ const resolvers = {
             await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true });
             return product;
         },
-        // addOrder using context (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
+        // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
         // addOrder: async (parent, { products }, context, seller) => {
         //     const seller = args.seller;
 
@@ -326,16 +334,20 @@ const resolvers = {
             const products = args.products;
             const user = args.user;
             const seller = args.seller;
-            const order = await Order.create({ products });
+            const order = await Order.create({ products, user, seller });
             // When buyer pays, then:
-            // send the buyer's ID to orders array
+            // Buyer's Orders: send the buyer's ID to orders array
             await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
-            // also send the seller's user ID to sales array & the sellerName array
+            // Seller's Sales: send the seller's user ID to sales array & the sellerName array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
             await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
-            // also send the buyer's ID to the buyer's membership array & the buyerName array
-            await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
-            await User.findByIdAndUpdate(user, { $push: { buyerName: user } }, { new: true });
+
+            // // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
+            // await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+
+            // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
+            await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
+            await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
             return order.populate('products');
         },
         // UPDATE 
@@ -395,16 +407,16 @@ const resolvers = {
                 .populate('products');
         },
         // We may not need an updateProduct with context param since the edit button for said product will only show up in the farmer's dashboard
-        updateProduct: async (parent, args) => {
+        editProduct: async (parent, args) => {
             const product = args.product;
             return await Product.findByIdAndUpdate(product, args, { new: true })
         },
-        updateProductInventory: async (parent, args) => {
-            const product = args.product;
-            const productInventory = args.productInventory;
-            const decrement = Math.abs(productInventory) * -1;
-            return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new: true });
-        },
+        // updateProductInventory: async (parent, args) => {
+        //     const product = args.product;
+        //     const productInventory = args.productInventory;
+        //     const decrement = Math.abs(productInventory) * -1;
+        //     return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new: true });
+        // },
         // DELETE
         // SOFT DELETE functionality approved!
         // deleteUser: async (parent, args) => {
@@ -412,6 +424,11 @@ const resolvers = {
         //     await User.findByIdAndDelete(user, args, { new: true } );
         //     console.log("User successfully deleted");
         // },
+        updateProduct: async (parent, { _id, productInventory }) => {
+            const decrement = Math.abs(productInventory) * -1;
+
+            return await Product.findByIdAndUpdate(_id, { $inc: { productInventory: decrement } }, { new: true });
+        },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 

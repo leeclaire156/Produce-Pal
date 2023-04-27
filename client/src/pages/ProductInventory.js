@@ -19,7 +19,7 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
-
+   
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
     const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
@@ -27,7 +27,9 @@ const ProductInventory = () => {
     // fetch products data and product categories data locally. and dispatch to STATE. This code needs to be modified to get data from database.
     useEffect(() => {
         async function fetchData() {
+            console.log(productData)
             const data = productData.map(productData => productData);
+            console.log(data)
             // extract unique category names from the product data
             const uniqueCategories = [...new Set(productData.map(productData => productData.productCategory))];
             // create a new category list with 'ALL' and unique category names
@@ -209,25 +211,22 @@ const ProductInventory = () => {
         <div className="container my-2">
             {/* This is a reuseable component for managing my own farm inventory and shopping from the other farms. if I am on my product inventory page as a vendor, I will see "my farm products". but if I am a consumer want to do shopping, I will see other farm's name as the title. */}
             <div className='row mb-3'>
-                <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
+                {/* TEMPORARY FOR TESTING, NEED TO DELETE LATER */}
+                {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
             </div>
-            <div className='row'>
+            {/* <div className='row'>
                 {vendorStatus ? <br /> : <Cart />}
-            </div>
-            {vendorStatus ? <h2 className='fs-2 mb-3 text-center'>My Farm Products</h2> : <h2 className='fs-2 mb-3 text-center'>Co-op Farm Products</h2>}
+            </div> */}
+            <h2 className='fs-2 mb-3 text-center'>My Farm Products</h2>
 
             <div className='row mb-3'>
                 <div className="col-lg-12 d-flex justify-content-center justify-content-lg-between">
 
-                    {/* if I am on my product inventory page as a vendor, I can create a product with this button. */}
-                    {vendorStatus ?
-                        <div>
-                            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Create a product</button>
-                        </div>
-                        :
-                        <div>
-                            <button type="button" className="btn btn-primary invisible">Create a product</button>
-                        </div>}
+
+                    <div>
+                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Create a product</button>
+                    </div>
+
 
                     {/* categories filter button/menu */}
                     <div className="dropdown">
@@ -236,11 +235,11 @@ const ProductInventory = () => {
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownBtnCategory">
                             {categories.map((item) => (
-                                <li key={item._id}>
+                                <li key={item.productId}>
                                     <a
                                         href='#'
                                         className="dropdown-item"
-                                        onClick={() => { handleClick(item._id) }}
+                                        onClick={() => { handleClick(item.productId) }}
                                     >
                                         {item.name}
                                     </a>
@@ -257,7 +256,7 @@ const ProductInventory = () => {
                         <ProductSingle
                             key={product._id}
                             _id={product._id}
-                            // image={product.image}
+                            image={product.image}
                             productName={product.productName}
                             productDescription={product.productDescription}
                             productCategory={product.productCategory}
@@ -362,16 +361,12 @@ const ProductInventory = () => {
                                 {url ? <img className="product-img-preview preview-img" src={url} height={100} width={100} /> : <></>}
                             </div>
                         </div>
-                        {vendorStatus ?
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary"> Save</button>}
-                            </div>
-                            : <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
-                                <button type="button" className="btn btn-primary">Checkout</button>
-                            </div>
-                        }
+
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary" data-bs-dismiss="modal"> Save</button>}
+                        </div>
+
                     </div>
                 </div>
             </form>
