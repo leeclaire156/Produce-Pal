@@ -16,15 +16,15 @@ const resolvers = {
                 .populate('products')
                 .populate({
                     path: 'memberships',
-                    populate: 'products'
+                    populate: ['products', 'vendorAddress']
                 })
                 .populate({
                     path: 'sales',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate({
                     path: 'orders',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate('address')
                 .populate('vendorAddress')
@@ -46,27 +46,19 @@ const resolvers = {
                 .populate('products')
                 .populate({
                     path: 'memberships',
-                    populate: 'products'
+                    populate: ['products', 'vendorAddress']
                 })
                 .populate({
                     path: 'sales',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate({
                     path: 'orders',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate('address')
                 .populate('vendorAddress')
                 .populate('pickupAddress')
-                .populate({
-                    path: 'sales.buyerName',
-                    populate: 'users'
-                })
-                .populate({
-                    path: 'orders.sellerName',
-                    populate: 'users'
-                })
                 ;
         },
         farms: async (parent, vendorStatus) => {
@@ -326,16 +318,18 @@ const resolvers = {
             const products = args.products;
             const user = args.user;
             const seller = args.seller;
-            const order = await Order.create({ products });
+            const order = await Order.create({ products, user, seller });
             // When buyer pays, then:
-            // send the buyer's ID to orders array
+            // Buyer's Orders: send the buyer's ID to orders array
             await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
-            // also send the seller's user ID to sales array & the sellerName array
+            // Seller's Sales: send the seller's user ID to sales array & the sellerName array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
             await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
-            // also send the buyer's ID to the buyer's membership array & the buyerName array
+            // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
             await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
-            await User.findByIdAndUpdate(user, { $push: { buyerName: user } }, { new: true });
+            // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
+            await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
+            await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
             return order.populate('products');
         },
         // UPDATE 
