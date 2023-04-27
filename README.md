@@ -53,7 +53,7 @@ npm run start
 ```
 ## Heroku Link
 ---
-[Heroku Link for PWAeditor:](ADD LINK HERE) 
+[Heroku Link](https://ppt-1.herokuapp.com/) 
 * is deployed to Heroku at live URL with build scripts
 * loads with no errors
 * user experience is intuitive and easy to navigate
@@ -135,3 +135,4 @@ PWAeditor application is covered by MIT license.
 13. [Refetch queries syntax](https://stackoverflow.com/questions/72801198/apollo-client-refetch-queries)
 14. [Refetching Queries after Mutations](https://thinkster.io/tutorials/boost-your-react-apps-with-apollo-fetching-updating-data/refetching-queries-after-mutations)
 15. [Switch branch for heroku deployment](https://stackoverflow.com/questions/21947406/git-push-heroku-master-says-everything-up-to-date-but-the-app-is-not-current)
+16. [Heroku GET /pages to load](https://stackoverflow.com/questions/68734723/heroku-cannot-get-any-page)
