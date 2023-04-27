@@ -9,7 +9,7 @@
         "install": "cd server && npm i && cd ../client && npm i",
         "build": "cd client && npm run build",
         "seed": "cd server && npm run seed",
-        "heroku-postbuild": "npm run install-client && npm run build"
+        "heroku-postbuild": "npm run install && npm run build"
     },
     "keywords": [],
     "author": "",
