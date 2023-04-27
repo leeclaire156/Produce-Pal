@@ -136,3 +136,4 @@ PWAeditor application is covered by MIT license.
 14. [Refetching Queries after Mutations](https://thinkster.io/tutorials/boost-your-react-apps-with-apollo-fetching-updating-data/refetching-queries-after-mutations)
 15. [Switch branch for heroku deployment](https://stackoverflow.com/questions/21947406/git-push-heroku-master-says-everything-up-to-date-but-the-app-is-not-current)
 16. [Heroku GET /pages to load](https://stackoverflow.com/questions/68734723/heroku-cannot-get-any-page)
+17. [useParams()][https://stackoverflow.com/questions/57444203/get-id-from-url-in-react-js]: Advice on how to get the id from the url using useParams for /:id
