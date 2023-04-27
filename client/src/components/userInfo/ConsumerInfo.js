@@ -184,14 +184,13 @@ function ConsumerInfo(props) {
                                     <p>{props.phone}, {props.email}</p>
                                 </div>
                             </div>
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faMedal} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Memberships</h5>
-                                    {/* if that 0 error returns comment below out */}
                                     {!props.memberships[0] ? <p>You have no subscriptions!</p> : props.memberships.map((memberships) => (<p>{memberships}</p>))}
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
