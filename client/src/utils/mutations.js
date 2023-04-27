@@ -149,3 +149,21 @@ mutation Mutation($user: [ID]!, $vendorName: String, $vendorStatus: Boolean, $ve
   }
 }
 `
+
+export const UPDATE_PRODUCT = gql`
+mutation updateProduct($productId: Int!, $productName: String!, $productPrice: Float!, $user: [ID]!, $productType: Boolean, $productCategory: String, $productInventory: Int, $productUnits: String, $productAllergens: String, $productDescription: String, $productAvailability: Boolean, $productImage: String) {
+  updateProduct(productId: $productId, productName: $productName, productPrice: $productPrice, user: $user, productType: $productType, productCategory: $productCategory, productInventory: $productInventory, productUnits: $productUnits, productAllergens: $productAllergens, productDescription: $productDescription, productAvailability: $productAvailability, productImage: $productImage) {
+    productAllergens
+    productAvailability
+    productCategory
+    productDescription
+    productId
+    productImage
+    productInventory
+    productName
+    productPrice
+    productType
+    productUnits
+  }
+}
+`;

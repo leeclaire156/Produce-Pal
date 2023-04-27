@@ -5,7 +5,7 @@ import {
     UPDATE_CURRENT_CATEGORY, TOGGLE_VENDOR_STATUS
 } from '../utils/actions';
 // productData needs to be hidden when merging
-import productData from '../utils/products';
+// import productData from '../utils/products';
 import ProductSingle from '../components/ProductSingle';
 import Cart from '../components/Cart';
 import { idbPromise } from '../utils/helpers';
@@ -19,7 +19,18 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
+    const { profileId } = useParams();
    
+    const { data } = useQuery(
+        profileId ? QUERY_SINGLE_PROFILE : GET_ME,
+        {
+            variables: { profileId: profileId },
+        },
+    );
+    const profile = data?.me || data?.profile || {};
+
+    const productData = profile.products;
+
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
     const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
@@ -79,14 +90,6 @@ const ProductInventory = () => {
 
     console.log(vendorStatus);
 
-    const { profileId } = useParams();
-    const { data } = useQuery(
-        profileId ? QUERY_SINGLE_PROFILE : GET_ME,
-        {
-            variables: { profileId: profileId },
-        },
-    );
-    const profile = data?.me || data?.profile || {};
 
     const [addProduct] = useMutation(ADD_PRODUCT);
     const [url, setUrl] = useState("");
@@ -256,7 +259,7 @@ const ProductInventory = () => {
                         <ProductSingle
                             key={product._id}
                             _id={product._id}
-                            image={product.image}
+                            productImage={product.productImage}
                             productName={product.productName}
                             productDescription={product.productDescription}
                             productCategory={product.productCategory}
@@ -265,6 +268,7 @@ const ProductInventory = () => {
                             productUnits={product.productUnits}
                             productType={product.productType}
                             productAvailability={product.productAvailability}
+                            productAllergens={product.productAllergens}
                         />
                     ))}
                 </div>
