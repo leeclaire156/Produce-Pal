@@ -104,6 +104,7 @@ function VendorInfo(props) {
             variables: {
                 user: props._id,
                 vendorName: formState.vendorName,
+                vendorStatus: true,
                 // vendor business address
                 vendorAddress: vendorAddress?._id,
                 street: formState.street,
@@ -141,8 +142,8 @@ function VendorInfo(props) {
                 {props.vendorStatus ?
                     <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit
-                    </button> : <button className="btn btn-primary visually-hidden">
-                        Hidden
+                    </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                        Add Vendor Profile
                     </button>}
                 {/* the code below is to verify if the current loggedIn user matches this profile owner. user can only edit profile if 
             the loggedIn user id matches the profile owner id. */}

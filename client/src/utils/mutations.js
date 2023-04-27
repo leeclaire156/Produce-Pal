@@ -125,9 +125,10 @@ mutation updateUser($user: [ID]!, $firstName: String!, $lastName: String!, $phon
 `
 
 export const UPDATE_VENDOR = gql`
-mutation Mutation($user: [ID]!, $vendorName: String, $vendorTelephone: String, $vendorDescription: String, $marketName: String, $vendorAddress: [ID]!, $city: String, $state: String, $street: String, $zipcode: String, $pickupAddress: [ID]!, $updatePickupAddressCity2: String, $updatePickupAddressState2: String, $updatePickupAddressStreet2: String, $updatePickupAddressZipcode2: String) {
-  updateUser(user: $user, vendorName: $vendorName, vendorTelephone: $vendorTelephone, vendorDescription: $vendorDescription, marketName: $marketName) {
+mutation Mutation($user: [ID]!, $vendorName: String, $vendorStatus: Boolean, $vendorTelephone: String, $vendorDescription: String, $marketName: String, $vendorAddress: [ID]!, $city: String, $state: String, $street: String, $zipcode: String, $pickupAddress: [ID]!, $updatePickupAddressCity2: String, $updatePickupAddressState2: String, $updatePickupAddressStreet2: String, $updatePickupAddressZipcode2: String) {
+  updateUser(user: $user, vendorName: $vendorName, vendorStatus: $vendorStatus, vendorTelephone: $vendorTelephone, vendorDescription: $vendorDescription, marketName: $marketName) {
     vendorName
+    vendorStatus
     vendorTelephone
     vendorDescription
     marketName
