@@ -235,11 +235,11 @@ const ProductInventory = () => {
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownBtnCategory">
                             {categories.map((item) => (
-                                <li key={item._id}>
+                                <li key={item.productId}>
                                     <a
                                         href='#'
                                         className="dropdown-item"
-                                        onClick={() => { handleClick(item._id) }}
+                                        onClick={() => { handleClick(item.productId) }}
                                     >
                                         {item.name}
                                     </a>
