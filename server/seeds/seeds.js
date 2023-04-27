@@ -377,6 +377,66 @@ db.once('open', async () => {
             productAvailability: true,
             productDescription: 'One Organic Butternut Squash'
         },
+        {
+            productId: 548,
+            productName: 'Sharebox of Apples',
+            productType: true,
+            productPrice: 11.99,
+            productCategory: 'Weekly',
+            productInventory: 1,
+            productUnits: 'each',
+            productAllergens: 'None',
+            productAvailability: true,
+            productDescription: 'Sharebox of Organic Honey Crisp Apples'
+        },
+        {
+            productId: 549,
+            productName: 'Sharebox of Pears',
+            productType: true,
+            productPrice: 14.99,
+            productCategory: 'Weekly',
+            productInventory: 1,
+            productUnits: 'each',
+            productAllergens: 'None',
+            productAvailability: true,
+            productDescription: 'Sharebox of Organic Pears'
+        },
+        {
+            productId: 550,
+            productName: 'Sharebox of Oranges',
+            productType: true,
+            productPrice: 12.99,
+            productCategory: 'Weekly',
+            productInventory: 1,
+            productUnits: 'each',
+            productAllergens: 'None',
+            productAvailability: true,
+            productDescription: 'Sharebox of Organic Oranges'
+        },
+        {
+            productId: 551,
+            productName: 'Sharebox of Bananas',
+            productType: true,
+            productPrice: 16.99,
+            productCategory: 'Weekly',
+            productInventory: 1,
+            productUnits: 'each',
+            productAllergens: 'None',
+            productAvailability: true,
+            productDescription: 'Sharebox of Organic Bananas'
+        },
+        {
+            productId: 552,
+            productName: 'Sharebox of Organic Blackberries',
+            productType: true,
+            productPrice: 19.99,
+            productCategory: 'Weekly',
+            productInventory: 1,
+            productUnits: 'each',
+            productAllergens: 'None',
+            productAvailability: true,
+            productDescription: 'Sharebox of Organic Blackberries.'
+        },
         
     ])
     console.log('products seeded');
@@ -527,6 +587,16 @@ db.once('open', async () => {
 
             ],
             orderType: 'Pending'
+        },
+        {
+            orderId: 0023,
+            products: [ 
+                products[10]._id,
+                products[10]._id,
+                products[15]._id,
+                products[15]._id
+            ],
+            orderType: 'Pending'
         }
         
 
@@ -542,6 +612,8 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I love long walks on the beach with my family.',
             phone: '386-019-4824',
+            address: [],
+            vendorAddress: [],
             sales: [
                 orders[0]._id, 
                 orders[1]._id
@@ -573,7 +645,7 @@ db.once('open', async () => {
             orders: [
                 orders[1]._id,
                 orders[5]._id,
-                orders[6]._id,
+                orders[7]._id,
                 orders[8]._id,
                 orders[10]._id,
                 orders[12]._id
@@ -603,7 +675,8 @@ db.once('open', async () => {
                 orders[4]._id,
                 orders[6]._id,
                 orders[9]._id,
-                orders[11]._id
+                orders[11]._id,
+                orders[13]._id
             ],
             vendorStatus: "false"
         },
@@ -622,8 +695,8 @@ db.once('open', async () => {
             vendorStatus: "false"
         },
         {
-            firstName: 'Quins Produce',
-            lastName: 'Vendor',
+            firstName: 'Quin',
+            lastName: 'Elson',
             email: 'quinelson@mail.com',
             password: 'password1',
             biography: 'I like fishing and learning new things.',
@@ -650,7 +723,7 @@ db.once('open', async () => {
             sales: [
                 orders[4]._id,
                 orders[5]._id,
-                orders[6]._id
+                orders[13]._id
             ],
             vendorStatus: true,
             vendorName: 'Sunny Acres Farms',
@@ -818,7 +891,7 @@ db.once('open', async () => {
 
     ], { ordered: true } );
 
-    // Add MaSandra to Jenny's membership array since she ordered from MaSandra
+    // Add MaSandra to Jenny's membership array since she ordered from MaSandra (read right to left)
     users[1].memberships.push(users[0]._id)
     await users[1].save()
     // Add MaSandra to Claire's membership array since she ordered from MaSandra
@@ -841,6 +914,54 @@ db.once('open', async () => {
     orders[2].buyerName.push(users[3]._id)
     orders[2].sellerName.push(users[1]._id)
     await orders[2].save()
+    //Order [3]
+    orders[3].buyerName.push(users[2]._id)
+    orders[3].sellerName.push(users[4]._id)
+    await orders[3].save()
+    //Order [4]
+    orders[4].buyerName.push(users[2]._id)
+    orders[4].sellerName.push(users[5]._id)
+    await orders[4].save()
+    //Order [5]
+    orders[5].buyerName.push(users[1]._id)
+    orders[5].sellerName.push(users[5]._id)
+    await orders[5].save()
+    //Order [6]
+    orders[6].buyerName.push(users[2]._id)
+    orders[6].sellerName.push(users[9]._id)
+    await orders[6].save()
+    //Order [7]
+    orders[7].buyerName.push(users[1]._id)
+    orders[7].sellerName.push(users[12]._id)
+    await orders[7].save()
+    //Order [8]
+    orders[8].buyerName.push(users[1]._id)
+    orders[8].sellerName.push(users[11]._id)
+    await orders[8].save()
+    //Order [9]
+    orders[9].buyerName.push(users[2]._id)
+    orders[9].sellerName.push(users[10]._id)
+    await orders[9].save()
+    //Order [10]
+    orders[10].buyerName.push(users[1]._id)
+    orders[10].sellerName.push(users[8]._id)
+    await orders[10].save()
+    //Order [11]
+    orders[11].buyerName.push(users[2]._id)
+    orders[11].sellerName.push(users[7]._id)
+    await orders[11].save()
+    //Order [12]
+    orders[12].buyerName.push(users[1]._id)
+    orders[12].sellerName.push(users[6]._id)
+    await orders[12].save()
+    //Order [13]
+    orders[13].buyerName.push(users[2]._id)
+    orders[13].sellerName.push(users[5]._id)
+    await orders[13].save()
+
+
+
+
 
     console.log('users seeded');
 
@@ -881,12 +1002,158 @@ db.once('open', async () => {
             city: 'Washington',
             state: 'District of Columbia',
             zipcode: '20008',
-        }
+        },
+        {
+            street: '1924 Pennsylvania Ave NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20006',
+        },
+        {
+            street: '2900 Clarendon Blvd',
+            city: 'Arlington',
+            state: 'Virgina',
+            zipcode: '22201',
+        },
+        {
+            street: '2021 14th St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20009',
+        },
+        {
+            street: '675 15th St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20005',
+        },
+        {
+            street: '480 7th St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20004',
+        },
+        {
+            street: '1822 1st St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20001',
+        },
+        {
+            street: '1601 14th St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20009',
+        },
+        {
+            street: '750 15th St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20005',
+        },
+        {
+            street: '601 Massachusetts Ave NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20001',
+        },
+        {
+            street: '1201 24th St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20037',
+        },
+        {
+            street: '3050 K St NW Suite 101',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20007',
+        },
+        {
+            street: '1063 Wisconsin Ave NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20007',
+        },
+        {
+            street: '7006 Bethesda Ave',
+            city: 'Bethesda',
+            state: 'Maryland',
+            zipcode: '20814',
+        },
+        {
+            street: '3236 M St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20007',
+        },
+        {
+            street: '309 Middle St',
+            city: 'Washington',
+            state: 'Virginia',
+            zipcode: '22747',
+        },
+        {
+            street: '750 15th St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20005',
+        },
+        {
+            street: '633 D St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20004',
+        },
+        {
+            street: '6029 Leesburg Pike',
+            city: 'Falls Church',
+            state: 'Virginia',
+            zipcode: '22014',
+        },
+        {
+            street: '1234 H St NE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20002',
+        },
+        {
+            street: '717 8th St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        {
+            street: '20th St NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20036',
+        },
+        {
+            street: '301 Takoma Ave',
+            city: 'Takoma Park',
+            state: 'Maryland',
+            zipcode: '20912',
+        },
+        {
+            street: '233 N. Courthouse Rd',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22201',
+        },
+        {
+            street: '225 7th St SE',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20003',
+        },
+        
     ])
 
-    // Add addresses in order
+    // Add addresses in chronological order of users
     users[0].address.push(addresses[0]._id)
     users[0].vendorAddress.push(addresses[1]._id)
+    users[0].pickupAddress.push(addresses[25]._id)
     await users[0].save()
 
     users[1].address.push(addresses[2]._id)
