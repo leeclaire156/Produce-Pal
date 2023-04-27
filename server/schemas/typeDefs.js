@@ -18,7 +18,7 @@ type User {
     biography: String
     phone: String
     userImage: String
-    memberships: [User]
+    # memberships: [User]
     sales: [Order]
     orders: [Order]
     vendorStatus: Boolean

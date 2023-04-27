@@ -130,8 +130,6 @@ db.once('open', async () => {
             password: '12345',
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
             phone: '234-109-5786',
-            memberships: [
-            ],  
             sales: [
                 orders[2]._id, 
             ],
@@ -155,8 +153,6 @@ db.once('open', async () => {
             password: 'password2',
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
             phone: '123-456-7890',
-            memberships: [
-            ],  
             orders: [
                 orders[0]._id
             ],
@@ -169,8 +165,6 @@ db.once('open', async () => {
             password: 'password234',
             biography: 'I supoort my local CSAs!',
             phone: '321-654-6789',
-            memberships: [
-            ],  
             orders: [
                 orders[2]._id
             ],
@@ -178,15 +172,15 @@ db.once('open', async () => {
         },
     ], { ordered: true } );
 
-    // Add MaSandra to Jenny's membership array since she ordered from MaSandra
-    users[1].memberships.push(users[0]._id)
-    await users[1].save()
-    // Add MaSandra to Claire's membership array since she ordered from MaSandra
-    users[2].memberships.push(users[0]._id)
-    await users[2].save()
-    // Add Jenny to Zhihao's membership array since he ordered from Jenny
-    users[3].memberships.push(users[1]._id)
-    await users[3].save()
+    // // Add MaSandra to Jenny's membership array since she ordered from MaSandra
+    // users[1].memberships.push(users[0]._id)
+    // await users[1].save()
+    // // Add MaSandra to Claire's membership array since she ordered from MaSandra
+    // users[2].memberships.push(users[0]._id)
+    // await users[2].save()
+    // // Add Jenny to Zhihao's membership array since he ordered from Jenny
+    // users[3].memberships.push(users[1]._id)
+    // await users[3].save()
 
     // PUSH buyer and seller names to respective orders
     // Order [0]

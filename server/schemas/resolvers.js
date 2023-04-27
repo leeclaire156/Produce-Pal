@@ -55,7 +55,7 @@ const resolvers = {
         users: async () => {
             return await User.find({})
                 .populate('products')
-                .populate('memberships')
+                // .populate('memberships')
                 // .populate({
                 //     path: 'memberships',
                 //     populate: ['products', 'vendorAddress']
@@ -82,10 +82,10 @@ const resolvers = {
 
             return await User.find(params)
             .populate('products')
-            .populate({
-                path: 'memberships',
-                populate: 'products'
-            })
+            // .populate({
+            //     path: 'memberships',
+            //     populate: 'products'
+            // })
             .populate({
                 path: 'sales',
                 populate: 'products'
@@ -142,7 +142,7 @@ const resolvers = {
                 return User.findOne({ _id: profileId})
                 .populate('products')
                 .populate({
-                    path: 'memberships',
+                    // path: 'memberships',
                     populate: 'products'
                 })
                 .populate({
@@ -337,8 +337,10 @@ const resolvers = {
             // Seller's Sales: send the seller's user ID to sales array & the sellerName array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
             await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
-            // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
-            await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+            
+            // // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
+            // await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+            
             // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
             await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
             await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });

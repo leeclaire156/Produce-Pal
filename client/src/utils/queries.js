@@ -48,19 +48,6 @@ query Query {
     biography
     phone
     userImage
-    memberships {
-      _id
-      vendorName
-      vendorTelephone
-      vendorAddress {
-        _id
-        city
-        state
-        street
-        zipcode
-      }
-      vendorDescription
-    }
     vendorStatus
     vendorName
     vendorDescription
@@ -112,12 +99,6 @@ query farms($vendorStatus: Boolean) {
     biography
     phone
     userImage
-    memberships {
-      _id
-      vendorName
-      vendorTelephone
-      vendorDescription
-    }
     vendorStatus
     vendorName
     vendorDescription
@@ -169,9 +150,6 @@ query singleProfile($profileId: ID!) {
     biography
     phone
     userImage
-    memberships {
-      _id
-    }
     sales {
       _id
     }
@@ -179,7 +157,7 @@ query singleProfile($profileId: ID!) {
       _id
     }
     vendorStatus
-    # vendorName
+    vendorName
     vendorDescription
     products {
       _id
@@ -262,10 +240,6 @@ query me {
     email
     biography
     phone
-    # memberships {
-    #   _id
-    #   vendorName
-    # }
     userImage
     vendorStatus
     vendorName
