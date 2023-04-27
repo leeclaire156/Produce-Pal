@@ -187,7 +187,7 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    {/* <p>{props.address[0]?.street}, {props.address[0]?.city}, {props.address[0]?.state}, {props.address[0]?.zipcode}</p> */}
+                                    <p>{props.address[0]?.street}, {props.address[0]?.city}, {props.address[0]?.state}, {props.address[0]?.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
@@ -220,13 +220,13 @@ function ConsumerInfo(props) {
                         <div className="modal-body">
                             <div className="form-group">
                                 <label>First Name</label>
-                                <input type="text" className="form-control text-muted" id="first-name-input" placeholder={props.firstName} onChange={handleChange} name="firstName" value={formState.firstName} />
+                                <input type="text" className="form-control text-muted" id="first-name-input" onChange={handleChange} name="firstName" value={formState.firstName} />
                             </div>
                             <div className="form-group">
                                 <label>Last Name</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" placeholder={props.lastName} onChange={handleChange} name="lastName" value={formState.lastName} />
+                                <input type="text" className="form-control text-muted" id="full-name-input" onChange={handleChange} name="lastName" value={formState.lastName} />
                             </div>
-                            {/* <div className="row">
+                            <div className="row">
                                 <div className="form-group col-md-6">
                                     <label>Street</label>
                                     <input type="text" className="form-control text-muted" id="street-input" placeholder={props.address[0]?.street} onChange={handleChange} name="street" value={formState.street} />
@@ -243,10 +243,10 @@ function ConsumerInfo(props) {
                                     <label>Zipcode</label>
                                     <input type="text" className="form-control text-muted" id="zipcode-input" placeholder={props.address[0]?.zipcode} onChange={handleChange} name="zipcode" value={formState.zipcode} />
                                 </div>
-                            </div> */}
+                            </div>
                             <div className="form-group">
                                 <label>Phone</label>
-                                <input type="text" className="form-control text-muted" id="phone-input" placeholder={props.phone} onChange={handleChange} name="phone" value={formState.phone} />
+                                <input type="text" className="form-control text-muted" id="phone-input" onChange={handleChange} name="phone" value={formState.phone} />
                             </div>
                             {/* <div className="form-group">
                                 <label>Memberships</label>
@@ -254,7 +254,7 @@ function ConsumerInfo(props) {
                             </div> */}
                             <div className="form-group">
                                 <label>Biography</label>
-                                <textarea className="form-control text-muted" id="description-input" rows="5" placeholder={props.biography} onChange={handleChange} name="biography" value={formState.biography}></textarea>
+                                <textarea className="form-control text-muted" id="description-input" rows="5" onChange={handleChange} name="biography" value={formState.biography}></textarea>
                             </div>
                         </div>
                         <div className="modal-footer">
