@@ -307,7 +307,7 @@ const resolvers = {
             await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true });
             return product;
         },
-        // addOrder using context (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
+        // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
         // addOrder: async (parent, { products }, context, seller) => {
         //     const seller = args.seller;
 
