@@ -53,14 +53,30 @@ const ProductInventoryOther = () => {
             });
             console.log(categoriesListObject);
             // console.log(categoriesList);
-            dispatch({ type: UPDATE_PRODUCTS, products: data });
-            dispatch({ type: UPDATE_CATEGORIES, categories: categoriesListObject });
-            data.forEach((product) => {
-                idbPromise('products', 'put', product);
-            });
+
+            if(data){
+                dispatch({ 
+                    type: UPDATE_PRODUCTS, 
+                    products: data, 
+                });
+                dispatch({ 
+                    type: UPDATE_CATEGORIES, 
+                    categories: categoriesListObject 
+                });
+                data.forEach((product) => {
+                    idbPromise('products', 'put', product);
+                }); 
+            } else if (!loading) {
+                idbPromise('products', 'get').then((data) => {
+                    dispatch({
+                        type: UPDATE_PRODUCTS,
+                        products: data,
+                    });
+                });
+            }
         }
         fetchData();
-    }, []);
+    }, [data, loading, dispatch]);
 
 
     const handleClick = (productId) => {
