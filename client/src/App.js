@@ -69,7 +69,7 @@ function App() {
               {/* this route is for consumer to buy farmer products */}
               {/* <Route exact path='/productinventory/:id' component={ProductInventoryOther} /> */}
               {/* this route is for testing */}
-              <Route exact path='/productInventoryother' component={ProductInventoryOther} />
+              <Route exact path='/productInventoryother/:id' component={ProductInventoryOther} />
               {/* this route is for the consumer to view vendor/farm's profile information */}
               <Route exact path='/profile/vendor/:id' component={ProfileOtherVendor} />
               {/* this route is for farmer to view their consumers who bought their products */}
