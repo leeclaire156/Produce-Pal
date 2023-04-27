@@ -50,7 +50,7 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                             <FontAwesomeIcon icon={faCarrot} size="3x" />
                             <h5 className="card-title mt-3">Product Inventory</h5>
                             <p className="card-text">Review and manage my product inventory</p>
-                            <Link to="/productInventory">
+                            <Link to="/product-inventory">
                                 <button className="btn btn-primary">View</button>
                             </Link>
                         </div>
