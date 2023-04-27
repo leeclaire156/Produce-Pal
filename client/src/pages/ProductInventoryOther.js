@@ -21,20 +21,15 @@ import { useParams } from 'react-router-dom';
 
 const ProductInventoryOther = () => {
     const { id } = useParams();
-    console.log(id);
 
     const { loading, error, data } = useQuery(STOREFRONT, {
         variables: { id }
     });
-    console.log(data)
     const storeData = data?.user || {};
-    console.log(storeData)
 
     const productArrayData = data?.user.products || {};
     // returns array of objects
-    console.log(productArrayData)
     // returns one of the objects from the array, a product with many 
-    console.log(productArrayData[0])
 
     const [state, dispatch] = useProductContext();
     const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
@@ -76,15 +71,22 @@ const ProductInventoryOther = () => {
             }
         }
         fetchData();
+        // it may not like data below because top end of the array is data
     }, [data, loading, dispatch]);
 
 
     const handleClick = (productId) => {
+        dispatch({ 
+            type: UPDATE_PRODUCTS, 
+            products: data, 
+        });
         dispatch({
             type: UPDATE_CURRENT_CATEGORY,
             currentCategory: productId,
             currentCategoryName: categories[productId].name
         });
+
+        console.log(data);
     };
 
     function filterProducts() {
