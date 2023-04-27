@@ -68,20 +68,20 @@ function ConsumerInfo(props) {
     };
 
 
-    // console.log(props.address[0]?._id)
+    console.log(props.address[0]?._id)
     console.log(props)
 
 
-    // const initialAddress = props.address[0]
+    const initialAddress = props.address[0]
     const [formState, setFormState] = useState({
         user: `${props._id}`,
         firstName: `${props.firstName}`,
         lastName: `${props.lastName}`,
-        // address: `${initialAddress?._id}`,
-        // street: `${initialAddress?.street}`,
-        // city: `${initialAddress?.city}`,
-        // state: `${initialAddress?.state}`,
-        // zipcode: `${initialAddress?.zipcode}`,
+        address: `${initialAddress?._id}`,
+        street: `${initialAddress?.street}`,
+        city: `${initialAddress?.city}`,
+        state: `${initialAddress?.state}`,
+        zipcode: `${initialAddress?.zipcode}`,
         biography: `${props.biography}`,
         phone: `${props.phone}`,
     });
@@ -259,7 +259,7 @@ function ConsumerInfo(props) {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary">Save changes</button>
+                            <button type="submit" className="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                 </div>
