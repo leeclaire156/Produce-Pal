@@ -134,7 +134,6 @@ function ConsumerInfo(props) {
                     </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit
                     </button>} */}
-
             </div>
             <div className="row">
                 <div className="col-12 text-center mb-5">
@@ -142,9 +141,6 @@ function ConsumerInfo(props) {
                 </div>
             </div>
             <div className="row align-items-center">
-
-
-
                 <label className="col-md-6 profile-image"
                     onMouseEnter={handleProfileImageMouseEnter}
                     onMouseLeave={handleProfileImageMouseLeave}
@@ -161,17 +157,8 @@ function ConsumerInfo(props) {
                             <FontAwesomeIcon icon={faCamera} />
                         </div>
                     )}
-
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
-
-
                 </label>
-
-
-
-
-
-
 
                 <div className="col-md-6">
                     <div className="">
@@ -201,7 +188,8 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faMedal} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Memberships</h5>
-                                    <p>{props.memberships}</p>
+                                    {/* if that 0 error returns comment below out */}
+                                    {!props.memberships[0] ? <p>You have no subscriptions!</p> : props.memberships.map((memberships) => (<p>{memberships}</p>))}
                                 </div>
                             </div>
                         </div>

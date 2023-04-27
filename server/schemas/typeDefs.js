@@ -177,13 +177,13 @@ type Mutation {
         state: String
         street: String
         zipcode: String
-        address: [ID]!): Address
+        vendorAddress: [ID]!): Address
     updatePickupAddress(
         city: String
         state: String
         street: String
         zipcode: String
-        address: [ID]!): Address
+        pickupAddress: [ID]!): Address
     updateOrder(
         _id: ID
         orderId: Int

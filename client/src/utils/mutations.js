@@ -125,33 +125,22 @@ mutation updateUser($user: [ID]!, $firstName: String!, $lastName: String!, $phon
 `
 
 export const UPDATE_VENDOR = gql`
-mutation Mutation($user: [ID]!, $vendorStatus: Boolean, $vendorName: String, $address: [ID]!, $city: String, $state: String, $street: String, $zipcode: String, $vendorTelephone: String, $vendorDescription: String, $marketName: String, $updatePickupAddressAddress2: [ID]!, $updatePickupAddressCity2: String, $updatePickupAddressState2: String, $updatePickupAddressZipcode2: String, $updatePickupAddressStreet2: String) {
-  updateUser(user: $user, vendorStatus: $vendorStatus, vendorName: $vendorName, vendorTelephone: $vendorTelephone, vendorDescription: $vendorDescription, marketName: $marketName) {
-    vendorStatus
+mutation Mutation($user: [ID]!, $vendorName: String, $vendorTelephone: String, $vendorDescription: String, $marketName: String, $vendorAddress: [ID]!, $city: String, $state: String, $street: String, $zipcode: String, $pickupAddress: [ID]!, $updatePickupAddressCity2: String, $updatePickupAddressState2: String, $updatePickupAddressStreet2: String, $updatePickupAddressZipcode2: String) {
+  updateUser(user: $user, vendorName: $vendorName, vendorTelephone: $vendorTelephone, vendorDescription: $vendorDescription, marketName: $marketName) {
     vendorName
-    vendorAddress {
-      street
-      city
-      state
-      zipcode
-    }
     vendorTelephone
     vendorDescription
     marketName
-    pickupAddress {
-      street
-      city
-      state
-      zipcode
-    }
   }
-  updateVendorAddress(address: $address, city: $city, state: $state, street: $street, zipcode: $zipcode) {
+  updateVendorAddress(vendorAddress: $vendorAddress, city: $city, state: $state, street: $street, zipcode: $zipcode) {
     street
     city
     state
     zipcode
+    _id
   }
-  updatePickupAddress(address: $updatePickupAddressAddress2, city: $updatePickupAddressCity2, state: $updatePickupAddressState2, zipcode: $updatePickupAddressZipcode2, street: $updatePickupAddressStreet2) {
+  updatePickupAddress(pickupAddress: $pickupAddress, city: $updatePickupAddressCity2, state: $updatePickupAddressState2, street: $updatePickupAddressStreet2, zipcode: $updatePickupAddressZipcode2) {
+    _id
     street
     city
     state
