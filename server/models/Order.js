@@ -3,7 +3,8 @@ const { Schema, model } = require('mongoose');
 const orderSchema = new Schema(
     {
         orderId: {
-            type: Number,
+            type: String,
+            default: '',
         },
         purchaseDate: {
             type: Date,

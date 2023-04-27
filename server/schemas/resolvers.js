@@ -14,10 +14,11 @@ const resolvers = {
             if (context.user) {
                 return User.findOne({ _id: context.user._id })
                 .populate('products')
-                .populate({
-                    path: 'memberships',
-                    populate: ['products', 'vendorAddress']
-                })
+                .populate('memberships')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: ['products', 'vendorAddress']
+                // })
                 .populate({
                     path: 'sales',
                     populate: ['products', 'buyerName', 'sellerName']
@@ -33,6 +34,16 @@ const resolvers = {
             }
             throw new AuthenticationError('Please log in.');
         },
+        // myprofile: async (parent, args, context) => {
+        //     if(context.user) {
+        //         return User.findOne({ _id: context.user._id })
+        //         .populate('address')
+        //         .populate('vendorAddress')
+        //         .populate('pickupAddress')
+        //         ;
+        //     }
+        //     throw new AuthenticationError('Please log in.');
+        // },        
         // READ ALL 
         addresses: async () => {
             return await Address.find({})
@@ -44,10 +55,11 @@ const resolvers = {
         users: async () => {
             return await User.find({})
                 .populate('products')
-                .populate({
-                    path: 'memberships',
-                    populate: ['products', 'vendorAddress']
-                })
+                .populate('memberships')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: ['products', 'vendorAddress']
+                // })
                 .populate({
                     path: 'sales',
                     populate: ['products', 'buyerName', 'sellerName']
