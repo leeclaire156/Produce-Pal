@@ -116,13 +116,6 @@ query farms($vendorStatus: Boolean) {
       _id
       vendorName
       vendorTelephone
-      vendorAddress {
-        _id
-        city
-        state
-        street
-        zipcode
-      }
       vendorDescription
     }
     vendorStatus
@@ -186,7 +179,7 @@ query singleProfile($profileId: ID!) {
       _id
     }
     vendorStatus
-    vendorName
+    # vendorName
     vendorDescription
     products {
       _id
@@ -214,38 +207,31 @@ query singleProfile($profileId: ID!) {
 
 // For login/signup uncomment below
 export const GET_ME = gql`
-    query me{
-      me{
+query me {
+  me {
+    _id
+    address {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    orders {
+      _id
+      orderId
+      orderType
+      purchaseDate
+      buyerName {
         _id
         firstName
         lastName
-        email
-        address {
-          _id
-          street
-          city
-          state
-          zipcode
-        }
-        biography
-        phone
         userImage
-        memberships {
-          _id
-        }
-        sales {
-          _id
-        }
-        orders {
-          _id
-        }
-        vendorStatus
+      }
+      sellerName {
+        _id
         vendorName
-        vendorDescription
-        products {
-          _id
-        }
-        marketName
+        vendorImage
         pickupAddress {
           _id
           street
@@ -254,16 +240,109 @@ export const GET_ME = gql`
           zipcode
         }
         vendorTelephone
-        vendorAddress {
+        email
+      }
+      products {
+        _id
+        productId
+        productName
+        productDescription
+        productImage
+        productPrice
+        productType
+        productUnits
+        productCategory
+        productAllergens
+        productAvailability
+        productInventory
+      }
+    }
+    firstName
+    lastName
+    email
+    biography
+    phone
+    # memberships {
+    #   _id
+    #   vendorName
+    # }
+    userImage
+    vendorStatus
+    vendorName
+    vendorDescription
+    vendorAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorTelephone
+    vendorImage
+    pickupAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    marketName
+    products {
+      _id
+      productId
+      productName
+      productType
+      productPrice
+      productCategory
+      productInventory
+      productUnits
+      productAllergens
+      productAvailability
+      productDescription
+      productImage
+    }
+    sales {
+      _id
+      orderId
+      purchaseDate
+      orderType
+      buyerName {
+        _id
+        firstName
+        lastName
+        userImage
+      }
+      sellerName {
+        _id
+        vendorName
+        vendorImage
+        pickupAddress {
           _id
           street
           city
           state
           zipcode
         }
-        vendorImage
+        vendorTelephone
+        email
+      }
+      products {
+        _id
+        productId
+        productName
+        productDescription
+        productImage
+        productPrice
+        productType
+        productUnits
+        productCategory
+        productAllergens
+        productAvailability
+        productInventory
       }
     }
+  }
+}
 `;
 
 export const GET_IMAGE = gql`
@@ -319,6 +398,46 @@ query Me {
       state
       zipcode
     } 
+  }
+}
+`
+export const MY_PROFILE = gql`
+query Query {
+  myprofile {
+    _id
+    address {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    biography
+    email
+    firstName
+    lastName
+    marketName
+    phone
+    pickupAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    userImage
+    vendorAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    vendorDescription
+    vendorImage
+    vendorName
+    vendorStatus
+    vendorTelephone
   }
 }
 `

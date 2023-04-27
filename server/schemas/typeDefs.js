@@ -34,7 +34,7 @@ type User {
 
 type Product {
     _id: ID
-    productId: Int
+    productId: String
     productName: String
     productType: Boolean
     productPrice: Float
@@ -49,7 +49,7 @@ type Product {
 
 type Order {
     _id: ID!
-    orderId: Int
+    orderId: String
     purchaseDate: String!
     buyerName: [User]
     sellerName: [User]
@@ -82,6 +82,7 @@ type Auth {
 type Query {
     # Because we have the context functionality in our resolvers.js Query function in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: User
+    # myprofile: User
     addresses: [Address]
     users: [User]
     farms(vendorStatus: Boolean): [User]
