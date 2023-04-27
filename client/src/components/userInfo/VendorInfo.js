@@ -138,7 +138,7 @@ function VendorInfo(props) {
     return (
         <div className="container-fluid">
             <div className="toggle-container text-end">
-
+                {/* Add a function to hide the edit button if the current user id doesn't match the profile owner's id. ?*/}
                 {props.vendorStatus ?
                     <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
                         Edit

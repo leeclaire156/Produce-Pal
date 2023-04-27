@@ -6,7 +6,7 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
 import { idbPromise } from "../utils/helpers";
 
 
-function ProductSingle(item) {
+function ProductSingleOther(item) {
     const [state, dispatch] = useProductContext();
 
     const {
@@ -63,14 +63,12 @@ function ProductSingle(item) {
                     <p className="card-text"><small>Type: {productType ? 'Weekly Farm Produce Box' : 'Produce'}</small></p>
                     <p className="card-text"><small>Availability: {productAvailability ? 'in-stock' : 'out-stock'}</small></p>
                     <div className="input-group input-group-sm mb-3">
-
-                        <button className="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target={`#editProductModal-${_id}`}>Edit</button>
-                        {/* <button className="btn btn-outline-secondary" type="button" onClick={addToCart}>Add to cart</button> */}
+                        <button className="btn btn-outline-secondary" type="button" onClick={addToCart}>Add to cart</button>
                     </div>
                 </div>
             </div>
 
-            {/* <!-- Edit product Modal --> */}
+            {/* <!-- Edit product Modal (enable in vendorStatus: true )--> */}
             <div className="modal modal-lg fade" id={`editProductModal-${_id}`} tabIndex="-1" aria-labelledby={`editProductModalLabel-${_id}`} aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -120,8 +118,8 @@ function ProductSingle(item) {
                         </div>
 
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary">Save</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
+                            <button type="button" className="btn btn-primary">Checkout</button>
                         </div>
 
                     </div>
@@ -134,5 +132,5 @@ function ProductSingle(item) {
     );
 }
 
-export default ProductSingle;
+export default ProductSingleOther;
 

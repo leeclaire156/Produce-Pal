@@ -17,7 +17,10 @@ import Profile from './pages/Profile.js'
 import Login from './components/loginForm/LoginForm.js'
 import Signup from './components/signupForm/SignupForm.js'
 import ProductInventory from "./pages/ProductInventory.js"
+import ProductInventoryOther from "./pages/ProductInventoryOther"
 import OrderHistory from './pages/OrderHistory'
+import ProfileOtherVendor from './pages/ProfileOtherVendor'
+import ProfileOtherConsumer from './pages/ProfileOtherConsumer'
 import { ProductProvider } from './utils/GlobalState.js'
 
 // Construct our main GraphQL API endpoint
@@ -57,10 +60,20 @@ function App() {
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/dashboard' component={Dashboard} />
+              {/* this route is to view my profile either as a consumer or vendor */}
               <Route exact path='/profile' component={Profile} />
               <Route exact path='/order-history' component={OrderHistory} />
               {/* my productInventory page */}
+              {/* this route is for vendor to manage the product inventory */}
               <Route exact path='/productinventory' component={ProductInventory} />
+              {/* this route is for consumer to buy farmer products */}
+              {/* <Route exact path='/productinventory/:id' component={ProductInventoryOther} /> */}
+              {/* this route is for testing */}
+              <Route exact path='/productInventoryother' component={ProductInventoryOther} />
+              {/* this route is for the consumer to view vendor/farm's profile information */}
+              <Route exact path='/profile/vendor/:id' component={ProfileOtherVendor} />
+              {/* this route is for farmer to view their consumers who bought their products */}
+              <Route exact path='/profile/consumer/:id' component={ProfileOtherConsumer} />
 
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
               <Route render={() => <h1 className='display-2 container'>Wrong page!</h1>} />
