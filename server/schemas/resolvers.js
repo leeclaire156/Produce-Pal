@@ -13,24 +13,24 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context.user) {
                 return User.findOne({ _id: context.user._id })
-                .populate('products')
-                // IT DOESN"T LIKE MEMBERSHIPS!
-                // .populate({
-                //     path: 'memberships',
-                //     populate: ['sellerName']
-                // })
-                .populate({
-                    path: 'sales',
-                    populate: ['products', 'buyerName', 'sellerName']
-                })
-                .populate({
-                    path: 'orders',
-                    populate: ['products', 'buyerName', 'sellerName']
-                })
-                .populate('address')
-                .populate('vendorAddress')
-                .populate('pickupAddress')
-                ;
+                    .populate('products')
+                    // IT DOESN"T LIKE MEMBERSHIPS!
+                    // .populate({
+                    //     path: 'memberships',
+                    //     populate: ['sellerName']
+                    // })
+                    .populate({
+                        path: 'sales',
+                        populate: ['products', 'buyerName', 'sellerName']
+                    })
+                    .populate({
+                        path: 'orders',
+                        populate: ['products', 'buyerName', 'sellerName']
+                    })
+                    .populate('address')
+                    .populate('vendorAddress')
+                    .populate('pickupAddress')
+                    ;
             }
             throw new AuthenticationError('Please log in.');
         },
@@ -82,23 +82,23 @@ const resolvers = {
             }
 
             return await User.find(params)
-            .populate('products')
-            // .populate({
-            //     path: 'memberships',
-            //     populate: 'products'
-            // })
-            .populate({
-                path: 'sales',
-                populate: 'products'
-            })
-            .populate({
-                path: 'orders',
-                populate: 'products'
-            })
-            .populate('address')
-            .populate('vendorAddress')
-            .populate('pickupAddress')
-            ;
+                .populate('products')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: 'products'
+                // })
+                .populate({
+                    path: 'sales',
+                    populate: 'products'
+                })
+                .populate({
+                    path: 'orders',
+                    populate: 'products'
+                })
+                .populate('address')
+                .populate('vendorAddress')
+                .populate('pickupAddress')
+                ;
         },
         orders: async () => {
             return await Order.find({})
@@ -140,7 +140,7 @@ const resolvers = {
         //     throw new AuthenticationError('Please log in!')
         // },
         profile: async (parent, { profileId }) => {
-                return User.findOne({ _id: profileId})
+            return User.findOne({ _id: profileId })
                 .populate('products')
                 .populate({
                     // path: 'memberships',
@@ -192,7 +192,7 @@ const resolvers = {
                 .populate('pickupAddress')
                 ;
         },
-        
+
         // // When front end is ready for testing, 
         // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
         // // MAY REPLACE with authentication when DEPLOYING
@@ -341,10 +341,10 @@ const resolvers = {
             // Seller's Sales: send the seller's user ID to sales array & the sellerName array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
             await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
-            
+
             // // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
             // await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
-            
+
             // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
             await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
             await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
@@ -407,16 +407,16 @@ const resolvers = {
                 .populate('products');
         },
         // We may not need an updateProduct with context param since the edit button for said product will only show up in the farmer's dashboard
-        updateProduct: async (parent, args) => {
+        editProduct: async (parent, args) => {
             const product = args.product;
             return await Product.findByIdAndUpdate(product, args, { new: true })
         },
-        updateProductInventory: async (parent, args) => {
-            const product = args.product;
-            const productInventory = args.productInventory;
-            const decrement = Math.abs(productInventory) * -1;
-            return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new: true });
-        },
+        // updateProductInventory: async (parent, args) => {
+        //     const product = args.product;
+        //     const productInventory = args.productInventory;
+        //     const decrement = Math.abs(productInventory) * -1;
+        //     return await Product.findByIdAndUpdate(product, { $inc: { productInventory: decrement } }, { new: true });
+        // },
         // DELETE
         // SOFT DELETE functionality approved!
         // deleteUser: async (parent, args) => {
@@ -424,6 +424,11 @@ const resolvers = {
         //     await User.findByIdAndDelete(user, args, { new: true } );
         //     console.log("User successfully deleted");
         // },
+        updateProduct: async (parent, { _id, productInventory }) => {
+            const decrement = Math.abs(productInventory) * -1;
+
+            return await Product.findByIdAndUpdate(_id, { $inc: { productInventory: decrement } }, { new: true });
+        },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 

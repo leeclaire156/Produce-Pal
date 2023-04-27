@@ -10,7 +10,7 @@ function ProductSingle(item) {
     const [state, dispatch] = useProductContext();
 
     const {
-        productImage,
+        // image,
         _id,
         productName,
         productDescription,
@@ -53,7 +53,7 @@ function ProductSingle(item) {
     return (
         <div key={_id} className="col-md-4 mb-4">
             <div className="card">
-                <img src={productImage ? productImage : "https://placehold.co/600x300"} className="card-img-top" alt="placeholder" />
+                <img src="https://placehold.co/600x300" className="card-img-top" alt="placeholder" />
                 <div className="card-body">
                     <h5 className="card-title">{productName}</h5>
                     <p className="card-text">{productDescription}</p>

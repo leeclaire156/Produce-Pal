@@ -21,20 +21,15 @@ import { useParams } from 'react-router-dom';
 
 const ProductInventoryOther = () => {
     const { id } = useParams();
-    console.log(id);
 
     const { loading, error, data } = useQuery(STOREFRONT, {
         variables: { id }
     });
-    console.log(data)
     const storeData = data?.user || {};
-    console.log(storeData)
 
     const productArrayData = data?.user.products || {};
     // returns array of objects
-    console.log(productArrayData)
     // returns one of the objects from the array, a product with many 
-    console.log(productArrayData[0])
 
     const [state, dispatch] = useProductContext();
     const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
@@ -42,32 +37,56 @@ const ProductInventoryOther = () => {
     useEffect(() => {
         async function fetchData() {
             const data = productArrayData.map(productArrayData => productArrayData);
+            console.log(data);
             // extract unique category names from the product data
             const uniqueCategories = [...new Set(productArrayData.map(productArrayData => productArrayData.productCategory))];
             // create a new category list with 'ALL' and unique category names
             const categoriesList = ['All', ...uniqueCategories];
             // convert array to an object to use reducer dispatch
             const categoriesListObject = categoriesList.map((item, index) => {
-                return { _id: index, name: item };
+                return { productId: index, name: item };
             });
             console.log(categoriesListObject);
-            console.log(categoriesList);
-            dispatch({ type: UPDATE_PRODUCTS, products: data });
-            dispatch({ type: UPDATE_CATEGORIES, categories: categoriesListObject });
-            data.forEach((product) => {
-                idbPromise('products', 'put', product);
-            });
+            // console.log(categoriesList);
+
+            if(data){
+                dispatch({ 
+                    type: UPDATE_PRODUCTS, 
+                    products: data, 
+                });
+                dispatch({ 
+                    type: UPDATE_CATEGORIES, 
+                    categories: categoriesListObject 
+                });
+                data.forEach((product) => {
+                    idbPromise('products', 'put', product);
+                }); 
+            } else if (!loading) {
+                idbPromise('products', 'get').then((data) => {
+                    dispatch({
+                        type: UPDATE_PRODUCTS,
+                        products: data,
+                    });
+                });
+            }
         }
         fetchData();
-    }, []);
+        // it may not like data below because top end of the array is data
+    }, [data, loading, dispatch]);
 
 
-    const handleClick = (id) => {
+    const handleClick = (productId) => {
+        dispatch({ 
+            type: UPDATE_PRODUCTS, 
+            products: data, 
+        });
         dispatch({
             type: UPDATE_CURRENT_CATEGORY,
-            currentCategory: id,
-            currentCategoryName: categories[id].name
+            currentCategory: productId,
+            currentCategoryName: categories[productId].name
         });
+
+        console.log(data);
     };
 
     function filterProducts() {

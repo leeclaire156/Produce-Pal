@@ -65,11 +65,11 @@ function App() {
               <Route exact path='/order-history' component={OrderHistory} />
               {/* my productInventory page */}
               {/* this route is for vendor to manage the product inventory */}
-              <Route exact path='/product-inventory' component={ProductInventory} />
+              <Route exact path='/productinventory' component={ProductInventory} />
               {/* this route is for consumer to buy farmer products */}
-              {/* <Route exact path='/product-inventory/:id' component={ProductInventoryOther} /> */}
+              {/* <Route exact path='/productinventory/:id' component={ProductInventoryOther} /> */}
               {/* this route is for testing */}
-              <Route exact path='/store/:id' component={ProductInventoryOther} />
+              <Route exact path='/productInventoryother/:id' component={ProductInventoryOther} />
               {/* this route is for the consumer to view vendor/farm's profile information */}
               <Route exact path='/profile/vendor/:id' component={ProfileOtherVendor} />
               {/* this route is for farmer to view their consumers who bought their products */}
