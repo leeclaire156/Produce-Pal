@@ -54,6 +54,7 @@ const ProductInventoryOther = () => {
                     type: UPDATE_PRODUCTS, 
                     products: data, 
                 });
+                console.log(data);
                 dispatch({ 
                     type: UPDATE_CATEGORIES, 
                     categories: categoriesListObject 

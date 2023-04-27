@@ -222,8 +222,8 @@ const resolvers = {
             return await Product.findById(_id);
         },
         checkout: async (parent, args, context) => {
+            // const url = new URL(context.headers.referer).origin;
             const order = new Order({ products: args.products });
-            // // TURN ON FOR TESTING WHEN READY IN FRONT END                
             // const line_items = [];
 
             const { products } = await order.populate('products');
