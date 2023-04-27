@@ -49,18 +49,18 @@ const ProductInventoryOther = () => {
             console.log(categoriesListObject);
             // console.log(categoriesList);
 
-            if(data){
-                dispatch({ 
-                    type: UPDATE_PRODUCTS, 
-                    products: data, 
+            if (data) {
+                dispatch({
+                    type: UPDATE_PRODUCTS,
+                    products: data,
                 });
-                dispatch({ 
-                    type: UPDATE_CATEGORIES, 
-                    categories: categoriesListObject 
+                dispatch({
+                    type: UPDATE_CATEGORIES,
+                    categories: categoriesListObject
                 });
                 data.forEach((product) => {
                     idbPromise('products', 'put', product);
-                }); 
+                });
             } else if (!loading) {
                 idbPromise('products', 'get').then((data) => {
                     dispatch({
@@ -76,17 +76,15 @@ const ProductInventoryOther = () => {
 
 
     const handleClick = (productId) => {
-        dispatch({ 
-            type: UPDATE_PRODUCTS, 
-            products: data, 
+        dispatch({
+            type: UPDATE_PRODUCTS,
+            products: productArrayData,
         });
         dispatch({
             type: UPDATE_CURRENT_CATEGORY,
             currentCategory: productId,
             currentCategoryName: categories[productId].name
         });
-
-        console.log(data);
     };
 
     function filterProducts() {
@@ -94,13 +92,11 @@ const ProductInventoryOther = () => {
             return productArrayData;
         } else {
             return productArrayData.filter(
-                // (product) => product.productCategory === currentCategory
                 (product) => product.productCategory === categories[currentCategory].name
             );
         }
     }
-    // console.log(categories);
-    // console.log(cart.length);
+
 
     if (!loading) {
         return (
@@ -121,11 +117,12 @@ const ProductInventoryOther = () => {
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownBtnCategory">
                                 {categories.map((item) => (
-                                    <li key={item._id}>
+                                    <li key={item.productId}>
                                         <a
                                             href='#'
                                             className="dropdown-item"
-                                            onClick={() => { handleClick(item._id) }}
+                                            value={item.productId}
+                                            onClick={() => { handleClick(item.productId) }}
                                         >
                                             {item.name}
                                         </a>
