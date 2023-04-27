@@ -6,7 +6,7 @@ const FarmCard = ({ farm }) => {
             <div className="row g-0 align-items-center">
                 <div className="col-md-6">
                     <img
-                        src="https://placehold.co/600x300"
+                        src={farm.vendorImage ? farm.vendorImage : "https://placehold.co/600x300"}
                         alt=""
                         className="img-fluid"
                     />
