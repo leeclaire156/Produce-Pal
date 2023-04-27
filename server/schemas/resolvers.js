@@ -14,10 +14,10 @@ const resolvers = {
             if (context.user) {
                 return User.findOne({ _id: context.user._id })
                 .populate('products')
-                .populate('memberships')
+                // IT DOESN"T LIKE MEMBERSHIPS!
                 // .populate({
                 //     path: 'memberships',
-                //     populate: ['products', 'vendorAddress']
+                //     populate: ['sellerName']
                 // })
                 .populate({
                     path: 'sales',

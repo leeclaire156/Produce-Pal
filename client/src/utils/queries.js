@@ -217,130 +217,130 @@ query me {
       street
       zipcode
     }
-    # orders {
-    #   _id
-    #   orderId
-    #   orderType
-    #   purchaseDate
-    #   buyerName {
-    #     _id
-    #     firstName
-    #     lastName
-    #     userImage
-    #   }
-    #   # sellerName {
-    #   #   _id
-    #   #   vendorName
-    #   #   vendorImage
-    #   #   pickupAddress {
-    #   #     _id
-    #   #     street
-    #   #     city
-    #   #     state
-    #   #     zipcode
-    #   #   }
-    #   #   vendorTelephone
-    #   #   email
-    #   # }
-    #   products {
-    #     _id
-    #     productId
-    #     productName
-    #     productDescription
-    #     productImage
-    #     productPrice
-    #     productType
-    #     productUnits
-    #     productCategory
-    #     productAllergens
-    #     productAvailability
-    #     productInventory
-  #   #   }
-  #   # }
+    orders {
+      _id
+      orderId
+      orderType
+      purchaseDate
+      buyerName {
+        _id
+        firstName
+        lastName
+        userImage
+      }
+      sellerName {
+        _id
+        vendorName
+        vendorImage
+        pickupAddress {
+          _id
+          street
+          city
+          state
+          zipcode
+        }
+        vendorTelephone
+        email
+      }
+      products {
+        _id
+        productId
+        productName
+        productDescription
+        productImage
+        productPrice
+        productType
+        productUnits
+        productCategory
+        productAllergens
+        productAvailability
+        productInventory
+      }
+    }
     firstName
     lastName
     email
     biography
     phone
-  #   # memberships {
-  #   #   _id
-  #   #   vendorName
-  #   # }
-  #   userImage
-  #   vendorStatus
-  #   # vendorName
-  #   vendorDescription
-  #   # vendorAddress {
-  #   #   _id
-  #   #   city
-  #   #   state
-  #   #   street
-  #   #   zipcode
-  #   # }
-  #   vendorTelephone
-  #   vendorImage
-  #   # pickupAddress {
-  #   #   _id
-  #   #   street
-  #   #   city
-  #   #   state
-  #   #   zipcode
-  #   # }
-  #   marketName
-  #   # products {
-  #   #   _id
-  #   #   productId
-  #   #   productName
-  #   #   productType
-  #   #   productPrice
-  #   #   productCategory
-  #   #   productInventory
-  #   #   productUnits
-  #   #   productAllergens
-  #   #   productAvailability
-  #   #   productDescription
-  #   #   productImage
-  #   # }
-  #   # sales {
-  #   #   _id
-  #   #   orderId
-  #   #   purchaseDate
-  #   #   orderType
-  #   #   buyerName {
-  #   #     _id
-  #   #     firstName
-  #   #     lastName
-  #   #     userImage
-  #   #   }
-  #     # sellerName {
-  #     #   _id
-  #     #   vendorName
-  #     #   vendorImage
-  #     #   pickupAddress {
-  #     #     _id
-  #     #     street
-  #     #     city
-  #     #     state
-  #     #     zipcode
-  #     #   }
-  #     #   vendorTelephone
-  #     #   email
-  #     # }
-  #     # products {
-  #     #   _id
-  #     #   productId
-  #     #   productName
-  #     #   productDescription
-  #     #   productImage
-  #     #   productPrice
-  #     #   productType
-  #     #   productUnits
-  #     #   productCategory
-  #     #   productAllergens
-  #     #   productAvailability
-  #     #   productInventory
-  #     # }
-  #   # }
+    # memberships {
+    #   _id
+    #   vendorName
+    # }
+    userImage
+    vendorStatus
+    vendorName
+    vendorDescription
+    vendorAddress {
+      _id
+      city
+      state
+      street
+      zipcode
+    }
+    vendorTelephone
+    vendorImage
+    pickupAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    marketName
+    products {
+      _id
+      productId
+      productName
+      productType
+      productPrice
+      productCategory
+      productInventory
+      productUnits
+      productAllergens
+      productAvailability
+      productDescription
+      productImage
+    }
+    sales {
+      _id
+      orderId
+      purchaseDate
+      orderType
+      buyerName {
+        _id
+        firstName
+        lastName
+        userImage
+      }
+      sellerName {
+        _id
+        vendorName
+        vendorImage
+        pickupAddress {
+          _id
+          street
+          city
+          state
+          zipcode
+        }
+        vendorTelephone
+        email
+      }
+      products {
+        _id
+        productId
+        productName
+        productDescription
+        productImage
+        productPrice
+        productType
+        productUnits
+        productCategory
+        productAllergens
+        productAvailability
+        productInventory
+      }
+    }
   }
 }
 `;
