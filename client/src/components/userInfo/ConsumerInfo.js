@@ -226,7 +226,7 @@ function ConsumerInfo(props) {
                                 <label>Last Name</label>
                                 <input type="text" className="form-control text-muted" id="full-name-input" onChange={handleChange} name="lastName" value={formState.lastName} />
                             </div>
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="form-group col-md-6">
                                     <label>Street</label>
                                     <input type="text" className="form-control text-muted" id="street-input" placeholder={props.address[0]?.street} onChange={handleChange} name="street" value={formState.street} />
@@ -243,7 +243,7 @@ function ConsumerInfo(props) {
                                     <label>Zipcode</label>
                                     <input type="text" className="form-control text-muted" id="zipcode-input" placeholder={props.address[0]?.zipcode} onChange={handleChange} name="zipcode" value={formState.zipcode} />
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="form-group">
                                 <label>Phone</label>
                                 <input type="text" className="form-control text-muted" id="phone-input" onChange={handleChange} name="phone" value={formState.phone} />
