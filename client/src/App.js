@@ -52,15 +52,15 @@ function App() {
         <ProductProvider>
           <>
             <Switch>
-              <Route exact path='/test' component={Upload} />
+              <Route path='/test' component={Upload} />
               <Route exact path='/' component={Home} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/signup' component={Signup} />
-              <Route exact path='/dashboard' component={Dashboard} />
-              <Route exact path='/profile' component={Profile} />
-              <Route exact path='/order-history' component={OrderHistory} />
+              <Route path='/login' component={Login} />
+              <Route path='/signup' component={Signup} />
+              <Route path='/dashboard' component={Dashboard} />
+              <Route path='/profile' component={Profile} />
+              <Route path='/order-history' component={OrderHistory} />
               {/* my productInventory page */}
-              <Route exact path='/productinventory' component={ProductInventory} />
+              <Route path='/productinventory' component={ProductInventory} />
 
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
               <Route render={() => <h1 className='display-2 container'>Wrong page!</h1>} />
