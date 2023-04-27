@@ -42,13 +42,14 @@ const ProductInventoryOther = () => {
     useEffect(() => {
         async function fetchData() {
             const data = productArrayData.map(productArrayData => productArrayData);
+            console.log(data);
             // extract unique category names from the product data
             const uniqueCategories = [...new Set(productArrayData.map(productArrayData => productArrayData.productCategory))];
             // create a new category list with 'ALL' and unique category names
             const categoriesList = ['All', ...uniqueCategories];
             // convert array to an object to use reducer dispatch
             const categoriesListObject = categoriesList.map((item, index) => {
-                return { _id: index, name: item };
+                return { productId: index, name: item };
             });
             console.log(categoriesListObject);
             // console.log(categoriesList);
@@ -62,19 +63,19 @@ const ProductInventoryOther = () => {
     }, []);
 
 
-    const handleClick = (id) => {
+    const handleClick = (productId) => {
         dispatch({
             type: UPDATE_CURRENT_CATEGORY,
-            currentCategory: id,
-            currentCategoryName: categories[id].name
+            currentCategory: productId,
+            currentCategoryName: categories[productId].name
         });
     };
 
     function filterProducts() {
         if (!currentCategory) {
-            return state.products;
+            return productArrayData;
         } else {
-            return state.products.filter(
+            return productArrayData.filter(
                 // (product) => product.productCategory === currentCategory
                 (product) => product.productCategory === categories[currentCategory].name
             );
