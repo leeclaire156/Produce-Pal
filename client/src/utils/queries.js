@@ -82,6 +82,7 @@ query Query {
 }
 `;
 
+// QUERY_ONLY_FARMS is being used in Home, 
 export const QUERY_ONLY_FARMS = gql`
 query farms($vendorStatus: Boolean) {
   farms(vendorStatus: $vendorStatus) {
@@ -184,6 +185,7 @@ query singleProfile($profileId: ID!) {
 `;
 
 // For login/signup uncomment below
+// GET_ME is being used in Dashboard, Profile
 export const GET_ME = gql`
 query me {
   me {
@@ -412,6 +414,61 @@ query Query {
     vendorName
     vendorStatus
     vendorTelephone
+  }
+}
+`
+// WILL be used for storefront queries with param of _id
+export const STOREFRONT = gql `
+query Storefront($id: ID!) {
+  user(_id: $id) {
+    _id
+    firstName
+    lastName
+    email
+    phone
+    biography
+    address {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    userImage
+    vendorStatus
+    vendorName
+    vendorTelephone
+    vendorImage
+    vendorDescription
+    vendorAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    marketName
+    pickupAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    products {
+      _id
+      productId
+      productName
+      productType
+      productPrice
+      productCategory
+      productInventory
+      productUnits
+      productAllergens
+      productAvailability
+      productDescription
+      productImage
+    }
   }
 }
 `

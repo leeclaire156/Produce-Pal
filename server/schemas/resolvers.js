@@ -73,6 +73,7 @@ const resolvers = {
                 .populate('pickupAddress')
                 ;
         },
+        // farms is for Home page in the front end query
         farms: async (parent, vendorStatus) => {
             const params = {};
 
@@ -170,24 +171,27 @@ const resolvers = {
                 // })
                 ;
         },
-        // user: async (parent, { _id }) => {
-        //     return await User.findById(_id)
-        //         .populate('products')
-        //         .populate({
-        //             path: 'memberships',
-        //             populate: 'products'
-        //         })
-        //         .populate({
-        //             path: 'sales',
-        //             populate: 'products'
-        //         })
-        //         .populate({
-        //             path: 'orders',
-        //             populate: 'products'
-        //         })
-        //         .populate('address')
-        //         .populate('vendorAddress');
-        // },
+        // USE TO RENDER STOREFRONTS of other users depending on the :id in route
+        user: async (parent, { _id }) => {
+            return await User.findById(_id)
+                .populate('products')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: 'products'
+                // })
+                .populate({
+                    path: 'sales',
+                    populate: 'products'
+                })
+                .populate({
+                    path: 'orders',
+                    populate: 'products'
+                })
+                .populate('address')
+                .populate('vendorAddress')
+                .populate('pickupAddress')
+                ;
+        },
         
         // // When front end is ready for testing, 
         // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
