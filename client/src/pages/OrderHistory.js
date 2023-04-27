@@ -12,6 +12,7 @@ import UserToggle from '../components/UserToggle';
 import orders from '../utils/OrdersData';
 // import "./order.css";
 import ConsumerOrder from '../components/orderhistory/consumerOrder';
+import VendorOrder from '../components/orderhistory/vendorOrder';
 
 
 const OrderHistory = () => {
@@ -30,11 +31,17 @@ const OrderHistory = () => {
         (order) =>
             (order.buyerName._id === currentUser._id)
     );
+    // filter orders by vendor id
+    const filteredOrdersByVendor = orders.filter(
+        (order) =>
+            (order.sellerName._id === currentUser._id)
+    );
 
-    console.log(orders);
+    // console.log(orders);
     console.log(filteredOrders);
-    console.log(currentUser);
-    console.log(state);
+    console.log(filteredOrdersByVendor);
+    // console.log(currentUser);
+    // console.log(state);
 
     // function to set the current user's orders as a local STATE 'userOrders'
     const handleUserOrders = () => {
@@ -75,7 +82,6 @@ const OrderHistory = () => {
     console.log("global VendorStatus =" + vendorStatus);
 
 
-
     return (
         <div className="container order-history">
 
@@ -83,58 +89,29 @@ const OrderHistory = () => {
                 <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
             </div>
 
-            <h1 className="text-center">Order History</h1>
+            {vendorStatus
+                ?
+                <div>
+                    <h1 className="text-center mb-5">Manage Consumer Orders</h1>
+                    <div>
+                        {filteredOrdersByVendor.map((order) => (
+                            <VendorOrder key={order._id} {...order} />
+                        ))}
+                    </div>
+                </div>
+                : <div>
+                    <h1 className="text-center mb-5">My Orders</h1>
+                    <div>
+                        {filteredOrders.map((order) => (
+                            <ConsumerOrder key={order._id} {...order} />
+                        ))}
+                    </div>
+                </div>
+            }
 
-            {filteredOrders.map((order) => (
-                <ConsumerOrder key={order._id} {...order} />
-            ))}
-            {/* <div className="row mt-4">
-                <div className="col-md-12">
-                    <table className="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Purchase Date</th>
-                                <th>Order Type</th>
-                                <th>Buyer Name</th>
-                                <th>Seller Name</th>
-                                <th>Products</th>
-                                <th>Total Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredOrders.map((order) => (
-                                <tr key={order._id}>
-                                    <td>{order.orderId}</td>
-                                    <td>{new Date(order.purchaseDate * 1000).toLocaleDateString()}</td>
-                                    <td>{order.orderType}</td>
-                                    <td>{`${order.buyerName.firstName} ${order.buyerName.lastName}`}</td>
-                                    <td>{order.sellerName.vendorName}</td>
-                                    <td>
-                                        {order.products.map((product) => (
-                                            <p key={product._id}>
-                                                {product.productName} ({product.productUnits}) - ${product.productPrice}
-                                            </p>
-                                        ))}
-                                    </td>
-                                    <td>
-                                        ${" "}
-                                        {order.products.reduce(
-                                            (totalPrice, product) => totalPrice + product.productPrice,
-                                            0
-                                        )}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                 </div>
-            </div> */}
 
         </div>
     );
 }
 
-export default OrderHistory;
-
-
+export default OrderHistory; 
