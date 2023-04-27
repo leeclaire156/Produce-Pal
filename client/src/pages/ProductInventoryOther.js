@@ -51,7 +51,7 @@ const ProductInventoryOther = () => {
                 return { _id: index, name: item };
             });
             console.log(categoriesListObject);
-            // console.log(categoriesList);
+            console.log(categoriesList);
             dispatch({ type: UPDATE_PRODUCTS, products: data });
             dispatch({ type: UPDATE_CATEGORIES, categories: categoriesListObject });
             data.forEach((product) => {
@@ -72,9 +72,9 @@ const ProductInventoryOther = () => {
 
     function filterProducts() {
         if (!currentCategory) {
-            return state.products;
+            return productArrayData;
         } else {
-            return state.products.filter(
+            return productArrayData.filter(
                 // (product) => product.productCategory === currentCategory
                 (product) => product.productCategory === categories[currentCategory].name
             );
