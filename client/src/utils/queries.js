@@ -116,13 +116,6 @@ query farms($vendorStatus: Boolean) {
       _id
       vendorName
       vendorTelephone
-      vendorAddress {
-        _id
-        city
-        state
-        street
-        zipcode
-      }
       vendorDescription
     }
     vendorStatus
