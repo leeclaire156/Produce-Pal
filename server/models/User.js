@@ -49,12 +49,12 @@ const userSchema = new Schema({
         default: '',
         trim: true,
     },
-    memberships: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        },
-    ],
+    // memberships: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'User'
+    //     },
+    // ],
     orders: [
         {
             type: Schema.Types.ObjectId,

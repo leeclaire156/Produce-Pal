@@ -18,7 +18,7 @@ type User {
     biography: String
     phone: String
     userImage: String
-    memberships: [User]
+    # memberships: [User]
     sales: [Order]
     orders: [Order]
     vendorStatus: Boolean
@@ -86,14 +86,15 @@ type Query {
     addresses: [Address]
     users: [User]
     farms(vendorStatus: Boolean): [User]
+    orders: [Order]
     products: [Product]
     sales: [Order]
-    orders: [Order]
-    address(_id: ID!): Address
-    product(_id: ID!): Product
-    order(_id: ID!): Order
     profile(profileId: ID!): User
+    user(_id: ID!): User
+    order(_id: ID!): Order
+    product(_id: ID!): Product
     checkout(products: [ID]!): Checkout
+    address(_id: ID!): Address
 }
 
 type Mutation {

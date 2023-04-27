@@ -55,7 +55,7 @@ const resolvers = {
         users: async () => {
             return await User.find({})
                 .populate('products')
-                .populate('memberships')
+                // .populate('memberships')
                 // .populate({
                 //     path: 'memberships',
                 //     populate: ['products', 'vendorAddress']
@@ -73,6 +73,7 @@ const resolvers = {
                 .populate('pickupAddress')
                 ;
         },
+        // farms is for Home page in the front end query
         farms: async (parent, vendorStatus) => {
             const params = {};
 
@@ -82,10 +83,10 @@ const resolvers = {
 
             return await User.find(params)
             .populate('products')
-            .populate({
-                path: 'memberships',
-                populate: 'products'
-            })
+            // .populate({
+            //     path: 'memberships',
+            //     populate: 'products'
+            // })
             .populate({
                 path: 'sales',
                 populate: 'products'
@@ -142,7 +143,7 @@ const resolvers = {
                 return User.findOne({ _id: profileId})
                 .populate('products')
                 .populate({
-                    path: 'memberships',
+                    // path: 'memberships',
                     populate: 'products'
                 })
                 .populate({
@@ -170,24 +171,27 @@ const resolvers = {
                 // })
                 ;
         },
-        // user: async (parent, { _id }) => {
-        //     return await User.findById(_id)
-        //         .populate('products')
-        //         .populate({
-        //             path: 'memberships',
-        //             populate: 'products'
-        //         })
-        //         .populate({
-        //             path: 'sales',
-        //             populate: 'products'
-        //         })
-        //         .populate({
-        //             path: 'orders',
-        //             populate: 'products'
-        //         })
-        //         .populate('address')
-        //         .populate('vendorAddress');
-        // },
+        // USE TO RENDER STOREFRONTS of other users depending on the :id in route
+        user: async (parent, { _id }) => {
+            return await User.findById(_id)
+                .populate('products')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: 'products'
+                // })
+                .populate({
+                    path: 'sales',
+                    populate: 'products'
+                })
+                .populate({
+                    path: 'orders',
+                    populate: 'products'
+                })
+                .populate('address')
+                .populate('vendorAddress')
+                .populate('pickupAddress')
+                ;
+        },
         
         // // When front end is ready for testing, 
         // // FIRST TEST IF WE DO NEED THIS AUTH since we have the User Auth
@@ -303,7 +307,7 @@ const resolvers = {
             await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true });
             return product;
         },
-        // addOrder using context (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
+        // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
         // addOrder: async (parent, { products }, context, seller) => {
         //     const seller = args.seller;
 
@@ -337,8 +341,10 @@ const resolvers = {
             // Seller's Sales: send the seller's user ID to sales array & the sellerName array
             await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
             await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
-            // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
-            await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+            
+            // // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
+            // await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+            
             // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
             await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
             await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
