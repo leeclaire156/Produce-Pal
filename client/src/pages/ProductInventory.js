@@ -19,7 +19,7 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
-
+   
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
     const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
@@ -27,7 +27,9 @@ const ProductInventory = () => {
     // fetch products data and product categories data locally. and dispatch to STATE. This code needs to be modified to get data from database.
     useEffect(() => {
         async function fetchData() {
+            console.log(productData)
             const data = productData.map(productData => productData);
+            console.log(data)
             // extract unique category names from the product data
             const uniqueCategories = [...new Set(productData.map(productData => productData.productCategory))];
             // create a new category list with 'ALL' and unique category names
