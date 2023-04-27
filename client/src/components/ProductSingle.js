@@ -169,7 +169,7 @@ function ProductSingle(item) {
                 <img src={productImage ? productImage : "https://placehold.co/600x300"} className="card-img-top" alt="placeholder" />
                 <div className="card-body">
                     <h5 className="card-title">{productName}</h5>
-                    <p className="card-text">{_id}</p>
+                    <p className="card-text">{productId}</p>
                     <p className="card-text">{productDescription}</p>
                     <p className="card-text"><small>Category: {productCategory}</small></p>
                     <p className="card-text"><small>Inventory: {productInventory}</small></p>

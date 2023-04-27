@@ -148,6 +148,7 @@ const ProductInventoryOther = () => {
                                 productUnits={product.productUnits}
                                 productType={product.productType}
                                 productAvailability={product.productAvailability}
+                                productAllergens={product.productAllergens}
                             />
                         ))}
                     </div>
