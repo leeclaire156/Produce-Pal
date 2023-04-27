@@ -193,7 +193,7 @@ type Mutation {
         products: [ID]
         orderType: String
         order: [ID]!): Order
-    updateProduct(
+    editProduct(
         _id: ID
         productId: Int
         productName: String
@@ -208,12 +208,13 @@ type Mutation {
         productImage: String
         product: [ID]!): Product
     # function decrementing the inventory number of products
-    updateProductInventory(
-        _id: ID
-        productInventory: Int!
-        product: [ID]!): Product
+    # updateProductInventory(
+    #     _id: ID
+    #     productInventory: Int!
+    #     product: [ID]!): Product
     # deleteUser(
         # user: [ID]!): User
+    updateProduct(_id: ID!, productInventory: Int!): Product
     login(email: String!, password: String!): Auth
 }
 `;

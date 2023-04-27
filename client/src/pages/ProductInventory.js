@@ -19,7 +19,7 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
-
+   
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
     const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
@@ -27,7 +27,9 @@ const ProductInventory = () => {
     // fetch products data and product categories data locally. and dispatch to STATE. This code needs to be modified to get data from database.
     useEffect(() => {
         async function fetchData() {
+            console.log(productData)
             const data = productData.map(productData => productData);
+            console.log(data)
             // extract unique category names from the product data
             const uniqueCategories = [...new Set(productData.map(productData => productData.productCategory))];
             // create a new category list with 'ALL' and unique category names
@@ -233,11 +235,11 @@ const ProductInventory = () => {
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownBtnCategory">
                             {categories.map((item) => (
-                                <li key={item._id}>
+                                <li key={item.productId}>
                                     <a
                                         href='#'
                                         className="dropdown-item"
-                                        onClick={() => { handleClick(item._id) }}
+                                        onClick={() => { handleClick(item.productId) }}
                                     >
                                         {item.name}
                                     </a>
@@ -254,7 +256,7 @@ const ProductInventory = () => {
                         <ProductSingle
                             key={product._id}
                             _id={product._id}
-                            // image={product.image}
+                            image={product.image}
                             productName={product.productName}
                             productDescription={product.productDescription}
                             productCategory={product.productCategory}
@@ -362,7 +364,7 @@ const ProductInventory = () => {
 
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary"> Save</button>}
+                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary" data-bs-dismiss="modal"> Save</button>}
                         </div>
 
                     </div>
