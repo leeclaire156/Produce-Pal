@@ -299,3 +299,26 @@ query Me {
 }
 }
 `
+export const GET_VENDOR = gql`
+query Me {
+  me {
+    vendorStatus
+    vendorName
+    vendorAddress { 
+      street
+      city
+      state
+      zipcode
+    }
+    vendorTelephone
+    vendorDescription
+    marketName
+    pickupAddress {
+      street
+      city
+      state
+      zipcode
+    } 
+  }
+}
+`
