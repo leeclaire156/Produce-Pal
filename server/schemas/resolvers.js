@@ -270,7 +270,7 @@ const resolvers = {
             for (let i = 0; i < products.length; i++) {
                 const product = await stripe.products.create({
                     name: products[i].productName,
-                    description: products[i].productDescription,
+                    // description: products[i].productDescription, //products without descriptions will not allow stripe to move to checkout
                 });
 
                 const price = await stripe.prices.create({
