@@ -7,19 +7,21 @@ import { idbPromise } from '../utils/helpers';
 function Success() {
     const [addOrder] = useMutation(ADD_ORDER);
 
-    // params for the addOrder function that gets called here
-    let seller = window.localStorage.getItem("storeObjectId");
-
-    console.log(JSON.parse(seller))
+    // // params for the addOrder function that gets called here
+    // let seller = window.localStorage.getItem("storeObjectId");
 
     useEffect(() => {
         async function saveOrder() {
             const cart = await idbPromise('cart', 'get');
             const products = cart.map((item) => item._id);
+            const user = JSON.parse(localStorage.getItem("storeObjectId"));   
+            console.log(user);
+            console.log(products);
 
             if (products.length) {
-                const { data } = await addOrder({ variables: { products, seller } });
+                const { data } = await addOrder({ variables: { products, user } });
                 const productData = data.addOrder.products;
+                console.log(data)
 
                 productData.forEach((item) => {
                     idbPromise('cart', 'delete', item);
@@ -29,7 +31,8 @@ function Success() {
             setTimeout(() => {
                 window.location.assign('/');
                 localStorage.clear();
-            }, 3000);
+                console.log("Delayed by example 1000 = 1 second")
+            }, 10000000);
         }
 
         saveOrder();

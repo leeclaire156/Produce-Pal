@@ -343,36 +343,32 @@ const resolvers = {
             await User.findByIdAndUpdate(user, { $push: { products: product } }, { new: true });
             return product;
         },
-        // // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
-        addOrder: async (parent, { products, seller }, context) => {
+        // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
+        addOrder: async (parent, { products, user }, context) => {
 
             if (context.user) {
-
+                const buyer = context.user._id
+                const seller = user._id
                 const order = await Order.create({ products });
                 // When buyer pays, then:
-                // send the buyer's ID to orders array
-                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } }, { new: true });
-                // When buyer pays, then:
-                // Buyer's Orders: send the buyer's ID to orders array
-                await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
-                // Seller's Sales: send the seller's user ID to sales array & the sellerName array
-                await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
-                await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
+                // send the order's ID to the buyer's orders array
+                await User.findByIdAndUpdate(buyer, { $push: { orders: order } }, { new: true });
 
-                // // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
-                // await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+                // // // Seller's Sales: send the seller's user ID to sales array & the sellerName array
+                // await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
 
-                // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
-                await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
-                await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
+                // // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
+                // await Order.findByIdAndUpdate(order, { $push: { buyerName: buyer } }, { new: true });
+                // await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
 
-                return order.populate('products');
+                return order;
 
             }
             throw new AuthenticationError('Not logged in');
         },
 
         // // For Apollo back end testing
+        // // Don't forget to turn on TypeDefs user for args
         // addOrder: async (parent, args) => {
         //     const products = args.products;
         //     // user will be context
