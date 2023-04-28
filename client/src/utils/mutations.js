@@ -2,8 +2,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_PRODUCT = gql`
-mutation addProduct($productId: Int!, $productName: String!, $productPrice: Float!, $user: [ID]!, $productType: Boolean, $productCategory: String, $productInventory: Int, $productUnits: String, $productAllergens: String, $productDescription: String, $productAvailability: Boolean, $productImage: String) {
-  addProduct(productId: $productId, productName: $productName, productPrice: $productPrice, user: $user, productType: $productType, productCategory: $productCategory, productInventory: $productInventory, productUnits: $productUnits, productAllergens: $productAllergens, productDescription: $productDescription, productAvailability: $productAvailability, productImage: $productImage) {
+mutation AddProduct($productName: String!, $productPrice: Float!, $user: [ID]!, $productType: Boolean, $productCategory: String, $productInventory: Int, $productUnits: String, $productAllergens: String, $productDescription: String, $productAvailability: Boolean, $productImage: String, $productId: String) {
+  addProduct(productName: $productName, productPrice: $productPrice, user: $user, productType: $productType, productCategory: $productCategory, productInventory: $productInventory, productUnits: $productUnits, productAllergens: $productAllergens, productDescription: $productDescription, productAvailability: $productAvailability, productImage: $productImage, productId: $productId) {
     productAllergens
     productAvailability
     productCategory
@@ -151,7 +151,7 @@ mutation Mutation($user: [ID]!, $vendorName: String, $vendorStatus: Boolean, $ve
 `
 
 export const UPDATE_PRODUCT = gql`
-mutation updateProduct($productId: Int!, $productName: String!, $productPrice: Float!, $user: [ID]!, $productType: Boolean, $productCategory: String, $productInventory: Int, $productUnits: String, $productAllergens: String, $productDescription: String, $productAvailability: Boolean, $productImage: String) {
+mutation updateProduct($productId: String, $productName: String, $productPrice: Float, $_id: [ID]!, $productType: Boolean, $productCategory: String, $productInventory: Int, $productUnits: String, $productAllergens: String, $productDescription: String, $productAvailability: Boolean, $productImage: String) {
   updateProduct(productId: $productId, productName: $productName, productPrice: $productPrice, user: $user, productType: $productType, productCategory: $productCategory, productInventory: $productInventory, productUnits: $productUnits, productAllergens: $productAllergens, productDescription: $productDescription, productAvailability: $productAvailability, productImage: $productImage) {
     productAllergens
     productAvailability

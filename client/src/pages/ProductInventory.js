@@ -88,7 +88,7 @@ const ProductInventory = () => {
         dispatch({ type: TOGGLE_VENDOR_STATUS });
     };
 
-    console.log(vendorStatus);
+    // console.log(vendorStatus);
 
 
     const [addProduct] = useMutation(ADD_PRODUCT);
@@ -104,7 +104,7 @@ const ProductInventory = () => {
         productAllergens: '',
         productAvailability: '',
         productDescription: '',
-        productImage: url,
+        // productImage: url,
         user: profile._id,
     });
 
@@ -183,7 +183,7 @@ const ProductInventory = () => {
                     productAllergens: productFormData.productAllergens,
                     productAvailability: productFormData.productAvailability,
                     productDescription: productFormData.productDescription,
-                    productImage: url,
+                    // productImage: url,
                     user: profile._id
                 },
             });
@@ -288,37 +288,37 @@ const ProductInventory = () => {
                         </div>
                         <div className="modal-body">
                             <div className="form-group">
-                                <label>Product ID*</label>
-                                <input type="number" className="form-control text-muted productId" id='create-product-name' placeholder='12345' name='productId' onChange={handleInputChange}
-                                    value={productFormData.productId} required />
+                                <label>Product ID</label>
+                                <input type="text" className="form-control text-muted productId" id='create-product-name' placeholder='12345' name='productId' onChange={handleInputChange}
+                                    value={productFormData.productId} />
                             </div>
                             <div className="form-group">
-                                <label>Product name*</label>
+                                <label>Product name</label>
                                 <input type="text" className="form-control text-muted productName" id='create-product-name' placeholder='Enter a product name' name='productName' onChange={handleInputChange}
-                                    value={productFormData.productName} required />
+                                    value={productFormData.productName} />
                             </div>
                             <div className="form-group">
-                                <label>Category*</label>
+                                <label>Category</label>
                                 <input type="text" className="form-control text-muted productCategory" id='create-product-category' placeholder='Enter a product category' name='productCategory' onChange={handleInputChange}
-                                    value={productFormData.productCategory} required />
+                                    value={productFormData.productCategory} />
                             </div>
                             <div className="form-group">
-                                <label>Inventory*</label>
+                                <label>Inventory</label>
                                 <input type="number" className="form-control text-muted productInventory" id='create-product-inventory' placeholder='0' name='productInventory' onChange={handleInputChange}
-                                    value={productFormData.productInventory} required />
+                                    value={productFormData.productInventory} />
                             </div>
                             <div className="form-group">
-                                <label>Unit Price* (USD)</label>
+                                <label>Unit Price (USD)</label>
                                 <input type="number" className="form-control text-muted productPrice" id='create-product-price' placeholder='0' name='productPrice' onChange={handleInputChange}
-                                    value={productFormData.productPrice} required />
+                                    value={productFormData.productPrice} />
                             </div>
                             <div className="form-group">
-                                <label>Units*</label>
+                                <label>Units</label>
                                 <input type="text" className="form-control text-muted productUnits" id='create-product-units' placeholder='Enter product units' name='productUnits' onChange={handleInputChange}
-                                    value={productFormData.productUnits} required />
+                                    value={productFormData.productUnits} />
                             </div>
                             <div className="form-group">
-                                <div>Type*</div>
+                                <div>Type</div>
                                 {/* <select className="form-select" aria-label="select-type" id='create-product-type' name="productType" onChange={handleInputChange}>
                                     <option value="true">weekly box</option>
                                     <option value="false">produce</option>
@@ -369,7 +369,8 @@ const ProductInventory = () => {
 
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary" data-bs-dismiss="modal"> Save</button>}
+                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary" 
+                            > Save</button>}
                         </div>
 
                     </div>

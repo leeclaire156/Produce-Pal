@@ -60,7 +60,7 @@ type Order {
 type Checkout {
     session: ID
     _id: ID
-    productId: Int
+    productId: String
     productName: String
     productType: Boolean
     productPrice: Float
@@ -136,10 +136,10 @@ type Mutation {
         # ): User
     addProduct(
         _id: ID, 
-        productId: Int!, 
-        productName: String!, 
+        productId: String, 
+        productName: String, 
         productType: Boolean, 
-        productPrice: Float!, 
+        productPrice: Float, 
         productCategory: String, 
         productInventory: Int, 
         productUnits: String, 
@@ -195,7 +195,7 @@ type Mutation {
         order: [ID]!): Order
     editProduct(
         _id: ID
-        productId: Int
+        productId: String
         productName: String
         productType: Boolean
         productPrice: Float
