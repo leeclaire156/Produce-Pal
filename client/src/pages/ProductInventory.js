@@ -5,7 +5,7 @@ import {
     UPDATE_CURRENT_CATEGORY, TOGGLE_VENDOR_STATUS
 } from '../utils/actions';
 // productData needs to be hidden when merging
-import productData from '../utils/products';
+// import productData from '../utils/products';
 import ProductSingle from '../components/ProductSingle';
 import Cart from '../components/Cart';
 import { idbPromise } from '../utils/helpers';
@@ -19,7 +19,18 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
-   
+    const { profileId } = useParams();
+
+    const { data } = useQuery(
+        profileId ? QUERY_SINGLE_PROFILE : GET_ME,
+        {
+            variables: { profileId: profileId },
+        },
+    );
+    const profile = data?.me || data?.profile || {};
+
+    const productData = profile.products;
+
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
     const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
@@ -36,7 +47,7 @@ const ProductInventory = () => {
             const categoriesList = ['All', ...uniqueCategories];
             // convert array to an object to use reducer dispatch
             const categoriesListObject = categoriesList.map((item, index) => {
-                return { _id: index, name: item };
+                return { productId: index, name: item };
             });
             console.log(categoriesListObject);
             // console.log(categoriesList);
@@ -52,19 +63,23 @@ const ProductInventory = () => {
     }, []);
 
 
-    const handleClick = (id) => {
+    const handleClick = (productId) => {
+        dispatch({
+            type: UPDATE_PRODUCTS,
+            products: productData,
+        });
         dispatch({
             type: UPDATE_CURRENT_CATEGORY,
-            currentCategory: id,
-            currentCategoryName: categories[id].name
+            currentCategory: productId,
+            currentCategoryName: categories[productId].name
         });
     };
 
     function filterProducts() {
         if (!currentCategory) {
-            return state.products;
+            return productData;
         } else {
-            return state.products.filter(
+            return productData.filter(
                 // (product) => product.productCategory === currentCategory
                 (product) => product.productCategory === categories[currentCategory].name
             );
@@ -77,16 +92,8 @@ const ProductInventory = () => {
         dispatch({ type: TOGGLE_VENDOR_STATUS });
     };
 
-    console.log(vendorStatus);
+    // console.log(vendorStatus);
 
-    const { profileId } = useParams();
-    const { data } = useQuery(
-        profileId ? QUERY_SINGLE_PROFILE : GET_ME,
-        {
-            variables: { profileId: profileId },
-        },
-    );
-    const profile = data?.me || data?.profile || {};
 
     const [addProduct] = useMutation(ADD_PRODUCT);
     const [url, setUrl] = useState("");
@@ -129,7 +136,7 @@ const ProductInventory = () => {
             .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
                 setUrl(`${res.data}`);
-                alert(`Image uploaded Successfully. Url is ${url} or ${res.data}`);
+                // alert(`Image uploaded Successfully. Url is ${url} or ${res.data}`);
             })
             .then(() => setLoading(false))
             .catch(console.log);
@@ -182,8 +189,9 @@ const ProductInventory = () => {
                     productDescription: productFormData.productDescription,
                     productImage: url,
                     user: profile._id
-                },
+                }, refetchQueries: [{ query: GET_ME }]
             });
+            // window.location.reload(false)
             return data;
         } catch (err) {
             console.error(err);
@@ -207,7 +215,6 @@ const ProductInventory = () => {
 
 
     return (
-
         <div className="container my-2">
             {/* This is a reuseable component for managing my own farm inventory and shopping from the other farms. if I am on my product inventory page as a vendor, I will see "my farm products". but if I am a consumer want to do shopping, I will see other farm's name as the title. */}
             <div className='row mb-3'>
@@ -239,6 +246,7 @@ const ProductInventory = () => {
                                     <a
                                         href='#'
                                         className="dropdown-item"
+                                        value={item.productId}
                                         onClick={() => { handleClick(item.productId) }}
                                     >
                                         {item.name}
@@ -256,7 +264,8 @@ const ProductInventory = () => {
                         <ProductSingle
                             key={product._id}
                             _id={product._id}
-                            image={product.image}
+                            productImage={product.productImage}
+                            productId={product.productId}
                             productName={product.productName}
                             productDescription={product.productDescription}
                             productCategory={product.productCategory}
@@ -265,6 +274,7 @@ const ProductInventory = () => {
                             productUnits={product.productUnits}
                             productType={product.productType}
                             productAvailability={product.productAvailability}
+                            productAllergens={product.productAllergens}
                         />
                     ))}
                 </div>
@@ -283,37 +293,37 @@ const ProductInventory = () => {
                         </div>
                         <div className="modal-body">
                             <div className="form-group">
-                                <label>Product ID*</label>
-                                <input type="number" className="form-control text-muted productId" id='create-product-name' placeholder='12345' name='productId' onChange={handleInputChange}
-                                    value={productFormData.productId} required />
+                                <label>Product ID</label>
+                                <input type="text" className="form-control text-muted productId" id='create-product-name' placeholder='12345' name='productId' onChange={handleInputChange}
+                                    value={productFormData.productId} />
                             </div>
                             <div className="form-group">
-                                <label>Product name*</label>
+                                <label>Product name</label>
                                 <input type="text" className="form-control text-muted productName" id='create-product-name' placeholder='Enter a product name' name='productName' onChange={handleInputChange}
-                                    value={productFormData.productName} required />
+                                    value={productFormData.productName} />
                             </div>
                             <div className="form-group">
-                                <label>Category*</label>
+                                <label>Category</label>
                                 <input type="text" className="form-control text-muted productCategory" id='create-product-category' placeholder='Enter a product category' name='productCategory' onChange={handleInputChange}
-                                    value={productFormData.productCategory} required />
+                                    value={productFormData.productCategory} />
                             </div>
                             <div className="form-group">
-                                <label>Inventory*</label>
+                                <label>Inventory</label>
                                 <input type="number" className="form-control text-muted productInventory" id='create-product-inventory' placeholder='0' name='productInventory' onChange={handleInputChange}
-                                    value={productFormData.productInventory} required />
+                                    value={productFormData.productInventory} />
                             </div>
                             <div className="form-group">
-                                <label>Unit Price* (USD)</label>
+                                <label>Unit Price (USD)</label>
                                 <input type="number" className="form-control text-muted productPrice" id='create-product-price' placeholder='0' name='productPrice' onChange={handleInputChange}
-                                    value={productFormData.productPrice} required />
+                                    value={productFormData.productPrice} />
                             </div>
                             <div className="form-group">
-                                <label>Units*</label>
+                                <label>Units</label>
                                 <input type="text" className="form-control text-muted productUnits" id='create-product-units' placeholder='Enter product units' name='productUnits' onChange={handleInputChange}
-                                    value={productFormData.productUnits} required />
+                                    value={productFormData.productUnits} />
                             </div>
                             <div className="form-group">
-                                <div>Type*</div>
+                                <div>Type</div>
                                 {/* <select className="form-select" aria-label="select-type" id='create-product-type' name="productType" onChange={handleInputChange}>
                                     <option value="true">weekly box</option>
                                     <option value="false">produce</option>

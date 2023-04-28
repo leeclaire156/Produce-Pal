@@ -46,7 +46,9 @@ function ConsumerDashboard({ firstName, lastName, phone, biography }) {
                             <h5 className="card-title mt-3">Search farm products</h5>
                             <p className="card-text">Look for farm products in different farms.</p>
                             {/* This edit button navigates to 'Home.js' component */}
-                            <button className="btn btn-primary">View</button>
+                            <Link to="/">
+                                <button className="btn btn-primary">View</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

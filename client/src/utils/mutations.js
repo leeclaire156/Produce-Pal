@@ -2,8 +2,8 @@
 import { gql } from '@apollo/client';
 
 export const ADD_PRODUCT = gql`
-mutation addProduct($productId: Int!, $productName: String!, $productPrice: Float!, $user: [ID]!, $productType: Boolean, $productCategory: String, $productInventory: Int, $productUnits: String, $productAllergens: String, $productDescription: String, $productAvailability: Boolean, $productImage: String) {
-  addProduct(productId: $productId, productName: $productName, productPrice: $productPrice, user: $user, productType: $productType, productCategory: $productCategory, productInventory: $productInventory, productUnits: $productUnits, productAllergens: $productAllergens, productDescription: $productDescription, productAvailability: $productAvailability, productImage: $productImage) {
+mutation AddProduct($productName: String!, $productPrice: Float!, $user: [ID]!, $productType: Boolean, $productCategory: String, $productInventory: Int, $productUnits: String, $productAllergens: String, $productDescription: String, $productAvailability: Boolean, $productImage: String, $productId: String) {
+  addProduct(productName: $productName, productPrice: $productPrice, user: $user, productType: $productType, productCategory: $productCategory, productInventory: $productInventory, productUnits: $productUnits, productAllergens: $productAllergens, productDescription: $productDescription, productAvailability: $productAvailability, productImage: $productImage, productId: $productId) {
     productAllergens
     productAvailability
     productCategory
@@ -149,3 +149,21 @@ mutation Mutation($user: [ID]!, $vendorName: String, $vendorStatus: Boolean, $ve
   }
 }
 `
+
+export const EDIT_PRODUCT = gql`
+mutation Mutation($product: [ID]!, $productDescription: String, $productImage: String, $productAvailability: Boolean, $productAllergens: String, $productUnits: String, $productInventory: Int, $productCategory: String, $productPrice: Float, $productName: String, $productId: String, $productType: Boolean) {
+  editProduct(product: $product, productDescription: $productDescription, productImage: $productImage, productAvailability: $productAvailability, productAllergens: $productAllergens, productUnits: $productUnits, productInventory: $productInventory, productCategory: $productCategory, productPrice: $productPrice, productName: $productName, productId: $productId, productType: $productType) {
+    productName
+    productType
+    productPrice
+    productCategory
+    productInventory
+    productUnits
+    productAllergens
+    productAvailability
+    productDescription
+    productImage
+    productId
+  }
+}
+`;

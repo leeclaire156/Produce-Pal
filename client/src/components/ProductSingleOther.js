@@ -12,6 +12,7 @@ function ProductSingleOther(item) {
     const {
         productImage,
         _id,
+        productId,
         productName,
         productDescription,
         productCategory,
@@ -20,6 +21,7 @@ function ProductSingleOther(item) {
         productUnits,
         productType,
         productAvailability,
+        productAllergens,
     } = item;
 
     const { cart, vendorStatus } = state
@@ -57,11 +59,13 @@ function ProductSingleOther(item) {
                 <div className="card-body">
                     <h5 className="card-title">{productName}</h5>
                     <p className="card-text">{productDescription}</p>
+                    <p className="card-text"><small>Product ID: {productId}</small></p>
                     <p className="card-text"><small>Category: {productCategory}</small></p>
                     <p className="card-text"><small>Inventory: {productInventory}</small></p>
                     <p className="card-text"><small>Price: ${productPrice} /{productUnits}</small></p>
                     <p className="card-text"><small>Type: {productType ? 'Weekly Farm Produce Box' : 'Produce'}</small></p>
                     <p className="card-text"><small>Availability: {productAvailability ? 'in-stock' : 'out-stock'}</small></p>
+                    <p className="card-text"><small>Allergens: {productAllergens ? productAllergens : 'none'}</small></p>
                     <div className="input-group input-group-sm mb-3">
                         <button className="btn btn-outline-secondary" type="button" onClick={addToCart}>Add to cart</button>
                     </div>
