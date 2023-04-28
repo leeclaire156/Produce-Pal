@@ -7,46 +7,75 @@ import { idbPromise } from '../utils/helpers';
 // import Auth from '../../utils/auth';
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_VENDOR_STATUS, UPDATE_VENDOR_STATUS } from '../utils/actions';
-// const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 import UserToggle from '../components/UserToggle';
 import orders from '../utils/OrdersData';
 // import "./order.css";
 import ConsumerOrder from '../components/orderhistory/consumerOrder';
 import VendorOrder from '../components/orderhistory/vendorOrder';
-
+import { useQuery } from '@apollo/client'
+import { useParams } from 'react-router-dom';
+import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries'
 
 const OrderHistory = () => {
+    const { profileId } = useParams();
+    //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
+    const { loading, data } = useQuery(
+        profileId ? QUERY_SINGLE_PROFILE : GET_ME,
+        {
+            variables: { profileId: profileId },
+        },
+    );
+
+    const profile = data?.me || data?.profile || {};
+    // console.log(profile)
+    // console.log(profile._id)
+
+    // console.log(profile.sales)
+    const userOrder = profile.orders
+    const userSales = profile.sales
+    console.log(userOrder)
+    console.log(userOrder)
+    console.log(userOrder[0].orderId)
+
+    // console.log(userSales)
+    // console.log(userOrder[0].buyerName)
+    // console.log(userOrder[0].buyerName[0])
+    // console.log(userOrder[0].buyerName[0]._id)
+    // // order = stuff user buys, so filteredOrders replaces this
+    // //sales = stuff bought from user so filteredOrdersByVendor replaces this
+
     // test currentUser id
     const currentUser = {
         _id: 3,
     };
 
-    const [userOrders, setUserOrders] = useState([]);
+    // const [userOrders, setUserOrders] = useState([]);
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
-    const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
+    const { vendorStatus } = state;
 
     // filter to find the current user's order from the all orders data
-    const filteredOrders = orders.filter(
+    const filteredOrders = userOrder.filter(
         (order) =>
-            (order.buyerName._id === currentUser._id)
+            (order.buyerName[0]._id === profile._id)
     );
-    // filter orders by vendor id
-    const filteredOrdersByVendor = orders.filter(
-        (order) =>
-            (order.sellerName._id === currentUser._id)
-    );
+    console.log(filteredOrders)
+    // // filter orders by vendor id
+    // const filteredOrdersByVendor = userOrder.filter(
+    //     (order) =>
+    //         (order.sellerName[0]?._id === profile._id)
+    // );
 
     // console.log(orders);
-    console.log(filteredOrders);
-    console.log(filteredOrdersByVendor);
+    // console.log(filteredOrders); //fake consumer side orders (things this account has bought)
+    // console.log(filteredOrdersByVendor); //fake vendor side orders (things bought from this account's store)
     // console.log(currentUser);
     // console.log(state);
 
-    // function to set the current user's orders as a local STATE 'userOrders'
-    const handleUserOrders = () => {
-        setUserOrders(filteredOrders);
-    };
+    // // function to set the current user's orders as a local STATE 'userOrders'
+    // const handleUserOrders = () => {
+    //     setUserOrders(filteredOrders);
+    // };
 
     // load current vendorStatus from IndexDB if there is one
     const loadVendorStatus = async () => {
@@ -82,6 +111,7 @@ const OrderHistory = () => {
     console.log("global VendorStatus =" + vendorStatus);
 
 
+
     return (
         <div className="container order-history">
 
@@ -94,7 +124,7 @@ const OrderHistory = () => {
                 <div>
                     <h1 className="text-center mb-5">Manage Consumer Orders</h1>
                     <div>
-                        {filteredOrdersByVendor.map((order) => (
+                        {userSales.map((order) => (
                             <VendorOrder key={order._id} {...order} />
                         ))}
                     </div>
@@ -102,8 +132,18 @@ const OrderHistory = () => {
                 : <div>
                     <h1 className="text-center mb-5">My Orders</h1>
                     <div>
+                        {/* {filteredOrders.map((order) => (
+                            <ConsumerOrder key={order._id} {...order} /> */}
                         {filteredOrders.map((order) => (
-                            <ConsumerOrder key={order._id} {...order} />
+                            <ConsumerOrder key={order._id} {...order}
+                                orderId={order.orderId}
+                                sellerName={order.sellerName[0]?.vendorName}
+                                purchaseDate={order.purchaseDate}
+                                productName={order.products[0].productName}
+                                productUnits={order.products[0].productUnits}
+                                products={order.products}
+                                orderType={order.orderType}
+                            />
                         ))}
                     </div>
                 </div>
