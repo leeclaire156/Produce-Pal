@@ -12,6 +12,7 @@ function ProductSingleOther(item) {
     const {
         productImage,
         _id,
+        productId,
         productName,
         productDescription,
         productCategory,
@@ -20,6 +21,7 @@ function ProductSingleOther(item) {
         productUnits,
         productType,
         productAvailability,
+        productAllergens,
     } = item;
 
     const { cart, vendorStatus } = state
@@ -57,78 +59,19 @@ function ProductSingleOther(item) {
                 <div className="card-body">
                     <h5 className="card-title">{productName}</h5>
                     <p className="card-text">{productDescription}</p>
+                    <p className="card-text"><small>Product ID: {productId}</small></p>
                     <p className="card-text"><small>Category: {productCategory}</small></p>
                     <p className="card-text"><small>Inventory: {productInventory}</small></p>
                     <p className="card-text"><small>Price: ${productPrice} /{productUnits}</small></p>
                     <p className="card-text"><small>Type: {productType ? 'Weekly Farm Produce Box' : 'Produce'}</small></p>
                     <p className="card-text"><small>Availability: {productAvailability ? 'in-stock' : 'out-stock'}</small></p>
+                    <p className="card-text"><small>Allergens: {productAllergens ? productAllergens : 'none'}</small></p>
                     <div className="input-group input-group-sm mb-3">
                         <button className="btn btn-outline-secondary" type="button" onClick={addToCart}>Add to cart</button>
                     </div>
                 </div>
             </div>
-
-            {/* <!-- Edit product Modal (enable in vendorStatus: true )--> */}
-            <div className="modal modal-lg fade" id={`editProductModal-${_id}`} tabIndex="-1" aria-labelledby={`editProductModalLabel-${_id}`} aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id={`editProductModalLabel-${_id}`}>{productName}</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <div className="form-group">
-                                <label>Product name</label>
-                                <input type="text" className="form-control text-muted" id={`product-name-input-${_id}`} defaultValue={productName} />
-                            </div>
-                            <div className="form-group">
-                                <label>Category</label>
-                                <input type="text" className="form-control text-muted" id={`product-category-input-${_id}`} defaultValue={productCategory} />
-                            </div>
-                            <div className="form-group">
-                                <label>Inventory</label>
-                                <input type="number" className="form-control text-muted" id={`product-inventory-input-${_id}`} defaultValue={productInventory} />
-                            </div>
-                            <div className="form-group">
-                                <label>Unit Price (USD)</label>
-                                <input type="number" className="form-control text-muted" id={`product-price-input-${_id}`} placeholder={productPrice} />
-                            </div>
-                            <div className="form-group">
-                                <label>Units</label>
-                                <input type="text" className="form-control text-muted" id={`product-units-input-${_id}`} defaultValue={`${productUnits}`} />
-                            </div>
-                            <div className="form-group">
-                                <label>Type</label>
-                                <select className="form-select" aria-label="select-type" id={`product-type-input-${_id}`}>
-                                    <option value='true'>weekly box</option>
-                                    <option value='false'>produce</option>
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label>Availability</label>
-                                <select className="form-select" aria-label="select-availability" id={`product-availability-input-${_id}`}>
-                                    <option value='true'>In-stock</option>
-                                    <option value='false'>Out-stock</option>
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label>Description</label>
-                                <textarea className="form-control" id={`product-description-input-${_id}`} rows="3" placeholder={productDescription}></textarea>
-                            </div>
-                        </div>
-
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
-                            <button type="button" className="btn btn-primary">Checkout</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-
     );
 }
 

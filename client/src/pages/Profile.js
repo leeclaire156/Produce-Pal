@@ -26,7 +26,6 @@ function Profile() {
     console.log(profile);
 
     const [state, dispatch] = useProductContext();
-    // const [vendorStatus, setVendorStatus] = useState(false);
     const { vendorStatus } = state;
 
     // load current vendorStatus from IndexDB if there is one

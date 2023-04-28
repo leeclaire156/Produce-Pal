@@ -9,6 +9,8 @@ import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART } from '../utils/actions';
 // import './style.css';
 
+// Sample public testing key for stripe
+
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
@@ -102,17 +104,19 @@ const Cart = () => {
                                     <div className="flex-row text-end">
                                         <strong>Total: ${calculateTotal()}</strong>
 
-                                        
 
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
-                            <button type="button" className="btn btn-secondary" onClick={clearCart}>Clear Cart</button>
-                            {Auth.loggedIn() ? (
-                            <button type="button" className="btn btn-primary" onClick={submitCheckout}>Checkout</button>
-                        ) : (
-                            <span>(log in to check out)</span>
-                        )}
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
+                                        <button type="button" className="btn btn-secondary" onClick={clearCart}>Clear Cart</button>
+                                        {Auth.loggedIn() ? (
+                                            <form action="/create-checkout-session" method="POST">
+                                                <button type="button" className="btn btn-primary" onClick={submitCheckout}>Checkout</button>
+                                            </form>
+                                        ) : (
+                                            <span>(log in to check out)</span>
+                                        )}
+
                                     </div>
                                 </div>
                             ) : (
