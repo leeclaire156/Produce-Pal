@@ -472,6 +472,7 @@ query Storefront($id: ID!) {
 }
 `
 
+<<<<<<< HEAD
 // export const QUERY_CHECKOUT = gql`
 //   query getCheckout($products: [ID]!) {
 //     checkout(products: $products) {
@@ -479,3 +480,12 @@ query Storefront($id: ID!) {
 //     }
 //   }
 // `;
+=======
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($products: [ID]!) {
+    checkout(products: $products) {
+      session
+    }
+  }
+`;
+>>>>>>> e469232cdb94ff86dca0aceb597965a12b3de519

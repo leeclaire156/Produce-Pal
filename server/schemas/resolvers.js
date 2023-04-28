@@ -1,8 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order, Address } = require('../models');
 const { signToken } = require('../utils/auth');
-// TO DO - Ask Jenny & Quin about stripe dependencies
-const stripe = require('stripe')('pk_test_51My0XoKnVZuvOvAuUtcxcWUSvch6mxujMAzhEWhANekyEJGvRr6K3qHeOLzXDVegBwLCqqMIp3jvMbWvmZ7juJnE00xM7CaKzG');
+// Sample secret testing key for stripe
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 
 const resolvers = {
@@ -217,27 +217,66 @@ const resolvers = {
         product: async (parent, { _id }) => {
             return await Product.findById(_id);
         },
+        // checkout: async (parent, args, context) => {
+        //     // const url = new URL(context.headers.referer).origin;
+        //     const order = new Order({ products: args.products });
+        //     // const line_items = [];
+
+        //     const { products } = await order.populate('products');
+        //     // TURN ON FOR TESTING WHEN READY IN FRONT END 
+        //     /*               
+        //     for (let i =0; i < products.length; i++) {
+        //         const product = await stripe.products.create({
+        //             productName: products[i].productName,
+        //             productDescription: products[i].productDescription,
+        //             productImage: products[i].productImage
+        //         });
+
+        //         const price = await stripe.prices.create({
+        //             product: product.id,
+        //             unit_amount: products[i].price * 100,
+        //             currency: 'usd',
+        //         });
+
+        //         line_items.push({
+        //             price: price.id,
+        //             quantity: 1
+        //         });
+        //     }
+
+        //     const session = await stripe.checkout.sessions.create({
+        //         payment_method_types: ['card'],
+        //         line_items,
+        //         mode: 'payment',
+        //         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        //         cancel_url: `${url}/`
+        //     });
+
+        //     return { session: session.id };
+        //     */
+
+        //     // DELETE below return for when you deploy; need this for graphql only
+        //     return order.populate('products');
+        // },
         checkout: async (parent, args, context) => {
-            // const url = new URL(context.headers.referer).origin;
+            const url = new URL(context.headers.referer).origin;
             const order = new Order({ products: args.products });
-            // const line_items = [];
+            const line_items = [];
 
             const { products } = await order.populate('products');
-            // TURN ON FOR TESTING WHEN READY IN FRONT END 
-            /*               
-            for (let i =0; i < products.length; i++) {
+
+            for (let i = 0; i < products.length; i++) {
                 const product = await stripe.products.create({
-                    productName: products[i].productName,
-                    productDescription: products[i].productDescription,
-                    productImage: products[i].productImage
+                    name: products[i].productName,
+                    description: products[i].productDescription,
                 });
 
                 const price = await stripe.prices.create({
                     product: product.id,
-                    unit_amount: products[i].price * 100,
+                    unit_amount: products[i].productPrice * 100,
                     currency: 'usd',
                 });
-                
+
                 line_items.push({
                     price: price.id,
                     quantity: 1
@@ -251,13 +290,10 @@ const resolvers = {
                 success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
                 cancel_url: `${url}/`
             });
-            
-            return { session: session.id };
-            */
 
-            // DELETE below return for when you deploy; need this for graphql only
-            return order.populate('products');
+            return { session: session.id };
         }
+
     },
     // MUTATIONS
     Mutation: {
@@ -304,50 +340,53 @@ const resolvers = {
             return product;
         },
         // // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
-        // addOrder: async (parent, { products, seller }, context) => {
+        addOrder: async (parent, { products, seller }, context) => {
+            if (context.user) {
+                const order = await Order.create({ products });
+                // When buyer pays, then:
+                // send the buyer's ID to orders array
+                await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } }, { new: true });
+                // When buyer pays, then:
+                // Buyer's Orders: send the buyer's ID to orders array
+                await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
+                // Seller's Sales: send the seller's user ID to sales array & the sellerName array
+                await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
+                await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
 
-        //     console.log(context);
+                // // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
+                // await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
 
-        //     if(context.user) {
-        //         const order = await Order.create({ products });
-        //         // When buyer pays, then:
-        //         // send the buyer's ID to orders array
-        //         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } }, { new: true });
-        //         
-        //         // also send the seller's user ID to sales array & the sellerName array
-        //         await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
-        //         await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
-        //         // also send the buyer's ID to the buyer's membership array & the buyerName array
-        //         await User.findByIdAndUpdate(context.user._id, { $push: { memberships: seller } }, { new: true });
-        //         await User.findByIdAndUpdate(context.user._id, { $push: { buyerName: context.user._id } }, { new: true });
-        //         return order.populate('products');
-        //     }
-        //     throw new AuthenticationError('Not logged in');
-        // },
-
-        // For Apollo back end testing
-        addOrder: async (parent, args) => {
-            const products = args.products;
-            // user will be context
-            const user = args.user;
-            // seller will be params from local storage
-            const seller = args.seller;
-            const order = await Order.create({ products, user, seller });
-            // When buyer pays, then:
-            // Buyer's Orders: send the buyer's ID to orders array
-            await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
-            // Seller's Sales: send the seller's user ID to sales array & the sellerName array
-            await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
-            await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
-
-            // // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
-            // await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
-
-            // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
-            await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
-            await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
-            return order.populate('products');
+                // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
+                await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
+                await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
+                return order.populate('products');
+            }
+            throw new AuthenticationError('Not logged in');
         },
+
+        // // For Apollo back end testing
+        // addOrder: async (parent, args) => {
+        //     const products = args.products;
+        //     // user will be context
+        //     const user = args.user;
+        //     // seller will be params from local storage
+        //     const seller = args.seller;
+        //     const order = await Order.create({ products });
+        //     // When buyer pays, then:
+        //     // Buyer's Orders: send the buyer's ID to orders array
+        //     await User.findByIdAndUpdate(user, { $push: { orders: order } }, { new: true });
+        //     // Seller's Sales: send the seller's user ID to sales array & the sellerName array
+        //     await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
+        //     await User.findByIdAndUpdate(seller, { $push: { sellerName: seller } }, { new: true });
+
+        //     // // Buyer's Memberships: send the buyer's ID to the buyer's membership array & the buyerName array
+        //     // await User.findByIdAndUpdate(user, { $push: { memberships: seller } }, { new: true });
+
+        //     // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
+        //     await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
+        //     await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
+        //     return order.populate('products');
+        // },
         // UPDATE 
         // updateUser using context (the signed in user) - when updating user info form is ready, uncomment below and comment out updateUser without context
         // updateUser: async (parent, args, context) => {

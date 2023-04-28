@@ -22,7 +22,7 @@ const productSchema = new Schema({
         // set: setPrice, 
     },
     // For Sharebox: weekly, biweekly, monthly
-    // For Produce: vegetable, meat, egg, dairy, fruits, etc.
+    // For Produce: vegetable, meat, egg, dairy, fruits, herb, sweetener etc.
     productCategory: {
         type: String,
         default: '',

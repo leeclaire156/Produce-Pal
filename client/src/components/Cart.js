@@ -1,27 +1,28 @@
 import React, { useEffect } from 'react';
-// import { loadStripe } from '@stripe/stripe-js';
-// import { useLazyQuery } from '@apollo/client';
-// import { QUERY_CHECKOUT } from '../../utils/queries';
+import { loadStripe } from '@stripe/stripe-js';
+import { useLazyQuery } from '@apollo/client';
+import { QUERY_CHECKOUT } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import CartItem from '../components/CartItems';
-// import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART } from '../utils/actions';
 // import './style.css';
 
-// const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+// Sample public testing key for stripe
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
     const [state, dispatch] = useProductContext();
-    // const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
+    const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
-    // useEffect(() => {
-    //     if (data) {
-    //         stripePromise.then((res) => {
-    //             res.redirectToCheckout({ sessionId: data.checkout.session });
-    //         });
-    //     }
-    // }, [data]);
+    useEffect(() => {
+        if (data) {
+            stripePromise.then((res) => {
+                res.redirectToCheckout({ sessionId: data.checkout.session });
+            });
+        }
+    }, [data]);
 
     useEffect(() => {
         async function getCart() {
@@ -35,9 +36,9 @@ const Cart = () => {
     }, [state.cart.length, dispatch]);
 
 
-    // function toggleCart() {
-    //     dispatch({ type: TOGGLE_CART });
-    // }
+    function toggleCart() {
+        dispatch({ type: TOGGLE_CART });
+    }
 
     function clearCart() {
         dispatch({ type: CLEAR_CART });
@@ -52,21 +53,21 @@ const Cart = () => {
         return sum.toFixed(2);
     }
 
-    // console.log(state);
+    console.log(state);
 
-    // function submitCheckout() {
-    //     const productIds = [];
+    function submitCheckout() {
+        const productIds = [];
 
-    //     state.cart.forEach((item) => {
-    //         for (let i = 0; i < item.purchaseQuantity; i++) {
-    //             productIds.push(item._id);
-    //         }
-    //     });
+        state.cart.forEach((item) => {
+            for (let i = 0; i < item.purchaseQuantity; i++) {
+                productIds.push(item._id);
+            }
+        });
 
-    //     getCheckout({
-    //         variables: { products: productIds },
-    //     });
-    // }
+        getCheckout({
+            variables: { products: productIds },
+        });
+    }
 
     // if (!state.cartOpen) {
     //     return (
@@ -102,11 +103,19 @@ const Cart = () => {
                                     <div className="flex-row text-end">
                                         <strong>Total: ${calculateTotal()}</strong>
 
-                                        {/* {Auth.loggedIn() ? (
-                            <button onClick={submitCheckout}>Checkout</button>
-                        ) : (
-                            <span>(log in to check out)</span>
-                        )} */}
+
+
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
+                                        <button type="button" className="btn btn-secondary" onClick={clearCart}>Clear Cart</button>
+                                        {Auth.loggedIn() ? (
+                                            <form action="/create-checkout-session" method="POST">
+                                                <button type="button" className="btn btn-primary" onClick={submitCheckout}>Checkout</button>
+                                            </form>
+                                        ) : (
+                                            <span>(log in to check out)</span>
+                                        )}
                                     </div>
                                 </div>
                             ) : (
@@ -114,12 +123,6 @@ const Cart = () => {
                                     Your cart is empty!
                                 </h3>
                             )}
-
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
-                            <button type="button" className="btn btn-secondary" onClick={clearCart}>Clear Cart</button>
-                            <button type="button" className="btn btn-primary">Checkout</button>
                         </div>
                     </div>
                 </div>
