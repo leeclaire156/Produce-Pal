@@ -59,21 +59,21 @@ type Order {
 
 type Checkout {
     session: ID
-    _id: ID
-    productId: Int
-    productName: String
-    productType: Boolean
-    productPrice: Float
-    productCategory: String
-    productInventory: Int
-    productUnits: String
-    productAllergens: String
-    productAvailability: Boolean
-    productDescription: String
-    productImage: String
-    products: [Product]
+    # _id: ID
+    # productId: Int
+    # productName: String
+    # productType: Boolean
+    # productPrice: Float
+    # productCategory: String
+    # productInventory: Int
+    # productUnits: String
+    # productAllergens: String
+    # productAvailability: Boolean
+    # productDescription: String
+    # productImage: String
+    # products: [Product]
 }
-# # TO DO! when tokens are ready, use below for adding a User. UNCOMMENT line 52-55, 59, swap 86 for 85, and uncomment 149
+
 type Auth {
     token: ID
     user: User
@@ -136,10 +136,10 @@ type Mutation {
         # ): User
     addProduct(
         _id: ID, 
-        productId: Int!, 
-        productName: String!, 
+        productId: String, 
+        productName: String, 
         productType: Boolean, 
-        productPrice: Float!, 
+        productPrice: Float, 
         productCategory: String, 
         productInventory: Int, 
         productUnits: String, 
@@ -148,9 +148,9 @@ type Mutation {
         productDescription: String, 
         productImage: String
         user: [ID]!): Product
+    # utilizing context
     addOrder(
         products: [ID]!,
-        user: [ID]!,
         seller: [ID]!): Order
     updateUser(
         _id: ID
@@ -195,7 +195,7 @@ type Mutation {
         order: [ID]!): Order
     editProduct(
         _id: ID
-        productId: Int
+        productId: String
         productName: String
         productType: Boolean
         productPrice: Float

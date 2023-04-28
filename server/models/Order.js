@@ -29,7 +29,7 @@ const orderSchema = new Schema(
                 ref: 'Product'
             },
         ],
-        // For Order type: Pending, Paid, Ready, Closed
+        // For Order type: Paid, Ready, Closed
         orderType: {
             type: String,
             default: 'Paid',

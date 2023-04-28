@@ -11,16 +11,15 @@ import Cart from '../components/Cart';
 import { idbPromise } from '../utils/helpers';
 import UserToggle from '../components/UserToggle';
 
-import axios from "axios";
 
-import { useMutation, useQuery } from '@apollo/client';
-import { ADD_PRODUCT } from '../utils/mutations';
+import { useQuery } from '@apollo/client';
 // import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { STOREFRONT } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventoryOther = () => {
     const { id } = useParams();
+    window.localStorage.setItem("storeObjectId", JSON.stringify(id));
 
     const { loading, error, data } = useQuery(STOREFRONT, {
         variables: { id }
@@ -139,7 +138,8 @@ const ProductInventoryOther = () => {
                             <ProductSingleOther
                                 key={product._id}
                                 _id={product._id}
-                                image={product.image}
+                                productId={product.productId}
+                                productImage={product.productImage}
                                 productName={product.productName}
                                 productDescription={product.productDescription}
                                 productCategory={product.productCategory}
@@ -148,6 +148,7 @@ const ProductInventoryOther = () => {
                                 productUnits={product.productUnits}
                                 productType={product.productType}
                                 productAvailability={product.productAvailability}
+                                productAllergens={product.productAllergens}
                             />
                         ))}
                     </div>
