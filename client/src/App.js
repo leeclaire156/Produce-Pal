@@ -22,6 +22,7 @@ import OrderHistory from './pages/OrderHistory'
 import ProfileOtherVendor from './pages/ProfileOtherVendor'
 import ProfileOtherConsumer from './pages/ProfileOtherConsumer'
 import { ProductProvider } from './utils/GlobalState.js'
+import Success from './pages/Success';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -74,7 +75,8 @@ function App() {
               <Route exact path='/profile/vendor/:id' component={ProfileOtherVendor} />
               {/* this route is for farmer to view their consumers who bought their products */}
               <Route exact path='/profile/consumer/:id' component={ProfileOtherConsumer} />
-
+              {/* this route is for the success Stripe payment made page and where addOrder function is called */}
+              <Route exact path='/success' component={Success} />
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
               <Route render={() => <h1 className='display-2 container'>Wrong page!</h1>} />
               {/* <Route path="*" component={Error404} /> */}

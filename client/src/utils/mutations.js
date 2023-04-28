@@ -18,6 +18,25 @@ mutation AddProduct($productName: String!, $productPrice: Float!, $user: [ID]!, 
   }
 }
 `;
+
+export const ADD_ORDER = gql`
+  mutation addOrder($products: [ID]!, $seller: [ID]!) {
+    addOrder(products: $products, seller: $seller) {
+      purchaseDate
+      products {
+        _id
+        name
+        description
+        price
+        quantity
+        category {
+          name
+        }
+      }
+    }
+  }
+`;
+
 // For login/signup uncomment below
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {

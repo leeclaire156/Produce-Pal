@@ -19,6 +19,7 @@ import { useParams } from 'react-router-dom';
 
 const ProductInventoryOther = () => {
     const { id } = useParams();
+    window.localStorage.setItem("storeObjectId", JSON.stringify(id));
 
     const { loading, error, data } = useQuery(STOREFRONT, {
         variables: { id }
