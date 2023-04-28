@@ -330,7 +330,9 @@ const resolvers = {
         // For Apollo back end testing
         addOrder: async (parent, args) => {
             const products = args.products;
+            // user will be context
             const user = args.user;
+            // seller will be params from local storage
             const seller = args.seller;
             const order = await Order.create({ products, user, seller });
             // When buyer pays, then:
