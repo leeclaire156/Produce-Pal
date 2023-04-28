@@ -611,7 +611,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I love long walks on the beach with my family.',
             phone: '386-019-4824',
-            userImage: '',
+            userImage: 'https://www.freeimages.com/photo/tractor-pouring-grain-1931090',
             address: [],
             vendorAddress: [],
             sales: [
@@ -626,6 +626,7 @@ db.once('open', async () => {
                 products[1]._id, 
                 products[2]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/middle-eastern-market-1637274',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -636,6 +637,7 @@ db.once('open', async () => {
             password: '12345',
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
             phone: '234-109-5786',
+            userImage: 'https://www.freeimages.com/photo/men-with-red-peppers-2262753',
             sales: [
                 orders[2]._id, 
             ],
@@ -654,6 +656,7 @@ db.once('open', async () => {
                 products[3]._id, 
                 products[4]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/baker-with-cupcakes-1882795',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-456-1908',
         },
@@ -664,6 +667,7 @@ db.once('open', async () => {
             password: 'password2',
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
             phone: '123-456-7890',
+            userImage: 'https://www.freeimages.com/photo/tractor-pouring-grain-1993884',
             orders: [
                 orders[0]._id,
                 orders[3]._id,
@@ -682,6 +686,7 @@ db.once('open', async () => {
             password: 'password234',
             biography: 'I supoort my local CSAs!',
             phone: '321-654-6789',
+            userImage: 'https://www.freeimages.com/photo/men-in-warehouse-with-plant-2263267',
             orders: [
                 orders[2]._id
             ],
@@ -694,6 +699,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I like fishing and learning new things.',
             phone: '703-855-2126',
+            userImage: 'https://www.freeimages.com/photo/woman-working-on-tea-plantation-2386122',
             sales: [
                 orders[3]._id
             ],
@@ -703,6 +709,7 @@ db.once('open', async () => {
             products: [
                 products[5]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/napa-valley-1624853',
             pickupLocation: 'Cherrydale Farmers Market',
             vendorTelephone: '703-555-1234',
         },
@@ -713,6 +720,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I am looking forward to meeting other farmers on ProducePal!',
             phone: '571-223-2222',
+            userImage: 'https://www.freeimages.com/photo/farmer-holding-a-chicken-2425461',
             sales: [
                 orders[4]._id,
                 orders[5]._id,
@@ -733,6 +741,7 @@ db.once('open', async () => {
                 products[18]._id,
                 products[19]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/cumbrian-farm-1207254',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -743,6 +752,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I love to play baseball and try new foods.',
             phone: '202-322-4000',
+            userImage: 'https://www.freeimages.com/photo/farmer-holding-wheelbarrow-2386648',
             sales: [
                 orders[12]._id
             ],
@@ -753,6 +763,7 @@ db.once('open', async () => {
                 products[20]._id,
                 products[23]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/guadalajara-1619501',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -763,6 +774,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I like to spend my freetime with my family and explore the outdoors',
             phone: '540-222-2232',
+            userImage: 'https://www.freeimages.com/photo/farmer-1429094',
             sales: [
                 orders[11]._id
             ],
@@ -773,6 +785,7 @@ db.once('open', async () => {
                 products[22]._id,
                 products[24]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/woman-holding-out-an-apple-1754118',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -783,6 +796,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I love to restore classic cars and spend time with my partner.',
             phone: '202-444-4424',
+            userImage: 'https://www.freeimages.com/photo/farmer-with-head-of-lettuce-2058883',
             sales: [
                 orders[10]._id
             ],
@@ -794,6 +808,7 @@ db.once('open', async () => {
                 products[25]._id,
                 products[26]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/morning-call-1637322',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -804,6 +819,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I was born and raised in Vancouver and I am looing to share my love of the outdoors with my new commmunity here in the DMV',
             phone: '804-222-9002',
+            userImage: 'https://www.freeimages.com/photo/farmer-massaging-pig-1748964',
             sales: [
                 orders[6]._id
             ],
@@ -815,6 +831,7 @@ db.once('open', async () => {
                 products[8]._id,
                 products[14]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/honey-bee-garden-1236370',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -825,6 +842,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'In my free time I like to ride my ATV and sip on mountain dew, and I also enjoy saltwater fishing',
             phone: '703-999-9779',
+            userImage: 'https://www.freeimages.com/photo/man-with-plants-2327365',
             sales: [
                 orders[9]._id
             ],
@@ -836,6 +854,7 @@ db.once('open', async () => {
                 products[27]._id,
                 products[28]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/honestead-1226496',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -846,6 +865,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'For 8 months of the year my girlfriend of 12 years and I follow jam bands on tour and exclusively wear ethically sourced hempfiber based tie dye outerwear.',
             phone: '386-019-4824',
+            userImage: 'https://www.freeimages.com/photo/peasant-couple-drinking-beer-on-hay-bales-2098262',
             sales: [
                 orders[8]._id
             ],
@@ -857,6 +877,7 @@ db.once('open', async () => {
                 products[12]._id,
                 products[21]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/vertical-plant-1330326',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -867,6 +888,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I spend most of my freetime volunteering with sheltered animals',
             phone: '202-999-0029',
+            userImage: 'https://www.freeimages.com/photo/farmer-with-plants-1777837',
             sales: [
                 orders[7]._id
             ],
@@ -878,6 +900,7 @@ db.once('open', async () => {
                 products[11]._id,
                 products[13]._id
             ],
+            vendorImage:'https://www.freeimages.com/photo/cows-with-bells-1332989',
             pickupLocation: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         }
