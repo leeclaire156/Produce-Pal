@@ -20,9 +20,12 @@ mutation AddProduct($productName: String!, $productPrice: Float!, $user: [ID]!, 
 `;
 
 export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!, $user: [ID]!) {
-    addOrder(products: $products, user: $user) {
+  mutation addOrder($products: [ID]!, $sellerName: [ID]!) {
+    addOrder(products: $products, sellerName: $sellerName) {
       purchaseDate
+      sellerName {
+        _id
+      }
       products {
         _id
       }
