@@ -3,20 +3,21 @@ import { Link } from 'react-router-dom';
 
 const FarmCard = ({ farm }) => {
     return (
-        <div className="card border-0 mb-3">
-            <div className="row g-0 align-items-center">
-                <div className="col-md-6">
+        <div className="card border-0 mb-3 farm-card">
+            <div className="row g-0">
+                <div className="col-md-6  d-flex farm-img-container">
                     <img
-                        src={farm.vendorImage ? farm.vendorImage : "https://placehold.co/600x300"}
+                        src={farm.vendorImage ? farm.vendorImage : "https://placehold.co/600x400"}
                         alt=""
-                        className="img-fluid"
+                        className="img-fluid rounded-start farm-card-img"
                     />
                 </div>
-                <div className="col-md-6">
-                    <div className="card-body">
-                        <h5 className="card-title">{farm.vendorName}</h5>
+
+                <div className="col-md-6 ">
+                    <div className="card-body ms-2">
+                        <h2 className="card-title mb-3 mt-3">{farm.vendorName}</h2>
                         <h6 className="card-subtitle mb-4">{farm.vendorAddress[0]?.street} {farm.vendorAddress[0]?.city} {farm.vendorAddress[0]?.state} {farm.vendorAddress[0]?.zipcode}</h6>
-                        <p className="card-text">{farm.vendorDescription}</p>
+                        <p className="card-text mb-4">{farm.vendorDescription}</p>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-start">
                             <Link to={`/profile/vendor/${farm._id}`}>
                                 <button className="btn btn-primary me-md-2" type="button" id={`farmProfileBtn-${farm._id}`}>Farm profile</button>

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import UserToggle from '../components/UserToggle';
-import ConsumerInfo from '../components/userInfo/ConsumerInfo';
-import VendorInfo from '../components/userInfo/VendorInfo';
+import ConsumerInfoPublic from '../components/publicProfile/ConsumerInfoPublic';
 import Auth from '../utils/auth';
 import { Redirect } from 'react-router-dom'
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useProductContext } from '../utils/GlobalState';
-import { TOGGLE_VENDOR_STATUS, UPDATE_VENDOR_STATUS } from '../utils/actions';
-import { idbPromise } from '../utils/helpers';
+// import { TOGGLE_VENDOR_STATUS, UPDATE_VENDOR_STATUS } from '../utils/actions';
+// import { idbPromise } from '../utils/helpers';
 
 
 function Profile() {
@@ -74,10 +72,6 @@ function Profile() {
     //     vendorStatus
     // };
 
-    const handleSave = (data) => {
-        // setDescription(data.description);
-        console.log('need data from database');
-    };
 
     // // Old version
     // const toggleVendorStatus = () => {
@@ -92,7 +86,7 @@ function Profile() {
                     {/* this toggle button needs to be moved to navBar when implementing */}
                     {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
                     <div className="container mt-5">
-                        <ConsumerInfo {...profile} onSave={handleSave} />
+                        <ConsumerInfoPublic {...profile} />
                     </div>
                 </div>
             );

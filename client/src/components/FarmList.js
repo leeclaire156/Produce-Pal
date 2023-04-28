@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FarmCard from './FarmCard';
+import vegImg from '../styles/img/veg-1.png';
 
 // only shows cards with vendorStatus true
 const FarmList = ({ farms }) => {
@@ -87,7 +88,12 @@ const FarmList = ({ farms }) => {
             </div>
             {/* farm information cards */}
             <div className="row justify-content-center">
-                <div className="col-12 col-md-8" style={{ width: '75%' }}>
+                <div className="col-2 col-md-1">
+                    <div className='container'>
+                        <img className='veg-img' src={vegImg} />
+                    </div>
+                </div>
+                <div className="col-8 col-md-8" style={{ width: '75%' }}>
                     {searchError && (
                         <p className="text-danger">{searchError}</p>
                     )}
@@ -101,6 +107,7 @@ const FarmList = ({ farms }) => {
                             <FarmCard key={farm._id} farm={farm} />
                         )))}
                 </div>
+                <div className="col-2 col-md-1"></div>
             </div>
 
         </div>
