@@ -15,12 +15,12 @@ import axios from "axios";
 
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PRODUCT } from '../utils/mutations';
-import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
+import { QUERY_SINGLE_PROFILE, GET_ME, QUERY_PRODUCT } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
     const { profileId } = useParams();
-   
+
     const { data } = useQuery(
         profileId ? QUERY_SINGLE_PROFILE : GET_ME,
         {
@@ -47,7 +47,7 @@ const ProductInventory = () => {
             const categoriesList = ['All', ...uniqueCategories];
             // convert array to an object to use reducer dispatch
             const categoriesListObject = categoriesList.map((item, index) => {
-                return { _id: index, name: item };
+                return { productId: index, name: item };
             });
             console.log(categoriesListObject);
             // console.log(categoriesList);
@@ -63,19 +63,23 @@ const ProductInventory = () => {
     }, []);
 
 
-    const handleClick = (id) => {
+    const handleClick = (productId) => {
+        dispatch({
+            type: UPDATE_PRODUCTS,
+            products: productData,
+        });
         dispatch({
             type: UPDATE_CURRENT_CATEGORY,
-            currentCategory: id,
-            currentCategoryName: categories[id].name
+            currentCategory: productId,
+            currentCategoryName: categories[productId].name
         });
     };
 
     function filterProducts() {
         if (!currentCategory) {
-            return state.products;
+            return productData;
         } else {
-            return state.products.filter(
+            return productData.filter(
                 // (product) => product.productCategory === currentCategory
                 (product) => product.productCategory === categories[currentCategory].name
             );
@@ -104,7 +108,7 @@ const ProductInventory = () => {
         productAllergens: '',
         productAvailability: '',
         productDescription: '',
-        // productImage: url,
+        productImage: url,
         user: profile._id,
     });
 
@@ -183,10 +187,11 @@ const ProductInventory = () => {
                     productAllergens: productFormData.productAllergens,
                     productAvailability: productFormData.productAvailability,
                     productDescription: productFormData.productDescription,
-                    // productImage: url,
+                    productImage: url,
                     user: profile._id
-                },
+                }
             });
+            window.location.reload(false)
             return data;
         } catch (err) {
             console.error(err);
@@ -210,7 +215,6 @@ const ProductInventory = () => {
 
 
     return (
-
         <div className="container my-2">
             {/* This is a reuseable component for managing my own farm inventory and shopping from the other farms. if I am on my product inventory page as a vendor, I will see "my farm products". but if I am a consumer want to do shopping, I will see other farm's name as the title. */}
             <div className='row mb-3'>
@@ -242,6 +246,7 @@ const ProductInventory = () => {
                                     <a
                                         href='#'
                                         className="dropdown-item"
+                                        value={item.productId}
                                         onClick={() => { handleClick(item.productId) }}
                                     >
                                         {item.name}
@@ -253,7 +258,7 @@ const ProductInventory = () => {
                 </div>
             </div>
             {/* array of product cards */}
-            {state.products.length ? (
+            {productData.length ? (
                 <div className="row is-flex">
                     {filterProducts().map((product) => (
                         <ProductSingle
@@ -369,8 +374,7 @@ const ProductInventory = () => {
 
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary" 
-                            > Save</button>}
+                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary" data-bs-dismiss="modal"> Save</button>}
                         </div>
 
                     </div>

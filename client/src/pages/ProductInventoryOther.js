@@ -11,10 +11,8 @@ import Cart from '../components/Cart';
 import { idbPromise } from '../utils/helpers';
 import UserToggle from '../components/UserToggle';
 
-import axios from "axios";
 
-import { useMutation, useQuery } from '@apollo/client';
-import { ADD_PRODUCT } from '../utils/mutations';
+import { useQuery } from '@apollo/client';
 // import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { STOREFRONT } from '../utils/queries';
 import { useParams } from 'react-router-dom';
