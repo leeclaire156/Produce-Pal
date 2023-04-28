@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import UserToggle from '../components/UserToggle';
-import ConsumerInfo from '../components/userInfo/ConsumerInfo';
-import VendorInfo from '../components/userInfo/VendorInfo';
+import VendorInfoPublic from '../components/publicProfile/VendorInfoPublic';
 import Auth from '../utils/auth';
 import { Redirect } from 'react-router-dom'
 import { Navigate, useParams } from 'react-router-dom';
@@ -74,10 +73,6 @@ function Profile() {
     //     vendorStatus
     // };
 
-    const handleSave = (data) => {
-        // setDescription(data.description);
-        console.log('need data from database');
-    };
 
     // // Old version
     // const toggleVendorStatus = () => {
@@ -92,7 +87,7 @@ function Profile() {
                     {/* this toggle button needs to be moved to navBar when implementing */}
                     {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
                     <div className="container mt-5">
-                        <VendorInfo {...profile} onSave={handleSave} />
+                        <VendorInfoPublic {...profile} />
                     </div>
                 </div>
             );
