@@ -10,7 +10,6 @@ import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART } from '../utils/actions'
 // import './style.css';
 
 // Sample public testing key for stripe
-
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
@@ -105,6 +104,7 @@ const Cart = () => {
                                         <strong>Total: ${calculateTotal()}</strong>
 
 
+
                                     </div>
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
@@ -116,7 +116,6 @@ const Cart = () => {
                                         ) : (
                                             <span>(log in to check out)</span>
                                         )}
-
                                     </div>
                                 </div>
                             ) : (
