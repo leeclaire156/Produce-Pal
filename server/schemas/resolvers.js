@@ -1,7 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order, Address } = require('../models');
 const { signToken } = require('../utils/auth');
-// TO DO - Ask Jenny & Quin about stripe dependencies
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 
@@ -341,8 +340,10 @@ const resolvers = {
         },
         // // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
         addOrder: async (parent, { products, seller }, context) => {
+
             if(context.user) {
                 const order = await Order.create({ products });
+
                 // When buyer pays, then:
                 // send the buyer's ID to orders array
                 await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } }, { new: true });

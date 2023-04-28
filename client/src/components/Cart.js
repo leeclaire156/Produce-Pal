@@ -7,6 +7,8 @@ import CartItem from '../components/CartItems';
 import Auth from '../utils/auth';
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART } from '../utils/actions';
+import { Link } from 'react-router-dom';
+
 // import './style.css';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
@@ -109,7 +111,11 @@ const Cart = () => {
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
                             <button type="button" className="btn btn-secondary" onClick={clearCart}>Clear Cart</button>
                             {Auth.loggedIn() ? (
-                            <button type="button" className="btn btn-primary" onClick={submitCheckout}>Checkout</button>
+                            <div>
+                            <Link to={`/success`}>
+                            <button type="button" className="btn btn-primary">Checkout</button>
+                            </Link>
+                            </div>
                         ) : (
                             <span>(log in to check out)</span>
                         )}
