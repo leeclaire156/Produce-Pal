@@ -3,51 +3,50 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBook, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-function ConsumerDashboard({ firstName, lastName, phone, biography }) {
+function ConsumerDashboard({ firstName, lastName, address }) {
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col">
-                    <h2>{firstName} {lastName}</h2>
-                    <p>{phone}</p>
-                    <p>About me: {biography}</p>
+        <div className="container mt-5">
+            <div className="row mb-5">
+                <div className="col dashboard-title text-center">
+                    <h1>{firstName} {lastName} </h1>
+                    <p>{address[0]?.street}, {address[0]?.city}, {address[0]?.state}, {address[0]?.zipcode}</p>
                 </div>
             </div>
             <div className="row">
                 <div className="col-sm-4">
-                    <div className="card">
-                        <div className="card-body">
-                            <FontAwesomeIcon icon={faUser} size="3x" />
+                    <div className="card dashboard-card">
+                        <div className="card-body text-center">
+                            <FontAwesomeIcon icon={faUser} size="3x" className='fa-icon' />
                             <h5 className="card-title mt-3">My profile</h5>
                             <p className="card-text">This is my profile description.</p>
                             {/* This edit button navigates to 'ConsumerProfile.js' component */}
                             <Link to="/profile">
-                                <button className="btn btn-primary">View</button>
+                                <button className="btn btn-primary dashboard-card-btn">View</button>
                             </Link>
                         </div>
                     </div>
                 </div>
                 <div className="col-sm-4">
-                    <div className="card">
-                        <div className="card-body">
-                            <FontAwesomeIcon icon={faBook} size="3x" />
+                    <div className="card dashboard-card">
+                        <div className="card-body text-center">
+                            <FontAwesomeIcon icon={faBook} size="3x" className='fa-icon' />
                             <h5 className="card-title mt-3">Order history</h5>
                             <p className="card-text">Review my order history.</p>
                             <Link to="/order-history">
-                                <button className="btn btn-primary">View</button>
+                                <button className="btn btn-primary dashboard-card-btn">View</button>
                             </Link>
                         </div>
                     </div>
                 </div>
                 <div className="col-sm-4">
-                    <div className="card">
-                        <div className="card-body">
-                            <FontAwesomeIcon icon={faCarrot} size="3x" />
+                    <div className="card dashboard-card">
+                        <div className="card-body text-center">
+                            <FontAwesomeIcon icon={faCarrot} size="3x" className='fa-icon' />
                             <h5 className="card-title mt-3">Search farm products</h5>
                             <p className="card-text">Look for farm products in different farms.</p>
                             {/* This edit button navigates to 'Home.js' component */}
                             <Link to="/">
-                                <button className="btn btn-primary">View</button>
+                                <button className="btn btn-primary dashboard-card-btn">View</button>
                             </Link>
                         </div>
                     </div>

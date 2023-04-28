@@ -8,13 +8,15 @@
   --bg-color-dark-green: #4E7169;
   --bg-color-light-yellow: #F6F1E9;
   --bg-img-cardboard: url("./img/background-img.jpg");
-  --color-dark-brown: #3B1E0E;
+  --color-deep-brown: #3B1E0E;
+  --color-dark-brown: #7E7668;
+  --color-medium-brown: #A39C95;
 
 }
 
 * {
   font-family: var(--main-font-family);
-  color: var(--bg-color-dark-green);
+  /* color: var(--bg-color-dark-green); */
 }
 
 body {
@@ -48,12 +50,18 @@ body {
   border-radius: 1.5rem;
 }
 
+.toggle-btn {
+  color: white;
+  background-color: var(--color-medium-brown);
+  border-color: var(--color-medium-brown);
+  font-weight: 500;
+}
+
 .card {
   background-size: 75rem;
   overflow: hidden;
   border: 0;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-
 }
 
 .card-title {
@@ -61,6 +69,19 @@ body {
   color: var(--bg-color-dark-green);
   font-weight: 700;
   font-size: 2rem;
+  text-transform: capitalize;
+}
+
+
+.card-subtitle {
+  font-family: var(--card-title-font-family);
+  color: var(--bg-color-dark-green);
+  text-transform: capitalize;
+}
+
+.card-text {
+  color: var(--bg-color-dark-green);
+  font-weight: 300;
 }
 
 
@@ -92,4 +113,152 @@ body {
 
 p {
   line-height: 1.5;
+}
+
+.input-group input {
+  border-radius: 1.5rem;
+  border-color: var(--bg-color-dark-green);
+}
+
+.dashboard-card {
+  background-color: white;
+}
+
+.dashboard-title h1 {
+  font-family: var(--card-title-font-family);
+  font-weight: 700;
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  color: var(--color-dark-brown);
+}
+
+.dashboard-title p {
+  font-weight: 400;
+  font-size: 1.25rem;
+  text-transform: capitalize;
+  color: var(--color-dark-brown);
+}
+
+.fa-icon {
+  color: var(--bg-color-dark-green);
+}
+
+/* only show a single line of text on dashboard cards */
+.dashboard-card p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.dashboard-card-btn {
+  /* color: var(--bg-color-dark-green); */
+  /* background-color: var(--bg-color-light-green);
+  border-color: var(--bg-color-light-green); */
+  font-weight: 400;
+}
+
+.profile-information {
+  color: var(--color-dark-brown);
+}
+
+.profile-information h5 {
+  font-family: var(--card-title-font-family);
+}
+
+.profile-title h1 {
+  font-family: var(--card-title-font-family);
+  font-weight: 700;
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  color: var(--color-dark-brown);
+}
+
+.profile-about h1 {
+  font-family: var(--card-title-font-family);
+  font-weight: 400;
+  color: var(--color-dark-brown);
+  font-size: 2.75rem;
+}
+
+.profile-bio {
+  font-family: var(--card-title-font-family);
+  color: var(--color-dark-brown);
+  font-size: 1rem;
+}
+
+.profile-image {
+  height: 39rem;
+  width: 39rem;
+}
+
+.profile-image-link {
+  /* height: 10rem; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* only show one line of text */
+.one-line {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.modal-title {
+  font-family: var(--card-title-font-family);
+  color: var(--bg-color-dark-green);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.modal-header,
+.modal-footer {
+  border: 0;
+}
+
+.modal-body label {
+  font-family: var(--card-title-font-family);
+  color: var(--bg-color-dark-green);
+  text-transform: capitalize;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.modal input::placeholder {
+  color: var(--bg-color-light-green);
+}
+
+.modal input {
+  color: var(--bg-color-light-green);
+}
+
+.modal textarea::placeholder {
+  color: var(--bg-color-light-green);
+}
+
+.modal textarea {
+  color: var(--bg-color-light-green);
+}
+
+.order-history-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.order-history-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order-history h1 {
+    font-family: var(--card-title-font-family);
+  font-weight: 700;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: var(--color-dark-brown);
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './userInfo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faPhone, faCarrot, faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faLocation, faPhone, faStore, faCamera } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap';
 import 'react-bootstrap';
 import axios from 'axios';
@@ -137,30 +137,14 @@ function VendorInfo(props) {
 
     return (
         <div className="container-fluid">
-            <div className="toggle-container text-end">
-                {/* Add a function to hide the edit button if the current user id doesn't match the profile owner's id. ?*/}
-                {props.vendorStatus ?
-                    <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
-                        Edit
-                    </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
-                        Add Vendor Profile
-                    </button>}
-                {/* the code below is to verify if the current loggedIn user matches this profile owner. user can only edit profile if 
-            the loggedIn user id matches the profile owner id. */}
-                {/* {props.currentUser
-                    ? <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
-                        Edit
-                    </button>
-                    : <button className="btn btn-primary visually-hidden">
-                        Hidden
-                    </button>} */}
-            </div>
+
             <div className="row">
-                <div className="col-12 text-center mb-5">
+                <div className="col-12 text-center mb-5 profile-title">
                     <h1>{props.vendorName}</h1>
                 </div>
             </div>
             <div className="row align-items-center">
+
                 <label className="col-md-6 profile-image"
                     onMouseEnter={handleProfileImageMouseEnter}
                     onMouseLeave={handleProfileImageMouseLeave}
@@ -168,36 +152,47 @@ function VendorInfo(props) {
                     <img
                         src={props.vendorImage ? props.vendorImage : "https://placehold.co/600x600"}
                         alt=""
-                        className="img-fluid "
+                        className="img-fluid profile-image-link"
                         height={600}
                         width={600}
                     />
-                    {props.currentUser && showCamera && (
+                    {showCamera && (
                         <div className="camera-overlay">
                             <FontAwesomeIcon icon={faCamera} />
                         </div>
                     )}
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
                 </label>
+
                 <div className="col-md-6">
-                    <div className="">
-                        <div className="">
-                            <h3>About</h3>
+
+                    <div className="toggle-container text-end">
+                        {props.vendorStatus ?
+                            <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                                Edit
+                            </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                                Add Vendor Profile
+                            </button>}
+                    </div>
+
+                    <div className="profile-information">
+                        <div className="profile-about mb-5">
+                            <h1>About</h1>
                         </div>
-                        <div className="">
+                        <div className="profile-bio">
                             <p>{props.vendorDescription}</p>
                         </div>
 
                         <div className="mt-5">
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faLocation} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
                                     <p>{props.vendorAddress[0]?.street}, {props.vendorAddress[0]?.city}, {props.vendorAddress[0]?.state}, {props.vendorAddress[0]?.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faStore} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Find us at {props.marketName}</h5>
                                     <p>{props.pickupAddress[0]?.street}, {props.pickupAddress[0]?.city}, {props.pickupAddress[0]?.state}, {props.pickupAddress[0]?.zipcode}</p>
@@ -210,13 +205,13 @@ function VendorInfo(props) {
                                     <p>{props.vendorTelephone}</p>
                                 </div>
                             </div>
-                            <div className="row">
+                            {/* <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faCarrot} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Farm Products</h5>
                                     <p>Click to view and purchase products from our farm</p>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
@@ -233,7 +228,7 @@ function VendorInfo(props) {
                         <div className="modal-body">
                             <div className="form-group mb-3">
                                 <label>Farm name</label>
-                                <input type="text" className="form-control text-muted" id="farm-name-input" onChange={handleChange} name="vendorName" value={formState.vendorName} />
+                                <input type="text" className="form-control" id="farm-name-input" onChange={handleChange} name="vendorName" value={formState.vendorName} />
                             </div>
 
                             <div className="form-group mb-3">
@@ -241,34 +236,34 @@ function VendorInfo(props) {
                                 <div className="row">
                                     <div className="form-group col-md-6">
                                         <label>Street</label>
-                                        <input type="text" className="form-control text-muted" id="farm-street-input" placeholder={props.vendorAddress[0]?.street} onChange={handleChange} name="street" value={formState.street} />
+                                        <input type="text" className="form-control" id="farm-street-input" placeholder={props.vendorAddress[0]?.street} onChange={handleChange} name="street" value={formState.street} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>City</label>
-                                        <input type="text" className="form-control text-muted" id="farm-city-input" placeholder={props.vendorAddress[0]?.city} onChange={handleChange} name="city" value={formState.city} />
+                                        <input type="text" className="form-control" id="farm-city-input" placeholder={props.vendorAddress[0]?.city} onChange={handleChange} name="city" value={formState.city} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>State</label>
-                                        <input type="text" className="form-control text-muted" id="farm-state-input" placeholder={props.vendorAddress[0]?.state} onChange={handleChange} name="state" value={formState.state} />
+                                        <input type="text" className="form-control" id="farm-state-input" placeholder={props.vendorAddress[0]?.state} onChange={handleChange} name="state" value={formState.state} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>Zipcode</label>
-                                        <input type="text" className="form-control text-muted" id="farm-zipcode-input" placeholder={props.vendorAddress[0]?.zipcode} onChange={handleChange} name="zipcode" value={formState.zipcode} />
+                                        <input type="text" className="form-control" id="farm-zipcode-input" placeholder={props.vendorAddress[0]?.zipcode} onChange={handleChange} name="zipcode" value={formState.zipcode} />
                                     </div>
                                 </div>
                             </div>
                             <div className="form-group mb-3">
                                 <label>Business Number</label>
-                                <input type="text" className="form-control text-muted" id="phone-input" onChange={handleChange} name="vendorTelephone" value={formState.vendorTelephone} />
+                                <input type="text" className="form-control" id="phone-input" onChange={handleChange} name="vendorTelephone" value={formState.vendorTelephone} />
                             </div>
                             <div className="form-group mb-3">
                                 <label>About</label>
-                                <textarea className="form-control text-muted" id="description-input" rows="5" onChange={handleChange} name="vendorDescription" value={formState.vendorDescription}></textarea>
+                                <textarea className="form-control" id="description-input" rows="5" onChange={handleChange} name="vendorDescription" value={formState.vendorDescription}></textarea>
                             </div>
 
                             <div className="form-group mb-3">
                                 <label>Market name</label>
-                                <input type="text" className="form-control text-muted" id="farm-name-input" onChange={handleChange} name="marketName" value={formState.marketName} />
+                                <input type="text" className="form-control" id="farm-name-input" onChange={handleChange} name="marketName" value={formState.marketName} />
                             </div>
 
                             <div className="form-group mb-3">
@@ -276,19 +271,19 @@ function VendorInfo(props) {
                                 <div className="row">
                                     <div className="form-group col-md-6">
                                         <label>Street</label>
-                                        <input type="text" className="form-control text-muted" id="pickup-street-input" placeholder={props.pickupAddress[0]?.street} onChange={handleChange} name="updatePickupAddressStreet2" value={formState.updatePickupAddressStreet2} />
+                                        <input type="text" className="form-control" id="pickup-street-input" placeholder={props.pickupAddress[0]?.street} onChange={handleChange} name="updatePickupAddressStreet2" value={formState.updatePickupAddressStreet2} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>City</label>
-                                        <input type="text" className="form-control text-muted" id="pickup-city-input" placeholder={props.pickupAddress[0]?.city} onChange={handleChange} name="updatePickupAddressCity2" value={formState.updatePickupAddressCity2} />
+                                        <input type="text" className="form-control" id="pickup-city-input" placeholder={props.pickupAddress[0]?.city} onChange={handleChange} name="updatePickupAddressCity2" value={formState.updatePickupAddressCity2} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>State</label>
-                                        <input type="text" className="form-control text-muted" id="pickup-state-input" placeholder={props.pickupAddress[0]?.state} onChange={handleChange} name="updatePickupAddressState2" value={formState.updatePickupAddressState2} />
+                                        <input type="text" className="form-control" id="pickup-state-input" placeholder={props.pickupAddress[0]?.state} onChange={handleChange} name="updatePickupAddressState2" value={formState.updatePickupAddressState2} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label>Zipcode</label>
-                                        <input type="text" className="form-control text-muted" id="pickup-zipcode-input" placeholder={props.pickupAddress[0]?.zipcode} onChange={handleChange} name="updatePickupAddressZipcode2" value={formState.updatePickupAddressZipcode2} />
+                                        <input type="text" className="form-control" id="pickup-zipcode-input" placeholder={props.pickupAddress[0]?.zipcode} onChange={handleChange} name="updatePickupAddressZipcode2" value={formState.updatePickupAddressZipcode2} />
                                     </div>
                                 </div>
                             </div>
