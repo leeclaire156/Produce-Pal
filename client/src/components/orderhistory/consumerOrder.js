@@ -16,8 +16,8 @@ const ConsumerOrder = (props) => {
     }
 
     return (
-        <div className='container-fluid'>
-            <div className="row mt-4 align-items-center d-flex">
+        <div className='container-fluid card mb-3 order-history-card'>
+            <div className="row align-items-center d-flex">
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left">
                     <img src={props.buyerName[0].userImage ? props.buyerName[0].userImage : 'https://placehold.co/150x150'}
                         alt=""
@@ -29,9 +29,9 @@ const ConsumerOrder = (props) => {
                     <p>Order date: {convertDate()}</p>
                 </div>
 
-                <div className="col-sm-12 col-md-3 text-center text-md-end">
+                <div className="col-sm-12 col-md-3 text-center text-md-end pe-md-5 pb-md-0 pb-3">
                     <button type="button" className="btn btn-secondary btn-sm">{props.orderType}</button>
-                    <button type="button" className="btn btn-primary btn-sm ms-md-2" data-bs-toggle="modal" data-bs-target={`#consumerOrderModal-${props._id}`}>View</button>
+                    <button type="button" className="btn btn-primary btn-sm ms-md-2 ms-3" data-bs-toggle="modal" data-bs-target={`#consumerOrderModal-${props._id}`}>View</button>
                 </div>
             </div>
 

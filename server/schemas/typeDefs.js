@@ -151,7 +151,8 @@ type Mutation {
     # utilizing context
     addOrder(
         products: [ID]!,
-        user: [ID]!): Order
+        # buyerName: [ID]!,
+        sellerName: [ID]!): Order
     updateUser(
         _id: ID
         firstName: String

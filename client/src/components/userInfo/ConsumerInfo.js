@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './userInfo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faPhone, faMedal, faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPhone, faEnvelope, faCamera } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap';
 import 'react-bootstrap';
 import axios from 'axios';
@@ -22,6 +22,7 @@ function ConsumerInfo(props) {
         setShowCamera(false);
     };
 
+    console.log(showCamera);
 
     const [newuserUrl, setUserUrl] = useState("");
     const [updateUserImage] = useMutation(UPDATE_USER_IMAGE);
@@ -123,28 +124,23 @@ function ConsumerInfo(props) {
 
     return (
         <div className="container-fluid">
-            <div className="toggle-container text-end">
-                {/* Add a function to hide the edit button if the current user id doesn't match the profile owner's id. ?*/}
-                <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
-                    Edit
-                </button>
-                {/* {props.vendorStatus ?
-                    <button className="btn btn-primary visually-hidden">
-                        Hidden
-                    </button> : <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
-                        Edit
-                    </button>} */}
-            </div>
+
             <div className="row">
-                <div className="col-12 text-center mb-5">
+                <div className="col-12 text-center mb-5 profile-title">
                     <h1>{props.firstName} {props.lastName}</h1>
                 </div>
             </div>
             <div className="row align-items-center">
+
                 <label className="col-md-6 profile-image"
                     onMouseEnter={handleProfileImageMouseEnter}
                     onMouseLeave={handleProfileImageMouseLeave}
                 >
+                    {showCamera && (
+                        <div className="camera-overlay">
+                            <FontAwesomeIcon icon={faCamera} />
+                        </div>
+                    )}
                     <img
                         src={props.userImage ? props.userImage : "https://placehold.co/600x600"}
                         alt=""
@@ -152,20 +148,22 @@ function ConsumerInfo(props) {
                         height={600}
                         width={600}
                     />
-                    {!props.vendorStatus && showCamera && (
-                        <div className="camera-overlay">
-                            <FontAwesomeIcon icon={faCamera} />
-                        </div>
-                    )}
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
                 </label>
 
                 <div className="col-md-6">
-                    <div className="">
-                        <div className="">
-                            <h3>About</h3>
+
+                    <div className="toggle-container text-end">
+                        <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
+                            Edit
+                        </button>
+                    </div>
+
+                    <div className="profile-information">
+                        <div className="profile-about mb-5">
+                            <h1>About</h1>
                         </div>
-                        <div className="">
+                        <div className="profile-bio">
                             <p>{props.biography}</p>
                         </div>
 
@@ -180,17 +178,17 @@ function ConsumerInfo(props) {
                             <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
-                                    <h5>Contact</h5>
-                                    <p>{props.phone}, {props.email}</p>
+                                    <h5>Phone</h5>
+                                    <p>{props.phone}</p>
                                 </div>
                             </div>
-                            {/* <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faMedal} size="3x" /></div>
+                            <div className="row">
+                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faEnvelope} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
-                                    <h5>Memberships</h5>
-                                    {!props.memberships[0] ? <p>You have no subscriptions!</p> : props.memberships.map((memberships) => (<p>{memberships}</p>))}
+                                    <h5>Email</h5>
+                                    <p>{props.email}</p>
                                 </div>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,33 +205,33 @@ function ConsumerInfo(props) {
                         <div className="modal-body">
                             <div className="form-group">
                                 <label>First Name</label>
-                                <input type="text" className="form-control text-muted" id="first-name-input" onChange={handleChange} name="firstName" value={formState.firstName} />
+                                <input type="text" className="form-control" id="first-name-input" onChange={handleChange} name="firstName" value={formState.firstName} />
                             </div>
                             <div className="form-group">
                                 <label>Last Name</label>
-                                <input type="text" className="form-control text-muted" id="full-name-input" onChange={handleChange} name="lastName" value={formState.lastName} />
+                                <input type="text" className="form-control" id="full-name-input" onChange={handleChange} name="lastName" value={formState.lastName} />
                             </div>
                             <div className="row">
                                 <div className="form-group col-md-6">
                                     <label>Street</label>
-                                    <input type="text" className="form-control text-muted" id="street-input" placeholder={props.address[0]?.street} onChange={handleChange} name="street" value={formState.street} />
+                                    <input type="text" className="form-control" id="street-input" placeholder={props.address[0]?.street} onChange={handleChange} name="street" value={formState.street} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>City</label>
-                                    <input type="text" className="form-control text-muted" id="city-input" placeholder={props.address[0]?.city} onChange={handleChange} name="city" value={formState.city} />
+                                    <input type="text" className="form-control" id="city-input" placeholder={props.address[0]?.city} onChange={handleChange} name="city" value={formState.city} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>State</label>
-                                    <input type="text" className="form-control text-muted" id="state-input" placeholder={props.address[0]?.state} onChange={handleChange} name="state" value={formState.state} />
+                                    <input type="text" className="form-control" id="state-input" placeholder={props.address[0]?.state} onChange={handleChange} name="state" value={formState.state} />
                                 </div>
                                 <div className="form-group col-md-6">
                                     <label>Zipcode</label>
-                                    <input type="text" className="form-control text-muted" id="zipcode-input" placeholder={props.address[0]?.zipcode} onChange={handleChange} name="zipcode" value={formState.zipcode} />
+                                    <input type="text" className="form-control" id="zipcode-input" placeholder={props.address[0]?.zipcode} onChange={handleChange} name="zipcode" value={formState.zipcode} />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label>Phone</label>
-                                <input type="text" className="form-control text-muted" id="phone-input" onChange={handleChange} name="phone" value={formState.phone} />
+                                <input type="text" className="form-control" id="phone-input" onChange={handleChange} name="phone" value={formState.phone} />
                             </div>
                             {/* <div className="form-group">
                                 <label>Memberships</label>
@@ -241,7 +239,7 @@ function ConsumerInfo(props) {
                             </div> */}
                             <div className="form-group">
                                 <label>Biography</label>
-                                <textarea className="form-control text-muted" id="description-input" rows="5" onChange={handleChange} name="biography" value={formState.biography}></textarea>
+                                <textarea className="form-control" id="description-input" rows="5" onChange={handleChange} name="biography" value={formState.biography}></textarea>
                             </div>
                         </div>
                         <div className="modal-footer">

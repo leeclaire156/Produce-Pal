@@ -122,7 +122,7 @@ const OrderHistory = () => {
             {vendorStatus
                 ?
                 <div>
-                    <h1 className="text-center mb-5">Manage Consumer Orders</h1>
+                    <h1 className="text-center mb-5">Consumer Orders</h1>
                     <div>
                         {userSales.map((order) => (
                             <VendorOrder key={order._id} {...order} />
