@@ -68,15 +68,15 @@ const Cart = () => {
         });
     }
 
-    if (!state.cartOpen) {
-        return (
-            <div className="cart-closed" onClick={toggleCart} >
-                <button className="btn btn-primary" role="img" aria-label="">
-                    ({state.cart.length}) CART
-                </button>
-            </div>
-        );
-    }
+    // if (!state.cartOpen) {
+    //     return (
+    //         <div className="cart-closed" onClick={toggleCart} >
+    //             <button className="btn btn-primary" role="img" aria-label="">
+    //                 ({state.cart.length}) CART
+    //             </button>
+    //         </div>
+    //     );
+    // }
 
     return (
         <div className="text-end" >
