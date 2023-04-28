@@ -136,7 +136,7 @@ const ProductInventory = () => {
             .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
                 setUrl(`${res.data}`);
-                alert(`Image uploaded Successfully. Url is ${url} or ${res.data}`);
+                // alert(`Image uploaded Successfully. Url is ${url} or ${res.data}`);
             })
             .then(() => setLoading(false))
             .catch(console.log);
