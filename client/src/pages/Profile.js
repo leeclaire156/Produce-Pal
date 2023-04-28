@@ -91,7 +91,7 @@ function Profile() {
                 <div className='container'>
                     {/* this toggle button needs to be moved to navBar when implementing */}
                     <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
-                    <div className="container mt-5">
+                    <div className="container mt-5 pb-5">
                         {vendorStatus ? <VendorInfo {...profile} onSave={handleSave} /> : <ConsumerInfo {...profile} onSave={handleSave} />}
                     </div>
                 </div>
