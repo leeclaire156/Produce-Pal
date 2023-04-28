@@ -119,6 +119,8 @@ PWAeditor application is covered by MIT license.
 ---
 *NOTE TO FAB5 - add credits for any tutorials referenced/utilized
 
+Credit for utilizing several activities in George Washington University Coding Bootcamp repository: Sections on MERN, REACT, and State, 
+
 1. [Cloudinary using React and Node Tutorial](https://www.youtube.com/watch?v=3o1Z5N9TeuQ) by [Koding 101](https://www.youtube.com/@koding_101) on YouTube, also known as [ksekwamote](https://github.com/ksekwamote) on GitHub
 2. [Store price in Mongoose](https://stackoverflow.com/questions/13304129/how-should-i-store-a-price-in-mongoose)
 3. [Shopping cart items for MongoDB using Mongoose](https://copyprogramming.com/howto/insert-online-shopping-cart-items-into-mongodb-using-mongoose)
@@ -137,3 +139,4 @@ PWAeditor application is covered by MIT license.
 15. [Switch branch for heroku deployment](https://stackoverflow.com/questions/21947406/git-push-heroku-master-says-everything-up-to-date-but-the-app-is-not-current)
 16. [Heroku GET /pages to load](https://stackoverflow.com/questions/68734723/heroku-cannot-get-any-page)
 17. [useParams()][https://stackoverflow.com/questions/57444203/get-id-from-url-in-react-js]: Advice on how to get the id from the url using useParams for /:id
+18. George Washington University Coding Bootcamp repository: Section MERN, REACT, and State, Activities
