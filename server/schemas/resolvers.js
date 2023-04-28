@@ -2,7 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order, Address } = require('../models');
 const { signToken } = require('../utils/auth');
 // TO DO - Ask Jenny & Quin about stripe dependencies
-const stripe = require('stripe')('pk_test_51My0XoKnVZuvOvAuUtcxcWUSvch6mxujMAzhEWhANekyEJGvRr6K3qHeOLzXDVegBwLCqqMIp3jvMbWvmZ7juJnE00xM7CaKzG');
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 
 const resolvers = {
@@ -217,29 +217,68 @@ const resolvers = {
         product: async (parent, { _id }) => {
             return await Product.findById(_id);
         },
+        // checkout: async (parent, args, context) => {
+        //     // const url = new URL(context.headers.referer).origin;
+        //     const order = new Order({ products: args.products });
+        //     // const line_items = [];
+
+        //     const { products } = await order.populate('products');
+        //     // TURN ON FOR TESTING WHEN READY IN FRONT END 
+        //     /*               
+        //     for (let i =0; i < products.length; i++) {
+        //         const product = await stripe.products.create({
+        //             productName: products[i].productName,
+        //             productDescription: products[i].productDescription,
+        //             productImage: products[i].productImage
+        //         });
+
+        //         const price = await stripe.prices.create({
+        //             product: product.id,
+        //             unit_amount: products[i].price * 100,
+        //             currency: 'usd',
+        //         });
+                
+        //         line_items.push({
+        //             price: price.id,
+        //             quantity: 1
+        //         });
+        //     }
+
+        //     const session = await stripe.checkout.sessions.create({
+        //         payment_method_types: ['card'],
+        //         line_items,
+        //         mode: 'payment',
+        //         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        //         cancel_url: `${url}/`
+        //     });
+            
+        //     return { session: session.id };
+        //     */
+
+        //     // DELETE below return for when you deploy; need this for graphql only
+        //     return order.populate('products');
+        // },
         checkout: async (parent, args, context) => {
-            // const url = new URL(context.headers.referer).origin;
+            const url = new URL(context.headers.referer).origin;
             const order = new Order({ products: args.products });
-            // const line_items = [];
+            const line_items = [];
 
             const { products } = await order.populate('products');
-            // TURN ON FOR TESTING WHEN READY IN FRONT END 
-            /*               
-            for (let i =0; i < products.length; i++) {
+
+            for (let i = 0; i < products.length; i++) {
                 const product = await stripe.products.create({
-                    productName: products[i].productName,
-                    productDescription: products[i].productDescription,
-                    productImage: products[i].productImage
+                    name: products[i].productName,
+                    description: products[i].productDescription,
                 });
 
                 const price = await stripe.prices.create({
-                    product: product.id,
-                    unit_amount: products[i].price * 100,
+                    product: product._id,
+                    unit_amount: products[i].productPrice * 100,
                     currency: 'usd',
                 });
-                
+
                 line_items.push({
-                    price: price.id,
+                    price: price._id,
                     quantity: 1
                 });
             }
@@ -251,13 +290,10 @@ const resolvers = {
                 success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
                 cancel_url: `${url}/`
             });
-            
-            return { session: session.id };
-            */
 
-            // DELETE below return for when you deploy; need this for graphql only
-            return order.populate('products');
+            return { session: session.id };
         }
+
     },
     // MUTATIONS
     Mutation: {
