@@ -15,7 +15,7 @@ import axios from "axios";
 
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PRODUCT } from '../utils/mutations';
-import { QUERY_SINGLE_PROFILE, GET_ME, QUERY_PRODUCT } from '../utils/queries';
+import { QUERY_SINGLE_PROFILE, GET_ME, GET_MY_PRODUCTS } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
@@ -189,9 +189,9 @@ const ProductInventory = () => {
                     productDescription: productFormData.productDescription,
                     productImage: url,
                     user: profile._id
-                }
+                }, refetchQueries: [{ query: GET_ME }]
             });
-            window.location.reload(false)
+            // window.location.reload(false)
             return data;
         } catch (err) {
             console.error(err);
@@ -258,7 +258,7 @@ const ProductInventory = () => {
                 </div>
             </div>
             {/* array of product cards */}
-            {productData.length ? (
+            {state.products.length ? (
                 <div className="row is-flex">
                     {filterProducts().map((product) => (
                         <ProductSingle
