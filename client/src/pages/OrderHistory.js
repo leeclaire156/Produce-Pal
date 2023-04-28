@@ -39,8 +39,8 @@ const OrderHistory = () => {
 
     // console.log(userSales)
     // console.log(userOrder[0].buyerName)
-    // console.log(userOrder[0].buyerName[0])
-    // console.log(userOrder[0].buyerName[0]._id)
+    // console.log(userOrder[0].buyerName[0]?)
+    // console.log(userOrder[0].buyerName[0]?._id)
     // // order = stuff user buys, so filteredOrders replaces this
     // //sales = stuff bought from user so filteredOrdersByVendor replaces this
 
@@ -57,7 +57,7 @@ const OrderHistory = () => {
     // filter to find the current user's order from the all orders data
     const filteredOrders = userOrder.filter(
         (order) =>
-            (order.buyerName[0]._id === profile._id)
+            (order.buyerName[0]?._id === profile._id)
     );
     console.log(filteredOrders)
     // // filter orders by vendor id
