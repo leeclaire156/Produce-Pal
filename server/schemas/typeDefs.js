@@ -148,9 +148,9 @@ type Mutation {
         productDescription: String, 
         productImage: String
         user: [ID]!): Product
+    # utilizing context
     addOrder(
         products: [ID]!,
-        user: [ID]!,
         seller: [ID]!): Order
     updateUser(
         _id: ID

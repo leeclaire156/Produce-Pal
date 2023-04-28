@@ -18,7 +18,7 @@ function Success() {
             const products = cart.map((item) => item._id);
 
             if (products.length) {
-                const { data } = await addOrder({ variables: { products } });
+                const { data } = await addOrder({ variables: { products, seller } });
                 const productData = data.addOrder.products;
 
                 productData.forEach((item) => {
@@ -29,7 +29,7 @@ function Success() {
             setTimeout(() => {
                 window.location.assign('/');
                 localStorage.clear();
-            }, 20000);
+            }, 3000);
         }
 
         saveOrder();
