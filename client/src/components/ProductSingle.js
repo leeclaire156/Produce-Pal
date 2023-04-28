@@ -59,7 +59,7 @@ function ProductSingle(item) {
 
 
     const [editProduct] = useMutation(EDIT_PRODUCT);
-    var [url, setUrl] = useState(productImage);
+    var [url, setUrl] = useState("");
     const [productFormData, setProductFormData] = useState({
         product: _id,
         productId: productId,
@@ -72,7 +72,7 @@ function ProductSingle(item) {
         productAllergens: productAllergens,
         productAvailability: productAvailability,
         productDescription: productDescription,
-        // productImage: productImage,
+        productImage: productImage,
     });
 
     const [loading, setLoading] = useState(false);
@@ -97,14 +97,8 @@ function ProductSingle(item) {
         axios
             .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
-                setUrl(url = res.data);
-
-                console.log(url)
-                // setProductFormData(
-                //     productFormData[productImage] = res.data
-                // )
-                // return productFormData[productImage]
-                // productFormData[name]
+                setUrl(res.data);
+                console.log(url) // shows blank but update image function works
                 // alert(`Image uploaded Successfully. Url is ${url} or ${res.data}`);
             })
             .then(() => setLoading(false))
@@ -159,7 +153,7 @@ function ProductSingle(item) {
                     productAllergens: productFormData.productAllergens,
                     productAvailability: productFormData.productAvailability,
                     productDescription: productFormData.productDescription,
-                    // productImage: url
+                    productImage: url,
                 }, refetchQueries: [{ query: GET_ME }]
             });
             return data;
@@ -312,11 +306,9 @@ function ProductSingle(item) {
 
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button
-                                type="submit"
-                                className="btn btn-primary"
-                            // data-bs-dismiss="modal"
-                            >Save</button>
+                            {loading ? <button type="submit" className="btn btn-primary" disabled> Save</button> : <button type="submit" className="btn btn-primary"
+                                data-bs-dismiss="modal"
+                            > Save</button>}
                         </div>
 
                     </div>
