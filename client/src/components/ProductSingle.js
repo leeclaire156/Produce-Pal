@@ -6,10 +6,8 @@ import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
 import { idbPromise } from "../utils/helpers";
 import axios from 'axios';
 import { useMutation, useQuery } from '@apollo/client';
-import { UPDATE_PRODUCT } from '../utils/mutations';
-import { QUERY_PRODUCT } from '../utils/queries';
-// if above doesnt work use belong and make new query
-// import { GET_PRODUCT } from '../utils/queries';
+import { EDIT_PRODUCT } from '../utils/mutations';
+import { GET_ME } from '../utils/queries';
 
 function ProductSingle(item) {
     const [state, dispatch] = useProductContext();
@@ -60,10 +58,10 @@ function ProductSingle(item) {
     // console.log(vendorStatus);
 
 
-    const [updateProduct] = useMutation(UPDATE_PRODUCT);
+    const [editProduct] = useMutation(EDIT_PRODUCT);
     var [url, setUrl] = useState(productImage);
     const [productFormData, setProductFormData] = useState({
-        id: _id,
+        product: _id,
         productId: productId,
         productName: productName,
         productType: productType,
@@ -74,7 +72,7 @@ function ProductSingle(item) {
         productAllergens: productAllergens,
         productAvailability: productAvailability,
         productDescription: productDescription,
-        productImage: productImage,
+        // productImage: productImage,
     });
 
     const [loading, setLoading] = useState(false);
@@ -146,29 +144,29 @@ function ProductSingle(item) {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(productFormData)
-        // try {
-        //     //adds product to database based on input form information stored in productFormData variable
-        //     const { data } = updateProduct({
-        //         variables: {
-        //             id: _id,
-        //             productId: productFormData.productId,
-        //             productName: productFormData.productName,
-        //             productType: productFormData.productType,
-        //             productPrice: productFormData.productPrice,
-        //             productCategory: productFormData.productCategory,
-        //             productInventory: productFormData.productInventory,
-        //             productUnits: productFormData.productUnits,
-        //             productAllergens: productFormData.productAllergens,
-        //             productAvailability: productFormData.productAvailability,
-        //             productDescription: productFormData.productDescription,
-        //             productImage: url
-        //         },
-        //     });
-        //     return data;
-        // } catch (err) {
-        //     console.error(err);
-        //     console.log(productFormData)
-        // }
+        try {
+            //adds product to database based on input form information stored in productFormData variable
+            const { data } = editProduct({
+                variables: {
+                    product: _id,
+                    productId: productFormData.productId,
+                    productName: productFormData.productName,
+                    productType: productFormData.productType,
+                    productPrice: productFormData.productPrice,
+                    productCategory: productFormData.productCategory,
+                    productInventory: productFormData.productInventory,
+                    productUnits: productFormData.productUnits,
+                    productAllergens: productFormData.productAllergens,
+                    productAvailability: productFormData.productAvailability,
+                    productDescription: productFormData.productDescription,
+                    // productImage: url
+                }, refetchQueries: [{ query: GET_ME }]
+            });
+            return data;
+        } catch (err) {
+            console.error(err);
+            console.log(productFormData)
+        }
     }
 
     return (

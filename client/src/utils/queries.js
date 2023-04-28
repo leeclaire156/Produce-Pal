@@ -472,24 +472,3 @@ query Storefront($id: ID!) {
   }
 }
 `
-
-export const GET_MY_PRODUCTS = gql`
-query Me {
-  me {
-    products {
-      _id
-      productId
-      productName
-      productType
-      productPrice
-      productCategory
-      productInventory
-      productUnits
-      productAllergens
-      productAvailability
-      productDescription
-      productImage
-    }
-  }
-}
-`;

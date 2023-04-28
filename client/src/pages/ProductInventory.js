@@ -15,7 +15,7 @@ import axios from "axios";
 
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PRODUCT } from '../utils/mutations';
-import { QUERY_SINGLE_PROFILE, GET_ME, GET_MY_PRODUCTS } from '../utils/queries';
+import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
 const ProductInventory = () => {
