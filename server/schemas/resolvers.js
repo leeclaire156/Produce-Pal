@@ -344,12 +344,11 @@ const resolvers = {
             return product;
         },
         // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
-        addOrder: async (parent, { products, user }, context) => {
+        addOrder: async (parent, { products, sellerName }, context) => {
 
             if (context.user) {
                 const buyer = context.user._id
-                const seller = user._id
-                const order = await Order.create({ products });
+                const order = await Order.create({ products, sellerName });
                 // When buyer pays, then:
                 // send the order's ID to the buyer's orders array
                 await User.findByIdAndUpdate(buyer, { $push: { orders: order } }, { new: true });
