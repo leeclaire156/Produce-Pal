@@ -9,18 +9,17 @@ function Success() {
 
     // // params for the addOrder function that gets called here
     // let seller = window.localStorage.getItem("storeObjectId");
-    
-    const seller = JSON.parse(localStorage.getItem("storeObjectId"));   
-    console.log(seller);
 
     useEffect(() => {
         async function saveOrder() {
             const cart = await idbPromise('cart', 'get');
             const products = cart.map((item) => item._id);
-            console.log(products)
+            const user = JSON.parse(localStorage.getItem("storeObjectId"));   
+            console.log(user);
+            console.log(products);
 
             if (products.length) {
-                const { data } = await addOrder({ variables: { products, seller } });
+                const { data } = await addOrder({ variables: { products, user } });
                 const productData = data.addOrder.products;
                 console.log(data)
 
