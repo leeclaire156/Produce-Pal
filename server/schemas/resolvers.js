@@ -238,7 +238,6 @@ const resolvers = {
         //             currency: 'usd',
         //         });
 
-
         //         line_items.push({
         //             price: price.id,
         //             quantity: 1
@@ -252,7 +251,6 @@ const resolvers = {
         //         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
         //         cancel_url: `${url}/`
         //     });
-
 
         //     return { session: session.id };
         //     */
@@ -274,9 +272,7 @@ const resolvers = {
                 });
 
                 const price = await stripe.prices.create({
-
                     product: product.id,
-
                     unit_amount: products[i].productPrice * 100,
                     currency: 'usd',
                 });
@@ -345,9 +341,7 @@ const resolvers = {
         },
         // // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
         addOrder: async (parent, { products, seller }, context) => {
-
             if (context.user) {
-
                 const order = await Order.create({ products });
                 // When buyer pays, then:
                 // send the buyer's ID to orders array
@@ -365,9 +359,7 @@ const resolvers = {
                 // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
                 await Order.findByIdAndUpdate(order, { $push: { buyerName: user } }, { new: true });
                 await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
-
                 return order.populate('products');
-
             }
             throw new AuthenticationError('Not logged in');
         },
