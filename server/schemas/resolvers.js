@@ -356,9 +356,8 @@ const resolvers = {
                 // // // Seller's Sales: send the seller's user ID to sales array & the sellerName array
                 // await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
 
-                // // Order's Buyer & Seller Info: send the buyer and seller to the order respectively
+                // // Order's Buyer: send the buyer ID (context) to the order buyerName respectively
                 // await Order.findByIdAndUpdate(order, { $push: { buyerName: buyer } }, { new: true });
-                // await Order.findByIdAndUpdate(order, { $push: { sellerName: seller } }, { new: true });
 
                 return order;
 
