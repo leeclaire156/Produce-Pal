@@ -20,7 +20,7 @@ const ProductInventoryOther = () => {
     const { id } = useParams();
     window.localStorage.setItem("storeObjectId", JSON.stringify(id));
     console.log(id);
-    
+
     const { loading, error, data } = useQuery(STOREFRONT, {
         variables: { id }
     });
@@ -99,16 +99,16 @@ const ProductInventoryOther = () => {
 
     if (!loading) {
         return (
-            <div className="container my-2">
+            <div className="container my-2 product-inventory">
                 <div className='row mb-3'>
                 </div>
                 <div className='row'>
                     <Cart />
                 </div>
-                <h2 className='fs-2 mb-3 text-center'>{storeData.vendorName} Products</h2>
+                <h1 className='mb-3 text-center'>{storeData.vendorName} Products</h1>
 
                 <div className='row mb-3'>
-                    <div className="col-lg-12 d-flex justify-content-center justify-content-lg-between">
+                    <div className="col-lg-12 d-flex justify-content-end">
                         {/* categories filter button/menu */}
                         <div className="dropdown">
                             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownBtnCategory" data-bs-toggle="dropdown" aria-expanded="false">

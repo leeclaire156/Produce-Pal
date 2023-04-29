@@ -606,7 +606,7 @@ db.once('open', async () => {
     const users = await User.insertMany([
         {
             firstName: 'MaSandra',
-            lastName: 'Schembor',
+            lastName: 'Ewing',
             email: 'mewing123@gmail.com',
             password: 'password1',
             biography: 'I love long walks on the beach with my family.',
@@ -619,7 +619,7 @@ db.once('open', async () => {
                 orders[1]._id
             ],
             vendorStatus: true,
-            vendorName: 'The CoOp',
+            vendorName: 'The Ewing CoOp',
             vendorDescription: 'We have single produce items and we work with other farms to compile great products.',
             products: [
                 products[0]._id,
@@ -631,8 +631,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Jenny',
-            lastName: 'Harrington',
+            firstName: 'Jennilee',
+            lastName: 'Messenger',
             email: 'JennyBaker@gmail.com',
             password: '12345',
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
@@ -661,9 +661,9 @@ db.once('open', async () => {
             vendorTelephone: '202-456-1908',
         },
         {
-            firstName: 'Claire',
-            lastName: 'James',
-            email: 'claire456@gmail.com',
+            firstName: 'Ralph',
+            lastName: 'Thompson',
+            email: 'rthompson123@gmail.com',
             password: 'password2',
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
             phone: '123-456-7890',
@@ -680,9 +680,9 @@ db.once('open', async () => {
             vendorStatus: "false"
         },
         {
-            firstName: 'Zhihao',
-            lastName: 'Chang',
-            email: 'zhihaobuying@gmail.com',
+            firstName: 'Miguel',
+            lastName: 'Martinez',
+            email: 'mmartinez24@gmail.com',
             password: 'password234',
             biography: 'I supoort my local CSAs!',
             phone: '321-654-6789',
@@ -714,9 +714,9 @@ db.once('open', async () => {
             vendorTelephone: '703-555-1234',
         },
         {
-            firstName: 'Ralph',
-            lastName: 'Thompson',
-            email: 'rthompson123@gmail.com',
+            firstName: 'Zhihao',
+            lastName: 'Li',
+            email: 'zhihaobuying@gmail.com',
             password: 'password1',
             biography: 'I am looking forward to meeting other farmers on ProducePal!',
             phone: '571-223-2222',
@@ -727,7 +727,7 @@ db.once('open', async () => {
                 orders[13]._id
             ],
             vendorStatus: true,
-            vendorName: 'Sunny Acres Farms',
+            vendorName: 'Zhihao Sunny Acres Farms',
             vendorDescription: 'Sunny Acres Orchards has been in our family for 4 generations. We hope that through providing quality produce to our community, we can make the world a better place.',
             products: [
                 //apple/banana/bread/jam/pickle/skraut/peas/shroom/onion
@@ -742,29 +742,29 @@ db.once('open', async () => {
                 products[19]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            marketName: 'Mosaic Farmers Market',
+            marketName: 'FRESHFARM at Columbia Heights',
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Miguel',
-            lastName: 'Martinez',
-            email: 'mmartinez24@gmail.com',
+            firstName: 'Claire',
+            lastName: 'Lee',
+            email: 'claire456@gmail.com',
             password: 'password1',
-            biography: 'I love to play baseball and try new foods.',
+            biography: 'I love to cook and try out new exotic cuisines.',
             phone: '202-322-4000',
             userImage: 'https://placehold.co/600x600',
             sales: [
                 orders[12]._id
             ],
             vendorStatus: true,
-            vendorName: 'Green Meadows Farms',
+            vendorName: 'The Green Meadows of Claire Farms',
             vendorDescription: 'Here at Green Meadow Farms, we want to give back to our community by providing quality produce to local businesses.',
             products: [
                 products[20]._id,
                 products[23]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            marketName: 'Mosaic Farmers Market',
+            marketName: 'FRESHFARM at Columbia Heights',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -786,7 +786,7 @@ db.once('open', async () => {
                 products[24]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            marketName: 'Mosaic Farmers Market',
+            marketName: 'Falls Church Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -809,7 +809,7 @@ db.once('open', async () => {
                 products[26]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            marketName: 'Mosaic Farmers Market',
+            marketName: 'Falls Church Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -832,7 +832,7 @@ db.once('open', async () => {
                 products[14]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            marketName: 'Mosaic Farmers Market',
+            marketName: 'Chevy Chase Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -855,7 +855,7 @@ db.once('open', async () => {
                 products[28]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            marketName: 'Mosaic Farmers Market',
+            marketName: 'Chevy Chase Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -878,7 +878,7 @@ db.once('open', async () => {
                 products[21]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            marketName: 'Mosaic Farmers Market',
+            marketName: 'Chevy Chase Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -901,7 +901,7 @@ db.once('open', async () => {
                 products[13]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            marketName: 'Mosaic Farmers Market',
+            marketName: 'Chevy Chase Farmers Market',
             vendorTelephone: '202-675-9012',
         }
 
@@ -1133,36 +1133,41 @@ db.once('open', async () => {
             state: 'District of Columbia',
             zipcode: '20002',
         },
-        //next 5 addresses are markets (pickup addresses) [25,6,7,8,9]
+        //next 5 addresses are markets (pickup addresses) [25,26,27,28,29]
+        // Mosaic Farmer's Market
         {
-            street: '717 8th St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '2920 District Ave',
+            city: 'Fairfax',
+            state: 'Virginia',
+            zipcode: '22031',
         },
+        // Cherrydale Farmers Market
         {
-            street: '20th St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20036',
-        },
-        {
-            street: '301 Takoma Ave',
-            city: 'Takoma Park',
-            state: 'Maryland',
-            zipcode: '20912',
-        },
-        {
-            street: '233 N. Courthouse Rd',
+            street: '4100 Vacation Ln',
             city: 'Arlington',
             state: 'Virginia',
-            zipcode: '22201',
+            zipcode: '22207',
         },
+        // FRESHFARM at Columbia Heights
         {
-            street: '225 7th St SE',
+            street: '1400 Park Rd NW',
             city: 'Washington',
             state: 'District of Columbia',
-            zipcode: '20003',
+            zipcode: '20010',
+        },
+        // Falls Church Farmers Market
+        {
+            street: '300 Park Ave',
+            city: 'Falls Church',
+            state: 'Virginia',
+            zipcode: '22046',
+        },
+        // Chevy Chase Farmers’ Market
+        {
+            street: '5701 Broad Branch Rd NW',
+            city: 'Washington',
+            state: 'District of Columbia',
+            zipcode: '20015',
         },
         //next 12 are vendor addresses for hybrid accounts
         {
@@ -1248,6 +1253,7 @@ db.once('open', async () => {
 
     users[1].address.push(addresses[2]._id)
     users[1].vendorAddress.push(addresses[3]._id)
+    users[1].pickupAddress.push(addresses[25]._id)
     await users[1].save()
 
     users[2].address.push(addresses[4]._id)
@@ -1258,42 +1264,42 @@ db.once('open', async () => {
 
     users[4].address.push(addresses[6]._id)
     users[4].vendorAddress.push(addresses[30]._id)
-    users[0].pickupAddress.push(addresses[25]._id)
+    users[4].pickupAddress.push(addresses[26]._id)
     await users[4].save()
 
     users[5].address.push(addresses[7]._id)
     users[5].vendorAddress.push(addresses[31]._id)
-    users[0].pickupAddress.push(addresses[25]._id)
+    users[5].pickupAddress.push(addresses[27]._id)
     await users[5].save()
 
     users[6].address.push(addresses[8]._id)
     users[6].vendorAddress.push(addresses[32]._id)
-    users[0].pickupAddress.push(addresses[26]._id)
+    users[6].pickupAddress.push(addresses[27]._id)
     await users[6].save()
 
     users[7].address.push(addresses[9]._id)
     users[7].vendorAddress.push(addresses[33]._id)
-    users[0].pickupAddress.push(addresses[26]._id)
+    users[7].pickupAddress.push(addresses[28]._id)
     await users[7].save()
 
     users[8].address.push(addresses[10]._id)
     users[8].vendorAddress.push(addresses[34]._id)
-    users[0].pickupAddress.push(addresses[27]._id)
+    users[8].pickupAddress.push(addresses[28]._id)
     await users[8].save()
 
     users[9].address.push(addresses[11]._id)
     users[9].vendorAddress.push(addresses[35]._id)
-    users[0].pickupAddress.push(addresses[27]._id)
+    users[9].pickupAddress.push(addresses[29]._id)
     await users[9].save()
 
     users[10].address.push(addresses[12]._id)
     users[10].vendorAddress.push(addresses[36]._id)
-    users[0].pickupAddress.push(addresses[28]._id)
+    users[10].pickupAddress.push(addresses[29]._id)
     await users[10].save()
 
     users[11].address.push(addresses[12]._id)
     users[11].vendorAddress.push(addresses[37]._id)
-    users[0].pickupAddress.push(addresses[28]._id)
+    users[11].pickupAddress.push(addresses[29]._id)
     await users[11].save()
 
     users[12].address.push(addresses[13]._id)
