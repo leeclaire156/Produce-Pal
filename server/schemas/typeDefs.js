@@ -189,7 +189,7 @@ type Mutation {
         pickupAddress: [ID]!): Address
     updateOrder(
         _id: ID
-        orderId: Int
+        orderId: String
         purchaseDate: String
         products: [ID]
         orderType: String
