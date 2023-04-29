@@ -46,7 +46,7 @@ const userSchema = new Schema({
     },
     userImage: {
         type: String,
-        default: '',
+        default: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
         trim: true,
     },
     // memberships: [
@@ -91,7 +91,7 @@ const userSchema = new Schema({
     ],
     vendorImage: {
         type: String,
-        default: '',
+        default: 'https://placehold.co/600x600',
         trim: true,
     },
     marketName: {

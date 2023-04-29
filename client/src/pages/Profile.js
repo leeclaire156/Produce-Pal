@@ -58,12 +58,8 @@ function Profile() {
             throw error;
         }
     };
-
-    const handleSave = (data) => {
-        // setDescription(data.description);
-        console.log('need data from database');
-    };
-
+    console.log(profile.data);
+    console.log(Auth.loggedIn());
     if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
         if (!loading) {
             return (
@@ -71,7 +67,7 @@ function Profile() {
                     {/* this toggle button needs to be moved to navBar when implementing */}
                     <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
                     <div className="container mt-5 pb-5">
-                        {vendorStatus ? <VendorInfo {...profile} onSave={handleSave} /> : <ConsumerInfo {...profile} onSave={handleSave} />}
+                        {vendorStatus ? <VendorInfo {...profile}  /> : <ConsumerInfo {...profile}  />}
                     </div>
                 </div>
             );

@@ -56,7 +56,7 @@ const productSchema = new Schema({
     },
     productImage: {
         type: String,
-        default: '',
+        default: 'https://placehold.co/600x300',
     },
 });
 

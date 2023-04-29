@@ -1,9 +1,10 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers"
 import { useProductContext } from "../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
 import { idbPromise } from "../utils/helpers";
+import Auth from '../utils/auth';
 
 
 function ProductSingleOther(item) {
@@ -55,23 +56,33 @@ function ProductSingleOther(item) {
     return (
         <div key={_id} className="col-md-4 mb-4">
             <div className="card">
-                <img src={productImage ? productImage : "https://placehold.co/600x300"} className="card-img-top" alt="placeholder" />
+                <img src={productImage ? productImage : "https://placehold.co/600x300"} className="card-img-top product-card-img" alt="placeholder" />
                 <div className="card-body">
                     <h5 className="card-title">{productName}</h5>
-                    <p className="card-text">{productDescription}</p>
-                    <p className="card-text"><small>Product ID: {productId}</small></p>
-                    <p className="card-text"><small>Category: {productCategory}</small></p>
-                    <p className="card-text"><small>Inventory: {productInventory}</small></p>
-                    <p className="card-text"><small>Price: ${productPrice} /{productUnits}</small></p>
-                    <p className="card-text"><small>Type: {productType ? 'Weekly Farm Produce Box' : 'Produce'}</small></p>
-                    <p className="card-text"><small>Availability: {productAvailability ? 'in-stock' : 'out-stock'}</small></p>
-                    <p className="card-text"><small>Allergens: {productAllergens ? productAllergens : 'none'}</small></p>
+
+                    <div className="product-details mb-3">
+                        <h6 className="card-text mb-3">{productDescription}</h6>
+                        <p className="card-text"><strong>Product ID: </strong>{productId}</p>
+                        <p className="card-text"><strong>Category: </strong>{productCategory}</p>
+                        <p className="card-text"><strong>Inventory: </strong>{productInventory}</p>
+                        <p className="card-text"><strong>Price: </strong>${productPrice} /{productUnits}</p>
+                        <p className="card-text"><strong>Type: </strong>{productType ? 'Weekly Farm Produce Box' : 'Produce'}</p>
+                        <p className="card-text"><strong>Availability: </strong>{productAvailability ? 'in-stock' : 'out-stock'}</p>
+                        <p className="card-text"><strong>Allergens: </strong>{productAllergens ? productAllergens : 'none'}</p>
+                    </div>
+
                     <div className="input-group input-group-sm mb-3">
-                        <button className="btn btn-outline-secondary" type="button" onClick={addToCart}>Add to cart</button>
+                        {Auth.loggedIn() ? (
+                            <button className="btn btn-outline-secondary" type="button" onClick={addToCart}>Add to cart</button>
+                        ) : (
+                            <Link to="/login">
+                                <button className="btn btn-outline-secondary" type="button">Login to add</button>
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

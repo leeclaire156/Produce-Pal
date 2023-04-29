@@ -7,6 +7,7 @@ import CartItem from '../components/CartItems';
 import Auth from '../utils/auth';
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART } from '../utils/actions';
+import { Link } from "react-router-dom";
 // import './style.css';
 
 // Sample public testing key for stripe
@@ -106,26 +107,22 @@ const Cart = () => {
                                         <CartItem key={item._id} item={item} id={item._id} />
                                     ))}
 
-                                    <div className="flex-row text-end">
-                                        <strong>Total: ${calculateTotal()}</strong>
-
-
+                                    <div className="container" >
+                                        <div className="flex-row align-items-center text-end cart-price me-5">
+                                            <h3>Total: ${calculateTotal()}</h3>
+                                        </div>
                                     </div>
+
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
                                         <button type="button" className="btn btn-secondary" onClick={clearCart}>Clear Cart</button>
-                                        {Auth.loggedIn() ? (
                                             <form action="/create-checkout-session" method="POST">
-                                                <button type="button" className="btn btn-primary" onClick={submitCheckout}>Checkout</button>
+                                                <button type="button" className="btn btn-secondary" onClick={submitCheckout}>Checkout</button>
                                             </form>
-                                        ) : (
-                                            <span>(log in to check out)</span>
-                                        )}
-
                                     </div>
                                 </div>
                             ) : (
-                                <h3 className='text-start'>
+                                <h3 className='text-center cart-empty mb-5'>
                                     Your cart is empty!
                                 </h3>
                             )}
@@ -133,42 +130,7 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-        // <div className="cart">
-        //     <div className="close" onClick={toggleCart}>
-        //         [close]
-        //     </div>
-        //     <h2>Shopping Cart</h2>
-        //     {state.cart.length ? (
-        //         <div>
-        //             {state.cart.map((item) => (
-        //                 <CartItem key={item._id} item={item} id={item._id} />
-        //             ))}
-
-        //             <div className="flex-row space-between">
-        //                 <strong>Total: ${calculateTotal()}</strong>
-
-        //                 {/* {Auth.loggedIn() ? (
-        //                     <button onClick={submitCheckout}>Checkout</button>
-        //                 ) : (
-        //                     <span>(log in to check out)</span>
-        //                 )} */}
-        //             </div>
-        //         </div>
-        //     ) : (
-        //         <h3>
-        //             <span role="img" aria-label="shocked">
-        //                 😱
-        //             </span>
-        //             Your cart is empty!
-        //         </h3>
-        //     )}
-        // </div>
-
-
     );
 };
 
@@ -177,40 +139,3 @@ export default Cart;
 
 
 
-// const Cart = () => {
-//     const [cartState] = useContext(CartContext);
-//     const [cartVisible, setCartVisible] = useState(false);
-
-//     const handleToggleCart = () => {
-//         setCartVisible(!cartVisible);
-//     };
-
-//     console.log(cartState);
-
-//     return (
-//         <div className="cart">
-//             <button className="btn btn-primary" onClick={handleToggleCart}>
-//                 <i className="bi bi-cart"></i> Cart ({cartState.items.length})
-//             </button>
-//             {cartVisible && (
-//                 <div>
-//                     {cartState.items.length > 0 ? (
-//                         <div>
-//                             {cartState.items.map(item => (
-//                                 <CartItem key={item._id} item={item} />
-//                             ))}
-//                             <div className="d-flex justify-content-between">
-//                                 <strong>Total:</strong>
-//                                 <p>${cartState.total.toFixed(2)}</p>
-//                             </div>
-//                         </div>
-//                     ) : (
-//                         <p>Your cart is empty.</p>
-//                     )}
-//                 </div>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default Cart;
