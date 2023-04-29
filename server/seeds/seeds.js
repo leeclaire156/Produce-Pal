@@ -647,7 +647,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I love long walks on the beach with my family.',
             phone: '386-019-4824',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             address: [],
             vendorAddress: [],
             sales: [
@@ -735,7 +735,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I like fishing and learning new things.',
             phone: '703-855-2126',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             sales: [
                 orders[3]._id
             ],
@@ -756,7 +756,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I am looking forward to meeting other farmers on ProducePal!',
             phone: '571-223-2222',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             sales: [
                 orders[4]._id,
                 orders[5]._id,
@@ -788,7 +788,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I love to cook and try out new exotic cuisines.',
             phone: '202-322-4000',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             sales: [
                 orders[12]._id
             ],
@@ -810,7 +810,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I like to spend my freetime with my family and explore the outdoors',
             phone: '540-222-2232',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             sales: [
                 orders[11]._id
             ],
@@ -832,7 +832,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I love to restore classic cars and spend time with my partner.',
             phone: '202-444-4424',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             sales: [
                 orders[10]._id
             ],
@@ -855,7 +855,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I was born and raised in Vancouver and I am looing to share my love of the outdoors with my new commmunity here in the DMV',
             phone: '804-222-9002',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             sales: [
                 orders[6]._id
             ],
@@ -878,7 +878,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'In my free time I like to ride my ATV and sip on mountain dew, and I also enjoy saltwater fishing',
             phone: '703-999-9779',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             sales: [
                 orders[9]._id
             ],
@@ -924,7 +924,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'I spend most of my freetime volunteering with sheltered animals',
             phone: '202-999-0029',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png',
             sales: [
                 orders[7]._id
             ],
