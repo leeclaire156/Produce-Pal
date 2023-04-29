@@ -83,17 +83,18 @@ const resolvers = {
 
             return await User.find(params)
                 .populate('products')
+                // IT DOESN"T LIKE MEMBERSHIPS!
                 // .populate({
                 //     path: 'memberships',
-                //     populate: 'products'
+                //     populate: ['sellerName']
                 // })
                 .populate({
                     path: 'sales',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate({
                     path: 'orders',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate('address')
                 .populate('vendorAddress')

@@ -627,7 +627,7 @@ db.once('open', async () => {
                 products[2]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -657,7 +657,7 @@ db.once('open', async () => {
                 products[4]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-456-1908',
         },
         {
@@ -710,7 +710,7 @@ db.once('open', async () => {
                 products[5]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Cherrydale Farmers Market',
+            marketName: 'Cherrydale Farmers Market',
             vendorTelephone: '703-555-1234',
         },
         {
@@ -742,7 +742,7 @@ db.once('open', async () => {
                 products[19]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -764,7 +764,7 @@ db.once('open', async () => {
                 products[23]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -786,7 +786,7 @@ db.once('open', async () => {
                 products[24]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -809,7 +809,7 @@ db.once('open', async () => {
                 products[26]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -832,7 +832,7 @@ db.once('open', async () => {
                 products[14]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -855,7 +855,7 @@ db.once('open', async () => {
                 products[28]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -878,7 +878,7 @@ db.once('open', async () => {
                 products[21]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -901,7 +901,7 @@ db.once('open', async () => {
                 products[13]._id
             ],
             vendorImage: 'https://placehold.co/600x400',
-            pickupLocation: 'Mosaic Farmers Market',
+            marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         }
 

@@ -10,17 +10,17 @@ import ProductSingleOther from '../components/ProductSingleOther';
 import Cart from '../components/Cart';
 import { idbPromise } from '../utils/helpers';
 import UserToggle from '../components/UserToggle';
-
-
 import { useQuery } from '@apollo/client';
 // import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { STOREFRONT } from '../utils/queries';
 import { useParams } from 'react-router-dom';
 
+
 const ProductInventoryOther = () => {
     const { id } = useParams();
     window.localStorage.setItem("storeObjectId", JSON.stringify(id));
-
+    console.log(id);
+    
     const { loading, error, data } = useQuery(STOREFRONT, {
         variables: { id }
     });
