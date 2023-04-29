@@ -304,7 +304,7 @@ const ProductInventory = () => {
                                             value={productFormData.productUnits} />
                                     </div>
                                     <div className="form-group">
-                                        <div>Type</div>
+                                        <h3>Type</h3>
                                         {/* <select className="form-select" aria-label="select-type" id='create-product-type' name="productType" onChange={handleInputChange}>
                                     <option value="true">weekly box</option>
                                     <option value="false">produce</option>
@@ -319,7 +319,7 @@ const ProductInventory = () => {
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <div>Availability</div>
+                                        <h3>Availability</h3>
                                         {/* <select className="form-select" aria-label="select-availability" id='create-product-availability' name="productAvailability" onChange={handleInputChange}>
                                     <option value="true">In-stock</option>
                                     <option value="false">Out-stock</option>
