@@ -50,6 +50,7 @@ const CartItem = ({ item }) => {
     return (
         <div className="container" >
             <div className="row align-items-center mb-3">
+                
                 <div className="col-md-3">
                     <div className='d-flex flex-column align-items-center'>
                         <img
@@ -59,10 +60,10 @@ const CartItem = ({ item }) => {
                     </div>
                 </div>
 
-                <div className="col-md-6">
-                    <div className='d-flex flex-column align-items-start'>
-                        <div className='fs-4'>{item.productName}</div>
-                        <div className='mb-3'>{item.productDescription}</div>
+                <div className="col-md-6 cart-product-list">
+                    <div className='d-flex flex-column align-items-start text-start'>
+                        <div className='cart-product-name mb-2'>{item.productName}</div>
+                        <div className='cart-product-description mb-2'>{item.productDescription}</div>
                         <div>
                             <span>Qty:</span>
                             <input
@@ -77,10 +78,10 @@ const CartItem = ({ item }) => {
 
                 </div>
 
-                <div className="col-md-3">
+                <div className="col-md-3 cart-price">
                     <div className='d-flex flex-column align-items-start'>
-                        <div>${item.productPrice}/{item.productUnits}</div>
-                        <div>Subtotal: ${(item.productPrice * item.purchaseQuantity).toFixed(2)}</div>
+                        <h4>${item.productPrice}/{item.productUnits}</h4>
+                        <h4>Subtotal: ${(item.productPrice * item.purchaseQuantity).toFixed(2)}</h4>
                         <button
                             type="button"
                             className='btn btn-danger btn-sm mt-3'
