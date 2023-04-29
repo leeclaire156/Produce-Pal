@@ -9,15 +9,15 @@ const ConsumerOrder = (props) => {
                         alt=""
                         className="img-fluid" />
                 </div>
-                <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start">
+                <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
                     <p>Buyer name: {`${props.buyerName.firstName} ${props.buyerName.lastName}`}</p>
                     <p>Order date: {new Date(props.purchaseDate * 1000).toLocaleDateString()}</p>
                 </div>
 
                 <div className="col-sm-12 col-md-3 text-center text-md-end pe-md-5 pb-md-0 pb-3">
-                    <button type="button" className="btn btn-secondary btn-sm">{props.orderType}</button>
-                    <button type="button" className="btn btn-primary btn-sm ms-md-2" data-bs-toggle="modal" data-bs-target={`#consumerOrderModal-${props._id}`}>View</button>
+                    <button type="button" className="btn btn-secondary btn-sm order-status-btn">{props.orderType}</button>
+                    <button type="button" className="btn btn-secondary btn-sm ms-md-2 ms-3" data-bs-toggle="modal" data-bs-target={`#consumerOrderModal-${props._id}`}>View</button>
                 </div>
             </div>
 
@@ -41,11 +41,11 @@ const ConsumerOrder = (props) => {
                                 </div>
 
                                 <div className="col-md-6">
-                                    <div className='d-flex flex-column align-items-start'>
+                                    <div className='d-flex flex-column align-items-start order-history-text'>
 
-                                        <h3 className='fs-4'>Order # {props.orderId}</h3>
-                                        <div className='mb-3'>Buyer name: {`${props.buyerName.firstName} ${props.buyerName.lastName}`}</div>
-                                        <div className='mb-3'>Order date: {new Date(props.purchaseDate * 1000).toLocaleDateString()}</div>
+                                        <h4 className='fs-4'>Order # {props.orderId}</h4>
+                                        <p className='mb-3'>Buyer name: {`${props.buyerName.firstName} ${props.buyerName.lastName}`}</p>
+                                        <p className='mb-3'>Order date: {new Date(props.purchaseDate * 1000).toLocaleDateString()}</p>
                                         <form className='mb-3'>
                                             <select className="form-select" aria-label="select-order-status" defaultValue="Set order status">
 
@@ -63,8 +63,8 @@ const ConsumerOrder = (props) => {
                                         </form>
                                     </div>
 
-                                    <div>
-                                        <div className='fs-5 mb-3'>Order items:</div>
+                                    <div className='order-history-text'>
+                                        <h5 className='mb-3'>Order items:</h5>
                                         {props.products.map((product) => (
                                             <p key={product._id}>
                                                 {product.productName} ({product.productUnits}) - ${product.productPrice}
@@ -75,7 +75,7 @@ const ConsumerOrder = (props) => {
 
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-start'>
-                                        <div>Toal: ${" "}
+                                        <div className='order-history-text'>Toal: ${" "}
                                             {props.products.reduce(
                                                 (totalPrice, product) => totalPrice + product.productPrice,
                                                 0
@@ -83,7 +83,7 @@ const ConsumerOrder = (props) => {
                                         </div>
                                         <button
                                             type="button"
-                                            className='btn btn-success btn-sm mt-3'
+                                            className='btn btn-success btn-sm mt-3 order-status-btn'
                                         >
                                             {props.orderType}
                                         </button>
