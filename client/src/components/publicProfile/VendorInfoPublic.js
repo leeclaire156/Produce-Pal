@@ -2,6 +2,7 @@ import React from 'react';
 import './userInfo.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faCarrot } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import 'bootstrap';
 import 'react-bootstrap';
 // import axios from 'axios';
@@ -173,7 +174,9 @@ function VendorInfoPublic(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faCarrot} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Farm Products</h5>
-                                    <p>Click to view and purchase products from our farm</p>
+                                    <Link to={`/productInventoryother/${props._id}`}>
+                                    <button>Click to view and purchase products from our farm</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
