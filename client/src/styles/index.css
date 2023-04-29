@@ -256,6 +256,10 @@ p {
   object-fit: cover;
 }
 
+.history-img-container{
+  height: 9rem;
+}
+
 .order-history h1 {
   font-family: var(--card-title-font-family);
   font-weight: 700;
