@@ -42,7 +42,7 @@ const ConsumerOrder = (props) => {
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-center'>
                                         <img
-                                            src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
+                                            src={props.sellerImg ? props.sellerImg : 'https://placehold.co/150x150'}
                                             alt=""
                                             className="img-fluid" />
                                     </div>
