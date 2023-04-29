@@ -27,15 +27,9 @@ const OrderHistory = () => {
     );
 
     const profile = data?.me || data?.profile || {};
-    // console.log(profile)
-    // console.log(profile._id)
 
-    // console.log(profile.sales)
     const userOrder = profile.orders
     const userSales = profile.sales
-    console.log(userOrder)
-    console.log(userOrder)
-    console.log(userOrder[0].orderId)
 
     // console.log(userSales)
     // console.log(userOrder[0].buyerName)
@@ -44,10 +38,10 @@ const OrderHistory = () => {
     // // order = stuff user buys, so filteredOrders replaces this
     // //sales = stuff bought from user so filteredOrdersByVendor replaces this
 
-    // test currentUser id
-    const currentUser = {
-        _id: 3,
-    };
+    // // test currentUser id
+    // const currentUser = {
+    //     _id: 3,
+    // };
 
     // const [userOrders, setUserOrders] = useState([]);
     const [state, dispatch] = useProductContext();
@@ -132,8 +126,6 @@ const OrderHistory = () => {
                 : <div>
                     <h1 className="text-center mb-5">My Orders</h1>
                     <div>
-                        {/* {filteredOrders.map((order) => (
-                            <ConsumerOrder key={order._id} {...order} /> */}
                         {filteredOrders.map((order) => (
                             <ConsumerOrder key={order._id} {...order}
                                 orderId={order.orderId}

@@ -1,12 +1,12 @@
 import React from 'react';
 
 const ConsumerOrder = (props) => {
-    function check() {
+    // function check() {
         // console.log(props._id)
         // console.log(props.orderType)
         // console.log(props.buyerName[0].userImage)
-    }
-    check()
+    // }
+    // check()
 
     function convertDate() {
         const dateToInt = (parseInt(props.purchaseDate))
