@@ -15,7 +15,8 @@ db.once('open', async () => {
             productUnits: 'lbs',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Colorful carrots.'
+            productDescription: 'Colorful carrots.',
+            productImage: 'https://i0.wp.com/cattailorganics.com/wp-content/uploads/2022/03/Blog-featured-image-sizing-600-%C3%97-600-px-4.png?fit=600%2C600&ssl=1'
         },
         {
             productId: '1234',
@@ -27,7 +28,8 @@ db.once('open', async () => {
             productUnits: 'lbs',
             productAllergens: 'None',
             productAvailability: 'false',
-            productDescription: 'Purple cabbage.'
+            productDescription: 'Fresh from the field green cabbage, add to any meal as a full side or garnish.',
+            productImage: 'https://parkseed.com/images/xxl/52408-pk-p1.jpg'
         },
         {
             productId: '901',
@@ -39,7 +41,8 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'Eggs',
             productAvailability: true,
-            productDescription: 'Eggs are from different farms that are free range.'
+            productDescription: 'Eggs are from different farms that are free range.',
+            productImage: 'https://i.pinimg.com/564x/18/6f/8e/186f8eba8a7aa324fb1fc2c659a033f3.jpg'
         },
         {
             productId: '567',
@@ -51,7 +54,8 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'Gluten',
             productAvailability: true,
-            productDescription: 'My special blend of spices with a hint of rum.'
+            productDescription: 'My special blend of spices with a hint of rum.',
+            productImage: 'https://as1.ftcdn.net/v2/jpg/00/57/21/42/1000_F_57214243_6eNNMyucjbtCyM2x5tYLJm2AcBjEM0mI.jpg'
         },
         {
             productId: '568',
@@ -63,7 +67,8 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'Gluten, Eggs, Nuts, Milk',
             productAvailability: true,
-            productDescription: 'A month supply of apple pies from different bakers. Keep frozen and throw in the oven when ready to serve.'
+            productDescription: 'A month supply of apple pies from different bakers. Keep frozen and throw in the oven when ready to serve.',
+            productImage: 'https://assets.surlatable.com/m/434dc5f6378bd3f/webimage-1953587_09W_1115_13.jpg'
         },
         {
             productId: '521',
@@ -75,7 +80,8 @@ db.once('open', async () => {
             productUnits: 'lbs',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Seedless Green Grapes 3lbs'
+            productDescription: 'Seedless Green Grapes 3lbs',
+            productImage: 'https://www.naturehills.com/media/catalog/product/cache/1710302e448e18dd210bfc60a5382668/b/l/bluebell-grape-1-600x600.webp'
         },
         {
             productId: '522',
@@ -87,7 +93,8 @@ db.once('open', async () => {
             productUnits: 'ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Organic Honeycrisp Apple'
+            productDescription: 'Organic Honeycrisp Apple',
+            productImage: 'https://h2.commercev3.net/cdn.gurneys.com/images/800/68031A.jpg'
         },
         {
             productId: '523',
@@ -99,7 +106,8 @@ db.once('open', async () => {
             productUnits: 'ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Bunch of Organic Bananas'
+            productDescription: 'One Bunch of Organic Bananas',
+            productImage: 'https://cdn.shopify.com/s/files/1/0336/7167/5948/products/image-of-organic-bananas-organics-14763756421164_600x600.jpg?v=1616958064'
         },
         {
             productId: '524',
@@ -111,7 +119,8 @@ db.once('open', async () => {
             productUnits: 'ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '16oz of Pure Raw Unfiltered Honey'
+            productDescription: '16oz of Pure Raw Unfiltered Honey',
+            productImage: 'https://cdnimg.webstaurantstore.com/images/products/large/630951/2224252.jpg'
         },
         {
             productId: '525',
@@ -123,7 +132,8 @@ db.once('open', async () => {
             productUnits: 'ea.',
             productAllergens: 'Gluten, Dairy, Eggs',
             productAvailability: true,
-            productDescription: '24oz Loaf of Sourdough Bread'
+            productDescription: '24oz Loaf of Sourdough Bread',
+            productImage: 'https://www.momlovesbaking.com/wp-content/uploads/2020/06/Sourdough-Bread-Basics-2.jpg'
         },
         {
             productId: '526',
@@ -135,7 +145,8 @@ db.once('open', async () => {
             productUnits: 'ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '16oz Blueberry Preserves'
+            productDescription: '16oz Blueberry Preserves',
+            productImage: 'https://images.squarespace-cdn.com/content/v1/61aa82e7f3032609f906ad55/95be27d4-32d4-40fb-83b2-46c5c0a1be64/copy_of_copy_of_untitled.png?format=500w'
         },
         {
             productId: '527',
@@ -147,7 +158,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'Eggs',
             productAvailability: true,
-            productDescription: 'One Dozen Large Cage-Free White Eggs'
+            productDescription: 'One Dozen Large Cage-Free White Eggs',
+            productImage: 'https://www.theblackfarmer.com/wp-content/uploads/2023/03/Large-Free-Range-Eggs-6s-2-600x600-1-300x300.jpeg'
         },
         {
             productId: '528',
@@ -159,7 +171,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '.5oz Fresh Organic Rosemary'
+            productDescription: '.5oz Fresh Organic Rosemary',
+            productImage: 'https://cdnimg.webstaurantstore.com/images/products/large/57417/1860767.jpg'
         },
         {
             productId: '529',
@@ -171,7 +184,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'Dairy',
             productAvailability: true,
-            productDescription: '4oz Organic Plain Goat Cheese Log'
+            productDescription: '4oz Organic Plain Goat Cheese Log',
+            productImage: 'https://cdn.shopify.com/s/files/1/0718/5000/0705/products/ElPastorChevreGoatLog1kg2.png?v=1678783426&width=1445'
         },
         {
             productId: '530',
@@ -183,7 +197,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '12oz Dark Amber Grade A Organic Maple Syrup'
+            productDescription: '12oz Dark Amber Grade A Organic Maple Syrup',
+            productImage: 'https://www.beanilla.com/media/catalog/product/cache/77bee113a8ac4baedd074d0e50f9761e/m/a/maple_syrup-pour.jpg'
         },
         {
             productId: '532',
@@ -195,7 +210,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '32oz Kosher Half Sour Extra Crunchy Pickles'
+            productDescription: '32oz Kosher Half Sour Extra Crunchy Pickles',
+            productImage: 'https://marvel-b1-cdn.bc0a.com/f00000000244873/www.BurpeeHomeGardens.com/PlantVarietyImage.aspx?plantid=5786'
         },
         {
             productId: '533',
@@ -207,7 +223,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Old Fashioned Sauerkraut 24oz'
+            productDescription: 'Old Fashioned Sauerkraut 24oz',
+            productImage: 'https://commonsensehome.com/wp-content/uploads/2022/10/old-fashioned-sauerkraut-600x600.jpg'
         },
         {
             productId: '534',
@@ -219,7 +236,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '8oz Stringless Sugar Snap Peas'
+            productDescription: '8oz Stringless Sugar Snap Peas',
+            productImage: 'https://cdn.shopify.com/s/files/1/0072/0909/1117/products/Sugar-Daddy-Snap-Pea-vendor-unknown-1630676594_grande.jpg?v=1630676601'
         },
         {
             productId: '535',
@@ -231,7 +249,8 @@ db.once('open', async () => {
             productUnits: 'lbs',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Pound of Sliced Baby Bella Mushrooms'
+            productDescription: 'One Pound of Sliced Baby Bella Mushrooms',
+            productImage: 'https://www.mushroomcouncil.com/wp-content/uploads/2022/07/01-mushroom-varieites-hero-600x600.jpg'
         },
         {
             productId: '536',
@@ -243,7 +262,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '2lb Bag of Vidalia Onions'
+            productDescription: '2lb Bag of Vidalia Onions',
+            productImage: 'https://www.afarmgirlsdabbles.com/wp-content/uploads/2014/05/photo-5-copy-5-600x600.jpg'
         },
         {
             productId: '537',
@@ -255,7 +275,8 @@ db.once('open', async () => {
             productUnits: 'lbs',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Pound of Fresh Roma Tomatoes'
+            productDescription: 'One Pound of Fresh Roma Tomatoes',
+            productImage: 'https://cdn.shopify.com/s/files/1/1537/5553/products/11841_1024x1024.jpg?v=1655471757'
         },
         {
             productId: '538',
@@ -267,7 +288,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '3oz of Fresh Organic Basil'
+            productDescription: '3oz of Fresh Organic Basil',
+            productImage: 'https://www.highmowingseeds.com/media/catalog/product/cache/6cbdb003cf4aae33b9be8e6a6cf3d7ad/5/0/5043.jpg'
         },
         {
             productId: '539',
@@ -279,11 +301,12 @@ db.once('open', async () => {
             productUnits: 'lbs',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Pound of Fresh Red Beets'
+            productDescription: 'One Pound of Fresh Red Beets',
+            productImage: 'https://www.highmowingseeds.com/media/catalog/product/cache/6cbdb003cf4aae33b9be8e6a6cf3d7ad/2/2/2262-1.jpg'
         },
         {
             productId: '540',
-            productName: 'Eggpolant',
+            productName: 'Eggplant',
             productType: false,
             productPrice: 2.29,
             productCategory: 'Vegetable',
@@ -291,7 +314,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Large Organic Eggplant'
+            productDescription: 'One Large Organic Eggplant',
+            productImage: 'https://mygardenlife.com/wp-content/uploads/2022/12/6474_15-3.jpg'
         },
         {
             productId: '541',
@@ -303,7 +327,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '3lb Bag of Sweet Potatoes'
+            productDescription: '3lb Bag of Sweet Potatoes',
+            productImage: 'https://www.rhshumway.com/images/large/04712.jpg'
         },
         {
             productId: '542',
@@ -315,7 +340,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '5oz of Organic Baby Spinach'
+            productDescription: '5oz of Organic Baby Spinach',
+            productImage: 'https://jaysultimate.com/wp-content/uploads/2018/01/GSPBC-600x600.jpg'
         },
         {
             productId: '543',
@@ -327,7 +353,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Oragnic Green Bell Pepper'
+            productDescription: 'One Oragnic Green Bell Pepper',
+            productImage: 'https://www.ballseed.com/dispthumb.aspx?imgsize=Display&imageid=263829'
         },
         {
             productId: '544',
@@ -339,7 +366,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '12oz of Cut Okra'
+            productDescription: '12oz of Cut Okra',
+            productImage: 'https://cdn.shopify.com/s/files/1/0584/9330/5037/products/a7165cb47c6171dc082124ea831c65d2_e63090ae-dff6-438c-b489-28cc59a99227_720x720.jpg?v=1679202728'
         },
         {
             productId: '545',
@@ -351,7 +379,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Bunch of Rainbow Chard'
+            productDescription: 'One Bunch of Rainbow Chard',
+            productImage: 'https://alseed.com/wp-content/uploads/2021/01/rubychard.jpg'
         },
         {
             productId: '546',
@@ -363,7 +392,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '12oz of Organic Chopped Kale'
+            productDescription: '12oz of Organic Chopped Kale',
+            productImage: 'https://foolproofliving.com/wp-content/uploads/2022/08/Types-of-Kale-600x600.jpg'
         },
         {
             productId: '547',
@@ -375,7 +405,8 @@ db.once('open', async () => {
             productUnits: 'Ea.',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Organic Butternut Squash'
+            productDescription: 'One Organic Butternut Squash',
+            productImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxZcjT0Yw-aeklzABbx4MoRzWLTdm3T82GCg&usqp=CAU'
         },
         {
             productId: '548',
@@ -387,7 +418,8 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Sharebox of Organic Honey Crisp Apples'
+            productDescription: 'Sharebox of Organic Honey Crisp Apples',
+            productImage: 'https://cdn.shopify.com/s/files/1/1193/4108/products/4_7cfbcb21-30d8-4ab3-8a48-4814081162fb.jpg?v=1569500071'
         },
         {
             productId: '549',
@@ -399,7 +431,8 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Sharebox of Organic Pears'
+            productDescription: 'Sharebox of Organic Pears',
+            productImage: 'https://aggieskitchen.com/wp-content/uploads/2012/10/Pears.jpg'
         },
         {
             productId: '550',
@@ -411,7 +444,8 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Sharebox of Organic Oranges'
+            productDescription: 'Sharebox of Organic Oranges',
+            productImage: 'https://cdn.shopify.com/s/files/1/0336/7167/5948/products/image-of-citrus-crate-fruit-28032332398636_600x600.jpg?v=1627846016'
         },
         {
             productId: '551',
@@ -423,7 +457,8 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Sharebox of Organic Bananas'
+            productDescription: 'Sharebox of Organic Bananas',
+            productImage: 'https://media.istockphoto.com/id/486033290/photo/bananas-in-a-crate-on-rustic-wood-table.jpg?s=612x612&w=0&k=20&c=lVktFk9uONFCcn_HRpggzS_BeD0X64MXijGLhyX1Jx8='
         },
         {
             productId: '552',
@@ -435,7 +470,8 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Sharebox of Organic Blackberries.'
+            productDescription: 'Sharebox of Organic Blackberries.',
+            productImage: 'https://media.istockphoto.com/id/537019235/photo/wooden-box-of-berries-on-display.jpg?s=612x612&w=0&k=20&c=2DsVJLZBzj8kVficNfk8VLfCeEU--k6f9hJqzdlkL5A='
         },
 
     ])
@@ -626,7 +662,7 @@ db.once('open', async () => {
                 products[1]._id,
                 products[2]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://admin.itsnicethat.com/images/5ErQGQHaI7xYIQZXPc1sFxeP2OM=/5006/format-webp%7Cwidth-2880/573f16ec7fa44cdcf8003e0b.jpg',
             marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -637,7 +673,7 @@ db.once('open', async () => {
             password: '12345',
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
             phone: '234-109-5786',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://psychology.nd.edu/assets/443127/300x/jenny_padilla_1_1_.jpg',
             sales: [
                 orders[2]._id,
             ],
@@ -656,7 +692,7 @@ db.once('open', async () => {
                 products[3]._id,
                 products[4]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://readingterminalmarket.org/wp-content/uploads/2022/06/philadelphia-market-bakery.jpg',
             marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-456-1908',
         },
@@ -667,7 +703,7 @@ db.once('open', async () => {
             password: 'password2',
             biography: 'I love Farmers Markets and love that I can preorder my products before going to a Farmers Market',
             phone: '123-456-7890',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://ca.slack-edge.com/T04149CM3JR-U0496QLF20G-8d00ceb492dc-512',
             orders: [
                 orders[0]._id,
                 orders[3]._id,
@@ -686,7 +722,7 @@ db.once('open', async () => {
             password: 'password234',
             biography: 'I supoort my local CSAs!',
             phone: '321-654-6789',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://ca.slack-edge.com/T04149CM3JR-U048MLK2EEP-532bff4c3be3-512',
             orders: [
                 orders[2]._id
             ],
@@ -704,12 +740,12 @@ db.once('open', async () => {
                 orders[3]._id
             ],
             vendorStatus: true,
-            vendorName: 'Quins Vinyard',
+            vendorName: 'Quins Organic',
             vendorDescription: 'We aim to be your one stop shop for organic produce in the DMV.',
             products: [
                 products[5]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://grist.org/wp-content/uploads/2015/11/organic.jpg',
             marketName: 'Cherrydale Farmers Market',
             vendorTelephone: '703-555-1234',
         },
@@ -741,7 +777,7 @@ db.once('open', async () => {
                 products[18]._id,
                 products[19]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://www.pccmarkets.com/wp-content/uploads/2018/02/farm-landscape-with-barn-1600.jpg',
             marketName: 'FRESHFARM at Columbia Heights',
             vendorTelephone: '202-675-9012',
         },
@@ -763,7 +799,7 @@ db.once('open', async () => {
                 products[20]._id,
                 products[23]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://www.cbf.org/assets/images/1171-x-593-px/clagett-barns-with-sunflowers-roshani-kothari-1171x593.jpg',
             marketName: 'FRESHFARM at Columbia Heights',
             vendorTelephone: '202-675-9012',
         },
@@ -785,7 +821,7 @@ db.once('open', async () => {
                 products[22]._id,
                 products[24]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://images.squarespace-cdn.com/content/v1/5a9e16793e2d09653e985144/1628012984785-CR0AP55O7A3VT6KU86KV/01_Seminary+Hill+Orchard+%26+Cidery.jpg?format=1000w',
             marketName: 'Falls Church Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -808,7 +844,7 @@ db.once('open', async () => {
                 products[25]._id,
                 products[26]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://organicoasis.on.ca/wp-content/uploads/2022/03/IMG_7378-e1648155165457.jpg',
             marketName: 'Falls Church Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -831,7 +867,7 @@ db.once('open', async () => {
                 products[8]._id,
                 products[14]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://www.gunterpest.com/wp-content/uploads/2019/01/bee-1850116_1920-1200x914.jpg',
             marketName: 'Chevy Chase Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -854,7 +890,7 @@ db.once('open', async () => {
                 products[27]._id,
                 products[28]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://cdn-p300.americantowns.com/img/article/md-apple-picking-1.jpg',
             marketName: 'Chevy Chase Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -865,7 +901,7 @@ db.once('open', async () => {
             password: 'password1',
             biography: 'For 8 months of the year my girlfriend of 12 years and I follow jam bands on tour and exclusively wear ethically sourced hempfiber based tie dye outerwear.',
             phone: '386-019-4824',
-            userImage: 'https://placehold.co/600x600',
+            userImage: 'https://p16-sign.tiktokcdn-us.com/tos-useast5-avt-0068-tx/23f9a9e887a4c0a8b0e941b8ede27a1c~c5_100x100.jpeg?x-expires=1682956800&x-signature=T129F2I%2Bkp0HC7dlWXMc5qMJ9yg%3D',
             sales: [
                 orders[8]._id
             ],
@@ -877,7 +913,7 @@ db.once('open', async () => {
                 products[12]._id,
                 products[21]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://i.etsystatic.com/17941092/r/il/b0a6a6/3030870726/il_1140xN.3030870726_itpf.jpg',
             marketName: 'Chevy Chase Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -900,7 +936,7 @@ db.once('open', async () => {
                 products[11]._id,
                 products[13]._id
             ],
-            vendorImage: 'https://placehold.co/600x400',
+            vendorImage: 'https://www.foodandwine.com/thmb/vXbUZaOWq2NvYdplN49hZHRv8to=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/the-best-way-to-store-dairy-FT-BLOG0320-d7f23d3fa7d2473780a493865bfedd23.jpg',
             marketName: 'Chevy Chase Farmers Market',
             vendorTelephone: '202-675-9012',
         }
