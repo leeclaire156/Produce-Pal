@@ -182,3 +182,12 @@ mutation Mutation($product: [ID]!, $productDescription: String, $productImage: S
   }
 }
 `;
+
+export const UPDATE_ORDER_STATUS = gql`
+mutation updateOrderStatus ($order: [ID]!, $orderType: String) {
+  updateOrder(order: $order, orderType: $orderType) {
+    _id
+    orderType
+  }
+}
+`

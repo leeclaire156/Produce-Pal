@@ -417,7 +417,7 @@ query Query {
 }
 `
 // WILL be used for storefront queries with param of _id
-export const STOREFRONT = gql `
+export const STOREFRONT = gql`
 query Storefront($id: ID!) {
   user(_id: $id) {
     _id
@@ -479,3 +479,11 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
+
+export const GET_ORDER_TYPE = gql`
+query Query($id: ID!) {
+  order(_id: $id) {
+    orderType
+  }
+}
+`
