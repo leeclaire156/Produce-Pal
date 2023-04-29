@@ -212,6 +212,7 @@ p {
   color: var(--bg-color-dark-green);
   text-transform: uppercase;
   font-weight: 700;
+  font-size: 2rem;
 }
 
 .modal-header,
@@ -299,4 +300,39 @@ p {
   color: var(--bg-color-dark-green);
   font-weight: 600;
   font-size: 1rem;
+}
+
+.product-inventory h1 {
+  font-family: var(--card-title-font-family);
+  font-weight: 700;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: var(--color-dark-brown);
+}
+
+.product-card-img {
+  /* width: 100%; */
+  height: 15rem;
+  object-fit: cover;
+}
+
+.product-details p {
+  margin: 0.5rem 0.5rem 0 0;
+  font-size: 1rem;
+}
+
+.product-details h6 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.product-details strong {
+  font-family: var(--card-title-font-family);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.dropdown button {
+  background-color: var(--color-dark-brown);
+  border-color: var(--color-dark-brown);
 }
