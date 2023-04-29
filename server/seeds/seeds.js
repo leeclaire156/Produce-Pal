@@ -727,7 +727,7 @@ db.once('open', async () => {
                 orders[13]._id
             ],
             vendorStatus: true,
-            vendorName: 'Sunny Acres Farms',
+            vendorName: 'Zhihao Sunny Acres Farms',
             vendorDescription: 'Sunny Acres Orchards has been in our family for 4 generations. We hope that through providing quality produce to our community, we can make the world a better place.',
             products: [
                 //apple/banana/bread/jam/pickle/skraut/peas/shroom/onion
@@ -757,7 +757,7 @@ db.once('open', async () => {
                 orders[12]._id
             ],
             vendorStatus: true,
-            vendorName: 'Green Meadows Farms',
+            vendorName: 'The Green Meadows of Claire Farms',
             vendorDescription: 'Here at Green Meadow Farms, we want to give back to our community by providing quality produce to local businesses.',
             products: [
                 products[20]._id,
