@@ -606,7 +606,7 @@ db.once('open', async () => {
     const users = await User.insertMany([
         {
             firstName: 'MaSandra',
-            lastName: 'Schembor',
+            lastName: 'Ewing',
             email: 'mewing123@gmail.com',
             password: 'password1',
             biography: 'I love long walks on the beach with my family.',
@@ -619,7 +619,7 @@ db.once('open', async () => {
                 orders[1]._id
             ],
             vendorStatus: true,
-            vendorName: 'The CoOp',
+            vendorName: 'The Ewing CoOp',
             vendorDescription: 'We have single produce items and we work with other farms to compile great products.',
             products: [
                 products[0]._id,
@@ -631,8 +631,8 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Jenny',
-            lastName: 'Harrington',
+            firstName: 'Jennilee',
+            lastName: 'Messenger',
             email: 'JennyBaker@gmail.com',
             password: '12345',
             biography: 'I enjoy sight seeing and traveling to tropical destinations.',
@@ -714,9 +714,9 @@ db.once('open', async () => {
             vendorTelephone: '703-555-1234',
         },
         {
-            firstName: 'Claire',
-            lastName: 'James',
-            email: 'claire456@gmail.com',
+            firstName: 'Zhihao',
+            lastName: 'Li',
+            email: 'zhihaobuying@gmail.com',
             password: 'password1',
             biography: 'I am looking forward to meeting other farmers on ProducePal!',
             phone: '571-223-2222',
@@ -746,11 +746,11 @@ db.once('open', async () => {
             vendorTelephone: '202-675-9012',
         },
         {
-            firstName: 'Zhihao',
-            lastName: 'Chang',
-            email: 'zhihaobuying@gmail.com',
+            firstName: 'Claire',
+            lastName: 'Lee',
+            email: 'claire456@gmail.com',
             password: 'password1',
-            biography: 'I love to play baseball and try new foods.',
+            biography: 'I love to cook and try out new exotic cuisines.',
             phone: '202-322-4000',
             userImage: 'https://placehold.co/600x600',
             sales: [
