@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 // import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../utils/helpers';
 // import CartItem from '../components/CartItems';
-// import Auth from '../../utils/auth';
+import Auth from '../utils/auth';
+import { Redirect } from 'react-router-dom'
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_VENDOR_STATUS, UPDATE_VENDOR_STATUS } from '../utils/actions';
 import UserToggle from '../components/UserToggle';
@@ -80,43 +81,48 @@ const OrderHistory = () => {
     console.log("global VendorStatus =" + vendorStatus);
 
 
+    if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
 
-    return (
-        <div className="container order-history">
+        return (
+            <div className="container order-history">
 
-            <div className='row mb-3'>
-                <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
+                <div className='row mb-3'>
+                    <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
+                </div>
+
+                {vendorStatus
+                    ?
+                    <div>
+                        <h1 className="text-center mb-5">Consumer Orders</h1>
+                        <div>
+                            {filteredOrdersByVendor.map((order) => (
+                                <VendorOrder key={order._id} {...order} />
+                            ))}
+                        </div>
+                    </div>
+                    : <div>
+                        <h1 className="text-center mb-5">My Orders</h1>
+                        <div>
+                            {filteredOrders.map((order) => (
+                                <ConsumerOrder key={order._id} {...order}
+                                    orderId={order.orderId}
+                                    sellerName={order.sellerName[0]?.vendorName}
+                                    purchaseDate={order.purchaseDate}
+                                    productName={order.products[0].productName}
+                                    productUnits={order.products[0].productUnits}
+                                    products={order.products}
+                                    orderType={order.orderType}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                }
             </div>
-
-            {vendorStatus
-                ?
-                <div>
-                    <h1 className="text-center mb-5">Consumer Orders</h1>
-                    <div>
-                        {filteredOrdersByVendor.map((order) => (
-                            <VendorOrder key={order._id} {...order} />
-                        ))}
-                    </div>
-                </div>
-                : <div>
-                    <h1 className="text-center mb-5">My Orders</h1>
-                    <div>
-                        {filteredOrders.map((order) => (
-                            <ConsumerOrder key={order._id} {...order}
-                                orderId={order.orderId}
-                                sellerName={order.sellerName[0]?.vendorName}
-                                purchaseDate={order.purchaseDate}
-                                productName={order.products[0].productName}
-                                productUnits={order.products[0].productUnits}
-                                products={order.products}
-                                orderType={order.orderType}
-                            />
-                        ))}
-                    </div>
-                </div>
-            }
-        </div>
-    );
+        );
+    } else {
+        return (
+            <Redirect to={{ pathname: '/login' }}></Redirect>)
+    }
 }
 
 export default OrderHistory; 

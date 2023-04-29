@@ -9,7 +9,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import NavBar from './components/NavBar';
-import Upload from './components/addProductTest'; //Claire's testing ground for cloudinary
 import Home from './pages/Home.js'
 import Dashboard from './pages/Dashboard.js'
 import Profile from './pages/Profile.js'
@@ -56,16 +55,15 @@ function App() {
         <ProductProvider>
           <>
             <Switch>
-              <Route exact path='/test' component={Upload} />
               <Route exact path='/' component={Home} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/dashboard' component={Dashboard} />
               {/* this route is to view my profile either as a consumer or vendor */}
               <Route exact path='/profile' component={Profile} />
+              {/* my OrderHistory page -- this route is for buyers/vendors to view their orders/sales */}
               <Route exact path='/order-history' component={OrderHistory} />
-              {/* my productInventory page */}
-              {/* this route is for vendor to manage the product inventory */}
+              {/* my productInventory page -- this route is for vendor to manage the product inventory */}
               <Route exact path='/productinventory' component={ProductInventory} />
               {/* this route is for consumer to buy farmer products */}
               {/* <Route exact path='/productinventory/:id' component={ProductInventoryOther} /> */}
