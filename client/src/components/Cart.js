@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../utils/queries';
@@ -14,6 +14,11 @@ import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART } from '../utils/actions'
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
+    // Clears cart on new render
+    useEffect(() => {
+        clearCart()
+    }, []);//Adding empty array runs function in useEffect only on the first render
+
     const [state, dispatch] = useProductContext();
     const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
@@ -81,7 +86,7 @@ const Cart = () => {
     // }
 
     return (
-        <div className="text-end" >
+        <div className="text-end">
             <button className="btn btn-primary" role="img" aria-label="" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 ({state.cart.length}) Cart
             </button>

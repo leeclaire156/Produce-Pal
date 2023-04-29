@@ -140,8 +140,5 @@ Credit for utilizing several activities in George Washington University Coding B
 16. [Heroku GET /pages to load](https://stackoverflow.com/questions/68734723/heroku-cannot-get-any-page)
 17. [useParams()][https://stackoverflow.com/questions/57444203/get-id-from-url-in-react-js]: Advice on how to get the id from the url using useParams for /:id
 18. George Washington University Coding Bootcamp repository: Section MERN, REACT, and State, Activities
-
-
 19. [Receiving timestamp on date return from MongoDB](https://stackoverflow.com/questions/74724711/mongodb-query-dates-returning-as-string-of-numbers)
-
 20. [Converting timestamp to MM/DD/YYYY formate with .toLocaleDateString('en-US') method](https://bobbyhadz.com/blog/javascript-convert-milliseconds-to-date)
