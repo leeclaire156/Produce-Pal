@@ -8,7 +8,6 @@ import { idbPromise } from '../utils/helpers';
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_VENDOR_STATUS, UPDATE_VENDOR_STATUS } from '../utils/actions';
 import UserToggle from '../components/UserToggle';
-import orders from '../utils/OrdersData';
 // import "./order.css";
 import ConsumerOrder from '../components/orderhistory/consumerOrder';
 import VendorOrder from '../components/orderhistory/vendorOrder';
@@ -19,7 +18,7 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries'
 const OrderHistory = () => {
     const { profileId } = useParams();
     //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
-    const { loading, data } = useQuery(
+    const { data } = useQuery(
         profileId ? QUERY_SINGLE_PROFILE : GET_ME,
         {
             variables: { profileId: profileId },
@@ -31,45 +30,21 @@ const OrderHistory = () => {
     const userOrder = profile.orders
     const userSales = profile.sales
 
-    // console.log(userSales)
-    // console.log(userOrder[0].buyerName)
-    // console.log(userOrder[0].buyerName[0]?)
-    // console.log(userOrder[0].buyerName[0]?._id)
-    // // order = stuff user buys, so filteredOrders replaces this
-    // //sales = stuff bought from user so filteredOrdersByVendor replaces this
-
-    // // test currentUser id
-    // const currentUser = {
-    //     _id: 3,
-    // };
-
-    // const [userOrders, setUserOrders] = useState([]);
     const [state, dispatch] = useProductContext();
     // remember to bring in additional global states.
     const { vendorStatus } = state;
 
-    // filter to find the current user's order from the all orders data
+    // checks if orders match profile of buyer
     const filteredOrders = userOrder.filter(
         (order) =>
             (order.buyerName[0]?._id === profile._id)
     );
-    console.log(filteredOrders)
-    // // filter orders by vendor id
-    // const filteredOrdersByVendor = userOrder.filter(
-    //     (order) =>
-    //         (order.sellerName[0]?._id === profile._id)
-    // );
 
-    // console.log(orders);
-    // console.log(filteredOrders); //fake consumer side orders (things this account has bought)
-    // console.log(filteredOrdersByVendor); //fake vendor side orders (things bought from this account's store)
-    // console.log(currentUser);
-    // console.log(state);
-
-    // // function to set the current user's orders as a local STATE 'userOrders'
-    // const handleUserOrders = () => {
-    //     setUserOrders(filteredOrders);
-    // };
+    // checks if sales match profile of vendor
+    const filteredOrdersByVendor = userSales.filter(
+        (order) =>
+            (order.sellerName[0]?._id === profile._id)
+    );
 
     // load current vendorStatus from IndexDB if there is one
     const loadVendorStatus = async () => {
@@ -118,7 +93,7 @@ const OrderHistory = () => {
                 <div>
                     <h1 className="text-center mb-5">Consumer Orders</h1>
                     <div>
-                        {userSales.map((order) => (
+                        {filteredOrdersByVendor.map((order) => (
                             <VendorOrder key={order._id} {...order} />
                         ))}
                     </div>
@@ -140,8 +115,6 @@ const OrderHistory = () => {
                     </div>
                 </div>
             }
-
-
         </div>
     );
 }
