@@ -2,7 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order, Address } = require('../models');
 const { signToken } = require('../utils/auth');
 // Sample secret testing key for stripe
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')('sk_test_51N1l5jKdLlnWCR5f8btnBQo0F2Dzzz9F3dJ092Lp6f7s0TgZZgQB51ns47y7hM1We9DaOquO5jmAJTEDz694NDm800h4ZGWZbf');
 
 
 const resolvers = {
