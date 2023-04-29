@@ -319,6 +319,10 @@ p {
 .product-details p {
   margin: 0.5rem 0.5rem 0 0;
   font-size: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .product-details h6 {

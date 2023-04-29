@@ -108,6 +108,7 @@ const ProductInventory = () => {
         productType: '',
         productPrice: '',
         productCategory: '',
+        productInventory: '',
         productUnits: '',
         productAllergens: '',
         productAvailability: '',
