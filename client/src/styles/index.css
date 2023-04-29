@@ -234,7 +234,7 @@ p {
 }
 
 .modal input {
-  color: var(--bg-color-light-green);
+  color: var(--bg-color-dark-green);
 }
 
 .modal textarea::placeholder {
@@ -242,7 +242,7 @@ p {
 }
 
 .modal textarea {
-  color: var(--bg-color-light-green);
+  color: var(--bg-color-dark-green);
 }
 
 .order-history-card {
@@ -256,7 +256,7 @@ p {
   object-fit: cover;
 }
 
-.history-img-container{
+.history-img-container {
   height: 9rem;
 }
 
@@ -312,6 +312,15 @@ p {
   font-size: 3rem;
   text-transform: uppercase;
   color: var(--color-dark-brown);
+}
+
+#createProductModal h3 {
+  font-family: var(--card-title-font-family);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--bg-color-dark-green);
+  margin-top: 1rem;
 }
 
 .product-card-img {

@@ -134,7 +134,7 @@ function VendorInfo(props) {
             return formState;
         })
     }
-
+    console.log(props);
     return (
         <div className="container-fluid">
 

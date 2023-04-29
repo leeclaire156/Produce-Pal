@@ -103,7 +103,7 @@ const OrderHistory = () => {
 
         return (
             <div className="container order-history">
-                <p>yes</p>
+                
                 <div className='row mb-3'>
                     <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
                 </div>
