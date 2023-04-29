@@ -7,7 +7,7 @@ const ConsumerOrder = (props) => {
         const monthDayYearDate = convertedDate.toLocaleDateString('en-US'); // date as a string M/DD/YYYY
         return monthDayYearDate
     }
-    console.log(props)
+    
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">

@@ -4,13 +4,11 @@ import { UPDATE_ORDER_STATUS } from '../../utils/mutations';
 import { GET_ORDER_TYPE } from '../../utils/queries';
 
 const VendorOrder = (props) => {
-    console.log(props._id)
     const [formState, setFormState] = useState('')
     const [updateOrderStatus] = useMutation(UPDATE_ORDER_STATUS);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
         if (formState) {
             await updateOrderStatus({
                 variables: {
