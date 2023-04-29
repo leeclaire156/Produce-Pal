@@ -63,7 +63,7 @@ function Profile() {
         // setDescription(data.description);
         console.log('need data from database');
     };
-
+    console.log(Auth.loggedIn());
     if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
         if (!loading) {
             return (

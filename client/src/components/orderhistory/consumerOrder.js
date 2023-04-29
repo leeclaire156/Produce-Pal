@@ -7,12 +7,13 @@ const ConsumerOrder = (props) => {
         const monthDayYearDate = convertedDate.toLocaleDateString('en-US'); // date as a string M/DD/YYYY
         return monthDayYearDate
     }
-    
+
+    // console.log(props.sellerImg);
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
-                <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left">
-                    <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png'}
+                <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
+                    <img src={props.sellerImg ? props.sellerImg : 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png'}
                         alt=""
                         className="img-fluid" />
                 </div>
@@ -41,10 +42,9 @@ const ConsumerOrder = (props) => {
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-center'>
                                         <img
-                                            src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png'}
+                                            src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
                                             alt=""
-                                            className="img-fluid"
-                                        />
+                                            className="img-fluid" />
                                     </div>
                                 </div>
 

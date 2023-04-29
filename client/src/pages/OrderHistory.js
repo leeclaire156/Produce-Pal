@@ -17,15 +17,19 @@ import { useParams } from 'react-router-dom';
 import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries'
 
 const OrderHistory = () => {
+    const [filteredOrders, setFilteredOrders] = useState([]);
+    const [filteredOrdersByVendor, setFilteredOrdersByVendor] = useState([]);
+
     const { profileId } = useParams();
     //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
-    const { data } = useQuery(
+    const { loading, error, data } = useQuery(
         profileId ? QUERY_SINGLE_PROFILE : GET_ME,
         {
             variables: { profileId: profileId },
         },
     );
 
+    console.log(data);
     const profile = data?.me || data?.profile || {};
 
     const userOrder = profile.orders
@@ -36,16 +40,20 @@ const OrderHistory = () => {
     const { vendorStatus } = state;
 
     // checks if orders match profile of buyer
-    const filteredOrders = userOrder.filter(
-        (order) =>
-            (order.buyerName[0]?._id === profile._id)
-    );
+    useEffect(() => {
+        if (userOrder) {
+            const filtered = userOrder.filter(order => order.buyerName[0]?._id === profile._id);
+            setFilteredOrders(filtered);
+        }
+    }, [userOrder, profile]);
 
     // checks if sales match profile of vendor
-    const filteredOrdersByVendor = userSales.filter(
-        (order) =>
-            (order.sellerName[0]?._id === profile._id)
-    );
+    useEffect(() => {
+        if (userSales) {
+            const filtered = userSales.filter(order => order.sellerName[0]?._id === profile._id);
+            setFilteredOrdersByVendor(filtered);
+        }
+    }, [userSales, profile]);
 
     // load current vendorStatus from IndexDB if there is one
     const loadVendorStatus = async () => {
@@ -81,19 +89,28 @@ const OrderHistory = () => {
     console.log("global VendorStatus =" + vendorStatus);
 
 
-    if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
+
+    if (Auth.loggedIn()) {
+        if (loading) {
+            return (
+                <h2 className="container d-flex justify-content-center align-items-center">
+                    loading...
+                </h2>);
+        }
+        if (error) {
+            return (<p>Error: {error.message}</p>);
+        }
 
         return (
             <div className="container order-history">
-
+                <p>yes</p>
                 <div className='row mb-3'>
                     <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
                 </div>
-
                 {vendorStatus
                     ?
                     <div>
-                        <h1 className="text-center mb-5">Consumer Orders</h1>
+                        <h1 className="text-center mb-5">Sales History</h1>
                         <div>
                             {filteredOrdersByVendor.map((order) => (
                                 <VendorOrder key={order._id} {...order} />
@@ -112,6 +129,7 @@ const OrderHistory = () => {
                                     productUnits={order.products[0].productUnits}
                                     products={order.products}
                                     orderType={order.orderType}
+                                    sellerImg={order.sellerName[0]?.vendorImage}
                                 />
                             ))}
                         </div>
@@ -122,7 +140,8 @@ const OrderHistory = () => {
     } else {
         return (
             <Redirect to={{ pathname: '/login' }}></Redirect>)
-    }
+    };
+
 }
 
 export default OrderHistory; 
