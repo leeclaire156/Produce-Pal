@@ -12,7 +12,7 @@ const ConsumerOrder = (props) => {
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left">
-                    <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
+                    <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png'}
                         alt=""
                         className="img-fluid" />
                 </div>
@@ -41,7 +41,7 @@ const ConsumerOrder = (props) => {
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-center'>
                                         <img
-                                            src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
+                                            src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://res.cloudinary.com/dcvtyvwii/image/upload/v1682387797/lbicrrh84geqa1pgrmdy.png'}
                                             alt=""
                                             className="img-fluid"
                                         />
@@ -51,7 +51,7 @@ const ConsumerOrder = (props) => {
                                 <div className="col-md-6">
                                     <div className='d-flex flex-column align-items-start order-history-text'>
                                         <h4 className='fs-4 mb-3'>Order # {props.orderId}</h4>
-                                        <p className='mb-3'>Vendor name: {props.sellerName.vendorName}</p>
+                                        <p className='mb-3'>Vendor name: {props.sellerName}</p>
                                         <p className='mb-3'>Order date: {convertDate()}</p>
                                     </div>
 
