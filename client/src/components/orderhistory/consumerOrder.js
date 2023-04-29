@@ -1,18 +1,32 @@
 import React from 'react';
 
 const ConsumerOrder = (props) => {
+    // function check() {
+        // console.log(props._id)
+        // console.log(props.orderType)
+        // console.log(props.buyerName[0].userImage)
+    // }
+    // check()
+
+    function convertDate() {
+        const dateToInt = (parseInt(props.purchaseDate))
+        const convertedDate = new Date(dateToInt) // date as an object
+        const monthDayYearDate = convertedDate.toLocaleDateString('en-US'); // date as a string M/DD/YYYY
+        return monthDayYearDate
+    }
+
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left">
-                    <img src="https://placehold.co/150x150"
+                    <img src={props.buyerName[0].userImage ? props.buyerName[0].userImage : 'https://placehold.co/150x150'}
                         alt=""
                         className="img-fluid" />
                 </div>
                 <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
-                    <p>Vendor name: {props.sellerName.vendorName}</p>
-                    <p>Order date: {new Date(props.purchaseDate * 1000).toLocaleDateString()}</p>
+                    <p>Vendor name: {props.sellerName}</p>
+                    <p>Order date: {convertDate()}</p>
                 </div>
 
                 <div className="col-sm-12 col-md-3 text-center text-md-end pe-md-5 pb-md-0 pb-3">
@@ -34,8 +48,9 @@ const ConsumerOrder = (props) => {
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-center'>
                                         <img
-                                            src='https://placehold.co/150x150'
+                                            src={props.buyerName[0].userImage ? props.buyerName[0].userImage : 'https://placehold.co/150x150'}
                                             alt=""
+                                            className="img-fluid"
                                         />
                                     </div>
                                 </div>
@@ -43,16 +58,16 @@ const ConsumerOrder = (props) => {
                                 <div className="col-md-6">
                                     <div className='d-flex flex-column align-items-start'>
 
-                                        <div className='fs-4'>Order # {props.orderId}</div>
-                                        <div className='mb-3'>Vendor name: {props.sellerName.vendorName}</div>
-                                        <div className='mb-3'>Order date: {new Date(props.purchaseDate * 1000).toLocaleDateString()}</div>
+                                        <div className='fs-4 mb-3'>Order # {props.orderId}</div>
+                                        <div className='mb-3'>Vendor name: {props.sellerName}</div>
+                                        <div className='mb-3'>Order date: {convertDate()}</div>
                                     </div>
 
                                     <div>
-                                        <div className='fs-5 mb-3'>Order items:</div>
+                                        <div className='fs-4 mb-3'>Order items:</div>
                                         {props.products.map((product) => (
                                             <p key={product._id}>
-                                                {product.productName} ({product.productUnits}) - ${product.productPrice}
+                                                {product.productName} ({product.productUnits}) - ${product.productPrice} x {product.productQuantity}
                                             </p>
                                         ))}
                                     </div>
@@ -60,16 +75,14 @@ const ConsumerOrder = (props) => {
 
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-start'>
-                                        <div>Toal: ${" "}
+                                        <div>Total: ${" "}
                                             {props.products.reduce(
                                                 (totalPrice, product) => totalPrice + product.productPrice,
+                                                // (totalPrice, product) => totalPrice + (product.productPrice * product.productQuantity),
                                                 0
-                                            )}
+                                            ).toFixed(2)}
                                         </div>
-                                        <button
-                                            type="button"
-                                            className='btn btn-danger btn-sm mt-3'
-                                        >
+                                        <button type="button" className='btn btn-danger btn-sm mt-3'>
                                             Pay
                                         </button>
                                     </div>
