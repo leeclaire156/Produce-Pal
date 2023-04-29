@@ -55,17 +55,17 @@ function VendorInfoPublic() {
                         <div className="mt-5">
                             <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
-                                <div className="col-lg-10 col-md-10">
+                                {/* <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
                                     <p>{storeData.vendorAddress[0]?.street}, {storeData.vendorAddress[0]?.city}, {storeData.vendorAddress[0]?.state}, {storeData.vendorAddress[0]?.zipcode}</p>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
-                                <div className="col-lg-10 col-md-10">
+                                {/* <div className="col-lg-10 col-md-10">
                                     <h5>Find us at {storeData.marketName}</h5>
                                     <p>{storeData.pickupAddress[0]?.street}, {storeData.pickupAddress[0]?.city}, {storeData.pickupAddress[0]?.state}, {storeData.pickupAddress[0]?.zipcode}</p>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
