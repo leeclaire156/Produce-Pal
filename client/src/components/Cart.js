@@ -7,6 +7,7 @@ import CartItem from '../components/CartItems';
 import Auth from '../utils/auth';
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, CLEAR_CART } from '../utils/actions';
+import { Link } from "react-router-dom";
 // import './style.css';
 
 // Sample public testing key for stripe
@@ -115,14 +116,9 @@ const Cart = () => {
                                     <div className="modal-footer">
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
                                         <button type="button" className="btn btn-secondary" onClick={clearCart}>Clear Cart</button>
-                                        {Auth.loggedIn() ? (
                                             <form action="/create-checkout-session" method="POST">
                                                 <button type="button" className="btn btn-secondary" onClick={submitCheckout}>Checkout</button>
                                             </form>
-                                        ) : (
-                                            <span>(log in to check out)</span>
-                                        )}
-
                                     </div>
                                 </div>
                             ) : (
@@ -134,12 +130,7 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
-
     );
 };
 
