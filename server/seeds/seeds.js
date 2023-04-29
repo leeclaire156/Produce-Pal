@@ -432,7 +432,7 @@ db.once('open', async () => {
             productAllergens: 'None',
             productAvailability: true,
             productDescription: 'Sharebox of Organic Pears',
-            productImage: 'https://aggieskitchen.com/wp-content/uploads/2012/10/Pears.jpg0'
+            productImage: 'https://aggieskitchen.com/wp-content/uploads/2012/10/Pears.jpg'
         },
         {
             productId: '550',
