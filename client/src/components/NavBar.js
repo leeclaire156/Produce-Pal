@@ -26,6 +26,7 @@ function NavBar({ currentPage, handlePageChange }) {
     }
   }
 
+
   function logInOut() {
     if (Auth.loggedIn()) {
       return (
@@ -50,6 +51,8 @@ function NavBar({ currentPage, handlePageChange }) {
     }
   }
 
+  console.log(Auth.loggedIn());
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light container">
       <div className="container-fluid">
@@ -73,12 +76,12 @@ function NavBar({ currentPage, handlePageChange }) {
                 className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Home' ? 'home' : 'home-fade'}>Home</a>
             </li>
             {dashboard()}
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <a href="#"
                 className={'nav-link'} >
                 <i className="fas fa-shopping-cart"></i>
                 Cart</a>
-            </li>
+            </li> */}
             {logInOut()}
           </ul>
         </div>

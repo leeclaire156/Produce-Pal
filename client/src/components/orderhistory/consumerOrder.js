@@ -23,14 +23,14 @@ const ConsumerOrder = (props) => {
                         alt=""
                         className="img-fluid" />
                 </div>
-                <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start">
+                <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
                     <p>Vendor name: {props.sellerName}</p>
                     <p>Order date: {convertDate()}</p>
                 </div>
 
                 <div className="col-sm-12 col-md-3 text-center text-md-end pe-md-5 pb-md-0 pb-3">
-                    <button type="button" className="btn btn-secondary btn-sm">{props.orderType}</button>
+                    <button type="button" className="btn btn-secondary btn-sm order-status-btn">{props.orderType}</button>
                     <button type="button" className="btn btn-primary btn-sm ms-md-2 ms-3" data-bs-toggle="modal" data-bs-target={`#consumerOrderModal-${props._id}`}>View</button>
                 </div>
             </div>
@@ -56,15 +56,15 @@ const ConsumerOrder = (props) => {
                                 </div>
 
                                 <div className="col-md-6">
-                                    <div className='d-flex flex-column align-items-start'>
-
-                                        <div className='fs-4 mb-3'>Order # {props.orderId}</div>
-                                        <div className='mb-3'>Vendor name: {props.sellerName}</div>
-                                        <div className='mb-3'>Order date: {convertDate()}</div>
+                                    <div className='d-flex flex-column align-items-start order-history-text'>
+                                        <h4 className='fs-4 mb-3'>Order # {props.orderId}</h4>
+                                        <p className='mb-3'>Vendor name: {props.sellerName.vendorName}</p>
+                                        <p className='mb-3'>Order date: {convertDate()}</p>
                                     </div>
 
-                                    <div>
-                                        <div className='fs-4 mb-3'>Order items:</div>
+                                    <div className='order-history-text'>
+                                        <h5 className='mb-3'>Order items:</h5>
+
                                         {props.products.map((product) => (
                                             <p key={product._id}>
                                                 {product.productName} ({product.productUnits}) - ${product.productPrice} x {product.productQuantity}
@@ -75,15 +75,19 @@ const ConsumerOrder = (props) => {
 
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-start'>
-                                        <div>Total: ${" "}
+                                        <div className='order-history-text'>Toal: ${" "}
                                             {props.products.reduce(
                                                 (totalPrice, product) => totalPrice + product.productPrice,
                                                 // (totalPrice, product) => totalPrice + (product.productPrice * product.productQuantity),
                                                 0
                                             ).toFixed(2)}
                                         </div>
-                                        <button type="button" className='btn btn-danger btn-sm mt-3'>
-                                            Pay
+                                        <button
+                                            type="button"
+                                            className='btn btn-danger btn-sm mt-3 order-status-btn'
+                                        >
+                                            {props.orderType}
+
                                         </button>
                                     </div>
                                 </div>

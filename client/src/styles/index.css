@@ -256,9 +256,47 @@ p {
 }
 
 .order-history h1 {
-    font-family: var(--card-title-font-family);
+  font-family: var(--card-title-font-family);
   font-weight: 700;
   font-size: 3rem;
   text-transform: uppercase;
   color: var(--color-dark-brown);
+}
+
+.order-history-text {
+  color: var(--color-dark-brown);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.order-history-text h4 {
+  color: var(--bg-color-dark-green);
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 1.25rem;
+}
+
+.order-history-text h5 {
+  color: var(--bg-color-dark-green);
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.order-history-text p {
+  color: var(--bg-color-dark-green);
+  font-weight: 300;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.order-status-btn {
+  background-color: var(--color-dark-brown);
+  border-color: var(--color-dark-brown);
+}
+
+.order-history-text select {
+  color: var(--bg-color-dark-green);
+  font-weight: 600;
+  font-size: 1rem;
 }
