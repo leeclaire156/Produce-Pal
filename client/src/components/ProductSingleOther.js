@@ -1,9 +1,10 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers"
 import { useProductContext } from "../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../utils/actions";
 import { idbPromise } from "../utils/helpers";
+import Auth from '../utils/auth';
 
 
 function ProductSingleOther(item) {
@@ -71,11 +72,17 @@ function ProductSingleOther(item) {
                     </div>
 
                     <div className="input-group input-group-sm mb-3">
-                        <button className="btn btn-outline-secondary" type="button" onClick={addToCart}>Add to cart</button>
+                        {Auth.loggedIn() ? (
+                            <button className="btn btn-outline-secondary" type="button" onClick={addToCart}>Add to cart</button>
+                        ) : (
+                            <Link to="/login">
+                                <button className="btn btn-outline-secondary" type="button">Login to add</button>
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
