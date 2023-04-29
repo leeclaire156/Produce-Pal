@@ -83,17 +83,18 @@ const resolvers = {
 
             return await User.find(params)
                 .populate('products')
+                // IT DOESN"T LIKE MEMBERSHIPS!
                 // .populate({
                 //     path: 'memberships',
-                //     populate: 'products'
+                //     populate: ['sellerName']
                 // })
                 .populate({
                     path: 'sales',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate({
                     path: 'orders',
-                    populate: 'products'
+                    populate: ['products', 'buyerName', 'sellerName']
                 })
                 .populate('address')
                 .populate('vendorAddress')
@@ -354,10 +355,10 @@ const resolvers = {
                 await User.findByIdAndUpdate(buyer, { $push: { orders: order } }, { new: true });
 
                 // // // Seller's Sales: send the seller's user ID to sales array & the sellerName array
-                // await User.findByIdAndUpdate(seller, { $push: { sales: order } }, { new: true });
+                await User.findByIdAndUpdate(sellerName, { $push: { sales: order } }, { new: true });
 
                 // // Order's Buyer: send the buyer ID (context) to the order buyerName respectively
-                // await Order.findByIdAndUpdate(order, { $push: { buyerName: buyer } }, { new: true });
+                await Order.findByIdAndUpdate(order, { $push: { buyerName: buyer } }, { new: true });
 
                 return order;
 
