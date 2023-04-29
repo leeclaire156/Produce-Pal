@@ -7,12 +7,13 @@ const ConsumerOrder = (props) => {
         const monthDayYearDate = convertedDate.toLocaleDateString('en-US'); // date as a string M/DD/YYYY
         return monthDayYearDate
     }
-    
+
+    // console.log(props.sellerImg);
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
-                <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left">
-                    <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
+                <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
+                    <img src={props.sellerImg ? props.sellerImg : 'https://placehold.co/150x150'}
                         alt=""
                         className="img-fluid" />
                 </div>
@@ -40,18 +41,16 @@ const ConsumerOrder = (props) => {
                             <div className="row align-items-center mb-3">
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-center'>
-                                        <img
-                                            src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
+                                        <img src={props.sellerImg ? props.sellerImg : 'https://placehold.co/150x150'}
                                             alt=""
-                                            className="img-fluid"
-                                        />
+                                            className="img-fluid" />
                                     </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <div className='d-flex flex-column align-items-start order-history-text'>
                                         <h4 className='fs-4 mb-3'>Order # {props.orderId}</h4>
-                                        <p className='mb-3'>Vendor name: {props.sellerName.vendorName}</p>
+                                        <p className='mb-3'>Vendor name: {props.sellerName}</p>
                                         <p className='mb-3'>Order date: {convertDate()}</p>
                                     </div>
 

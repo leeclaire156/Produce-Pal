@@ -37,14 +37,18 @@ const VendorOrder = (props) => {
         return monthDayYearDate
     }
 
+    // console.log(props.buyerName[0]);
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
-                <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left">
-                    <img src={props.sellerName[0].vendorImage ? props.sellerName[0].vendorImage : 'https://placehold.co/150x150'}
+
+                <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
+                    <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
                         alt=""
                         className="img-fluid" />
+
                 </div>
+
                 <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
                     <p>Buyer name: {`${props.buyerName[0]?.firstName} ${props.buyerName[0]?.lastName}`}</p>
@@ -69,8 +73,7 @@ const VendorOrder = (props) => {
                             <div className="row align-items-center mb-3">
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-center mb-3'>
-                                        <img
-                                            src={props.sellerName[0].vendorImage ? props.sellerName[0].vendorImage : 'https://placehold.co/150x150'}
+                                        <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
                                             alt=""
                                             className="img-fluid" />
                                     </div>
