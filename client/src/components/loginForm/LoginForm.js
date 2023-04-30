@@ -86,7 +86,7 @@ function Login(props) {
                         </div>
 
                         <div className="d-grid gap-2 d-md-block mt-4 mb-4">
-                            <button className="btn btn-primary mt-2" type="submit" id="login-btn">Submit</button>
+                            <button className="btn btn-primary mt-2" type="submit" id="login-btn">Login</button>
                             <Link to="/signup">
                                 <button id="signup-btn" className="btn btn-primary mt-2 ms-3" type="button" >
                                     Register</button>

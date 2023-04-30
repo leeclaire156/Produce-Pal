@@ -23,9 +23,6 @@ function ConsumerInfoPublic(props) {
 
     console.log(props);
 
-
-
-
     return (
         <div className="container-fluid">
             <div>yes i am a user</div>

@@ -424,7 +424,7 @@ p {
 
 .veg-img-left {
   position: sticky;
-  top: 30%;
+  top: 39%;
   left: 1%;
   scale: 60%;
   opacity: 33%;
@@ -509,3 +509,26 @@ p {
   font-weight: 700;
   font-size: 3rem;
 }
+
+
+@media screen and (max-width: 600px) {
+  .veg-container {
+    display: none;
+  }
+
+  .farm-cards-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .farm-cards-list {
+    width: 100%;
+    padding: 0;
+  }
+
+  nav {
+    margin-top: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 992px) {}
