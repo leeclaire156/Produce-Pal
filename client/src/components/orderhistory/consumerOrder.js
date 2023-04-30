@@ -36,9 +36,9 @@ const ConsumerOrder = (props) => {
                 {/* My Orders Page */}
                 <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
-                    {/* <Link to={`/public/profile/vendor/${props._id}`}>
+                    <Link to={`/public/profile/vendor/${props._id}`}>
                         <button>Vendor name: {props.sellerName}</button>
-                    </Link> */}
+                    </Link>
 
                     <p>Order date: {convertDate()}</p>
                 </div>

@@ -492,7 +492,7 @@ query Query($id: ID!) {
 }
 `
 
-// Use for the profiles for seller and buyer
+// Use for the public profiles for seller and buyer
 export const GET_USER_BY_ID = gql`
 query Query($id: ID!) {
   user(_id: $id) {
