@@ -88,8 +88,6 @@ const OrderHistory = () => {
     }
     console.log("global VendorStatus =" + vendorStatus);
 
-
-
     if (Auth.loggedIn()) {
         if (loading) {
             return (
@@ -103,7 +101,7 @@ const OrderHistory = () => {
 
         return (
             <div className="container order-history">
-                
+
                 <div className='row mb-3'>
                     <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} />
                 </div>
@@ -113,7 +111,8 @@ const OrderHistory = () => {
                         <h1 className="text-center mb-5">Sales History</h1>
                         <div>
                             {filteredOrdersByVendor.map((order) => (
-                                <VendorOrder key={order._id} {...order} />
+                                <VendorOrder key={order._id} {...order}
+                                />
                             ))}
                         </div>
                     </div>
