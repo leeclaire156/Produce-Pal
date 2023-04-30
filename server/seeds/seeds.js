@@ -496,7 +496,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: '383',
+            orderId: '0003',
             products: [
                 products[3]._id,
                 products[4]._id
@@ -504,14 +504,14 @@ db.once('open', async () => {
             orderType: 'Ready'
         },
         {
-            orderId: '0005',
+            orderId: '0004',
             products: [
                 products[5]._id
             ],
             orderType: 'Pending'
         },
         {
-            orderId: '0023',
+            orderId: '0005',
             products: [
                 products[6]._id,
                 products[6]._id,
@@ -531,7 +531,7 @@ db.once('open', async () => {
             orderType: 'Pending'
         },
         {
-            orderId: '0023',
+            orderId: '0006',
             products: [
                 products[7]._id,
                 products[9]._id,
@@ -547,14 +547,14 @@ db.once('open', async () => {
             orderType: 'Pending'
         },
         {
-            orderId: '0024',
+            orderId: '0007',
             products: [
                 products[8]._id
             ],
             orderType: 'Paid'
         },
         {
-            orderId: '0025',
+            orderId: '0008',
             products: [
                 products[11]._id,
                 products[11]._id,
@@ -566,7 +566,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: '0026',
+            orderId: '0009',
             products: [
                 products[12]._id,
                 products[12]._id,
@@ -576,7 +576,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: '0027',
+            orderId: '0010',
             products: [
                 products[27]._id,
                 products[27]._id,
@@ -586,7 +586,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: '0331',
+            orderId: '0011',
             products: [
                 products[25]._id,
                 products[25]._id,
@@ -596,7 +596,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: '0025',
+            orderId: '0012',
             products: [
                 products[22]._id,
                 products[22]._id,
@@ -608,7 +608,7 @@ db.once('open', async () => {
             orderType: 'Paid'
         },
         {
-            orderId: '0023',
+            orderId: '0013',
             products: [
                 products[20]._id,
                 products[20]._id,
@@ -624,7 +624,7 @@ db.once('open', async () => {
             orderType: 'Pending'
         },
         {
-            orderId: '0023',
+            orderId: '0014',
             products: [
                 products[10]._id,
                 products[10]._id,
@@ -943,16 +943,6 @@ db.once('open', async () => {
 
     ], { ordered: true });
 
-    // // Add MaSandra to Jenny's membership array since she ordered from MaSandra
-    // users[1].memberships.push(users[0]._id)
-    // await users[1].save()
-    // // Add MaSandra to Claire's membership array since she ordered from MaSandra
-    // users[2].memberships.push(users[0]._id)
-    // await users[2].save()
-    // // Add Jenny to Zhihao's membership array since he ordered from Jenny
-    // users[3].memberships.push(users[1]._id)
-    // await users[3].save()
-
     // PUSH buyer and seller names to respective orders
     // Order [0]
     orders[0].buyerName.push(users[2]._id)
@@ -1010,10 +1000,6 @@ db.once('open', async () => {
     orders[13].buyerName.push(users[2]._id)
     orders[13].sellerName.push(users[5]._id)
     await orders[13].save()
-
-
-
-
 
     console.log('users seeded');
 
@@ -1342,7 +1328,6 @@ db.once('open', async () => {
     users[12].vendorAddress.push(addresses[38]._id)
     users[12].pickupAddress.push(addresses[29]._id)
     await users[12].save()
-
 
     console.log('addresses seeded');
 
