@@ -25,7 +25,13 @@ const resolvers = {
                     })
                     .populate({
                         path: 'orders',
-                        populate: ['products', 'buyerName', 'sellerName']
+                        populate: [
+                            'products', 'buyerName', 
+                            {
+                                path: 'sellerName',
+                                populate: 'pickupAddress',
+                            },
+                        ]
                     })
                     .populate('address')
                     .populate('vendorAddress')
