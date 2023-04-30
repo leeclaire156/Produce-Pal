@@ -8,12 +8,16 @@ import { Form, Button, Container, InputGroup } from 'react-bootstrap';
 import eye from '../assets/eye_icongeek26.png'
 import blindeye from '../assets/blind-eye_icongeek26.png'
 
+import Alert from 'react-bootstrap/Alert';
+
+
 function Login(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
     const [errorEmailMessage, setEmailError] = useState(false);
     const [passwordType, setPasswordType] = useState(false)
     const [image, setImage] = useState(true)
     const [login, { error }] = useMutation(LOGIN);
+    const [showAlert, setShowAlert] = useState(false);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -24,10 +28,18 @@ function Login(props) {
 
             Auth.login(data.login.token);
         } catch (e) {
+            setShowAlert(true);
             console.log(e);
         }
     };
+    <>
+    return (
 
+            {showAlert && (
+                <Alert severity="error">Username or Password are incorrect </Alert>
+            )}
+    );
+    </> 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormState({ ...formState, [name]: value });
@@ -49,7 +61,6 @@ function Login(props) {
         setPasswordType(!passwordType)
         setImage(!image)
     }
-
     return (
         <div className="d-flex justify-content-center align-items-center vh-100 pb-5 mb-5">
 
@@ -98,7 +109,8 @@ function Login(props) {
             </div>
 
         </div>
+         
     );
-}
 
+}
 export default Login;

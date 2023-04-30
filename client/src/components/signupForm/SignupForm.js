@@ -17,9 +17,18 @@ function Signup(props) {
     const [eyeImage, setEyeImage] = useState(true)
     const [notFilled, setFilledStatus] = useState(false)
     const [addUser] = useMutation(ADD_USER);
+    const [validate, setValidate] = useState(false);
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+
+        const form = event.currentTarget
+        if (form.checkValidity === false) {
+            // event.preventDefault
+            // event.stopPropolgation
+        } else { setValidate(true) }
+
         console.log(formState);
         const mutationResponse = await addUser({
             variables: {
@@ -202,7 +211,8 @@ function Signup(props) {
                         id="vendorName"
                         onChange={handleChange}
                         value={formState.vendorName}
-                        className='form-control' />
+                        className='form-control'/>
+
                 </div>
 
                 // <>
@@ -358,7 +368,9 @@ function Signup(props) {
                                 id="firstName"
                                 onChange={handleChange}
                                 value={formState.firstName}
+                                required="true"
                                 className='form-control' />
+                                <Form.Control.Feedback type="invalid">Please add your first name.</Form.Control.Feedback>
                         </div>
 
                         <div className="col-6 mb-3 d-flex flex-column text-start">
@@ -370,7 +382,9 @@ function Signup(props) {
                                 id="lastName"
                                 onChange={handleChange}
                                 value={formState.lastName}
+                                required="true"
                                 className='form-control' />
+                                <Form.Control.Feedback type="invalid">Please add your last name.</Form.Control.Feedback>
                         </div>
 
                         <div className="col-12 mb-3 d-flex flex-column text-start">
@@ -383,7 +397,9 @@ function Signup(props) {
                                 onChange={handleChange}
                                 onBlur={handleEmailValidation}
                                 value={formState.email}
+                                required="true"
                                 className='form-control' />
+                                <Form.Control.Feedback type="invalid">Please enter your email</Form.Control.Feedback>
                             {errorEmailMessage ? <label className="errorMsg emailError mt-3 ms-3">Check your email</label> : ""}
                         </div>
 
@@ -391,12 +407,13 @@ function Signup(props) {
                             <label for="password" className="form-label signin-label text-md-start ms-md-3">Password</label>
                             <div className="input-group mb-3">
                                 <input
-                                    placeholder="Password"
+                                    placeholder="Password- min 5 characters"
                                     name="password"
                                     type={passwordType ? "text" : "password"}
                                     id="password"
                                     onChange={handleChange}
                                     value={formState.password}
+                                    required="true"
                                     className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword} ><img src={eyeImage ? eye : blindeye} /></button></span>
                             </div>
                         </div>
@@ -408,6 +425,7 @@ function Signup(props) {
                                 <input className="form-check-input" type="radio" name='vendorStatus'
                                     label="Yes"
                                     onChange={handleChange}
+                                    required="true"
                                     value="true" />
                                 <label className="form-check-label" for="flexRadioDefault1">
                                     Yes
@@ -416,6 +434,7 @@ function Signup(props) {
                             <div className="form-check">
                                 <input className="form-check-input" type="radio" name='vendorStatus'
                                     label="No"
+                                    required="true"
                                     onChange={handleChange}
                                     value="false" />
                                 <label className="form-check-label" for="flexRadioDefault1">
