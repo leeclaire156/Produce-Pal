@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import Auth from '../../utils/auth';
 import { ADD_USER } from '../../utils/mutations';
 import { Form, Button, Dropdown } from 'react-bootstrap';
-import './signupForm.css';
+// import './signupForm.css';
 import eye from '../assets/eye_icongeek26.png'
 import blindeye from '../assets/blind-eye_icongeek26.png'
 
@@ -191,301 +191,259 @@ function Signup(props) {
     function renderVendorForm() {
         if (formState.vendorStatus == true) {
             return (
-                <>
-                    <Form.Group className="flex-row space-between my-2">
-                        <Form.Control
-                            placeholder="Business Name"
-                            name="vendorName"
-                            type="text"
-                            id="vendorName"
-                            onChange={handleChange}
-                            value={formState.vendorName}
-                        />
-                    </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
-                        <Form.Control
-                            placeholder="Vendor Street Address"
-                            name="addVendorAddressStreet2"
-                            type="text"
-                            id="addVendorAddressStreet2"
-                            onChange={handleChange}
-                            value={formState.addVendorAddressStreet2}
-                        />
-                        <Form.Control
-                            placeholder="City"
-                            name="addVendorAddressCity2"
-                            type="text"
-                            id="addVendorAddressCity2"
-                            onChange={handleChange}
-                            value={formState.addVendorAddressCity2}
-                        />
-                        <Form.Control
-                            placeholder="State"
-                            name="addVendorAddressState2"
-                            type="text"
-                            id="addVendorAddressState2"
-                            onChange={handleChange}
-                            value={formState.addVendorAddressState2}
-                        />
-                        <Form.Control
-                            placeholder="Zip Code"
-                            name="addVendorAddressZipcode2"
-                            type="text"
-                            id="addVendorAddressZipcode2"
-                            onChange={handleChange}
-                            value={formState.addVendorAddressZipcode2}
-                        />
-                    </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
-                        <Form.Control
-                            placeholder="Tell us about your company"
-                            name="vendorDescription"
-                            as="textarea"
-                            rows={6}
-                            id="vendorDescription"
-                            onChange={handleChange}
-                            value={formState.vendorDescription}
-                        />
-                    </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
-                        <Form.Control
-                            placeholder="Business Phone Number"
-                            name="vendorTelephone"
-                            type="text"
-                            id="vendorTelephone"
-                            onChange={handleChange}
-                            // onBlur={handlePhoneValidation}
-                            value={formState.vendorTelephone}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label className='UploadImg mt-4 mb-2'>
-                            <div>
-                                Upload a picture of your business
-                            </div>
-                            <Form.Control
-                                id="dropzone-file"
-                                type="file"
-                                name='vendorImage'
-                                onChange={uploadImage}
-                                className='vendorImage'
-                            />
-                            {vendorUrl ? <img className="user-img-preview preview-img" src={vendorUrl} height={100} width={100} /> : <></>}
-                        </Form.Label>
-                    </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
-                        <Form.Control
-                            placeholder="Market Name"
-                            name="marketName"
-                            type="text"
-                            id="marketName"
-                            onChange={handleChange}
-                            value={formState.marketName}
-                        />
-                    </Form.Group>
-                    <Form.Group className="flex-row space-between my-2">
-                        <Form.Control
-                            placeholder="Pick Up Address"
-                            name="addPickupAddressStreet2"
-                            type="text"
-                            id="addPickupAddressStreet2"
-                            onChange={handleChange}
-                            value={formState.addPickupAddressStreet2}
-                        />
-                        <Form.Control
-                            placeholder="City"
-                            name="addPickupAddressCity2"
-                            type="text"
-                            id="addPickupAddressCity2"
-                            onChange={handleChange}
-                            value={formState.addPickupAddressCity2}
-                        />
-                        <Form.Control
-                            placeholder="State"
-                            name="addPickupAddressState2"
-                            type="text"
-                            id="addPickupAddressState2"
-                            onChange={handleChange}
-                            value={formState.addPickupAddressState2}
-                        />
-                        <Form.Control
-                            placeholder="Zip Code"
-                            name="addPickupAddressZipcode2"
-                            type="text"
-                            id="addPickupAddressZipcode2"
-                            onChange={handleChange}
-                            value={formState.addPickupAddressZipcode2}
-                        />
-                    </Form.Group>
-                </>
+
+                <div className="col-12 mb-3 d-flex flex-column text-start">
+                    <label for="businessname" className="form-label signin-label text-md-start ms-md-3">Business Name</label>
+                    <input
+                        placeholder="Enter business name"
+                        name="vendorName"
+                        type="text"
+                        id="vendorName"
+                        onChange={handleChange}
+                        value={formState.vendorName}
+                        className='form-control' />
+                </div>
+
+                // <>
+                //     <Form.Group className="flex-row space-between my-2">
+                //         <Form.Control
+                //             placeholder="Business Name"
+                //             name="vendorName"
+                //             type="text"
+                //             id="vendorName"
+                //             onChange={handleChange}
+                //             value={formState.vendorName}
+                //         />
+                //     </Form.Group>
+                //     <Form.Group className="flex-row space-between my-2">
+                //         <Form.Control
+                //             placeholder="Vendor Street Address"
+                //             name="addVendorAddressStreet2"
+                //             type="text"
+                //             id="addVendorAddressStreet2"
+                //             onChange={handleChange}
+                //             value={formState.addVendorAddressStreet2}
+                //         />
+                //         <Form.Control
+                //             placeholder="City"
+                //             name="addVendorAddressCity2"
+                //             type="text"
+                //             id="addVendorAddressCity2"
+                //             onChange={handleChange}
+                //             value={formState.addVendorAddressCity2}
+                //         />
+                //         <Form.Control
+                //             placeholder="State"
+                //             name="addVendorAddressState2"
+                //             type="text"
+                //             id="addVendorAddressState2"
+                //             onChange={handleChange}
+                //             value={formState.addVendorAddressState2}
+                //         />
+                //         <Form.Control
+                //             placeholder="Zip Code"
+                //             name="addVendorAddressZipcode2"
+                //             type="text"
+                //             id="addVendorAddressZipcode2"
+                //             onChange={handleChange}
+                //             value={formState.addVendorAddressZipcode2}
+                //         />
+                //     </Form.Group>
+                //     <Form.Group className="flex-row space-between my-2">
+                //         <Form.Control
+                //             placeholder="Tell us about your company"
+                //             name="vendorDescription"
+                //             as="textarea"
+                //             rows={6}
+                //             id="vendorDescription"
+                //             onChange={handleChange}
+                //             value={formState.vendorDescription}
+                //         />
+                //     </Form.Group>
+                //     <Form.Group className="flex-row space-between my-2">
+                //         <Form.Control
+                //             placeholder="Business Phone Number"
+                //             name="vendorTelephone"
+                //             type="text"
+                //             id="vendorTelephone"
+                //             onChange={handleChange}
+                //             // onBlur={handlePhoneValidation}
+                //             value={formState.vendorTelephone}
+                //         />
+                //     </Form.Group>
+                //     <Form.Group>
+                //         <Form.Label className='UploadImg mt-4 mb-2'>
+                //             <div>
+                //                 Upload a picture of your business
+                //             </div>
+                //             <Form.Control
+                //                 id="dropzone-file"
+                //                 type="file"
+                //                 name='vendorImage'
+                //                 onChange={uploadImage}
+                //                 className='vendorImage'
+                //             />
+                //             {vendorUrl ? <img className="user-img-preview preview-img" src={vendorUrl} height={100} width={100} /> : <></>}
+                //         </Form.Label>
+                //     </Form.Group>
+                //     <Form.Group className="flex-row space-between my-2">
+                //         <Form.Control
+                //             placeholder="Market Name"
+                //             name="marketName"
+                //             type="text"
+                //             id="marketName"
+                //             onChange={handleChange}
+                //             value={formState.marketName}
+                //         />
+                //     </Form.Group>
+                //     <Form.Group className="flex-row space-between my-2">
+                //         <Form.Control
+                //             placeholder="Pick Up Address"
+                //             name="addPickupAddressStreet2"
+                //             type="text"
+                //             id="addPickupAddressStreet2"
+                //             onChange={handleChange}
+                //             value={formState.addPickupAddressStreet2}
+                //         />
+                //         <Form.Control
+                //             placeholder="City"
+                //             name="addPickupAddressCity2"
+                //             type="text"
+                //             id="addPickupAddressCity2"
+                //             onChange={handleChange}
+                //             value={formState.addPickupAddressCity2}
+                //         />
+                //         <Form.Control
+                //             placeholder="State"
+                //             name="addPickupAddressState2"
+                //             type="text"
+                //             id="addPickupAddressState2"
+                //             onChange={handleChange}
+                //             value={formState.addPickupAddressState2}
+                //         />
+                //         <Form.Control
+                //             placeholder="Zip Code"
+                //             name="addPickupAddressZipcode2"
+                //             type="text"
+                //             id="addPickupAddressZipcode2"
+                //             onChange={handleChange}
+                //             value={formState.addPickupAddressZipcode2}
+                //         />
+                //     </Form.Group>
+                // </>
             )
         }
     }
 
     return (
-        <div className="container signup-pg">
-            <Form.Label className='signup-header'>Sign up for a free account</Form.Label>
-            <Form onSubmit={handleFormSubmit}>
-                <Form.Group className="flex-row space-between my-2">
-                    <Form.Control
-                        placeholder="First name"
-                        name="firstName"
-                        type="text"
-                        id="firstName"
-                        onChange={handleChange}
-                        value={formState.firstName}
-                    />
-                </Form.Group>
-                <Form.Group className="flex-row space-between my-2">
-                    <Form.Control
-                        placeholder="Last name"
-                        name="lastName"
-                        type="text"
-                        id="lastName"
-                        onChange={handleChange}
-                        value={formState.lastName}
-                    />
-                </Form.Group>
-                <Form.Group className="flex-row space-between my-2">
-                    <Form.Control
-                        placeholder="Email address"
-                        name="email"
-                        type="email"
-                        id="email"
-                        onChange={handleChange}
-                        onBlur={handleEmailValidation}
-                        value={formState.email}
-                    />
-                    {errorEmailMessage ? <label className="errorMsg emailError">Check your email</label> : ""}
-                </Form.Group>
-                <Form.Group className="d-flex flex-row space-between my-2">
-                    <Form.Control
-                        placeholder="Password"
-                        name="password"
-                        type={passwordType ? "text" : "password"}
-                        id="password"
-                        onChange={handleChange}
-                        value={formState.password}
-                    />
-                    <Button className="togglePwdBtn" onClick={togglePassword}>
-                        <img src={eyeImage ? eye : blindeye} />
-                    </Button>
-                </Form.Group>
-                <Form.Group className="flex-row space-between my-2">
-                    <Form.Control
-                        placeholder="Street Address"
-                        name="street"
-                        type="text"
-                        id="street"
-                        onChange={handleChange}
-                        value={formState.street}
-                    />
-                    <Form.Control
-                        placeholder="City"
-                        name="city"
-                        type="text"
-                        id="city"
-                        onChange={handleChange}
-                        value={formState.city}
-                    />
-                    <Form.Control
-                        placeholder="State"
-                        name="state"
-                        type="text"
-                        id="state"
-                        onChange={handleChange}
-                        value={formState.state}
-                    />
-                    <Form.Control
-                        placeholder="Zip Code"
-                        name="zipcode"
-                        type="text"
-                        id="zipcode"
-                        onChange={handleChange}
-                        value={formState.zipcode}
-                    />
-                </Form.Group>
-                <Form.Group className="flex-row space-between my-2">
-                    <Form.Control
-                        placeholder="Tell us about you"
-                        name="biography"
-                        as="textarea"
-                        rows={6}
-                        id="biography"
-                        onChange={handleChange}
-                        value={formState.biography}
-                    />
-                </Form.Group>
-                <Form.Group className="flex-row space-between my-2">
-                    <Form.Control
-                        placeholder="Phone Number"
-                        name="phone"
-                        type="phone"
-                        id="phone"
-                        onChange={handleChange}
-                        // onBlur={handlePhoneValidation}
-                        value={formState.phone}
-                    />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label className='UploadImg mt-4 mb-2'>
-                        <div>
-                            Upload a picture of you!
+
+        <div className="d-flex justify-content-center align-items-center mt-5">
+
+            <div className='card text-center' style={{ width: '45rem' }}>
+                <div className='card-body' >
+
+                    <div className='card-title row login-header mb-5 mt-5'>
+                        <h1>Sign up for a free account</h1>
+                    </div>
+
+                    <form className="login-form row g-2 input-group" onSubmit={handleFormSubmit}>
+
+                        <div className="col-6 mb-3 d-flex flex-column">
+                            <label for="firstname" className="form-label signin-label text-md-start ms-md-3">First name</label>
+                            <input
+                                placeholder="First name"
+                                name="firstName"
+                                type="text"
+                                id="firstName"
+                                onChange={handleChange}
+                                value={formState.firstName}
+                                className='form-control' />
                         </div>
-                        <Form.Control
-                            id="dropzone-file"
-                            type="file"
-                            name='userImage'
-                            onChange={uploadImage}
-                            className='userImage'
-                        />
-                        {userUrl ? <img className="user-img-preview preview-img" src={userUrl} height={100} width={100} /> : <></>}
-                    </Form.Label>
-                </Form.Group>
-                <Form.Group className="flex-row space-between my-2">
-                    <Form.Label htmlFor="vendorStatus">Are you a vendor?</Form.Label>
-                    <Form.Check
-                        type="radio"
-                        name='vendorStatus'
-                        label="Yes"
-                        onChange={handleChange}
-                        value="true"
-                    />
-                    <Form.Check
-                        type="radio"
-                        name='vendorStatus'
-                        label="No"
-                        onChange={handleChange}
-                        value="false"
-                    />
-                </Form.Group>
-                {renderVendorForm()}
-                <Form.Group className="flex-row flex-end">
-                    {loading ? (
-                        <Button
-                            id="signup-btn"
-                            className="signup-pg-btns btn-primary btn"
-                            type="submit"
-                            disabled
-                        >
-                            Register
-                        </Button>
-                    ) : (
-                        <Button
-                            id="signup-btn"
-                            className="signup-pg-btns btn-primary btn"
-                            type="submit"
-                        // disabled={notFilled}
-                        >
-                            Register
-                        </Button>
-                    )}
-                    <Link to="/login">
-                        <Button id="login-btn" className='signup-pg-btns btn-secondary btn'>Login</Button>
-                    </Link>
-                </Form.Group>
-            </Form>
-        </div>
+
+                        <div className="col-6 mb-3 d-flex flex-column text-start">
+                            <label for="lastname" className="form-label signin-label text-md-start ms-md-3">Last name</label>
+                            <input
+                                placeholder="Last name"
+                                name="lastName"
+                                type="text"
+                                id="lastName"
+                                onChange={handleChange}
+                                value={formState.lastName}
+                                className='form-control' />
+                        </div>
+
+                        <div className="col-12 mb-3 d-flex flex-column text-start">
+                            <label for="email" className="form-label signin-label text-md-start ms-md-3">Email</label>
+                            <input
+                                placeholder="Email address"
+                                name="email"
+                                type="email"
+                                id="email"
+                                onChange={handleChange}
+                                onBlur={handleEmailValidation}
+                                value={formState.email}
+                                className='form-control' />
+                            {errorEmailMessage ? <label className="errorMsg emailError">Check your email</label> : ""}
+                        </div>
+
+                        <div className="col-12 mb-3 d-flex flex-column text-start">
+                            <label for="password" className="form-label signin-label text-md-start ms-md-3">Password</label>
+                            <div className="input-group mb-3">
+                                <input
+                                    placeholder="Password"
+                                    name="password"
+                                    type={passwordType ? "text" : "password"}
+                                    id="password"
+                                    onChange={handleChange}
+                                    value={formState.password}
+                                    className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onMouseEnter={togglePassword} onMouseLeave={togglePassword}><img src={eyeImage ? eye : blindeye} /></button></span>
+                            </div>
+                        </div>
+
+
+                        <div className="col-12 mb-3 d-flex flex-column text-start">
+                            <label for="email" className="form-label signin-label text-md-start ms-md-3 mb-4">Are you a vendor?</label>
+                            <div className="form-check mb-3">
+                                <input className="form-check-input" type="radio" name='vendorStatus'
+                                    label="Yes"
+                                    onChange={handleChange}
+                                    value="true" />
+                                <label className="form-check-label" for="flexRadioDefault1">
+                                    Yes
+                                </label>
+                            </div>
+                            <div className="form-check">
+                                <input className="form-check-input" type="radio" name='vendorStatus'
+                                    label="No"
+                                    onChange={handleChange}
+                                    value="false" />
+                                <label className="form-check-label" for="flexRadioDefault1">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                        {renderVendorForm()}
+
+                        <div className="d-grid gap-2 d-md-block mt-4 mb-4">
+                            {loading
+                                ?
+                                <button className="btn btn-secondary signup-pg-btns mt-2" type="submit" id="signup-btn" disabled>Submit</button>
+                                :
+                                <button className="btn btn-secondary signup-pg-btns mt-2" type="submit" id="signup-btn">Submit</button>
+                            }
+                            < Link to="/login">
+                                <button id="login-btn" className="btn btn-secondary signup-pg-btns mt-2 ms-3" type="button" >
+                                    Login</button>
+                            </Link>
+                        </div>
+                    </form>
+
+                </div>
+            </div >
+
+        </div >
+
     );
 }
 

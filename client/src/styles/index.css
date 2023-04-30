@@ -35,12 +35,22 @@ body {
 
 .farm-img-container {
   overflow: hidden;
+  height: 18rem;
 }
 
 .farm-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.farm-card p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .btn {
@@ -96,20 +106,6 @@ body {
   color: var(--bg-color-dark-green);
   font-weight: 700;
 }
-
-.veg-img {
-  position: absolute;
-  top: 60%;
-  left: 1%;
-  scale: 60%;
-  opacity: 45%;
-  transform: rotate(10deg) translate(-60%, -50%);
-  transition: 0.25s ease-in-out;
-}
-
-/* .veg-img:hover {
-  transform: rotate(15deg) translate(-65%, -50%) scale(1.1);
-} */
 
 p {
   line-height: 1.5;
@@ -411,4 +407,87 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.veg-container-absolute-left {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  z-index: -1
+}
+
+.veg-container-relative-left {
+  position: relative;
+  height: 180rem;
+  z-index: -1
+}
+
+.veg-img-left {
+  position: sticky;
+  top: 30%;
+  left: 1%;
+  scale: 60%;
+  opacity: 33%;
+  transform: rotate(12deg) translate(-60%, -50%);
+  transition: 0.25s ease-in-out;
+  z-index: -1
+}
+
+.veg-container-absolute-right {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  z-index: -1
+}
+
+.veg-container-relative-right {
+  position: relative;
+  height: 200rem;
+  z-index: -1
+}
+
+.veg-img-right {
+  position: sticky;
+  top: 30%;
+  right: 1%;
+  scale: 50%;
+  opacity: 33%;
+  transform: rotate(12deg) translate(135%, -80%);
+  transition: 0.25s ease-in-out;
+  z-index: -1
+}
+
+.login-header h1 {
+  font-family: var(--card-title-font-family);
+  color: var(--bg-color-dark-green);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.login-input-field {
+  width: 50%;
+}
+
+.input-group-text {
+  background-color: white;
+  border-color: var(--bg-color-dark-green);
+  border-radius: 1.5rem;
+}
+
+.togglePwdBtn {
+  background-color: white;
+  border: white;
+}
+
+.signin-label {
+  font-family: var(--card-title-font-family);
+  color: var(--bg-color-dark-green);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.errorMsg {
+  color: var(--color-deep-brown);
 }
