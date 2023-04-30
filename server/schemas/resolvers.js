@@ -345,11 +345,11 @@ const resolvers = {
             return product;
         },
         // addOrder USING CONTEXT (the signed in user) - when checking out works, uncomment below and comment out addOrder code without context
-        addOrder: async (parent, { products, quantity, sellerName }, context) => {
+        addOrder: async (parent, { orderId, products, quantity, sellerName }, context) => {
 
             if (context.user) {
                 const buyer = context.user._id
-                const order = await Order.create({ products, quantity, sellerName });
+                const order = await Order.create({ orderId, products, quantity, sellerName });
                 // When buyer pays, then:
                 // send the order's ID to the buyer's orders array
                 await User.findByIdAndUpdate(buyer, { $push: { orders: order } }, { new: true });
@@ -363,7 +363,6 @@ const resolvers = {
                 return order;
 
             }
-            // const order = await Order.create({ products, quantity, sellerName });
             throw new AuthenticationError('Not logged in');
         },
 
