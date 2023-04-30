@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faCarrot } from '@fortawesome/free-solid-svg-icons';
-
+// PAGE TO BE DELETE? (check with Zhihao), SEEMS TO HAVE BEEN REPLACED BY /userInfo/VendorInfo.js
 function VendorInfo(props) {
     return (
         <div className="container-fluid">
