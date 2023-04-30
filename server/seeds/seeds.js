@@ -485,13 +485,21 @@ db.once('open', async () => {
                 products[0]._id,
                 products[1]._id
             ],
-            orderType: 'Pending'
+            quantity: [
+                1,
+                2
+            ],
+            orderType: 'Closed'
         },
         {
             orderId: '0002',
             products: [
                 products[1]._id,
                 products[2]._id
+            ],
+            quantity: [
+                2,
+                1
             ],
             orderType: 'Paid'
         },
@@ -501,6 +509,10 @@ db.once('open', async () => {
                 products[3]._id,
                 products[4]._id
             ],
+            quantity: [
+                3,
+                4
+            ],
             orderType: 'Ready'
         },
         {
@@ -508,27 +520,36 @@ db.once('open', async () => {
             products: [
                 products[5]._id
             ],
-            orderType: 'Pending'
+            quantity: [
+                2,
+            ],
+            orderType: 'Paid'
         },
         {
             orderId: '0005',
             products: [
                 products[6]._id,
-                products[6]._id,
-                products[6]._id,
                 products[7]._id,
                 products[9]._id,
                 products[10]._id,
                 products[15]._id,
-                products[15]._id,
                 products[16]._id,
                 products[17]._id,
                 products[18]._id,
-                products[18]._id,
                 products[19]._id
-
             ],
-            orderType: 'Pending'
+            quantity: [
+                2,
+                2,
+                1,
+                3,
+                2,
+                2,
+                5,
+                2,
+                1
+            ],
+            orderType: 'Paid'
         },
         {
             orderId: '0006',
@@ -537,19 +558,28 @@ db.once('open', async () => {
                 products[9]._id,
                 products[10]._id,
                 products[15]._id,
-                products[15]._id,
                 products[17]._id,
                 products[18]._id,
-                products[18]._id,
                 products[19]._id
-
             ],
-            orderType: 'Pending'
+            quantity: [
+                1,
+                3,
+                2,
+                2,
+                5,
+                2,
+                1
+            ],
+            orderType: 'Ready'
         },
         {
             orderId: '0007',
             products: [
                 products[8]._id
+            ],
+            quantity: [
+                2,
             ],
             orderType: 'Paid'
         },
@@ -557,21 +587,21 @@ db.once('open', async () => {
             orderId: '0008',
             products: [
                 products[11]._id,
-                products[11]._id,
-                products[11]._id,
-                products[11]._id,
                 products[13]._id,
-                products[13]._id
+            ],
+            quantity: [
+                2,
+                4,
             ],
             orderType: 'Paid'
         },
         {
             orderId: '0009',
             products: [
-                products[12]._id,
-                products[12]._id,
-                products[12]._id,
                 products[21]._id
+            ],
+            quantity: [
+                2,
             ],
             orderType: 'Paid'
         },
@@ -579,9 +609,11 @@ db.once('open', async () => {
             orderId: '0010',
             products: [
                 products[27]._id,
-                products[27]._id,
-                products[27]._id,
                 products[28]._id
+            ],
+            quantity: [
+                4,
+                2,
             ],
             orderType: 'Paid'
         },
@@ -589,9 +621,11 @@ db.once('open', async () => {
             orderId: '0011',
             products: [
                 products[25]._id,
-                products[25]._id,
-                products[26]._id,
                 products[26]._id
+            ],
+            quantity: [
+                2,
+                2,
             ],
             orderType: 'Paid'
         },
@@ -599,11 +633,11 @@ db.once('open', async () => {
             orderId: '0012',
             products: [
                 products[22]._id,
-                products[22]._id,
-                products[22]._id,
-                products[22]._id,
                 products[24]._id,
-                products[24]._id
+            ],
+            quantity: [
+                1,
+                3,
             ],
             orderType: 'Paid'
         },
@@ -611,27 +645,25 @@ db.once('open', async () => {
             orderId: '0013',
             products: [
                 products[20]._id,
-                products[20]._id,
-                products[20]._id,
-                products[20]._id,
                 products[23]._id,
-                products[23]._id,
-                products[23]._id,
-                products[23]._id,
-                products[23]._id
-
             ],
-            orderType: 'Pending'
+            quantity: [
+                3,
+                3,
+            ],
+            orderType: 'Ready'
         },
         {
             orderId: '0014',
             products: [
                 products[10]._id,
-                products[10]._id,
-                products[15]._id,
                 products[15]._id
             ],
-            orderType: 'Pending'
+            quantity: [
+                1,
+                3,
+            ],
+            orderType: 'Ready'
         }
 
 
@@ -656,7 +688,7 @@ db.once('open', async () => {
             ],
             vendorStatus: true,
             vendorName: 'The Ewing CoOp',
-            vendorDescription: 'Samuel Ewing Jr. in 1865 founded the Ewing farm. To this day, we grow a variety of produce and raise cattle over 3000 acres of land.',
+            vendorDescription: 'Samuel Ewing Jr. in 1865 founded the Ewing farm. To this day, we grow a variety of produce and raise cattle over 3,000 acres of land.',
             products: [
                 products[0]._id,
                 products[1]._id,
@@ -778,7 +810,7 @@ db.once('open', async () => {
                 products[19]._id
             ],
             vendorImage: 'https://www.pccmarkets.com/wp-content/uploads/2018/02/farm-landscape-with-barn-1600.jpg',
-            marketName: 'FRESHFARM at Columbia Heights',
+            marketName: 'EatLoco Farmers Market at One Loudoun',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -793,14 +825,14 @@ db.once('open', async () => {
                 orders[12]._id
             ],
             vendorStatus: true,
-            vendorName: 'The Green Meadows of Claire Farms',
-            vendorDescription: 'Here at Green Meadow Farms, we want to give back to our community by providing quality produce to local businesses.',
+            vendorName: 'Honest Lee Goods',
+            vendorDescription: 'They\'re honest-lee good..',
             products: [
                 products[20]._id,
                 products[23]._id
             ],
             vendorImage: 'https://www.cbf.org/assets/images/1171-x-593-px/clagett-barns-with-sunflowers-roshani-kothari-1171x593.jpg',
-            marketName: 'FRESHFARM at Columbia Heights',
+            marketName: 'EatLoco Farmers Market at One Loudoun',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -1054,10 +1086,10 @@ db.once('open', async () => {
             zipcode: '22201',
         },
         {
-            street: '2021 14th St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20009',
+            street: '21 Main St',
+            city: 'Clarksburg',
+            state: 'Maryland',
+            zipcode: '20871',
         },
         {
             street: '675 15th St NW',
@@ -1072,10 +1104,10 @@ db.once('open', async () => {
             zipcode: '20004',
         },
         {
-            street: '1822 1st St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20001',
+            street: '232 N Fillmore St',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22201',
         },
         {
             street: '1601 14th St NW',
@@ -1096,10 +1128,10 @@ db.once('open', async () => {
             zipcode: '20001',
         },
         {
-            street: '1201 24th St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20037',
+            street: '2804 16th Rd',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22204',
         },
         {
             street: '3050 K St NW Suite 101',
@@ -1120,10 +1152,10 @@ db.once('open', async () => {
             zipcode: '20814',
         },
         {
-            street: '3236 M St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20007',
+            street: '11911 Little Seneca Pkwy',
+            city: 'Clarksburg',
+            state: 'Maryland',
+            zipcode: '20871',
         },
         {
             street: '309 Middle St',
@@ -1170,12 +1202,12 @@ db.once('open', async () => {
             state: 'Virginia',
             zipcode: '22207',
         },
-        // FRESHFARM at Columbia Heights
+        // EatLoco Farmers Market at One Loudoun
         {
-            street: '1400 Park Rd NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20010',
+            street: '44578 Atwater Dr',
+            city: 'Ashburn',
+            state: 'Virginia',
+            zipcode: '20147',
         },
         // Falls Church Farmers Market
         {
@@ -1193,16 +1225,16 @@ db.once('open', async () => {
         },
         //next 12 are vendor addresses for hybrid accounts
         {
-            street: '1310 Pennsylvania Ave SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '8075 Leesburg Pike',
+            city: 'Vienna',
+            state: 'Virginia',
+            zipcode: '22182',
         },
         {
-            street: '325 Pennsylvania Ave SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '2001 International Dr',
+            city: 'McLean',
+            state: 'Virginia',
+            zipcode: '22102',
         },
         {
             street: '729 8th St SE',
@@ -1217,40 +1249,40 @@ db.once('open', async () => {
             zipcode: '20003',
         },
         {
-            street: '1001 E St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '1021 N Garfield St',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22201',
         },
         {
-            street: '1363 E St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '11900 Palace Way',
+            city: 'Fairfax',
+            state: 'Virginia',
+            zipcode: '22030',
         },
         {
-            street: '501 2nd St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '2501 N Granada St',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22207',
         },
         {
-            street: '800 C St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '11750 Fair Oaks Mall',
+            city: 'Fairfax',
+            state: 'Virginia',
+            zipcode: '22033',
         },
         {
-            street: '222 7th St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '7101 Democracy Blvd, Bethesda',
+            city: 'Bethesda',
+            state: 'Maryland',
+            zipcode: '20817',
         },
         {
-            street: '1111 4th St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '11580 Old Georgetown Rd',
+            city: 'North Bethesda',
+            state: 'Maryland',
+            zipcode: '20852',
         },
         {
             street: '1010 G St SE',
@@ -1259,12 +1291,17 @@ db.once('open', async () => {
             zipcode: '20003',
         },
         {
-            street: '1433 D St SE',
+            street: '2501 N Granada St',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22207',
+        },
+        {
+            street: '501 2nd St SE',
             city: 'Washington',
             state: 'District of Columbia',
             zipcode: '20003',
         },
-
     ])
 
     // Add addresses in chronological order of users
