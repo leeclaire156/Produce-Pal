@@ -104,6 +104,7 @@ if (Auth.loggedIn()) {
                         <div>
                             {filteredOrdersByVendor.map((order) => (
                                 <VendorOrder key={order._id} {...order}
+                                    _id={order.buyerName[0]?._id}
                                 />
                             ))}
                         </div>
