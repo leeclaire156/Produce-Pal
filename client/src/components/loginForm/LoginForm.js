@@ -44,7 +44,8 @@ function Login(props) {
         }
     }
 
-    const togglePassword = () => {
+    const togglePassword = (e) => {
+        e.preventDefault();
         setPasswordType(!passwordType)
         setImage(!image)
     }
