@@ -10,6 +10,7 @@ import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_VENDOR_STATUS, UPDATE_VENDOR_STATUS } from '../utils/actions';
 import { idbPromise } from '../utils/helpers';
+import Spinner from '../../src/components/assets/loading.gif'
 
 
 function Profile() {
@@ -73,9 +74,9 @@ function Profile() {
             );
         } else {
             return (
-                <h2 className="container d-flex justify-content-center align-items-center">
-                    loading...
-                </h2>
+                <div>
+                <Spinner/>
+                </div>
             )
         }
     } else {
