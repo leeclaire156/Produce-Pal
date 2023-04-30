@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client'
 import { UPDATE_ORDER_STATUS } from '../../utils/mutations';
 import { GET_ORDER_TYPE } from '../../utils/queries';
+import { Link } from 'react-router-dom';
 
 const VendorOrder = (props) => {
+    const buyerId = props._id;
+    console.log(buyerId)
+
     const [formState, setFormState] = useState('')
     const [updateOrderStatus] = useMutation(UPDATE_ORDER_STATUS);
 
@@ -56,10 +60,11 @@ const VendorOrder = (props) => {
             <div className="row align-items-center d-flex">
 
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
+                <Link to={`profile/consumer/${props._id}`}>
                     <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
                         alt=""
                         className="img-fluid" />
-
+                </Link>
                 </div>
 
                 <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
