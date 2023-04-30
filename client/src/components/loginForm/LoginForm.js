@@ -81,7 +81,7 @@ function Login(props) {
                                     type={passwordType ? "text" : "password"}
                                     id="login-password"
                                     onChange={handleChange}
-                                    value={formState.password} aria-describedby="basic-addon1" /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onMouseEnter={togglePassword} onMouseLeave={togglePassword}><img src={image ? eye : blindeye} /></button></span>
+                                    value={formState.password} aria-describedby="basic-addon1" /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword}><img src={image ? eye : blindeye} /></button></span>
                             </div>
                         </div>
 
