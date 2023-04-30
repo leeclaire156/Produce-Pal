@@ -19,9 +19,9 @@ const OrderHistory = () => {
     const [filteredOrders, setFilteredOrders] = useState([]);
     const [filteredOrdersByVendor, setFilteredOrdersByVendor] = useState([]);
 
+    //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
     const { loading, error, data } = useQuery(GET_ME);
 
-    //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
     console.log(data);
     const profile = data?.me || {};
 
@@ -81,7 +81,7 @@ const OrderHistory = () => {
     }
     console.log("global VendorStatus =" + vendorStatus);
 
-if (Auth.loggedIn()) {
+    if (Auth.loggedIn()) {
         if (loading) {
             return (
                 <h2 className="container d-flex justify-content-center align-items-center">
