@@ -115,7 +115,7 @@ const OrderHistory = () => {
                                 <ConsumerOrder key={order._id} {...order}
                                     orderId={order.orderId}
                                     sellerName={order.sellerName[0]?.vendorName}
-                                    _id={order.sellerName[0]?._id}
+                                    _id={order._id}
                                     purchaseDate={order.purchaseDate}
                                     productName={order.products[0].productName}
                                     productUnits={order.products[0].productUnits}
