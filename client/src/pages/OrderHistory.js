@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom'
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_VENDOR_STATUS, UPDATE_VENDOR_STATUS } from '../utils/actions';
 import UserToggle from '../components/UserToggle';
+// import "./order.css";
 import ConsumerOrder from '../components/orderhistory/consumerOrder';
 import VendorOrder from '../components/orderhistory/vendorOrder';
 import { useQuery } from '@apollo/client'
@@ -20,6 +21,7 @@ const OrderHistory = () => {
 
     const { loading, error, data } = useQuery(GET_ME);
 
+    //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
     console.log(data);
     const profile = data?.me || {};
 
@@ -78,7 +80,6 @@ const OrderHistory = () => {
         }
     }
     console.log("global VendorStatus =" + vendorStatus);
-    console.log(filteredOrders);
 
 if (Auth.loggedIn()) {
         if (loading) {

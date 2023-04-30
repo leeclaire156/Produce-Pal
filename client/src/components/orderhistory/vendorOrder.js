@@ -54,7 +54,7 @@ const VendorOrder = (props) => {
         var roundedSum = sum.toFixed(2)
         return (roundedSum)
     }
-    console.log(props);
+
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
