@@ -54,6 +54,7 @@ type Order {
     buyerName: [User]
     sellerName: [User]
     products: [Product]
+    quantity:[Int]
     orderType: String!
 }
 
@@ -150,8 +151,10 @@ type Mutation {
         user: [ID]!): Product
     # utilizing context
     addOrder(
+        orderId:String,
         products: [ID]!,
         # buyerName: [ID]!,
+        quantity: [Int],
         sellerName: [ID]!): Order
     updateUser(
         _id: ID

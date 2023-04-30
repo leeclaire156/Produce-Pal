@@ -142,3 +142,4 @@ Credit for utilizing several activities in George Washington University Coding B
 18. George Washington University Coding Bootcamp repository: Section MERN, REACT, and State, Activities
 19. [Receiving timestamp on date return from MongoDB](https://stackoverflow.com/questions/74724711/mongodb-query-dates-returning-as-string-of-numbers)
 20. [Converting timestamp to MM/DD/YYYY formate with .toLocaleDateString('en-US') method](https://bobbyhadz.com/blog/javascript-convert-milliseconds-to-date)
+21. [Finding sum of an array](https://reqbin.com/code/javascript/m81eb1ms/javascript-sum-array-example)

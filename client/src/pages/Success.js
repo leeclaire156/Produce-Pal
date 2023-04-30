@@ -13,17 +13,20 @@ function Success() {
     useEffect(() => {
         async function saveOrder() {
             const cart = await idbPromise('cart', 'get');
-            const products = cart.map((item) => item._id);
-            const sellerName = JSON.parse(localStorage.getItem("storeObjectId"));   
-            console.log(sellerName);
-            console.log(products);
-
-            if (products.length) {
-                const { data } = await addOrder({ variables: { products, sellerName } });
+            const sellerName = JSON.parse(localStorage.getItem("storeObjectId"));
+            // const products = cart.map((item) => item._id); //same as cart
+            var products = [];
+            var quantity = [];
+            for (var i = 0; i < cart.length; i++) {
+                products.push(cart[i]._id)
+                quantity.push(cart[i].purchaseQuantity)
+            }
+            if (cart.length) {
+                const { data } = await addOrder({ variables: { products, quantity, sellerName } });
                 const productData = data.addOrder.products;
                 const sellerData = data.addOrder.sellerName;
                 console.log(data)
-
+                console.log(productData)
                 productData.forEach((item) => {
                     idbPromise('cart', 'delete', item);
                 });
@@ -44,7 +47,7 @@ function Success() {
 
     return (
         <div>
-            
+
             <Jumbotron>
                 <h1>Success!</h1>
                 <h2>Thank you for your purchase!</h2>
@@ -55,5 +58,3 @@ function Success() {
 }
 
 export default Success;
-
-// TO DO: Clear local storage when it redirects in case a user wants to buy from multiple stores
