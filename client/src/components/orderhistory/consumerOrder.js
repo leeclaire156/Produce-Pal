@@ -29,17 +29,16 @@ const ConsumerOrder = (props) => {
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
+                <Link to={`profile/vendor/${props._id}`}>
                     <img src={props.sellerImg ? props.sellerImg : 'https://placehold.co/150x150'}
                         alt=""
                         className="img-fluid" />
+                </Link>
                 </div>
                 {/* My Orders Page */}
                 <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
-                    <Link to={`/public/profile/vendor/${props._id}`}>
-                        <button>Vendor name: {props.sellerName}</button>
-                    </Link>
-
+                    <p>Vendor name: {props.sellerName}</p>
                     <p>Order date: {convertDate()}</p>
                 </div>
 

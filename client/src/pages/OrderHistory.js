@@ -105,6 +105,7 @@ const OrderHistory = () => {
                         <div>
                             {filteredOrdersByVendor.map((order) => (
                                 <VendorOrder key={order._id} {...order}
+                                    _id={order.buyerName[0]?._id}
                                 />
                             ))}
                         </div>
@@ -124,6 +125,11 @@ const OrderHistory = () => {
                                     quantity={order.quantity}
                                     orderType={order.orderType}
                                     sellerImg={order.sellerName[0]?.vendorImage}
+                                    sellerID={order.sellerName[0]?._id}
+                                    sellerCity={order.sellerName[0]?.pickupAddress[0]?.city}
+                                    sellerState={order.sellerName[0]?.pickupAddress[0]?.state}
+                                    sellerStreet={order.sellerName[0]?.pickupAddress[0]?.street}
+                                    sellerZipcode={order.sellerName[0]?.pickupAddress[0]?.zipcode}
                                 />
                             ))}
                         </div>
