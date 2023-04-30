@@ -293,13 +293,13 @@ query me {
         _id
         vendorName
         vendorImage
-        pickupAddress {
-          _id
-          street
-          city
-          state
-          zipcode
-        }
+        # pickupAddress {
+        #   _id
+        #   street
+        #   city
+        #   state
+        #   zipcode
+        # }
         vendorTelephone
         email
       }
