@@ -25,7 +25,7 @@ const ProductInventoryOther = () => {
         variables: { id }
     });
     const storeData = data?.user || {};
-
+    const productArrayDataAvailable = [];
     const productArrayData = data?.user.products || {};
     // returns array of objects
     // returns one of the objects from the array, a product with many 
@@ -88,15 +88,26 @@ const ProductInventoryOther = () => {
 
     function filterProducts() {
         if (!currentCategory) {
-            return productArrayData;
+            filterAvailableProducts();
+            return productArrayDataAvailable;
         } else {
-            return productArrayData.filter(
+            filterAvailableProducts();
+            return productArrayDataAvailable.filter(
                 (product) => product.productCategory === categories[currentCategory].name
             );
         }
     }
 
-
+    function filterAvailableProducts() {
+        for (let i = 0; i < productArrayData.length; i++) {
+            if (productArrayData[i].productAvailability) {
+                productArrayDataAvailable.push(productArrayData[i]);
+            }
+        }
+    }
+    // console.log(storeData.products[0].productAvailability);
+    // console.log(productArrayData);
+    console.log(productArrayDataAvailable);
     if (!loading) {
         return (
             <div className="container my-2 product-inventory">
