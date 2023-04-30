@@ -57,7 +57,7 @@ function ProductSingle(item) {
     // console.log(vendorStatus);
 
     const [editProduct] = useMutation(EDIT_PRODUCT);
-    var [url, setUrl] = useState("");
+    var [url, setUrl] = useState(productImage);
     const [productFormData, setProductFormData] = useState({
         product: _id,
         productId: productId,
