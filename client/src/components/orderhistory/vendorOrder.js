@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 const VendorOrder = (props) => {
     // const buyerId = props._id;
     // console.log(buyerId);
-
-    const [formState, setFormState] = useState('')
+    console.log(props)
+    const [formState, setFormState] = useState(props.orderType)
     const [updateOrderStatus] = useMutation(UPDATE_ORDER_STATUS);
 
     const handleFormSubmit = async (event) => {
@@ -18,12 +18,14 @@ const VendorOrder = (props) => {
                 variables: {
                     order: props._id,
                     orderType: formState.orderType
-                }, refetchQueries: [{ query: GET_ORDER_TYPE }]
+                }
             });
         } else {
             return
         }
     };
+
+
     console.log(formState);
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -104,7 +106,7 @@ const VendorOrder = (props) => {
                                         <p className='mb-3'>Buyer name: {`${props.buyerName[0]?.firstName} ${props.buyerName[0]?.lastName}`}</p>
                                         <p className='mb-3'>Order date: {convertDate()}</p>
                                         <form className='mb-3' onSubmit={handleFormSubmit}>
-                                            <select className="form-select" aria-label="select-order-status" defaultValue="Paid" name='orderType' onChange={handleInputChange}>
+                                            <select className="form-select" aria-label="select-order-status" defaultValue={props.orderType} name='orderType' onChange={handleInputChange}>
                                                 <option value="Paid">Paid</option>
                                                 <option value="Ready">Ready</option>
                                                 <option value="Closed">Closed</option>
