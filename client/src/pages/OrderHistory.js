@@ -128,6 +128,7 @@ const OrderHistory = () => {
                                     productName={order.products[0].productName}
                                     productUnits={order.products[0].productUnits}
                                     products={order.products}
+                                    quantity={order.quantity}
                                     orderType={order.orderType}
                                     sellerImg={order.sellerName[0]?.vendorImage}
                                 />

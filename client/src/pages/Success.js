@@ -18,25 +18,11 @@ function Success() {
             var products = [];
             var quantity = [];
             for (var i = 0; i < cart.length; i++) {
-                console.log(cart[i]._id, cart[i].purchaseQuantity)
                 products.push(cart[i]._id)
                 quantity.push(cart[i].purchaseQuantity)
-
             }
-            // const products1 = cart.map((item) => item.purchaseQuantity);
-            // const productsId = products.map((object) => object);
-            // const productsQuant = products.map((object) => object[1]);
-
-            // for (const [key, value] of item)
-
-            console.log(cart);
-            console.log(products)
-            console.log(quantity)
-            // purchaseQuantity
             if (cart.length) {
-                // const { data } = { variables: { products, quantity, sellerName } }
                 const { data } = await addOrder({ variables: { products, quantity, sellerName } });
-                // const { data } = await addOrder({ variables: { products, sellerName } });
                 const productData = data.addOrder.products;
                 const sellerData = data.addOrder.sellerName;
                 console.log(data)
@@ -49,11 +35,11 @@ function Success() {
                 });
             }
 
-            // setTimeout(() => {
-            //     window.location.assign('/');
-            //     localStorage.clear();
-            //     console.log("Delayed by example 1000 = 1 second")
-            // }, 10000000);
+            setTimeout(() => {
+                window.location.assign('/');
+                localStorage.clear();
+                console.log("Delayed by example 1000 = 1 second")
+            }, 10000000);
         }
 
         saveOrder();
@@ -72,5 +58,3 @@ function Success() {
 }
 
 export default Success;
-
-// TO DO: Clear local storage when it redirects in case a user wants to buy from multiple stores

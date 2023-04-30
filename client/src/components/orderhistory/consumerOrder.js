@@ -8,7 +8,20 @@ const ConsumerOrder = (props) => {
         return monthDayYearDate
     }
 
-    // console.log(props.sellerImg);
+    function total() {
+        const totalArray = []
+        for (var i = 0; i < props.products.length; i++) {
+            console.log(props.quantity[i] * props.products[i].productPrice)
+            totalArray.push((props.quantity[i] * props.products[i].productPrice))
+        }
+        console.log(totalArray)
+        let sum = totalArray.reduce(function (a, b) {
+            return a + b;
+        });
+        console.log(sum)
+        return (sum)
+    }
+
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
@@ -56,11 +69,11 @@ const ConsumerOrder = (props) => {
 
                                     <div className='order-history-text'>
                                         <h5 className='mb-3'>Order items:</h5>
-                                        {props.products.map((product) => (
+                                        {props.products.map((product, i) => (
                                             <p key={product._id}>
-                                                {product.productName} ({product.productUnits}) - ${product.productPrice}
+                                                {/* {product.productName} ({product.productUnits}) - ${product.productPrice} */}
                                                 {/* If quantity is able to be passed */}
-                                                {/* {product.productName} ({product.productUnits}) - ${product.productPrice} x {product.productQuantity} */}
+                                                {product.productName} ({product.productUnits}) - ${product.productPrice} x {props.quantity[i]}
                                             </p>
                                         ))}
                                     </div>
@@ -69,11 +82,12 @@ const ConsumerOrder = (props) => {
                                 <div className="col-md-3">
                                     <div className='d-flex flex-column align-items-start'>
                                         <div className='order-history-text'>Total: ${" "}
-                                            {props.products.reduce(
-                                                (totalPrice, product) => totalPrice + product.productPrice,
-                                                // (totalPrice, product) => totalPrice + (product.productPrice * product.productQuantity),
+                                            {/* {props.products.reduce(
+                                                // (totalPrice, product) => totalPrice + product.productPrice,
+                                                (totalPrice, product) => totalPrice + (product.productPrice * props.quantity[i]),
                                                 0
-                                            ).toFixed(2)}
+                                            ).toFixed(2)} */}
+                                            {total()}
                                         </div>
                                         <button
                                             type="button"

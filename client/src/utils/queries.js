@@ -201,6 +201,7 @@ query me {
       orderId
       orderType
       purchaseDate
+      quantity
       buyerName {
         _id
         firstName
