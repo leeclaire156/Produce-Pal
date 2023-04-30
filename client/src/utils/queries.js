@@ -491,3 +491,59 @@ query Query($id: ID!) {
   }
 }
 `
+
+// Use for the public profiles for seller and buyer
+export const GET_USER_BY_ID = gql`
+query Query($id: ID!) {
+  user(_id: $id) {
+    _id
+    firstName
+    lastName
+    email
+    phone
+    biography
+    userImage
+    vendorStatus
+    vendorName
+    vendorImage
+    vendorTelephone
+    vendorDescription
+    marketName
+    address {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    vendorAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    pickupAddress {
+      _id
+      street
+      city
+      state
+      zipcode
+    }
+    products {
+      _id
+      productId
+      productName
+      productType
+      productPrice
+      productCategory
+      productInventory
+      productUnits
+      productAllergens
+      productAvailability
+      productDescription
+      productImage
+    }
+  }
+}
+`

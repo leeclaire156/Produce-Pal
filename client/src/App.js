@@ -20,6 +20,8 @@ import ProductInventoryOther from "./pages/ProductInventoryOther"
 import OrderHistory from './pages/OrderHistory'
 import ProfileOtherVendor from './pages/ProfileOtherVendor'
 import ProfileOtherConsumer from './pages/ProfileOtherConsumer'
+import PublicConsumerProfile from './components/publicProfile/ConsumerInfoPublic'
+import PublicVendorProfile from './components/publicProfile/VendorInfoPublic'
 import { ProductProvider } from './utils/GlobalState.js'
 import Success from './pages/Success';
 
@@ -73,6 +75,12 @@ function App() {
               <Route exact path='/profile/vendor/:id' component={ProfileOtherVendor} />
               {/* this route is for farmer to view their consumers who bought their products */}
               <Route exact path='/profile/consumer/:id' component={ProfileOtherConsumer} />
+
+              {/* this route is the public consumer profile */}
+              <Route exact path='/public/profile/consumer/:id' component={PublicConsumerProfile} />
+              {/* this route is the public vendor profile */}
+              <Route exact path='/public/profile/vendor/:id' component={PublicVendorProfile} />
+
               {/* this route is for the success Stripe payment made page and where addOrder function is called */}
               <Route exact path='/success' component={Success} />
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}

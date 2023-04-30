@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import 'bootstrap';
 import 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { STOREFRONT } from '../../utils/queries';
+import { GET_USER_BY_ID } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 // import axios from 'axios';
 // import { useMutation, useQuery } from '@apollo/client';
@@ -16,28 +16,27 @@ import { useParams } from 'react-router-dom';
 
 function VendorInfoPublic() {
     const { id } = useParams();
-    window.localStorage.setItem("storeObjectId", JSON.stringify(id));
     console.log(id);
     
-    const { loading, error, data } = useQuery(STOREFRONT, {
+    const { loading, error, data } = useQuery(GET_USER_BY_ID, {
         variables: { id }
     });
-    const storeData = data?.user || {};
+    const vendorInfo = data?.user || {};
 
-    console.log(storeData);
+    console.log(vendorInfo);
 
     if(!loading){
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-12 text-center mb-5 profile-title">
-                        <h1>{storeData.vendorName}</h1>
+                        <h1>{vendorInfo.vendorName}</h1>
                     </div>
                 </div>
                 <div className="row align-items-center">
                     <label className="col-md-6 profile-image profile-image-other">
                         <img
-                            src={storeData.vendorImage ? storeData.vendorImage : "https://placehold.co/600x600"}
+                            src={vendorInfo.vendorImage ? vendorInfo.vendorImage : "https://placehold.co/600x600"}
                             alt=""
                             className="img-fluid "
                             height={600}
@@ -50,7 +49,7 @@ function VendorInfoPublic() {
                                 <h1>About</h1>
                             </div>
                             <div className="profile-bio">
-                                <p>{storeData.vendorDescription}</p>
+                                <p>{vendorInfo.vendorDescription}</p>
                             </div>
     
                             <div className="mt-5">
@@ -58,28 +57,28 @@ function VendorInfoPublic() {
                                     <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faLocation} size="3x" /></div>
                                     <div className="col-lg-10 col-md-10">
                                         <h5>Address</h5>
-                                        <p>{storeData.vendorAddress[0]?.street}, {storeData.vendorAddress[0]?.city}, {storeData.vendorAddress[0]?.state}, {storeData.vendorAddress[0]?.zipcode}</p>
+                                        <p>{vendorInfo.vendorAddress[0]?.street}, {vendorInfo.vendorAddress[0]?.city}, {vendorInfo.vendorAddress[0]?.state}, {vendorInfo.vendorAddress[0]?.zipcode}</p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faStore} size="3x" /></div>
                                     <div className="col-lg-10 col-md-10">
-                                        <h5>Find us at {storeData.marketName}</h5>
-                                        <p>{storeData.pickupAddress[0]?.street}, {storeData.pickupAddress[0]?.city}, {storeData.pickupAddress[0]?.state}, {storeData.pickupAddress[0]?.zipcode}</p>
+                                        <h5>Find us at {vendorInfo.marketName}</h5>
+                                        <p>{vendorInfo.pickupAddress[0]?.street}, {vendorInfo.pickupAddress[0]?.city}, {vendorInfo.pickupAddress[0]?.state}, {vendorInfo.pickupAddress[0]?.zipcode}</p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
                                     <div className="col-lg-10 col-md-10">
                                         <h5>Contact</h5>
-                                        <p>{storeData.vendorTelephone}</p>
+                                        <p>{vendorInfo.vendorTelephone}</p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faCarrot} size="3x" /></div>
                                     <div className="col-lg-10 col-md-10">
                                         <h5>Farm Products</h5>
-                                        <Link to={`/productInventoryother/${storeData._id}`}>
+                                        <Link to={`/productInventoryother/${vendorInfo._id}`}>
                                         <button type="button" >Click to view and purchase products from our farm</button>
                                         </Link>
                                     </div>
