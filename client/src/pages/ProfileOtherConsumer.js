@@ -13,6 +13,8 @@ import { Link } from 'react-router-dom';
 function Profile() {
 
     const { id } = useParams();
+    console.log(id) // correct
+
     // destructure refetch function and pass as a prop to consumerinfo component, then in that 
     const { loading, data } = useQuery(
         GET_ONE_USER_BY_ID,
@@ -21,33 +23,37 @@ function Profile() {
         },
     );
 
-    const profile =  data?.profile || {};
-    console.log(profile);
+    console.log(data)
+    console.log(data.user)
+    console.log(data.user.firstName)
 
-
-
-    if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
-        if (!loading) {
-            return (
-                <div className='container'>
-                    {/* this toggle button needs to be moved to navBar when implementing */}
-                    {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
-                    <div className="container mt-5">
-                        <ConsumerInfoPublic />
-                    </div>
-                </div>
-            );
-        } else {
-            return (
-                <h2 className="container d-flex justify-content-center align-items-center">
-                    loading...
-                </h2>
-            )
-        }
-    } else {
-        return (
-            <Redirect to={{ pathname: '/login' }}></Redirect>)
-    }
+    return (
+        <div className='container'>
+            hi {data.user.firstName}(data.user.lastName)
+        </div>
+    )
+    // if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
+    //     if (!loading) {
+    //         return (
+    //             <div className='container'>
+    //                 {/* this toggle button needs to be moved to navBar when implementing */}
+    //                 {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
+    //                 <div className="container mt-5">
+    //                     <ConsumerInfoPublic />
+    //                 </div>
+    //             </div>
+    //         );
+    //     } else {
+    //         return (
+    //             <h2 className="container d-flex justify-content-center align-items-center">
+    //                 loading...
+    //             </h2>
+    //         )
+    //     }
+    // } else {
+    //     return (
+    //         <Redirect to={{ pathname: '/login' }}></Redirect>)
+    // }
 }
 
 export default Profile;

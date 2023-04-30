@@ -493,7 +493,7 @@ query Query($id: ID!) {
 `;
 
 export const GET_ONE_USER_BY_ID = gql`
-query Query($id: ID!) {
+query getConsumer($id: ID!) {
   user(_id: $id) {
     _id
     biography

@@ -26,7 +26,7 @@ const resolvers = {
                     .populate({
                         path: 'orders',
                         populate: [
-                            'products', 'buyerName', 
+                            'products', 'buyerName',
                             {
                                 path: 'sellerName',
                                 populate: 'pickupAddress',
@@ -59,13 +59,37 @@ const resolvers = {
             // .populate('zipcode')
         },
         users: async () => {
-            return await User.find({})
+            return await User.find()
                 .populate('products')
                 // .populate('memberships')
                 // .populate({
                 //     path: 'memberships',
                 //     populate: ['products', 'vendorAddress']
                 // })
+                .populate({
+                    path: 'sales',
+                    populate: ['products', 'buyerName', 'sellerName']
+                })
+                .populate({
+                    path: 'orders',
+                    populate: ['products', 'buyerName', 'sellerName']
+                })
+                .populate('address')
+                .populate('vendorAddress')
+                .populate('pickupAddress')
+                ;
+        },
+
+        // returns SINGLE user
+        user: async (parent, { consumerid }) => {
+            return await User.findById({ id: consumerid })
+                .populate('products')
+                // .populate('memberships')
+                // .populate({
+                //     path: 'memberships',
+                //     populate: ['products', 'vendorAddress']
+                // })
+
                 .populate({
                     path: 'sales',
                     populate: ['products', 'buyerName', 'sellerName']
