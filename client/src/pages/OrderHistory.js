@@ -14,23 +14,17 @@ import ConsumerOrder from '../components/orderhistory/consumerOrder';
 import VendorOrder from '../components/orderhistory/vendorOrder';
 import { useQuery } from '@apollo/client'
 import { useParams } from 'react-router-dom';
-import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries'
+import { GET_ME } from '../utils/queries'
 
 const OrderHistory = () => {
     const [filteredOrders, setFilteredOrders] = useState([]);
     const [filteredOrdersByVendor, setFilteredOrdersByVendor] = useState([]);
 
-    const { profileId } = useParams();
     //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
-    const { loading, error, data } = useQuery(
-        profileId ? QUERY_SINGLE_PROFILE : GET_ME,
-        {
-            variables: { profileId: profileId },
-        },
-    );
+    const { loading, error, data } = useQuery(GET_ME);
 
     console.log(data);
-    const profile = data?.me || data?.profile || {};
+    const profile = data?.me || {};
 
     const userOrder = profile.orders
     const userSales = profile.sales

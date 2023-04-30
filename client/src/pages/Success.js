@@ -75,7 +75,7 @@ function Success() {
                 window.location.assign('/');
                 localStorage.clear();
                 console.log("Delayed by example 1000 = 1 second")
-            }, 10000000);
+            }, 4000);
         }
 
         saveOrder();

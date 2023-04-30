@@ -433,10 +433,11 @@ function Signup(props) {
                                 :
                                 <button className="btn btn-secondary signup-pg-btns mt-2" type="submit" id="signup-btn">Submit</button>
                             }
-                            < Link to="/login">
+                            {/* Zhihao approved to remove login button on the Signup modal - can cause user error clicking this instead of signup button */}
+                            {/* < Link to="/login">
                                 <button id="login-btn" className="btn btn-secondary signup-pg-btns mt-2 ms-3" type="button" >
                                     Login</button>
-                            </Link>
+                            </Link> */}
                         </div>
                     </form>
 
