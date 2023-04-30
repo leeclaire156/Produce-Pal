@@ -32,14 +32,7 @@ function Login(props) {
             console.log(e);
         }
     };
-    <>
-    return (
 
-            {showAlert && (
-                <Alert severity="error">Username or Password are incorrect </Alert>
-            )}
-    );
-    </> 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormState({ ...formState, [name]: value });
@@ -62,8 +55,9 @@ function Login(props) {
         setImage(!image)
     }
     return (
+        
         <div className="d-flex justify-content-center align-items-center vh-100 pb-5 mb-5">
-
+    
             <div className='card text-center mb-5 pb-5' style={{ width: '30rem' }}>
                 <div className='card-body' >
 
@@ -95,6 +89,13 @@ function Login(props) {
                                     value={formState.password} aria-describedby="basic-addon1" /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword}><img src={image ? eye : blindeye} /></button></span>
                             </div>
                         </div>
+                        <div>
+
+            {showAlert && (
+                <Alert severity="error" variant='danger'>Username or Password are incorrect </Alert>
+            )}
+    
+    </div> 
 
                         <div className="d-grid gap-2 d-md-block mt-4 mb-4">
                             <button className="btn btn-primary mt-2" type="submit" id="login-btn">Submit</button>
