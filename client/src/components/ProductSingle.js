@@ -19,7 +19,7 @@ function ProductSingle(item) {
         productName,
         productDescription,
         productCategory,
-        productInventory,
+        // productInventory,
         productPrice,
         productUnits,
         productType,
@@ -65,7 +65,7 @@ function ProductSingle(item) {
         productType: productType,
         productPrice: productPrice,
         productCategory: productCategory,
-        productInventory: productInventory,
+        // productInventory: productInventory,
         productUnits: productUnits,
         productAllergens: productAllergens,
         productAvailability: productAvailability,
@@ -146,7 +146,7 @@ function ProductSingle(item) {
                     productType: productFormData.productType,
                     productPrice: productFormData.productPrice,
                     productCategory: productFormData.productCategory,
-                    productInventory: productFormData.productInventory,
+                    // productInventory: productFormData.productInventory,
                     productUnits: productFormData.productUnits,
                     productAllergens: productFormData.productAllergens,
                     productAvailability: productFormData.productAvailability,
@@ -173,7 +173,7 @@ function ProductSingle(item) {
                         <h6 className="card-text mb-3">{productDescription}</h6>
                         <p className="card-text"><strong>Product ID: </strong>{productId}</p>
                         <p className="card-text"><strong>Category: </strong>{productCategory}</p>
-                        <p className="card-text"><strong>Inventory: </strong>{productInventory}</p>
+                        {/* <p className="card-text"><strong>Inventory: </strong>{productInventory}</p> */}
                         <p className="card-text"><strong>Price: </strong>$ {productPrice} / {productUnits}</p>
                         <p className="card-text"><strong>Type: </strong>{productType ? 'Weekly Farm Produce Box' : 'Produce'}</p>
                         <p className="card-text"><strong>Availability: </strong>{productAvailability ? 'in-stock' : 'out-stock'}</p>
@@ -211,11 +211,11 @@ function ProductSingle(item) {
                                 <input type="text" className="form-control " id={`product-category-input-${_id}`} placeholder={productCategory} name='productCategory' onChange={handleInputChange}
                                     value={productFormData.productCategory} />
                             </div>
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <label>Inventory</label>
                                 <input type="number" className="form-control " id={`product-inventory-input-${_id}`} placeholder={productInventory} name='productInventory' onChange={handleInputChange}
                                     value={productFormData.productInventory} />
-                            </div>
+                            </div> */}
                             <div className="form-group">
                                 <label>Unit Price (USD)</label>
                                 <input type="number" className="form-control " id={`product-price-input-${_id}`} placeholder={productPrice} name='productPrice' onChange={handleInputChange}

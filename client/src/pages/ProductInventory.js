@@ -108,7 +108,7 @@ const ProductInventory = () => {
         productType: '',
         productPrice: '',
         productCategory: '',
-        productInventory: '',
+        // productInventory: '',
         productUnits: '',
         productAllergens: '',
         productAvailability: '',
@@ -186,7 +186,7 @@ const ProductInventory = () => {
                     productType: productFormData.productType,
                     productPrice: productFormData.productPrice,
                     productCategory: productFormData.productCategory,
-                    productInventory: productFormData.productInventory,
+                    // productInventory: productFormData.productInventory,
                     productUnits: productFormData.productUnits,
                     productAllergens: productFormData.productAllergens,
                     productAvailability: productFormData.productAvailability,
@@ -251,7 +251,7 @@ const ProductInventory = () => {
                                     productName={product.productName}
                                     productDescription={product.productDescription}
                                     productCategory={product.productCategory}
-                                    productInventory={product.productInventory}
+                                    // productInventory={product.productInventory}
                                     productPrice={product.productPrice}
                                     productUnits={product.productUnits}
                                     productType={product.productType}
@@ -288,11 +288,11 @@ const ProductInventory = () => {
                                         <input type="text" className="form-control text-muted productCategory" id='create-product-category' placeholder='Enter a product category' name='productCategory' onChange={handleInputChange}
                                             value={productFormData.productCategory} />
                                     </div>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label>Inventory</label>
                                         <input type="number" className="form-control text-muted productInventory" id='create-product-inventory' placeholder='0' name='productInventory' onChange={handleInputChange}
                                             value={productFormData.productInventory} />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <label>Unit Price (USD)</label>
                                         <input type="number" className="form-control text-muted productPrice" id='create-product-price' placeholder='0' name='productPrice' onChange={handleInputChange}

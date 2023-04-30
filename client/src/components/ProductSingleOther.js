@@ -17,7 +17,7 @@ function ProductSingleOther(item) {
         productName,
         productDescription,
         productCategory,
-        productInventory,
+        // productInventory,
         productPrice,
         productUnits,
         productType,
@@ -67,7 +67,7 @@ function ProductSingleOther(item) {
                         <h6 className="card-text mb-3">{productDescription}</h6>
                         <p className="card-text"><strong>Product ID: </strong>{productId}</p>
                         <p className="card-text"><strong>Category: </strong>{productCategory}</p>
-                        <p className="card-text"><strong>Inventory: </strong>{productInventory}</p>
+                        {/* <p className="card-text"><strong>Inventory: </strong>{productInventory}</p> */}
                         <p className="card-text"><strong>Price: </strong>${productPrice} /{productUnits}</p>
                         <p className="card-text"><strong>Type: </strong>{productType ? 'Weekly Farm Produce Box' : 'Produce'}</p>
                         <p className="card-text"><strong>Availability: </strong>{productAvailability ? 'in-stock' : 'out-stock'}</p>
