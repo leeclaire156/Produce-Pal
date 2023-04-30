@@ -9,20 +9,20 @@ db.once('open', async () => {
             productId: '12',
             productName: 'Carrots',
             productType: false,
-            productPrice: 10.15,
+            productPrice: 5.99,
             productCategory: 'Vegetable',
             productInventory: 10,
             productUnits: 'lbs',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Colorful carrots.',
+            productDescription: 'A variety of different carrots.',
             productImage: 'https://i0.wp.com/cattailorganics.com/wp-content/uploads/2022/03/Blog-featured-image-sizing-600-%C3%97-600-px-4.png?fit=600%2C600&ssl=1'
         },
         {
             productId: '1234',
             productName: 'Cabbage',
             productType: false,
-            productPrice: 5.75,
+            productPrice: 2.99,
             productCategory: 'Vegetable',
             productInventory: 5,
             productUnits: 'lbs',
@@ -35,13 +35,13 @@ db.once('open', async () => {
             productId: '901',
             productName: 'Sharebox of Organic Eggs',
             productType: true,
-            productPrice: 25.99,
+            productPrice: 15.99,
             productCategory: 'Weekly',
             productInventory: 1,
             productUnits: 'each',
             productAllergens: 'Eggs',
             productAvailability: true,
-            productDescription: 'Eggs are from different farms that are free range.',
+            productDescription: 'Three dozen eggs are from different farms that raise free range chickens.',
             productImage: 'https://i.pinimg.com/564x/18/6f/8e/186f8eba8a7aa324fb1fc2c659a033f3.jpg'
         },
         {
@@ -74,7 +74,7 @@ db.once('open', async () => {
             productId: '521',
             productName: 'Grapes',
             productType: false,
-            productPrice: 8.99,
+            productPrice: 6.99,
             productCategory: 'Fruits',
             productInventory: 10,
             productUnits: 'lbs',
@@ -87,10 +87,10 @@ db.once('open', async () => {
             productId: '522',
             productName: 'Honeycrisp Apple',
             productType: false,
-            productPrice: 1.89,
+            productPrice: 1.99,
             productCategory: 'Fruits',
             productInventory: 50,
-            productUnits: 'ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: 'Organic Honeycrisp Apple',
@@ -100,10 +100,10 @@ db.once('open', async () => {
             productId: '523',
             productName: 'Bananas',
             productType: false,
-            productPrice: 1.69,
+            productPrice: 1.99,
             productCategory: 'Fruits',
             productInventory: 24,
-            productUnits: 'ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: 'One Bunch of Organic Bananas',
@@ -113,10 +113,10 @@ db.once('open', async () => {
             productId: '524',
             productName: 'Honey',
             productType: false,
-            productPrice: 16.79,
+            productPrice: 10.99,
             productCategory: 'Sweetener',
             productInventory: 8,
-            productUnits: 'ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '16oz of Pure Raw Unfiltered Honey',
@@ -126,10 +126,10 @@ db.once('open', async () => {
             productId: '525',
             productName: 'Sourdough Bread',
             productType: false,
-            productPrice: 4.69,
+            productPrice: 4.99,
             productCategory: 'Baked',
             productInventory: 34,
-            productUnits: 'ea.',
+            productUnits: 'each',
             productAllergens: 'Gluten, Dairy, Eggs',
             productAvailability: true,
             productDescription: '24oz Loaf of Sourdough Bread',
@@ -139,10 +139,10 @@ db.once('open', async () => {
             productId: '526',
             productName: 'Blueberry Jam',
             productType: false,
-            productPrice: 5.79,
+            productPrice: 9.99,
             productCategory: 'Fruits',
             productInventory: 17,
-            productUnits: 'ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '16oz Blueberry Preserves',
@@ -152,10 +152,10 @@ db.once('open', async () => {
             productId: '527',
             productName: 'Eggs',
             productType: false,
-            productPrice: 3.79,
+            productPrice: 3.99,
             productCategory: 'Egg',
             productInventory: 35,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'Eggs',
             productAvailability: true,
             productDescription: 'One Dozen Large Cage-Free White Eggs',
@@ -168,7 +168,7 @@ db.once('open', async () => {
             productPrice: 1.99,
             productCategory: 'Herb',
             productInventory: 10,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '.5oz Fresh Organic Rosemary',
@@ -181,7 +181,7 @@ db.once('open', async () => {
             productPrice: 5.99,
             productCategory: 'Dairy',
             productInventory: 32,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'Dairy',
             productAvailability: true,
             productDescription: '4oz Organic Plain Goat Cheese Log',
@@ -191,10 +191,10 @@ db.once('open', async () => {
             productId: '530',
             productName: 'Maple Syrup',
             productType: false,
-            productPrice: 9.69,
+            productPrice: 9.99,
             productCategory: 'Sweetener',
             productInventory: 7,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '12oz Dark Amber Grade A Organic Maple Syrup',
@@ -207,7 +207,7 @@ db.once('open', async () => {
             productPrice: 5.99,
             productCategory: 'Vegetable',
             productInventory: 34,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '32oz Kosher Half Sour Extra Crunchy Pickles',
@@ -217,10 +217,10 @@ db.once('open', async () => {
             productId: '533',
             productName: 'Sauerkraut',
             productType: false,
-            productPrice: 4.51,
+            productPrice: 13.99,
             productCategory: 'Vegetable',
             productInventory: 48,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: 'Old Fashioned Sauerkraut 24oz',
@@ -230,10 +230,10 @@ db.once('open', async () => {
             productId: '534',
             productName: 'Sugar Snap Peas',
             productType: false,
-            productPrice: 3.95,
+            productPrice: 2.99,
             productCategory: 'Vegetable',
             productInventory: 22,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '8oz Stringless Sugar Snap Peas',
@@ -243,7 +243,7 @@ db.once('open', async () => {
             productId: '535',
             productName: 'Mushrooms',
             productType: false,
-            productPrice: 5.38,
+            productPrice: 4.99,
             productCategory: 'Vegetable',
             productInventory: 60,
             productUnits: 'lbs',
@@ -256,13 +256,13 @@ db.once('open', async () => {
             productId: '536',
             productName: 'Onion',
             productType: false,
-            productPrice: 2.69,
+            productPrice: 1.99,
             productCategory: 'Vegetable',
             productInventory: 23,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '2lb Bag of Vidalia Onions',
+            productDescription: '2 lb Bag of Vidalia Onions',
             productImage: 'https://www.afarmgirlsdabbles.com/wp-content/uploads/2014/05/photo-5-copy-5-600x600.jpg'
         },
         {
@@ -282,10 +282,10 @@ db.once('open', async () => {
             productId: '538',
             productName: 'Basil',
             productType: false,
-            productPrice: 3.79,
+            productPrice: 3.99,
             productCategory: 'Herb',
             productInventory: 18,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '3oz of Fresh Organic Basil',
@@ -295,7 +295,7 @@ db.once('open', async () => {
             productId: '539',
             productName: 'Beet',
             productType: false,
-            productPrice: 2.28,
+            productPrice: 2.99,
             productCategory: 'Vegetable',
             productInventory: 35,
             productUnits: 'lbs',
@@ -308,10 +308,10 @@ db.once('open', async () => {
             productId: '540',
             productName: 'Eggplant',
             productType: false,
-            productPrice: 2.29,
+            productPrice: 1.99,
             productCategory: 'Vegetable',
             productInventory: 68,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: 'One Large Organic Eggplant',
@@ -321,49 +321,49 @@ db.once('open', async () => {
             productId: '541',
             productName: 'Sweet Potato',
             productType: false,
-            productPrice: 3.39,
+            productPrice: 3.99,
             productCategory: 'Vegetable',
             productInventory: 27,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '3lb Bag of Sweet Potatoes',
+            productDescription: '3 lb Bag of Sweet Potatoes',
             productImage: 'https://www.rhshumway.com/images/large/04712.jpg'
         },
         {
             productId: '542',
             productName: 'Spinach',
             productType: false,
-            productPrice: 2.49,
+            productPrice: 2.99,
             productCategory: 'Vegetable',
             productInventory: 34,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: '5oz of Organic Baby Spinach',
+            productDescription: '5 ounces of Organic Baby Spinach',
             productImage: 'https://jaysultimate.com/wp-content/uploads/2018/01/GSPBC-600x600.jpg'
         },
         {
             productId: '543',
             productName: 'Bell Pepper',
             productType: false,
-            productPrice: 1.49,
+            productPrice: 1.99,
             productCategory: 'Vegetable',
             productInventory: 72,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'One Oragnic Green Bell Pepper',
+            productDescription: 'One Organic Green Bell Pepper',
             productImage: 'https://www.ballseed.com/dispthumb.aspx?imgsize=Display&imageid=263829'
         },
         {
             productId: '544',
             productName: 'Okra',
             productType: false,
-            productPrice: 1.69,
+            productPrice: 1.99,
             productCategory: 'Vegetable',
             productInventory: 18,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '12oz of Cut Okra',
@@ -373,10 +373,10 @@ db.once('open', async () => {
             productId: '545',
             productName: 'Swiss Chard',
             productType: false,
-            productPrice: 4.29,
+            productPrice: 4.99,
             productCategory: 'Vegetable',
             productInventory: 26,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: 'One Bunch of Rainbow Chard',
@@ -386,10 +386,10 @@ db.once('open', async () => {
             productId: '546',
             productName: 'Kale',
             productType: false,
-            productPrice: 5.99,
+            productPrice: 3.99,
             productCategory: 'Vegetable',
             productInventory: 42,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: '12oz of Organic Chopped Kale',
@@ -399,10 +399,10 @@ db.once('open', async () => {
             productId: '547',
             productName: 'Squash',
             productType: false,
-            productPrice: 4.39,
+            productPrice: 1.99,
             productCategory: 'Vegetable',
             productInventory: 55,
-            productUnits: 'Ea.',
+            productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
             productDescription: 'One Organic Butternut Squash',
@@ -412,13 +412,13 @@ db.once('open', async () => {
             productId: '548',
             productName: 'Sharebox of Apples',
             productType: true,
-            productPrice: 11.99,
+            productPrice: 29.99,
             productCategory: 'Weekly',
             productInventory: 1,
             productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Sharebox of Organic Honey Crisp Apples',
+            productDescription: 'Sharebox of 12 Organic Honey Crisp Apples',
             productImage: 'https://cdn.shopify.com/s/files/1/1193/4108/products/4_7cfbcb21-30d8-4ab3-8a48-4814081162fb.jpg?v=1569500071'
         },
         {
@@ -431,27 +431,27 @@ db.once('open', async () => {
             productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Sharebox of Organic Pears',
+            productDescription: 'Sharebox of 12 Organic Pears',
             productImage: 'https://aggieskitchen.com/wp-content/uploads/2012/10/Pears.jpg'
         },
         {
             productId: '550',
             productName: 'Sharebox of Oranges',
             productType: true,
-            productPrice: 12.99,
+            productPrice: 13.99,
             productCategory: 'Weekly',
             productInventory: 1,
             productUnits: 'each',
             productAllergens: 'None',
             productAvailability: true,
-            productDescription: 'Sharebox of Organic Oranges',
+            productDescription: 'Sharebox of 12 Organic Oranges',
             productImage: 'https://cdn.shopify.com/s/files/1/0336/7167/5948/products/image-of-citrus-crate-fruit-28032332398636_600x600.jpg?v=1627846016'
         },
         {
             productId: '551',
             productName: 'Sharebox of Bananas',
             productType: true,
-            productPrice: 16.99,
+            productPrice: 12.99,
             productCategory: 'Weekly',
             productInventory: 1,
             productUnits: 'each',
@@ -464,7 +464,7 @@ db.once('open', async () => {
             productId: '552',
             productName: 'Sharebox of Organic Blackberries',
             productType: true,
-            productPrice: 19.99,
+            productPrice: 10.99,
             productCategory: 'Weekly',
             productInventory: 1,
             productUnits: 'each',
@@ -485,13 +485,21 @@ db.once('open', async () => {
                 products[0]._id,
                 products[1]._id
             ],
-            orderType: 'Pending'
+            quantity: [
+                1,
+                2
+            ],
+            orderType: 'Closed'
         },
         {
             orderId: '0002',
             products: [
                 products[1]._id,
                 products[2]._id
+            ],
+            quantity: [
+                2,
+                1
             ],
             orderType: 'Paid'
         },
@@ -501,6 +509,10 @@ db.once('open', async () => {
                 products[3]._id,
                 products[4]._id
             ],
+            quantity: [
+                3,
+                4
+            ],
             orderType: 'Ready'
         },
         {
@@ -508,27 +520,36 @@ db.once('open', async () => {
             products: [
                 products[5]._id
             ],
-            orderType: 'Pending'
+            quantity: [
+                2,
+            ],
+            orderType: 'Paid'
         },
         {
             orderId: '0005',
             products: [
                 products[6]._id,
-                products[6]._id,
-                products[6]._id,
                 products[7]._id,
                 products[9]._id,
                 products[10]._id,
                 products[15]._id,
-                products[15]._id,
                 products[16]._id,
                 products[17]._id,
                 products[18]._id,
-                products[18]._id,
                 products[19]._id
-
             ],
-            orderType: 'Pending'
+            quantity: [
+                2,
+                2,
+                1,
+                3,
+                2,
+                2,
+                5,
+                2,
+                1
+            ],
+            orderType: 'Paid'
         },
         {
             orderId: '0006',
@@ -537,19 +558,28 @@ db.once('open', async () => {
                 products[9]._id,
                 products[10]._id,
                 products[15]._id,
-                products[15]._id,
                 products[17]._id,
                 products[18]._id,
-                products[18]._id,
                 products[19]._id
-
             ],
-            orderType: 'Pending'
+            quantity: [
+                1,
+                3,
+                2,
+                2,
+                5,
+                2,
+                1
+            ],
+            orderType: 'Ready'
         },
         {
             orderId: '0007',
             products: [
                 products[8]._id
+            ],
+            quantity: [
+                2,
             ],
             orderType: 'Paid'
         },
@@ -557,21 +587,21 @@ db.once('open', async () => {
             orderId: '0008',
             products: [
                 products[11]._id,
-                products[11]._id,
-                products[11]._id,
-                products[11]._id,
                 products[13]._id,
-                products[13]._id
+            ],
+            quantity: [
+                2,
+                4,
             ],
             orderType: 'Paid'
         },
         {
             orderId: '0009',
             products: [
-                products[12]._id,
-                products[12]._id,
-                products[12]._id,
                 products[21]._id
+            ],
+            quantity: [
+                2,
             ],
             orderType: 'Paid'
         },
@@ -579,9 +609,11 @@ db.once('open', async () => {
             orderId: '0010',
             products: [
                 products[27]._id,
-                products[27]._id,
-                products[27]._id,
                 products[28]._id
+            ],
+            quantity: [
+                4,
+                2,
             ],
             orderType: 'Paid'
         },
@@ -589,9 +621,11 @@ db.once('open', async () => {
             orderId: '0011',
             products: [
                 products[25]._id,
-                products[25]._id,
-                products[26]._id,
                 products[26]._id
+            ],
+            quantity: [
+                2,
+                2,
             ],
             orderType: 'Paid'
         },
@@ -599,11 +633,11 @@ db.once('open', async () => {
             orderId: '0012',
             products: [
                 products[22]._id,
-                products[22]._id,
-                products[22]._id,
-                products[22]._id,
                 products[24]._id,
-                products[24]._id
+            ],
+            quantity: [
+                1,
+                3,
             ],
             orderType: 'Paid'
         },
@@ -611,27 +645,25 @@ db.once('open', async () => {
             orderId: '0013',
             products: [
                 products[20]._id,
-                products[20]._id,
-                products[20]._id,
-                products[20]._id,
                 products[23]._id,
-                products[23]._id,
-                products[23]._id,
-                products[23]._id,
-                products[23]._id
-
             ],
-            orderType: 'Pending'
+            quantity: [
+                3,
+                3,
+            ],
+            orderType: 'Ready'
         },
         {
             orderId: '0014',
             products: [
                 products[10]._id,
-                products[10]._id,
-                products[15]._id,
                 products[15]._id
             ],
-            orderType: 'Pending'
+            quantity: [
+                1,
+                3,
+            ],
+            orderType: 'Ready'
         }
 
 
@@ -656,13 +688,13 @@ db.once('open', async () => {
             ],
             vendorStatus: true,
             vendorName: 'The Ewing CoOp',
-            vendorDescription: 'We have single produce items and we work with other farms to compile great products.',
+            vendorDescription: 'Samuel Ewing Jr. in 1865 founded the Ewing farm. To this day, we grow a variety of produce and raise cattle over 3,000 acres of land.',
             products: [
                 products[0]._id,
                 products[1]._id,
                 products[2]._id
             ],
-            vendorImage: 'https://admin.itsnicethat.com/images/5ErQGQHaI7xYIQZXPc1sFxeP2OM=/5006/format-webp%7Cwidth-2880/573f16ec7fa44cdcf8003e0b.jpg',
+            vendorImage: 'https://static.wixstatic.com/media/0b83ab_07606c8f24534fe596f62441e26898d8~mv2.jpg/v1/fill/w_1903,h_675,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/0b83ab_07606c8f24534fe596f62441e26898d8~mv2.jpg',
             marketName: 'Mosaic Farmers Market',
             vendorTelephone: '202-675-9012',
         },
@@ -778,7 +810,7 @@ db.once('open', async () => {
                 products[19]._id
             ],
             vendorImage: 'https://www.pccmarkets.com/wp-content/uploads/2018/02/farm-landscape-with-barn-1600.jpg',
-            marketName: 'FRESHFARM at Columbia Heights',
+            marketName: 'EatLoco Farmers Market at One Loudoun',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -793,14 +825,14 @@ db.once('open', async () => {
                 orders[12]._id
             ],
             vendorStatus: true,
-            vendorName: 'The Green Meadows of Claire Farms',
-            vendorDescription: 'Here at Green Meadow Farms, we want to give back to our community by providing quality produce to local businesses.',
+            vendorName: 'Honest Lee Goods',
+            vendorDescription: 'They\'re honest-lee good..',
             products: [
                 products[20]._id,
                 products[23]._id
             ],
             vendorImage: 'https://www.cbf.org/assets/images/1171-x-593-px/clagett-barns-with-sunflowers-roshani-kothari-1171x593.jpg',
-            marketName: 'FRESHFARM at Columbia Heights',
+            marketName: 'EatLoco Farmers Market at One Loudoun',
             vendorTelephone: '202-675-9012',
         },
         {
@@ -1054,10 +1086,10 @@ db.once('open', async () => {
             zipcode: '22201',
         },
         {
-            street: '2021 14th St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20009',
+            street: '21 Main St',
+            city: 'Clarksburg',
+            state: 'Maryland',
+            zipcode: '20871',
         },
         {
             street: '675 15th St NW',
@@ -1072,10 +1104,10 @@ db.once('open', async () => {
             zipcode: '20004',
         },
         {
-            street: '1822 1st St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20001',
+            street: '232 N Fillmore St',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22201',
         },
         {
             street: '1601 14th St NW',
@@ -1096,10 +1128,10 @@ db.once('open', async () => {
             zipcode: '20001',
         },
         {
-            street: '1201 24th St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20037',
+            street: '2804 16th Rd',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22204',
         },
         {
             street: '3050 K St NW Suite 101',
@@ -1120,10 +1152,10 @@ db.once('open', async () => {
             zipcode: '20814',
         },
         {
-            street: '3236 M St NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20007',
+            street: '11911 Little Seneca Pkwy',
+            city: 'Clarksburg',
+            state: 'Maryland',
+            zipcode: '20871',
         },
         {
             street: '309 Middle St',
@@ -1170,12 +1202,12 @@ db.once('open', async () => {
             state: 'Virginia',
             zipcode: '22207',
         },
-        // FRESHFARM at Columbia Heights
+        // EatLoco Farmers Market at One Loudoun
         {
-            street: '1400 Park Rd NW',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20010',
+            street: '44578 Atwater Dr',
+            city: 'Ashburn',
+            state: 'Virginia',
+            zipcode: '20147',
         },
         // Falls Church Farmers Market
         {
@@ -1193,16 +1225,16 @@ db.once('open', async () => {
         },
         //next 12 are vendor addresses for hybrid accounts
         {
-            street: '1310 Pennsylvania Ave SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '8075 Leesburg Pike',
+            city: 'Vienna',
+            state: 'Virginia',
+            zipcode: '22182',
         },
         {
-            street: '325 Pennsylvania Ave SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '2001 International Dr',
+            city: 'McLean',
+            state: 'Virginia',
+            zipcode: '22102',
         },
         {
             street: '729 8th St SE',
@@ -1217,40 +1249,40 @@ db.once('open', async () => {
             zipcode: '20003',
         },
         {
-            street: '1001 E St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '1021 N Garfield St',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22201',
         },
         {
-            street: '1363 E St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '11900 Palace Way',
+            city: 'Fairfax',
+            state: 'Virginia',
+            zipcode: '22030',
         },
         {
-            street: '501 2nd St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '2501 N Granada St',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22207',
         },
         {
-            street: '800 C St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '11750 Fair Oaks Mall',
+            city: 'Fairfax',
+            state: 'Virginia',
+            zipcode: '22033',
         },
         {
-            street: '222 7th St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '7101 Democracy Blvd, Bethesda',
+            city: 'Bethesda',
+            state: 'Maryland',
+            zipcode: '20817',
         },
         {
-            street: '1111 4th St SE',
-            city: 'Washington',
-            state: 'District of Columbia',
-            zipcode: '20003',
+            street: '11580 Old Georgetown Rd',
+            city: 'North Bethesda',
+            state: 'Maryland',
+            zipcode: '20852',
         },
         {
             street: '1010 G St SE',
@@ -1259,12 +1291,17 @@ db.once('open', async () => {
             zipcode: '20003',
         },
         {
-            street: '1433 D St SE',
+            street: '2501 N Granada St',
+            city: 'Arlington',
+            state: 'Virginia',
+            zipcode: '22207',
+        },
+        {
+            street: '501 2nd St SE',
             city: 'Washington',
             state: 'District of Columbia',
             zipcode: '20003',
         },
-
     ])
 
     // Add addresses in chronological order of users
