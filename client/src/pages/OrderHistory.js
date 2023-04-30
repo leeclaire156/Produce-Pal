@@ -13,7 +13,6 @@ import UserToggle from '../components/UserToggle';
 import ConsumerOrder from '../components/orderhistory/consumerOrder';
 import VendorOrder from '../components/orderhistory/vendorOrder';
 import { useQuery } from '@apollo/client'
-import { useParams } from 'react-router-dom';
 import { GET_ME } from '../utils/queries'
 
 const OrderHistory = () => {
