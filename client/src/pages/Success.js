@@ -78,10 +78,10 @@ function Success() {
 
             setTimeout(() => {
                 resetVendorStatus();
-                window.location.assign('/');
-                localStorage.clear();
+                window.location.assign('/order-history');
+                localStorage.removeItem("storeObjectId")
                 console.log("Delayed by example 1000 = 1 second")
-            }, 40000);
+            }, 3000);
         }
 
         saveOrder();

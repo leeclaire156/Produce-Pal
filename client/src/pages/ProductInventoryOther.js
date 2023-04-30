@@ -143,7 +143,7 @@ const ProductInventoryOther = () => {
                                 productName={product.productName}
                                 productDescription={product.productDescription}
                                 productCategory={product.productCategory}
-                                productInventory={product.productInventory}
+                                // productInventory={product.productInventory}
                                 productPrice={product.productPrice}
                                 productUnits={product.productUnits}
                                 productType={product.productType}
