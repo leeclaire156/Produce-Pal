@@ -78,11 +78,11 @@ const ConsumerOrder = (props) => {
 
                                     <div className='order-history-text'>
                                         <h5 className='mb-3'>Order items:</h5>
-                                        {/* {props.products.map((product, i) => (
+                                        {props.products.map((product, i) => (
                                             <p key={product._id}>
                                                 {product.productName} ({product.productUnits}) - ${product.productPrice} x {props.quantity[i]}
                                             </p>
-                                        ))} */}
+                                        ))}
                                     </div>
                                 </div>
 
