@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers"
 import { useProductContext } from "../utils/GlobalState";
@@ -27,18 +27,21 @@ function ProductSingleOther(item) {
 
     const { cart, vendorStatus } = state
 
-    const addToCart = () => {
+    const [value, setValue] = useState(1)
+    const addToCart = (e) => {
+        e.preventDefault()
+
+        setValue(value + 1);
+
         const itemInCart = cart.find((cartItem) => cartItem._id === _id)
         if (itemInCart) {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
                 _id: _id,
-                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+                purchaseQuantity: parseInt(value)
             });
-            idbPromise('cart', 'put', {
-                ...itemInCart,
-                purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
-            });
+            idbPromise('cart', 'put', { ...itemInCart, purchaseQuantity: parseInt(value) });
+            console.log(state)
         } else {
             dispatch({
                 type: ADD_TO_CART,
