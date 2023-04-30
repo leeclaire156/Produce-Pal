@@ -54,8 +54,9 @@ const CartItem = ({ item }) => {
                 <div className="col-md-3">
                     <div className='d-flex flex-column align-items-center'>
                         <img
-                            src='https://placehold.co/150x150'
+                            src={item.productImage ? item.productImage : 'https://placehold.co/150x150'}
                             alt=""
+                            className="img-fluid"
                         />
                     </div>
                 </div>
