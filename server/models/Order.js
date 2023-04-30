@@ -29,6 +29,11 @@ const orderSchema = new Schema(
                 ref: 'Product'
             },
         ],
+        quantity: [
+            {
+                type: Number,
+            }
+        ],
         // For Order type: Paid, Ready, Closed
         orderType: {
             type: String,
@@ -50,8 +55,8 @@ const orderSchema = new Schema(
 orderSchema.
     virtual('orderCount')
     .get(function () {
-    return this.orderContents.length;
-})
+        return this.orderContents.length;
+    })
 
 // Initialize our Order model
 const Order = model('Order', orderSchema)
