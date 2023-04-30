@@ -413,32 +413,37 @@ p {
   position: absolute;
   top: 30%;
   left: 0;
+  z-index: -1
 }
 
 .veg-container-relative-left {
   position: relative;
-  height: 200rem;
+  height: 180rem;
+  z-index: -1
 }
 
 .veg-img-left {
   position: sticky;
-  top: 40%;
+  top: 30%;
   left: 1%;
   scale: 60%;
   opacity: 33%;
   transform: rotate(12deg) translate(-60%, -50%);
   transition: 0.25s ease-in-out;
+  z-index: -1
 }
 
 .veg-container-absolute-right {
   position: absolute;
   top: 30%;
   right: 0;
+  z-index: -1
 }
 
 .veg-container-relative-right {
   position: relative;
-  height: 220rem;
+  height: 200rem;
+  z-index: -1
 }
 
 .veg-img-right {
@@ -449,4 +454,40 @@ p {
   opacity: 33%;
   transform: rotate(12deg) translate(135%, -80%);
   transition: 0.25s ease-in-out;
+  z-index: -1
+}
+
+.login-header h1 {
+  font-family: var(--card-title-font-family);
+  color: var(--bg-color-dark-green);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.login-input-field {
+  width: 50%;
+}
+
+.input-group-text {
+  background-color: white;
+  border-color: var(--bg-color-dark-green);
+  border-radius: 1.5rem;
+}
+
+.togglePwdBtn {
+  background-color: white;
+  border: white;
+}
+
+.signin-label {
+  font-family: var(--card-title-font-family);
+  color: var(--bg-color-dark-green);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.errorMsg {
+  color: var(--color-deep-brown);
 }

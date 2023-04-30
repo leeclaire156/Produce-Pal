@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBook, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-function ConsumerDashboard({ firstName, lastName, address }) {
+function ConsumerDashboard({ firstName, lastName, address, biography }) {
     return (
         <div className="container mt-5">
             <div className="row mb-5">
@@ -18,7 +18,9 @@ function ConsumerDashboard({ firstName, lastName, address }) {
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faUser} size="3x" className='fa-icon' />
                             <h5 className="card-title mt-3">My profile</h5>
-                            <p className="card-text">This is my profile description.</p>
+                            {biography ?
+                                <p className="card-text">{biography}</p>
+                                : <p className="card-text">Click to add profile description.</p>}
                             {/* This edit button navigates to 'ConsumerProfile.js' component */}
                             <Link to="/profile">
                                 <button className="btn btn-primary dashboard-card-btn">View</button>

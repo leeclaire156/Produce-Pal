@@ -22,7 +22,9 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                             <FontAwesomeIcon icon={faUser} size="3x" className='fa-icon' />
                             <h5 className="card-title mt-3">About Us</h5>
                             {/* click edit button to create and modify my farm information. Show placeholder information if the user has no farm yet*/}
-                            <p className="card-text">{vendorDescription}</p>
+                            {vendorDescription ?
+                                <p className="card-text">{vendorDescription}</p>
+                                : <p className="card-text">Click to add vendor description.</p>}
                             <Link to="/profile">
                                 <button className="btn btn-primary">View</button>
                                 {/* <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#VendorInfoModal">Edit</button> */}
