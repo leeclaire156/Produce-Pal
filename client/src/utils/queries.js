@@ -207,6 +207,8 @@ query me {
         firstName
         lastName
         userImage
+        phone
+        email
       }
       sellerName {
         _id
