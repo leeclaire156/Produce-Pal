@@ -17,7 +17,7 @@ import { useParams } from 'react-router-dom';
 function VendorInfoPublic() {
     const { id } = useParams();
     console.log(id);
-    
+
     const { loading, error, data } = useQuery(GET_USER_BY_ID, {
         variables: { id }
     });
@@ -25,7 +25,7 @@ function VendorInfoPublic() {
 
     console.log(vendorInfo);
 
-    if(!loading){
+    if (!loading) {
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -51,7 +51,7 @@ function VendorInfoPublic() {
                             <div className="profile-bio">
                                 <p>{vendorInfo.vendorDescription}</p>
                             </div>
-    
+
                             <div className="mt-5">
                                 <div className="row">
                                     <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faLocation} size="3x" /></div>
@@ -79,7 +79,7 @@ function VendorInfoPublic() {
                                     <div className="col-lg-10 col-md-10">
                                         <h5>Farm Products</h5>
                                         <Link to={`/productInventoryother/${vendorInfo._id}`}>
-                                        <button type="button" >Click to view and purchase products from our farm</button>
+                                            <button type="button" className='btn btn-secondary btn-sm small-view-button'>Explore our farm products</button>
                                         </Link>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@ function VendorInfoPublic() {
                         </div>
                     </div>
                 </div>
-    
+
             </div>
         );
     } else {

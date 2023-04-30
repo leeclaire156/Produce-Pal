@@ -80,6 +80,10 @@ body {
   font-weight: 700;
   font-size: 2rem;
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 

@@ -5,9 +5,14 @@ import { ADD_ORDER } from '../utils/mutations';
 import { idbPromise } from '../utils/helpers';
 import Auth from '../utils/auth';
 import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useProductContext } from '../utils/GlobalState';
+import { UPDATE_VENDOR_STATUS } from '../utils/actions';
 
 function Success() {
     const [addOrder] = useMutation(ADD_ORDER);
+    const [state, dispatch] = useProductContext();
+    const { vendorStatus } = state;
 
     // // params for the addOrder function that gets called here
     // let seller = window.localStorage.getItem("storeObjectId");
@@ -72,24 +77,48 @@ function Success() {
             }
 
             setTimeout(() => {
+                resetVendorStatus();
                 window.location.assign('/');
                 localStorage.clear();
                 console.log("Delayed by example 1000 = 1 second")
-            }, 400000);
+            }, 40000);
         }
 
         saveOrder();
     }, [addOrder]);
 
+
+    // resetVendorStatus function to update the vendorStatus to false (as a buyer) in globalState and IndexDB.
+    const resetVendorStatus = async () => {
+        try {
+            await dispatch({ type: UPDATE_VENDOR_STATUS, vendorStatus: false })
+            const vendorStatusObj = { _id: 1, vendorStatus: false };
+            await idbPromise('vendorStatus', 'put', vendorStatusObj);
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    };
+
+
     if (Auth.loggedIn()) {
         return (
-            <div>
+            <div className='d-flex justify-content-center align-items-center mt-3 text-center success-page'>
 
-                <Jumbotron>
+                <Jumbotron >
                     <h1>Success!</h1>
                     <h2>Thank you for your purchase!</h2>
                     <h2>You will now be redirected to the home page</h2>
+                    <div className='mt-5'>
+                        <h2 className='mb-3'>Please find below a link to access my orders, in case the browser fails to redirect automatically</h2>
+                        <Link to="/order-history">
+                            <button className='btn btn-secondary dashboard-card-btn' onClick={resetVendorStatus}>
+                                my orders
+                            </button>
+                        </Link>
+                    </div>
                 </Jumbotron>
+
             </div>
         );
     } else {
