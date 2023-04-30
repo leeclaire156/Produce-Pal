@@ -253,7 +253,7 @@ p {
 }
 
 .history-img-container {
-  height: 9rem;
+  height: 12rem;
 }
 
 .order-history h1 {
@@ -493,3 +493,19 @@ p {
   color: var(--color-deep-brown);
 }
 
+.small-view-button {
+  background-color: var(--color-dark-brown);
+  border-color: var(--color-dark-brown);
+}
+
+.success-page {
+  color: var(--color-dark-brown);
+}
+
+.success-page h1 {
+  font-family: var(--card-title-font-family);
+  color: var(--color-dark-brown);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 3rem;
+}

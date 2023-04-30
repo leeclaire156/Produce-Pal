@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ConsumerOrder = (props) => {
     function convertDate() {
@@ -20,18 +21,22 @@ const ConsumerOrder = (props) => {
         return (roundedSum)
     }
 
+    console.log(props);
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
-                    <img src={props.sellerImg ? props.sellerImg : 'https://placehold.co/150x150'}
-                        alt=""
-                        className="img-fluid" />
+                    <Link to={`/profile/vendor/${props.sellerID}`}>
+                        <img src={props.sellerImg ? props.sellerImg : 'https://placehold.co/150x150'}
+                            alt=""
+                            className="img-fluid" />
+                    </Link>
                 </div>
                 <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
                     <p>Vendor name: {props.sellerName}</p>
                     <p>Order date: {convertDate()}</p>
+                    <p className='mb-3'>Pickup address: {props.sellerStreet}, {props.sellerCity}, {props.sellerState}, {props.sellerZipcode}</p>
                 </div>
 
                 <div className="col-sm-12 col-md-3 text-center text-md-end pe-md-5 pb-md-0 pb-3">
@@ -63,6 +68,9 @@ const ConsumerOrder = (props) => {
                                         <h4 className='fs-4 mb-3'>Order # {props.orderId}</h4>
                                         <p className='mb-3'>Vendor name: {props.sellerName}</p>
                                         <p className='mb-3'>Order date: {convertDate()}</p>
+                                        <p className='mb-3'>Pickup address: </p>
+                                        <p className='mb-3'>{props.sellerStreet}, {props.sellerCity}, {props.sellerState}, {props.sellerZipcode}</p>
+
                                     </div>
 
                                     <div className='order-history-text'>

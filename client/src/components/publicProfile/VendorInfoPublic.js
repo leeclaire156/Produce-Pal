@@ -80,7 +80,7 @@ function VendorInfoPublic() {
                                     <div className="col-lg-10 col-md-10">
                                         <h5>Farm Products</h5>
                                         <Link to={`/productInventoryother/${storeData._id}`}>
-                                        <button type="button" >Click to view and purchase products from our farm</button>
+                                        <button type="button" className='btn btn-secondary btn-sm small-view-button'>Explore our farm products</button>
                                         </Link>
                                     </div>
                                 </div>

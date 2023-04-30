@@ -9,18 +9,17 @@ import { Redirect } from 'react-router-dom'
 import { useProductContext } from '../utils/GlobalState';
 import { TOGGLE_VENDOR_STATUS, UPDATE_VENDOR_STATUS } from '../utils/actions';
 import UserToggle from '../components/UserToggle';
-// import "./order.css";
 import ConsumerOrder from '../components/orderhistory/consumerOrder';
 import VendorOrder from '../components/orderhistory/vendorOrder';
 import { useQuery } from '@apollo/client'
 import { useParams } from 'react-router-dom';
-import { GET_ME } from '../utils/queries'
+import { GET_ME } from '../utils/queries';
+// import { Link } from 'react-router-dom';
 
 const OrderHistory = () => {
     const [filteredOrders, setFilteredOrders] = useState([]);
     const [filteredOrdersByVendor, setFilteredOrdersByVendor] = useState([]);
 
-    //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
     const { loading, error, data } = useQuery(GET_ME);
 
     console.log(data);
@@ -81,8 +80,9 @@ const OrderHistory = () => {
         }
     }
     console.log("global VendorStatus =" + vendorStatus);
+    console.log(filteredOrders);
 
-    if (Auth.loggedIn()) {
+if (Auth.loggedIn()) {
         if (loading) {
             return (
                 <h2 className="container d-flex justify-content-center align-items-center">
@@ -124,6 +124,11 @@ const OrderHistory = () => {
                                     quantity={order.quantity}
                                     orderType={order.orderType}
                                     sellerImg={order.sellerName[0]?.vendorImage}
+                                    sellerID={order.sellerName[0]?._id}
+                                    sellerCity={order.sellerName[0]?.pickupAddress[0]?.city}
+                                    sellerState={order.sellerName[0]?.pickupAddress[0]?.state}
+                                    sellerStreet={order.sellerName[0]?.pickupAddress[0]?.street}
+                                    sellerZipcode={order.sellerName[0]?.pickupAddress[0]?.zipcode}
                                 />
                             ))}
                         </div>

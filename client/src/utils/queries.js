@@ -490,4 +490,16 @@ query Query($id: ID!) {
     orderType
   }
 }
-`
+`;
+
+export const GET_ONE_USER_BY_ID = gql`
+query Query($id: ID!) {
+  user(_id: $id) {
+    _id
+    biography
+    email
+    firstName
+    lastName
+    marketName
+  }
+}`;
