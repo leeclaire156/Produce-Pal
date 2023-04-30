@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ConsumerOrder = (props) => {
+    const vendorId = props._id;
+    console.log(vendorId)
+
     function convertDate() {
         const dateToInt = (parseInt(props.purchaseDate))
         const convertedDate = new Date(dateToInt) // date as an object
@@ -21,7 +24,7 @@ const ConsumerOrder = (props) => {
         return (roundedSum)
     }
 
-    console.log(props);
+    
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
@@ -32,9 +35,13 @@ const ConsumerOrder = (props) => {
                             className="img-fluid" />
                     </Link>
                 </div>
+                {/* My Orders Page */}
                 <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
-                    <p>Vendor name: {props.sellerName}</p>
+                    <Link to={`/public/profile/vendor/${props._id}`}>
+                        <button>Vendor name: {props.sellerName}</button>
+                    </Link>
+
                     <p>Order date: {convertDate()}</p>
                     <p className='mb-3'>Pickup address: {props.sellerStreet}, {props.sellerCity}, {props.sellerState}, {props.sellerZipcode}</p>
                 </div>

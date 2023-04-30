@@ -205,19 +205,30 @@ const resolvers = {
         // USE TO RENDER STOREFRONTS of other users depending on the :id in route
         user: async (parent, { _id }) => {
             return await User.findById(_id)
-                .populate('products')
-                .populate({
-                    path: 'sales',
-                    populate: 'products'
-                })
-                .populate({
-                    path: 'orders',
-                    populate: 'products'
-                })
-                .populate('address')
-                .populate('vendorAddress')
-                .populate('pickupAddress')
-                ;
+            .populate('products')
+            // IT DOESN"T LIKE MEMBERSHIPS!
+            // .populate({
+            //     path: 'memberships',
+            //     populate: ['sellerName']
+            // })
+            .populate({
+                path: 'sales',
+                populate: ['products', 'buyerName', 'sellerName']
+            })
+            .populate({
+                path: 'orders',
+                populate: [
+                    'products', 'buyerName', 
+                    {
+                        path: 'sellerName',
+                        populate: 'pickupAddress',
+                    },
+                ]
+            })
+            .populate('address')
+            .populate('vendorAddress')
+            .populate('pickupAddress')
+            ;
         },
 
         // // When front end is ready for testing, 

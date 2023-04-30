@@ -12,9 +12,7 @@ import UserToggle from '../components/UserToggle';
 import ConsumerOrder from '../components/orderhistory/consumerOrder';
 import VendorOrder from '../components/orderhistory/vendorOrder';
 import { useQuery } from '@apollo/client'
-import { useParams } from 'react-router-dom';
-import { GET_ME } from '../utils/queries';
-// import { Link } from 'react-router-dom';
+import { GET_ME } from '../utils/queries'
 
 const OrderHistory = () => {
     const [filteredOrders, setFilteredOrders] = useState([]);
@@ -117,6 +115,7 @@ if (Auth.loggedIn()) {
                                 <ConsumerOrder key={order._id} {...order}
                                     orderId={order.orderId}
                                     sellerName={order.sellerName[0]?.vendorName}
+                                    _id={order.sellerName[0]?._id}
                                     purchaseDate={order.purchaseDate}
                                     productName={order.products[0].productName}
                                     productUnits={order.products[0].productUnits}
