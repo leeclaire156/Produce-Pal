@@ -104,9 +104,7 @@ const OrderHistory = () => {
                         <h1 className="text-center mb-5">Sales History</h1>
                         <div>
                             {filteredOrdersByVendor.map((order) => (
-                                <VendorOrder key={order._id} {...order}
-                                    _id={order.buyerName[0]?._id}
-                                />
+                                <VendorOrder key={order._id} {...order} />
                             ))}
                         </div>
                     </div>
