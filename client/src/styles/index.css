@@ -488,6 +488,8 @@ p {
   font-size: 1rem;
 }
 
-.errorMsg {
+.errorMsg,
+.emailError {
   color: var(--color-deep-brown);
 }
+

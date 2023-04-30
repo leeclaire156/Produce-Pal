@@ -104,7 +104,8 @@ function Signup(props) {
         }
     }
 
-    const togglePassword = () => {
+    const togglePassword = (e) => {
+        e.preventDefault();
         setPasswordType(!passwordType)
         setEyeImage(!eyeImage)
     }
@@ -383,7 +384,7 @@ function Signup(props) {
                                 onBlur={handleEmailValidation}
                                 value={formState.email}
                                 className='form-control' />
-                            {errorEmailMessage ? <label className="errorMsg emailError">Check your email</label> : ""}
+                            {errorEmailMessage ? <label className="errorMsg emailError mt-3 ms-3">Check your email</label> : ""}
                         </div>
 
                         <div className="col-12 mb-3 d-flex flex-column text-start">
@@ -396,7 +397,7 @@ function Signup(props) {
                                     id="password"
                                     onChange={handleChange}
                                     value={formState.password}
-                                    className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onMouseEnter={togglePassword} onMouseLeave={togglePassword}><img src={eyeImage ? eye : blindeye} /></button></span>
+                                    className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword} ><img src={eyeImage ? eye : blindeye} /></button></span>
                             </div>
                         </div>
 
