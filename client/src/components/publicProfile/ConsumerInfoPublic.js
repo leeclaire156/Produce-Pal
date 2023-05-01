@@ -50,7 +50,7 @@ function ConsumerInfoPublic() {
                                 <h1>About</h1>
                             </div>
                             <div className="profile-bio">
-                                <p>{consumerInfo.biography}</p>
+                                <p>{consumerInfo.biography ? consumerInfo.biography : "No Description Available"}</p>
                             </div>
 
                             <div className="mt-2 mt-md-5">
@@ -58,7 +58,11 @@ function ConsumerInfoPublic() {
                                     <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                     <div className="col-lg-10 col-md-10">
                                         <h5>Address</h5>
-                                        <p>{consumerInfo.address[0]?.street}, {consumerInfo.address[0]?.city}, {consumerInfo.address[0]?.state}, {consumerInfo.address[0]?.zipcode}</p>
+                                        {consumerInfo.address[0]?.street ?
+                                            <p> {consumerInfo.address[0]?.street}, {consumerInfo.address[0]?.city}, {consumerInfo.address[0]?.state}, {consumerInfo.address[0]?.zipcode}</p>
+                                            :
+                                            <p>No information provided</p>
+                                        }
                                     </div>
                                 </div>
                                 <div className="row">
@@ -72,7 +76,11 @@ function ConsumerInfoPublic() {
                                     <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
                                     <div className="col-lg-10 col-md-10">
                                         <h5>Phone</h5>
-                                        <p>{consumerInfo.phone}</p>
+                                        {consumerInfo.phone ?
+                                            <p>{consumerInfo.phone}</p>
+                                            :
+                                            <p>No information provided</p>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +88,7 @@ function ConsumerInfoPublic() {
                     </div>
                 </div>
 
-            </div>
+            </div >
         );
     } else {
         return (
