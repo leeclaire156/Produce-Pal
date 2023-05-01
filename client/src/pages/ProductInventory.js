@@ -195,8 +195,8 @@ const ProductInventory = () => {
                     user: profile._id
                 }, refetchQueries: [{ query: GET_ME }]
             });
-            // window.location.reload(false)
-            return data;
+            console.log(data)
+            window.location.reload(false)
         } catch (err) {
             console.error(err);
             console.log(productFormData)
@@ -273,6 +273,9 @@ const ProductInventory = () => {
                                 <div className="modal-header">
                                     <h5 className="modal-title" id='createProductModalLabel'>Create a product</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-header">
+                                    <h4 className="modal-subtitle" id='createProductModalLabel'> All fields except image are required</h4>
                                 </div>
                                 <div className="modal-body">
                                     <div className="form-group">
