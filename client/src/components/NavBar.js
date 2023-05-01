@@ -55,7 +55,7 @@ function NavBar({ currentPage, handlePageChange }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light container">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/landing" id='nav-brand-text'>ProducePal</a>
+        <a className="navbar-brand" href="/" id='nav-brand-text'>ProducePal</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -70,7 +70,7 @@ function NavBar({ currentPage, handlePageChange }) {
         >
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a href="/"
+              <a href="/home"
                 // onClick={() => handlePageChange('Home')}
                 className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Home' ? 'home' : 'home-fade'}>Home</a>
             </li>

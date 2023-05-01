@@ -145,3 +145,4 @@ Credit for utilizing several activities in George Washington University Coding B
 21. [Finding sum of an array](https://reqbin.com/code/javascript/m81eb1ms/javascript-sum-array-example)
 22. [Using React State to count clicks on a button](https://github.com/Ebazhanov/click-counter)
 23. [Enter event triggers button click](https://stackoverflow.com/questions/4763638/enter-triggers-button-click)
+24. [Filter brightness](https://stackoverflow.com/questions/44413690/how-to-put-a-gray-overlay-on-an-image-in-css)

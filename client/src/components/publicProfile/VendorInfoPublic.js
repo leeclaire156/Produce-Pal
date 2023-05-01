@@ -90,7 +90,7 @@ function VendorInfoPublic() {
                                     <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faCarrot} size="3x" /></div>
                                     <div className="col-lg-10 col-md-10 mb-5 mb-md-0">
                                         <h5>Farm Products</h5>
-                                        <Link to={`/productInventoryother/${vendorInfo._id}`}>
+                                        <Link to={`/product-inventory/other/${vendorInfo._id}`}>
                                             <button type="button" className='btn btn-secondary btn-sm small-view-button'>Explore our farm products</button>
                                         </Link>
                                     </div>
