@@ -29,13 +29,6 @@ function ProductSingleOther(item) {
 
     const [clicks, setClicks] = useState(1)
 
-
-
-
-
-
-
-
     const addToCart = (e) => {
         e.preventDefault()
 
@@ -73,10 +66,6 @@ function ProductSingleOther(item) {
 
         localStorage.removeItem(`${productName}`) // Rids local storage of that item after updating or deleting so that it doesn't come back on refresh
     }
-
-
-    // console.log(cart);
-    // console.log(vendorStatus);
 
     return (
         <div key={_id} className="col-md-4 mb-4">
