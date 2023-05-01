@@ -149,7 +149,7 @@ function VendorInfo(props) {
                     <img
                         src={props.vendorImage ? props.vendorImage : "https://placehold.co/600x600"}
                         alt=""
-                        className="img-fluid profile-image-link"
+                        className="img-fluid"
                         height={600}
                         width={600}
                     />
