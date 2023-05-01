@@ -15,6 +15,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { ADD_PRODUCT } from '../utils/mutations';
 import { QUERY_SINGLE_PROFILE, GET_ME } from '../utils/queries';
 import { useParams } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 
 const ProductInventory = () => {
     const { profileId } = useParams();
@@ -174,12 +175,14 @@ const ProductInventory = () => {
         });
     };
 
+    const [showAlert, setShowAlert] = useState(false);
+
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(productFormData)
         try {
             //adds product to database based on input form information stored in productFormData variable
-            const { data } = addProduct({
+            const { data } = await addProduct({
                 variables: {
                     productId: productFormData.productId,
                     productName: productFormData.productName,
@@ -198,6 +201,7 @@ const ProductInventory = () => {
             console.log(data)
             window.location.reload(false)
         } catch (err) {
+            setShowAlert(true);
             console.error(err);
             console.log(productFormData)
         }
@@ -267,16 +271,19 @@ const ProductInventory = () => {
                     )}
 
                     {/* <!-- "create a product" Modal (enable in vendorStatus: true )--> */}
-                    <form className="modal modal-lg fade" id="createProductModal" tabIndex="-1" aria-labelledby='createProductModalLabel' aria-hidden="true" onSubmit={handleFormSubmit}>
+                    <form show={showAlert} className="modal modal-lg fade" id="createProductModal" tabIndex="-1" aria-labelledby='createProductModalLabel' aria-hidden="true" onSubmit={handleFormSubmit} >
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h5 className="modal-title" id='createProductModalLabel'>Create a product</h5>
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div className="modal-header">
+                                {showAlert && (
+                                    <Alert severity="error" variant='danger'>Please fill out all forms. Images are optional.</Alert>
+                                )}
+                                {/* <div className="modal-header">
                                     <h4 className="modal-subtitle" id='createProductModalLabel'> All fields except image are required</h4>
-                                </div>
+                                </div> */}
                                 <div className="modal-body">
                                     <div className="form-group">
                                         <label>Product ID</label>
@@ -363,7 +370,7 @@ const ProductInventory = () => {
                                     {uploading ?
                                         <button type="submit" className="btn btn-primary" disabled> Save</button>
                                         :
-                                        <button type="submit" className="btn btn-primary" data-bs-dismiss="modal"> Save</button>}
+                                        <button type="submit" className="btn btn-primary"> Save</button>}
                                 </div>
 
                             </div>
