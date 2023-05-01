@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 // Sample public testing key for stripe
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe('pk_test_51N1l5jKdLlnWCR5fjBp0MJmhe5XHkJxBwqEGR1zvR6sfqvhsEAPbBfPot4NLRhVLYyz7rYcFDnhdFj2nXDXvs3zV0065QkEhhh');
 
 const Cart = () => {
     // Clears cart on new render
