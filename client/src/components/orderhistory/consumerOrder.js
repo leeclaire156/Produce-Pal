@@ -29,7 +29,7 @@ const ConsumerOrder = (props) => {
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
-                    <Link to={`profile/vendor/${props.sellerID}`}>
+                    <Link to={`/profile/vendor/${props.sellerID}`}>
                         <img src={props.sellerImg ? props.sellerImg : 'https://placehold.co/150x150'}
                             alt=""
                             className="img-fluid" />
