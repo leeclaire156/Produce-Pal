@@ -19,8 +19,8 @@ function Signup(props) {
     const [notFilled, setFilledStatus] = useState(false)
     const [addUser] = useMutation(ADD_USER);
     const [validate, setValidate] = useState(false);
-    const [showAlert, setShowAlert] = useState(false);
-
+    const [showPasswordAlert, setPasswordAlert] = useState(false);
+    const [showEmailAlert, setEmailAlert] = useState(false);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -107,22 +107,27 @@ function Signup(props) {
     const handleEmailValidation = (e) => {
         e.preventDefault();
         if (formState.email.length == 0) {
-            setEmailError(true)
+            setEmailAlert(true)
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formState.email)) {
-            setEmailError(true)
+            setEmailAlert(true)
         } else {
-            setEmailError(false)
+            setEmailAlert(false)
+        }
+    }
+
+    const handlePasswordValidation = () => {
+        if (formState.password.length < 5) {
+            // setPasswordError(true);
+            setPasswordAlert(true);
+            console.log(showPasswordAlert)
+        } else {
+            setPasswordAlert(false);
         }
     }
 
     const togglePassword = (e) => {
         e.preventDefault();
         setPasswordType(!passwordType)
-        if (formState.password.length < 5) {
-            // setPasswordError(true);
-            setShowAlert(true);
-           
-        }
         setEyeImage(!eyeImage)
     }
 
@@ -197,13 +202,6 @@ function Signup(props) {
     };
 
 
-    // const filledOutCheck = () => {
-    //     if (!formState.firstName && !formState.lastName && !formState.email && !formState.password) {
-    //         setFilledStatus(true)
-    //     } else {
-    //         setFilledStatus(false)
-    //     }
-    // }
 
     function renderVendorForm() {
         if (formState.vendorStatus == true) {
@@ -218,10 +216,10 @@ function Signup(props) {
                         id="vendorName"
                         onChange={handleChange}
                         value={formState.vendorName}
-                        className='form-control'/>
+                        className='form-control' />
 
                 </div>
-                
+
 
                 // <>
                 //     <Form.Group className="flex-row space-between my-2">
@@ -378,7 +376,7 @@ function Signup(props) {
                                 value={formState.firstName}
                                 required="true"
                                 className='form-control' />
-                                <Form.Control.Feedback type="invalid">Please add your first name.</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please add your first name.</Form.Control.Feedback>
                         </div>
 
                         <div className="col-6 mb-3 d-flex flex-column text-start">
@@ -392,7 +390,7 @@ function Signup(props) {
                                 value={formState.lastName}
                                 required="true"
                                 className='form-control' />
-                                <Form.Control.Feedback type="invalid">Please add your last name.</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">Please add your last name.</Form.Control.Feedback>
                         </div>
 
                         <div className="col-12 mb-3 d-flex flex-column text-start">
@@ -407,8 +405,6 @@ function Signup(props) {
                                 value={formState.email}
                                 required="true"
                                 className='form-control' />
-                                <Form.Control.Feedback type="invalid">Please enter your email</Form.Control.Feedback>
-                            {errorEmailMessage ? <label className="errorMsg emailError mt-3 ms-3">Check your email</label> : ""}
                         </div>
 
                         <div className="col-12 mb-3 d-flex flex-column text-start">
@@ -420,6 +416,7 @@ function Signup(props) {
                                     type={passwordType ? "text" : "password"}
                                     id="password"
                                     onChange={handleChange}
+                                    onBlur={handlePasswordValidation}
                                     value={formState.password}
                                     required="true"
                                     className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword} type='button'><img src={eyeImage ? eye : blindeye} /></button></span>
@@ -427,11 +424,15 @@ function Signup(props) {
                         </div>
                         <div>
 
-{showAlert && (
-    <Alert severity="error" variant='danger'>Password must be a minimum of 5 characters !</Alert>
-)}
+                            {showEmailAlert && (
+                                <Alert severity="error" variant='danger'>Check your email!</Alert>
+                            )}
 
-</div>
+                            {showPasswordAlert && (
+                                <Alert severity="error" variant='danger'>Password must be a minimum of 5 characters !</Alert>
+                            )}
+
+                        </div>
 
 
                         <div className="col-12 mb-3 d-flex flex-column text-start">
@@ -441,8 +442,8 @@ function Signup(props) {
                                     label="Yes"
                                     onChange={handleChange}
                                     required="true"
-                                    value="true" 
-                                    id="Vendor"/>
+                                    value="true"
+                                    id="Vendor" />
                                 <label className="form-check-label" for="Vendor">
                                     Yes
                                 </label>
