@@ -22,7 +22,7 @@ import ProfileOtherVendor from './pages/ProfileOtherVendor'
 import ProfileOtherConsumer from './pages/ProfileOtherConsumer'
 import { ProductProvider } from './utils/GlobalState.js'
 import Success from './pages/Success';
-
+import Landing from './pages/Landing';
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -76,8 +76,11 @@ function App() {
               {/* this route is for the success Stripe payment made page and where addOrder function is called */}
               <Route exact path='/success' component={Success} />
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
+              <Route exact path='/landing' component={Landing} />
               <Route render={() => <div className='container no-product text-center'><h2>Wrong page!</h2></div>} />
               {/* <Route path="*" component={Error404} /> */}
+
+
             </Switch>
           </>
         </ProductProvider>
