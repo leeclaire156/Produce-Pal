@@ -7,7 +7,7 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
 
     return (
         <div className="container mt-5">
-            <div className="row mb-5">
+            <div className="row mb-3 mb-md-5">
                 <div className="col dashboard-title text-center">
                     <h1>{vendorName}</h1>
                     <p>{vendorAddress[0]?.street}, {vendorAddress[0]?.city}, {vendorAddress[0]?.state}, {vendorAddress[0]?.zipcode}</p>
@@ -16,7 +16,7 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                 </div>
             </div>
             <div className="row">
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faUser} size="3x" className='fa-icon' />
@@ -35,7 +35,7 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faBook} size="3x" className='fa-icon' />
@@ -48,7 +48,7 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faCarrot} size="3x" className='fa-icon' />

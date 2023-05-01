@@ -35,7 +35,8 @@ const ProductInventoryOther = () => {
     // fetch products data and product categories data locally. and dispatch to STATE. This code needs to be modified to get data from database.
     useEffect(() => {
         async function fetchData() {
-            const data = productArrayData.map(productArrayData => productArrayData);
+
+            const data = await productArrayData.map(productArrayData => productArrayData);
             console.log(data);
             // extract unique category names from the product data
             const uniqueCategories = [...new Set(productArrayData.map(productArrayData => productArrayData.productCategory))];
@@ -70,6 +71,7 @@ const ProductInventoryOther = () => {
             }
         }
         fetchData();
+
         // it may not like data below because top end of the array is data
     }, [data, loading, dispatch]);
 
@@ -105,9 +107,8 @@ const ProductInventoryOther = () => {
             }
         }
     }
-    // console.log(storeData.products[0].productAvailability);
     // console.log(productArrayData);
-    console.log(productArrayDataAvailable);
+    // console.log(productArrayDataAvailable);
     if (!loading) {
         return (
             <div className="container my-2 product-inventory">
@@ -119,7 +120,7 @@ const ProductInventoryOther = () => {
                 <h1 className='mb-3 text-center'>{storeData.vendorName} Products</h1>
 
                 <div className='row mb-3'>
-                    <div className="col-lg-12 d-flex justify-content-end">
+                    <div className="col-lg-12 d-flex justify-content-center justify-content-md-end">
                         {/* categories filter button/menu */}
                         <div className="dropdown">
                             <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownBtnCategory" data-bs-toggle="dropdown" aria-expanded="false">
@@ -142,6 +143,7 @@ const ProductInventoryOther = () => {
                         </div>
                     </div>
                 </div>
+
                 {/* array of product cards */}
                 {productArrayData.length ? (
                     <div className="row is-flex">
@@ -164,9 +166,12 @@ const ProductInventoryOther = () => {
                         ))}
                     </div>
                 ) : (
-                    <h3>No products in this farm yet !</h3>
-                )}
-            </div>
+                    <div className='container no-product text-center'>
+                        <h3>No products in this farm yet !</h3>
+                    </div>
+                )
+                }
+            </div >
         );
     } else {
         return (

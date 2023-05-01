@@ -61,11 +61,11 @@ const CartItem = ({ item }) => {
                     </div>
                 </div>
 
-                <div className="col-md-6 cart-product-list">
+                <div className="col-md-6 cart-product-list mt-3 mt-md-0">
                     <div className='d-flex flex-column align-items-start text-start'>
                         <div className='cart-product-name mb-2'>{item.productName}</div>
                         <div className='cart-product-description mb-2'>{item.productDescription}</div>
-                        <div>
+                        <div className='mb-3 mb-md-0'>
                             <span>Qty:</span>
                             <input
                                 className='ms-2'

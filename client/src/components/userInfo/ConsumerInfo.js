@@ -126,7 +126,7 @@ function ConsumerInfo(props) {
         <div className="container-fluid">
 
             <div className="row">
-                <div className="col-12 text-center mb-5 profile-title">
+                <div className="col-12 text-center mb-3 mb-md-5 profile-title">
                     <h1>{props.firstName} {props.lastName}</h1>
                 </div>
             </div>
@@ -151,7 +151,7 @@ function ConsumerInfo(props) {
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
                 </label>
 
-                <div className="col-md-6">
+                <div className="col-md-6 mt-2 mt-md-0">
 
                     <div className="toggle-container text-end">
                         <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
@@ -159,15 +159,15 @@ function ConsumerInfo(props) {
                         </button>
                     </div>
 
-                    <div className="profile-information">
-                        <div className="profile-about mb-5">
+                    <div className="profile-information text-center text-md-start">
+                        <div className="profile-about mb-2 mb-md-5">
                             <h1>About</h1>
                         </div>
                         <div className="profile-bio">
                             <p>{props.biography}</p>
                         </div>
 
-                        <div className="mt-5">
+                        <div className="mt-2 mt-md-5">
                             <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">

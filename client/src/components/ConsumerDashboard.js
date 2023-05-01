@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 function ConsumerDashboard({ firstName, lastName, address, biography }) {
     return (
         <div className="container mt-5">
-            <div className="row mb-5">
+            <div className="row mb-3 mb-md-5">
                 <div className="col dashboard-title text-center">
                     <h1>{firstName} {lastName} </h1>
                     <p>{address[0]?.street}, {address[0]?.city}, {address[0]?.state}, {address[0]?.zipcode}</p>
                 </div>
             </div>
             <div className="row">
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faUser} size="3x" className='fa-icon' />
@@ -28,7 +28,7 @@ function ConsumerDashboard({ firstName, lastName, address, biography }) {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faBook} size="3x" className='fa-icon' />
@@ -40,7 +40,7 @@ function ConsumerDashboard({ firstName, lastName, address, biography }) {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faCarrot} size="3x" className='fa-icon' />

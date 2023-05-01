@@ -76,7 +76,7 @@ function App() {
               {/* this route is for the success Stripe payment made page and where addOrder function is called */}
               <Route exact path='/success' component={Success} />
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
-              <Route render={() => <h1 className='display-2 container'>Wrong page!</h1>} />
+              <Route render={() => <div className='container no-product text-center'><h2>Wrong page!</h2></div>} />
               {/* <Route path="*" component={Error404} /> */}
             </Switch>
           </>

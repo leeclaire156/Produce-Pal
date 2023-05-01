@@ -514,6 +514,23 @@ p {
   font-size: 3rem;
 }
 
+.no-product h3{
+  font-family: var(--card-title-font-family);
+  color: var(--color-dark-brown);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 2rem;
+  margin-top: 15rem;
+}
+
+.no-product h2{
+    font-family: var(--card-title-font-family);
+    color: var(--color-dark-brown);
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 4rem;
+    margin-top: 15rem;
+  }
 
 @media screen and (max-width: 600px) {
   .veg-container {
@@ -533,6 +550,48 @@ p {
   nav {
     margin-top: 0.9rem;
   }
+
+  .dashboard-title h1,
+  .profile-title h1 {
+    font-size: 3rem;
+  }
+
+  .dashboard-title p {
+    font-size: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .profile-image {
+    height: 10rem;
+    width: 25rem;
+  }
+
+  .profile-image img {
+    height: 10rem;
+    width: 25rem;
+    object-fit: cover;
+  }
+
+  .profile-about h1 {
+    font-size: 2rem
+  }
+
+  .product-inventory h1 {
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .no-product h3 {
+    font-family: var(--card-title-font-family);
+    color: var(--color-dark-brown);
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.75rem;
+    margin-top: 12rem;
+  }
 }
 
-@media screen and (max-width: 992px) {}
+/* @media screen and (max-width: 992px) {} */
