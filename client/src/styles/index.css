@@ -736,6 +736,7 @@ p {
     flex-wrap: wrap;
     flex-direction: column;
     overflow: hidden;
+    z-index: -1;
   }
 
   .landing-mobile-img-box {
@@ -743,10 +744,12 @@ p {
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: -1;
   }
 
   .landing-mobile-img {
     overflow: hidden;
+    z-index: -1;
   }
 
   .landing-mobile-img img {
@@ -763,6 +766,7 @@ p {
 
   .landing-img-box {
     display: none;
+    z-index: -1;
   }
 
   .landing-page-image-pepper {
@@ -810,10 +814,12 @@ p {
     position: fixed;
     bottom: 0rem;
     width: 100%;
+    z-index: -1;
   }
 
   .landing-mobile-img {
     overflow: hidden;
+    z-index: -1;
   }
 
   .landing-mobile-img img {
@@ -826,15 +832,18 @@ p {
 }
 
 @media screen and (max-width: 1200px) {
+
   .landing-mobile-img-box {
-    display: block;
+    display: hidden;
     position: fixed;
     bottom: 0rem;
     width: 100%;
+    z-index: -1;
   }
 
   .landing-mobile-img {
     overflow: hidden;
+    z-index: -1;
   }
 
   .landing-mobile-img img {
