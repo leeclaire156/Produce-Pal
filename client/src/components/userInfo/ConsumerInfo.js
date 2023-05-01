@@ -159,7 +159,7 @@ function ConsumerInfo(props) {
                             <h1>About</h1>
                         </div>
                         <div className="profile-bio">
-                            <p>{props.biography}</p>
+                            <p>{props.biography ? props.biography : "No Description Available"}</p>
                         </div>
 
                         <div className="mt-2 mt-md-5">
@@ -167,14 +167,11 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.address[0]?.street}, {props.address[0]?.city}, {props.address[0]?.state}, {props.address[0]?.zipcode}</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
-                                <div className="col-lg-10 col-md-10">
-                                    <h5>Phone</h5>
-                                    <p>{props.phone}</p>
+                                    {props.address[0]?.street ?
+                                        <p>{props.address[0]?.street}, {props.address[0]?.city}, {props.address[0]?.state}, {props.address[0]?.zipcode}</p>
+                                        :
+                                        <p>No information provided</p>
+                                    }
                                 </div>
                             </div>
                             <div className="row">
@@ -182,6 +179,17 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Email</h5>
                                     <p>{props.email}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
+                                <div className="col-lg-10 col-md-10">
+                                    <h5>Phone</h5>
+                                    {props.phone ?
+                                        <p>{props.phone}</p>
+                                        :
+                                        <p>No information provided</p>
+                                    }
                                 </div>
                             </div>
                         </div>
