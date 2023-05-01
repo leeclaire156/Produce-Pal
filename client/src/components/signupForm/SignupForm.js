@@ -426,8 +426,9 @@ function Signup(props) {
                                     label="Yes"
                                     onChange={handleChange}
                                     required="true"
-                                    value="true" />
-                                <label className="form-check-label" for="flexRadioDefault1">
+                                    value="true" 
+                                    id="Vendor"/>
+                                <label className="form-check-label" for="Vendor">
                                     Yes
                                 </label>
                             </div>
@@ -436,8 +437,9 @@ function Signup(props) {
                                     label="No"
                                     required="true"
                                     onChange={handleChange}
-                                    value="false" />
-                                <label className="form-check-label" for="flexRadioDefault1">
+                                    value="false"
+                                    id="notVendor" />
+                                <label className="form-check-label" for="notVendor">
                                     No
                                 </label>
                             </div>
