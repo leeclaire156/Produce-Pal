@@ -19,7 +19,7 @@ import { useParams } from 'react-router-dom';
 const ProductInventoryOther = () => {
     const { id } = useParams();
     window.localStorage.setItem("storeObjectId", JSON.stringify(id));
-    console.log(id);
+    
 
     const { loading, error, data } = useQuery(STOREFRONT, {
         variables: { id }
@@ -35,9 +35,8 @@ const ProductInventoryOther = () => {
     // fetch products data and product categories data locally. and dispatch to STATE. This code needs to be modified to get data from database.
     useEffect(() => {
         async function fetchData() {
-
             const data = await productArrayData.map(productArrayData => productArrayData);
-            console.log(data);
+            // console.log(data);
             // extract unique category names from the product data
             const uniqueCategories = [...new Set(productArrayData.map(productArrayData => productArrayData.productCategory))];
             // create a new category list with 'ALL' and unique category names
@@ -46,7 +45,7 @@ const ProductInventoryOther = () => {
             const categoriesListObject = categoriesList.map((item, index) => {
                 return { productId: index, name: item };
             });
-            console.log(categoriesListObject);
+            // console.log(categoriesListObject);
             // console.log(categoriesList);
 
             if (data) {

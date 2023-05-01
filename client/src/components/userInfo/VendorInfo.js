@@ -66,9 +66,6 @@ function VendorInfo(props) {
     };
 
 
-    // console.log(props)
-    // console.log(props.vendorAddress[0]?._id)
-    // console.log(props.pickupAddress[0]?._id)
 
 
     const vendorAddress = props.vendorAddress[0]
@@ -134,7 +131,7 @@ function VendorInfo(props) {
             return formState;
         })
     }
-    console.log(props);
+
     return (
         <div className="container-fluid">
 

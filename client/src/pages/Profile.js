@@ -46,7 +46,7 @@ function Profile() {
         window.removeEventListener('load', onLoad);
     });
 
-    console.log("global VendorStatus =" + vendorStatus);
+    // console.log("global VendorStatus =" + vendorStatus);
     // toggleVendorStatus function to update the vendorStatus in globalState and IndexDB.
     const toggleVendorStatus = async () => {
         try {
@@ -59,8 +59,7 @@ function Profile() {
             throw error;
         }
     };
-    console.log(profile.data);
-    console.log(Auth.loggedIn());
+
     if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
         if (!loading) {
             return (
@@ -75,7 +74,7 @@ function Profile() {
         } else {
             return (
                 <div>
-                <Spinner/>
+                {/* <Spinner/> */}
                 </div>
             )
         }

@@ -16,14 +16,14 @@ import { useParams } from 'react-router-dom';
 
 function ConsumerInfoPublic() {
     const { id } = useParams();
-    console.log(id);
+
 
     const { loading, error, data } = useQuery(GET_USER_BY_ID, {
         variables: { id }
     });
     const consumerInfo = data?.user || {};
 
-    console.log(consumerInfo);
+
 
     if (!loading) {
         return (
