@@ -148,3 +148,4 @@ Credit for utilizing several activities in George Washington University Coding B
 24. [Filter brightness](https://stackoverflow.com/questions/44413690/how-to-put-a-gray-overlay-on-an-image-in-css)
 25. [Vegetable Box Favicon from "Made Premium" at flaticon.com](https://www.flaticon.com/free-icon/vegetable-box_6039875?related_id=6039875)
 26. [Heroku deploy instructions](https://stackoverflow.com/questions/21947406/git-push-heroku-master-says-everything-up-to-date-but-the-app-is-not-current)
+27. [Show Modal using state](https://www.pluralsight.com/guides/how-to-open-and-close-react-bootstrap-modal-programmatically)
