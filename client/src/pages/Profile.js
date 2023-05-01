@@ -73,9 +73,9 @@ function Profile() {
             );
         } else {
             return (
-                <div>
-                {/* <Spinner/> */}
-                </div>
+                <h2 className="container d-flex justify-content-center align-items-center">
+                    loading...
+                </h2>
             )
         }
     } else {

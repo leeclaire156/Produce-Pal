@@ -57,7 +57,7 @@ const VendorOrder = (props) => {
             <div className="row align-items-center d-flex">
 
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
-                    <Link to={`profile/consumer/${props.buyerName[0]?._id}`}>
+                    <Link to={`/profile/consumer/${props.buyerName[0]?._id}`}>
                         <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
                             alt=""
                             className="img-fluid" />

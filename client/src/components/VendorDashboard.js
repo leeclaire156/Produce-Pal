@@ -9,8 +9,12 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
         <div className="container mt-5">
             <div className="row mb-3 mb-md-5">
                 <div className="col dashboard-title text-center">
-                    <h1>{vendorName}</h1>
-                    <p>{vendorAddress[0]?.street}, {vendorAddress[0]?.city}, {vendorAddress[0]?.state}, {vendorAddress[0]?.zipcode}</p>
+                    <h1>{vendorName ? vendorName : "Store Name"}</h1>
+                    {vendorAddress[0]?.street ?
+                        <p>{vendorAddress[0]?.street}, {vendorAddress[0]?.city}, {vendorAddress[0]?.state}, {vendorAddress[0]?.zipcode}</p>
+                        :
+                        <p>Add an address in your profile</p>
+                    }
                     {/* <p>About us: {vendorDescription}</p> */}
                     {/* <p>Vendor Telephone: {vendorTelephone}</p> */}
                 </div>
