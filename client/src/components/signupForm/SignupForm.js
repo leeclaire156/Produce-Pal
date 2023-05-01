@@ -7,6 +7,7 @@ import { Form, Button, Dropdown } from 'react-bootstrap';
 // import './signupForm.css';
 import eye from '../assets/eye_icongeek26.png'
 import blindeye from '../assets/blind-eye_icongeek26.png'
+import Alert from 'react-bootstrap/Alert';
 
 import axios from 'axios';
 
@@ -18,6 +19,7 @@ function Signup(props) {
     const [notFilled, setFilledStatus] = useState(false)
     const [addUser] = useMutation(ADD_USER);
     const [validate, setValidate] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
 
 
     const handleFormSubmit = async (event) => {
@@ -116,6 +118,11 @@ function Signup(props) {
     const togglePassword = (e) => {
         e.preventDefault();
         setPasswordType(!passwordType)
+        if (formState.password.length < 5) {
+            // setPasswordError(true);
+            setShowAlert(true);
+           
+        }
         setEyeImage(!eyeImage)
     }
 
@@ -214,6 +221,7 @@ function Signup(props) {
                         className='form-control'/>
 
                 </div>
+                
 
                 // <>
                 //     <Form.Group className="flex-row space-between my-2">
@@ -417,6 +425,13 @@ function Signup(props) {
                                     className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword} type='button'><img src={eyeImage ? eye : blindeye} /></button></span>
                             </div>
                         </div>
+                        <div>
+
+{showAlert && (
+    <Alert severity="error" variant='danger'>Password must be a minimum of 5 characters !</Alert>
+)}
+
+</div>
 
 
                         <div className="col-12 mb-3 d-flex flex-column text-start">
