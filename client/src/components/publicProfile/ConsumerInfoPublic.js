@@ -46,7 +46,7 @@ function ConsumerInfoPublic() {
 
                     <div className="col-md-6">
                         <div className="profile-information text-center text-md-start">
-                            <div className="profile-aboutmb-2 mb-md-5 mt-3 mt-md-0">
+                            <div className="profile-about mb-2 mb-md-5 mt-3 mt-md-0">
                                 <h1>About</h1>
                             </div>
                             <div className="profile-bio">
@@ -62,20 +62,19 @@ function ConsumerInfoPublic() {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
-                                    <div className="col-lg-10 col-md-10">
-                                        <h5>Phone</h5>
-                                        <p>{consumerInfo.phone}</p>
-                                    </div>
-                                </div>
-                                <div className="row">
                                     <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faEnvelope} size="3x" /></div>
                                     <div className="col-lg-10 col-md-10 mb-3 mb-md-0">
                                         <h5>Email</h5>
                                         <p>{consumerInfo.email}</p>
                                     </div>
                                 </div>
-
+                                <div className="row">
+                                    <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
+                                    <div className="col-lg-10 col-md-10">
+                                        <h5>Phone</h5>
+                                        <p>{consumerInfo.phone}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
