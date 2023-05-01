@@ -624,6 +624,10 @@ p {
   z-index: -1;
 }
 
+.landing-mobile-img-box {
+  display: none;
+}
+
 @media screen and (max-width: 600px) {
   .veg-container {
     display: none;
@@ -727,6 +731,117 @@ p {
     padding: 0.5rem 1rem;
     border-radius: 1.5rem;
   }
+
+  .landing-page-container {
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .landing-mobile-img-box {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .landing-mobile-img {
+    overflow: hidden;
+  }
+
+  .landing-mobile-img img {
+    transform: translateX(0) translateY(0) scale(1.75);
+    object-fit: cover;
+    opacity: 50%;
+    z-index: -1;
+    overflow: hidden;
+  }
+
 }
 
-/* @media screen and (max-width: 992px) {} */
+@media screen and (max-width: 992px) {
+
+  .landing-img-box {
+    display: none;
+  }
+
+  .landing-page-image-pepper {
+    position: absolute;
+    bottom: 0;
+    left: 50;
+    transform: translateX(-25%) translateY(-37%) scale(0.15) rotate(-25deg);
+    object-fit: cover;
+    opacity: 50%;
+    z-index: -1;
+  }
+
+  .landing-page-image-corn {
+    position: absolute;
+    bottom: 0;
+    left: 50;
+    transform: translateX(-35%) translateY(3%) scale(0.25) rotate(20deg);
+    object-fit: cover;
+    opacity: 50%;
+    z-index: -1;
+  }
+
+  .landing-page-image-onion {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateX(36%) translateY(-20%) scale(0.21) rotate(0deg);
+    object-fit: cover;
+    opacity: 50%;
+    z-index: -1;
+  }
+
+  .landing-page-image-pumpkin {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateX(36%) translateY(15%) scale(0.25) rotate(-20deg);
+    object-fit: cover;
+    opacity: 50%;
+    z-index: -1;
+  }
+
+  .landing-mobile-img-box {
+    display: block;
+    position: fixed;
+    bottom: 0rem;
+    width: 100%;
+  }
+
+  .landing-mobile-img {
+    overflow: hidden;
+  }
+
+  .landing-mobile-img img {
+    transform: translateX(0%) translateY(0) scale(1.5);
+    object-fit: cover;
+    opacity: 50%;
+    z-index: -1;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .landing-mobile-img-box {
+    display: block;
+    position: fixed;
+    bottom: 0rem;
+    width: 100%;
+  }
+
+  .landing-mobile-img {
+    overflow: hidden;
+  }
+
+  .landing-mobile-img img {
+    transform: translateX(0%) translateY(0) scale(1.5);
+    object-fit: cover;
+    opacity: 50%;
+    z-index: -1;
+    overflow: hidden;
+  }
+}
