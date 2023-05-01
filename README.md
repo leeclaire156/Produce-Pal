@@ -61,18 +61,47 @@ npm run start
 
  ## Demo and Screenshots 
 ---
-1. Demo installing the application from the browser:
+1. Demo Video
 
-    <img src="./xyz">
+![image](https://user-images.githubusercontent.com/116509586/235537542-5d61cd7e-4351-4276-9f4c-02fd1fdba5ac.png)
 
-2. Demo xyz
+2. Image Landing Page
 
-    <img src="./xyz">
+![Landing Page](https://user-images.githubusercontent.com/116509586/235537573-856ef742-f9f1-4beb-a964-2f81f015f969.png)
+
+3. Image Sign Up
+
+    ![Sign Up Page](https://user-images.githubusercontent.com/116509586/235537612-e4e397b2-61d7-4cdc-bd82-23efff574dea.png)
+    
+4. Image Log In
+
+![Log In Modal](https://user-images.githubusercontent.com/116509586/235538626-61d1a041-8128-4da5-8fd4-21563381c118.png)
+
+5. Image  Vendor Dashboard
+
+![Vendor Dashboard](https://user-images.githubusercontent.com/116509586/235538843-2c6177d1-eef7-48f8-8926-fce05d58bcbc.png)
+
+6. Image Customer Dashboard
+
+![Customer Dashboard](https://user-images.githubusercontent.com/116509586/235539006-d8924a62-b344-4a79-a913-7dfe2f9e4313.png)
+
+7. Image Ordering From a Farm
+
+![Ordering](https://user-images.githubusercontent.com/116509586/235539099-071c89b1-0536-4f3f-ad37-d7fc30c642a5.png)
+
+8. Image Cart
+
+![Cart](https://user-images.githubusercontent.com/116509586/235539199-dea6c433-4113-4685-bdae-f33de4c55347.png)
+
+9. Image Check Out
+
+![Checkout](https://user-images.githubusercontent.com/116509586/235539292-89b2e33f-e8e0-4134-a7d3-bc9066bf7fdb.png)
+
+10. Image My Orders
+
+![image](https://user-images.githubusercontent.com/116509586/235539434-b168021d-4d35-4c54-8876-d7d5a4de0585.png)
 
 
-3. Image of xyz
-
-    <img src="./xyz">
 
 ## Contributing 
 ---
