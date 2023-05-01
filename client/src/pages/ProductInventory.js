@@ -261,7 +261,9 @@ const ProductInventory = () => {
                             ))}
                         </div>
                     ) : (
-                        <h3>No products in this farm yet !</h3>
+                        <div className='container no-product text-center'>
+                            <h3>No products in this farm yet !</h3>
+                        </div>
                     )}
 
                     {/* <!-- "create a product" Modal (enable in vendorStatus: true )--> */}
