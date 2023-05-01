@@ -22,7 +22,6 @@ function ConsumerInfo(props) {
         setShowCamera(false);
     };
 
-    console.log(showCamera);
 
     const [newuserUrl, setUserUrl] = useState("");
     const [updateUserImage] = useMutation(UPDATE_USER_IMAGE);
@@ -42,7 +41,10 @@ function ConsumerInfo(props) {
         });
     };
 
+    const [loading, setLoading] = useState(false);
+
     function uploadSingleImage(base64) {
+        setLoading(true);
         axios
             .post("http://localhost:3000/uploadImage", { image: base64 })
 
@@ -59,6 +61,7 @@ function ConsumerInfo(props) {
                 // alert(`User Image uploaded Successfully.`);
                 // window.location.reload(false);
             })
+            .then(() => setLoading(false))
             .catch(console.log);
     }
 
@@ -68,9 +71,6 @@ function ConsumerInfo(props) {
         uploadSingleImage(base64);
     };
 
-
-    console.log(props.address[0]?._id)
-    console.log(props)
 
 
     const initialAddress = props.address[0]
@@ -87,12 +87,11 @@ function ConsumerInfo(props) {
         phone: `${props.phone}`,
     });
 
-    console.log(formState);
 
     const [updateUser] = useMutation(UPDATE_USER);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
+        // console.log(formState); //Keep for future development debugging
         await updateUser({
             variables: {
                 user: props._id,
@@ -126,7 +125,7 @@ function ConsumerInfo(props) {
         <div className="container-fluid">
 
             <div className="row">
-                <div className="col-12 text-center mb-5 profile-title">
+                <div className="col-12 text-center mb-3 mb-md-5 profile-title">
                     <h1>{props.firstName} {props.lastName}</h1>
                 </div>
             </div>
@@ -144,14 +143,14 @@ function ConsumerInfo(props) {
                     <img
                         src={props.userImage ? props.userImage : "https://placehold.co/600x600"}
                         alt=""
-                        className="img-fluid "
+                        className={loading ? "img-fluid loading-img" : "img-fluid"}
                         height={600}
                         width={600}
                     />
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
                 </label>
 
-                <div className="col-md-6">
+                <div className="col-md-6 mt-2 mt-md-0">
 
                     <div className="toggle-container text-end">
                         <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
@@ -159,27 +158,24 @@ function ConsumerInfo(props) {
                         </button>
                     </div>
 
-                    <div className="profile-information">
-                        <div className="profile-about mb-5">
+                    <div className="profile-information text-center text-md-start">
+                        <div className="profile-about mb-2 mb-md-5">
                             <h1>About</h1>
                         </div>
                         <div className="profile-bio">
-                            <p>{props.biography}</p>
+                            <p>{props.biography ? props.biography : "No Description Available"}</p>
                         </div>
 
-                        <div className="mt-5">
+                        <div className="mt-2 mt-md-5">
                             <div className="row">
                                 <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faUser} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.address[0]?.street}, {props.address[0]?.city}, {props.address[0]?.state}, {props.address[0]?.zipcode}</p>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
-                                <div className="col-lg-10 col-md-10">
-                                    <h5>Phone</h5>
-                                    <p>{props.phone}</p>
+                                    {props.address[0]?.street ?
+                                        <p>{props.address[0]?.street}, {props.address[0]?.city}, {props.address[0]?.state}, {props.address[0]?.zipcode}</p>
+                                        :
+                                        <p>No information provided</p>
+                                    }
                                 </div>
                             </div>
                             <div className="row">
@@ -187,6 +183,17 @@ function ConsumerInfo(props) {
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Email</h5>
                                     <p>{props.email}</p>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
+                                <div className="col-lg-10 col-md-10">
+                                    <h5>Phone</h5>
+                                    {props.phone ?
+                                        <p>{props.phone}</p>
+                                        :
+                                        <p>No information provided</p>
+                                    }
                                 </div>
                             </div>
                         </div>

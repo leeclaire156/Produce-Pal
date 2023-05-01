@@ -51,7 +51,6 @@ function NavBar({ currentPage, handlePageChange }) {
     }
   }
 
-  console.log(Auth.loggedIn());
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light container">
@@ -71,7 +70,7 @@ function NavBar({ currentPage, handlePageChange }) {
         >
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a href="/"
+              <a href="/home"
                 // onClick={() => handlePageChange('Home')}
                 className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'} id={currentPage === 'Home' ? 'home' : 'home-fade'}>Home</a>
             </li>

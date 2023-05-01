@@ -80,6 +80,10 @@ body {
   font-weight: 700;
   font-size: 2rem;
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 
@@ -510,6 +514,115 @@ p {
   font-size: 3rem;
 }
 
+.no-product h3 {
+  font-family: var(--card-title-font-family);
+  color: var(--color-dark-brown);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 2rem;
+  margin-top: 15rem;
+}
+
+.no-product h2 {
+  font-family: var(--card-title-font-family);
+  color: var(--color-dark-brown);
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 4rem;
+  margin-top: 15rem;
+}
+
+
+.landing-page-container {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.landing-page-title {
+  font-family: var(--card-title-font-family);
+  font-weight: 700;
+  font-size: 4.5rem;
+  text-transform: uppercase;
+  color: var(--color-dark-brown);
+  margin-bottom: 2rem;
+}
+
+.landing-page-title-sm {
+  font-family: var(--card-title-font-family);
+  font-weight: 400;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--color-dark-brown);
+  margin-bottom: 2rem;
+}
+
+.landing-page-description {
+  font-weight: 400;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  color: var(--color-dark-brown);
+  margin-bottom: 3rem;
+}
+
+.landing-page-explore-btn {
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+}
+
+.landing-page-image {
+  position: absolute;
+  bottom: -6rem;
+  left: 50;
+  transform: translateX(-50%) scale(0.7);
+  object-fit: cover;
+  opacity: 50%;
+  z-index: -1;
+  /* clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); */
+}
+
+.landing-page-image-pepper {
+  position: absolute;
+  bottom: 0;
+  left: 50;
+  transform: translateX(0%) translateY(-28%) scale(0.2) rotate(-25deg);
+  object-fit: cover;
+  opacity: 50%;
+  z-index: -1;
+}
+
+.landing-page-image-corn {
+  position: absolute;
+  bottom: 0;
+  left: 50;
+  transform: translateX(-25%) translateY(10%) scale(0.35) rotate(20deg);
+  object-fit: cover;
+  opacity: 50%;
+  z-index: -1;
+}
+
+.landing-page-image-onion {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateX(0%) translateY(-20%) scale(0.3) rotate(0deg);
+  object-fit: cover;
+  opacity: 50%;
+  z-index: -1;
+}
+
+.landing-page-image-pumpkin {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateX(25%) translateY(22%) scale(0.45) rotate(-20deg);
+  object-fit: cover;
+  opacity: 50%;
+  z-index: -1;
+}
 
 @media screen and (max-width: 600px) {
   .veg-container {
@@ -529,6 +642,91 @@ p {
   nav {
     margin-top: 0.9rem;
   }
+
+  .dashboard-title h1,
+  .profile-title h1 {
+    font-size: 3rem;
+  }
+
+  .dashboard-title p {
+    font-size: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+  }
+
+  .profile-image {
+    height: 10rem;
+    width: 25rem;
+  }
+
+  .profile-image img {
+    height: 10rem;
+    width: 25rem;
+    object-fit: cover;
+  }
+
+  .profile-about h1 {
+    font-size: 2rem
+  }
+
+  .product-inventory h1 {
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .no-product h3 {
+    font-family: var(--card-title-font-family);
+    color: var(--color-dark-brown);
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.75rem;
+    margin-top: 12rem;
+  }
+
+  .landing-left,
+  .landing-right {
+    display: none;
+  }
+
+  .landing-img-box {
+    display: none;
+  }
+
+  .landing-page-title {
+    font-family: var(--card-title-font-family);
+    font-weight: 700;
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: var(--color-dark-brown);
+    margin-bottom: 2rem;
+  }
+
+  .landing-page-title-sm {
+    font-family: var(--card-title-font-family);
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--color-dark-brown);
+    margin-bottom: 1rem;
+  }
+
+  .landing-page-description {
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    color: var(--color-dark-brown);
+    margin-bottom: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .landing-page-explore-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+  }
 }
 
-@media screen and (max-width: 992px) {}
+/* @media screen and (max-width: 992px) {} */

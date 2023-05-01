@@ -108,7 +108,7 @@ const ProductInventory = () => {
         productType: '',
         productPrice: '',
         productCategory: '',
-        productInventory: '',
+        // productInventory: '',
         productUnits: '',
         productAllergens: '',
         productAvailability: '',
@@ -186,7 +186,7 @@ const ProductInventory = () => {
                     productType: productFormData.productType,
                     productPrice: productFormData.productPrice,
                     productCategory: productFormData.productCategory,
-                    productInventory: productFormData.productInventory,
+                    // productInventory: productFormData.productInventory,
                     productUnits: productFormData.productUnits,
                     productAllergens: productFormData.productAllergens,
                     productAvailability: productFormData.productAvailability,
@@ -213,9 +213,9 @@ const ProductInventory = () => {
                     <h1 className='mb-3 text-center'>My Farm Products</h1>
 
                     <div className='row mb-3'>
-                        <div className="col-lg-12 d-flex justify-content-center justify-content-lg-between">
+                        <div className="col-lg-12 d-flex justify-content-center flex-column flex-md-row justify-content-lg-between text-center mt-3 mt-md-0">
                             <div>
-                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Create a product</button>
+                                <button type="button" className="btn btn-primary mb-3 mb-md-0" data-bs-toggle="modal" data-bs-target="#createProductModal">Create a product</button>
                             </div>
                             {/* categories filter button/menu */}
                             <div className="dropdown">
@@ -251,7 +251,7 @@ const ProductInventory = () => {
                                     productName={product.productName}
                                     productDescription={product.productDescription}
                                     productCategory={product.productCategory}
-                                    productInventory={product.productInventory}
+                                    // productInventory={product.productInventory}
                                     productPrice={product.productPrice}
                                     productUnits={product.productUnits}
                                     productType={product.productType}
@@ -261,7 +261,9 @@ const ProductInventory = () => {
                             ))}
                         </div>
                     ) : (
-                        <h3>No products in this farm yet !</h3>
+                        <div className='container no-product text-center'>
+                            <h3>No products in this farm yet !</h3>
+                        </div>
                     )}
 
                     {/* <!-- "create a product" Modal (enable in vendorStatus: true )--> */}
@@ -288,11 +290,11 @@ const ProductInventory = () => {
                                         <input type="text" className="form-control text-muted productCategory" id='create-product-category' placeholder='Enter a product category' name='productCategory' onChange={handleInputChange}
                                             value={productFormData.productCategory} />
                                     </div>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label>Inventory</label>
                                         <input type="number" className="form-control text-muted productInventory" id='create-product-inventory' placeholder='0' name='productInventory' onChange={handleInputChange}
                                             value={productFormData.productInventory} />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <label>Unit Price (USD)</label>
                                         <input type="number" className="form-control text-muted productPrice" id='create-product-price' placeholder='0' name='productPrice' onChange={handleInputChange}
@@ -315,7 +317,7 @@ const ProductInventory = () => {
                                         </div>
                                         <div>
                                             <input type="radio" id='produce' name="productType" onChange={handleInputChange} value="false" />
-                                            <label className="ms-1" htmlFor="weekly-box">Produce</label>
+                                            <label className="ms-1" htmlFor="produce">Produce</label>
                                         </div>
                                     </div>
                                     <div className="form-group">

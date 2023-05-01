@@ -9,7 +9,7 @@ query Product {
             productType
             productPrice
             productCategory
-            productInventory
+            # productInventory
             productUnits
             productAllergens
             productAvailability
@@ -236,7 +236,7 @@ query me {
         productCategory
         productAllergens
         productAvailability
-        productInventory
+        # productInventory
       }
     }
     firstName
@@ -272,7 +272,7 @@ query me {
       productType
       productPrice
       productCategory
-      productInventory
+      # productInventory
       productUnits
       productAllergens
       productAvailability
@@ -317,7 +317,7 @@ query me {
         productCategory
         productAllergens
         productAvailability
-        productInventory
+        # productInventory
       }
     }
   }
@@ -465,7 +465,7 @@ query Storefront($id: ID!) {
       productType
       productPrice
       productCategory
-      productInventory
+      # productInventory
       productUnits
       productAllergens
       productAvailability
@@ -537,7 +537,7 @@ query Query($id: ID!) {
       productType
       productPrice
       productCategory
-      productInventory
+      # productInventory
       productUnits
       productAllergens
       productAvailability

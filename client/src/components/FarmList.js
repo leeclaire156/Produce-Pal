@@ -6,7 +6,6 @@ import vegImg2 from '../styles/img/veg-3.png'
 
 // only shows cards with vendorStatus true
 const FarmList = ({ farms }) => {
-    console.log(farms)
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -54,7 +53,7 @@ const FarmList = ({ farms }) => {
         <div className="container">
             <div className="row justify-content-center" >
                 {/* search bar */}
-                <div className="col-12 col-md-8 mb-5 mt-5" style={{ width: '50%' }}>
+                <div className="col-10 col-md-6 mb-md-5 mt-md-5 mb-4 mt-4" >
                     <div className="input-group">
                         <input
                             type="text"
@@ -88,15 +87,15 @@ const FarmList = ({ farms }) => {
                 </div>
             </div>
             {/* farm information cards */}
-            <div className="row justify-content-center">
-                <div className="col-2 col-md-1">
+            <div className="row justify-content-center farm-cards-container">
+                <div className="col-2 col-md-1 veg-container">
                     <div className='container veg-container-absolute-left'>
                         <div className='veg-container-relative-left'>
                             <img className='veg-img-left' src={vegImg1} />
                         </div>
                     </div>
                 </div>
-                <div className="col-8 col-md-8" style={{ width: '75%' }}>
+                <div className="col-8 col-md-9 farm-cards-list">
                     {searchError && (
                         <p className="text-danger">{searchError}</p>
                     )}
@@ -110,7 +109,7 @@ const FarmList = ({ farms }) => {
                             <FarmCard key={farm._id} farm={farm} />
                         )))}
                 </div>
-                <div className="col-2 col-md-1">
+                <div className="col-2 col-md-1 veg-container">
                     <div className='container veg-container-absolute-right'>
                         <div className='veg-container-relative-right'>
                             <img className='veg-img-right' src={vegImg2} />

@@ -41,7 +41,10 @@ function VendorInfo(props) {
         });
     };
 
+    const [loading, setLoading] = useState(false);
+
     function uploadSingleImage(base64) {
+        setLoading(true);
         axios
             .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
@@ -56,6 +59,7 @@ function VendorInfo(props) {
                 // alert(`Vendor Image uploaded Successfully.`);
                 // window.location.reload(false);
             })
+            .then(() => setLoading(false))
             .catch(console.log);
     }
 
@@ -66,9 +70,6 @@ function VendorInfo(props) {
     };
 
 
-    // console.log(props)
-    // console.log(props.vendorAddress[0]?._id)
-    // console.log(props.pickupAddress[0]?._id)
 
 
     const vendorAddress = props.vendorAddress[0]
@@ -134,13 +135,19 @@ function VendorInfo(props) {
             return formState;
         })
     }
-    console.log(props);
+
     return (
         <div className="container-fluid">
 
             <div className="row">
-                <div className="col-12 text-center mb-5 profile-title">
-                    <h1>{props.vendorName}</h1>
+                <div className="col-12 text-center mb-3 mb-md-5 profile-title">
+                    {/* <h1>{props.vendorName ? props.vendorName : "Coming Soon"}</h1> */}
+
+                    {props.vendorStatus ?
+                        props.vendorName ? <h1>{props.vendorName}</h1> : <h1>Coming Soon</h1>
+                        :
+                        <h1>Store Name</h1>
+                    }
                 </div>
             </div>
             <div className="row align-items-center">
@@ -152,7 +159,7 @@ function VendorInfo(props) {
                     <img
                         src={props.vendorImage ? props.vendorImage : "https://placehold.co/600x600"}
                         alt=""
-                        className="img-fluid profile-image-link"
+                        className={loading ? "img-fluid loading-img" : "img-fluid"}
                         height={600}
                         width={600}
                     />
@@ -164,7 +171,7 @@ function VendorInfo(props) {
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
                 </label>
 
-                <div className="col-md-6">
+                <div className="col-md-6 mt-2 mt-md-0">
 
                     <div className="toggle-container text-end">
                         {props.vendorStatus ?
@@ -175,34 +182,46 @@ function VendorInfo(props) {
                             </button>}
                     </div>
 
-                    <div className="profile-information">
-                        <div className="profile-about mb-5">
+                    <div className="profile-information text-center text-md-start">
+                        <div className="profile-about mb-2 mb-md-5">
                             <h1>About</h1>
                         </div>
                         <div className="profile-bio">
-                            <p>{props.vendorDescription}</p>
+                            <p>{props.vendorDescription ? props.vendorDescription : "No Description Available"}</p>
                         </div>
 
-                        <div className="mt-5">
+                        <div className="mt-2 mt-md-5">
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faLocation} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faLocation} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
-                                    <p>{props.vendorAddress[0]?.street}, {props.vendorAddress[0]?.city}, {props.vendorAddress[0]?.state}, {props.vendorAddress[0]?.zipcode}</p>
+                                    {props.vendorAddress[0]?.street ?
+                                        <p>{props.vendorAddress[0]?.street}, {props.vendorAddress[0]?.city}, {props.vendorAddress[0]?.state}, {props.vendorAddress[0]?.zipcode}</p>
+                                        :
+                                        <p>Stay tuned for more information</p>
+                                    }
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faStore} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faStore} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Find us at {props.marketName}</h5>
-                                    <p>{props.pickupAddress[0]?.street}, {props.pickupAddress[0]?.city}, {props.pickupAddress[0]?.state}, {props.pickupAddress[0]?.zipcode}</p>
+                                    {props.pickupAddress[0]?.street ?
+                                        <p>{props.pickupAddress[0]?.street}, {props.pickupAddress[0]?.city}, {props.pickupAddress[0]?.state}, {props.pickupAddress[0]?.zipcode}</p>
+                                        :
+                                        <p>Stay tuned for more information</p>
+                                    }
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Contact</h5>
-                                    <p>{props.vendorTelephone}</p>
+                                    {props.vendorTelephone ?
+                                        <p>{props.vendorTelephone}</p>
+                                        :
+                                        <p>Stay tuned for more information</p>
+                                    }
                                 </div>
                             </div>
                             {/* <div className="row">

@@ -414,7 +414,7 @@ function Signup(props) {
                                     onChange={handleChange}
                                     value={formState.password}
                                     required="true"
-                                    className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword} ><img src={eyeImage ? eye : blindeye} /></button></span>
+                                    className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword} type='button'><img src={eyeImage ? eye : blindeye} /></button></span>
                             </div>
                         </div>
 
@@ -426,8 +426,9 @@ function Signup(props) {
                                     label="Yes"
                                     onChange={handleChange}
                                     required="true"
-                                    value="true" />
-                                <label className="form-check-label" for="flexRadioDefault1">
+                                    value="true" 
+                                    id="Vendor"/>
+                                <label className="form-check-label" for="Vendor">
                                     Yes
                                 </label>
                             </div>
@@ -436,8 +437,9 @@ function Signup(props) {
                                     label="No"
                                     required="true"
                                     onChange={handleChange}
-                                    value="false" />
-                                <label className="form-check-label" for="flexRadioDefault1">
+                                    value="false"
+                                    id="notVendor" />
+                                <label className="form-check-label" for="notVendor">
                                     No
                                 </label>
                             </div>

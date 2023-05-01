@@ -5,10 +5,7 @@ import { GET_ORDER_TYPE } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 
 const VendorOrder = (props) => {
-    // const buyerId = props._id;
-    // console.log(buyerId);
-
-    const [formState, setFormState] = useState('')
+    const [formState, setFormState] = useState(props.orderType)
     const [updateOrderStatus] = useMutation(UPDATE_ORDER_STATUS);
 
     const handleFormSubmit = async (event) => {
@@ -18,13 +15,15 @@ const VendorOrder = (props) => {
                 variables: {
                     order: props._id,
                     orderType: formState.orderType
-                }, refetchQueries: [{ query: GET_ORDER_TYPE }]
+                }
             });
         } else {
             return
         }
     };
-    console.log(formState);
+
+
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormState(input => {
@@ -44,23 +43,21 @@ const VendorOrder = (props) => {
     function total() {
         const totalArray = []
         for (var i = 0; i < props.products.length; i++) {
-            console.log(props.quantity[i] * props.products[i].productPrice)
             totalArray.push((props.quantity[i] * props.products[i].productPrice))
         }
-        console.log(totalArray)
         let sum = totalArray.reduce(function (a, b) {
             return a + b;
         });
         var roundedSum = sum.toFixed(2)
         return (roundedSum)
     }
-    console.log(props);
+    
     return (
         <div className='container-fluid card mb-3 order-history-card'>
             <div className="row align-items-center d-flex">
 
                 <div className="col-sm-12 col-md-2 mb-2 mb-md-0 text-center text-md-left history-img-container">
-                    <Link to={`profile/consumer/${props.buyerName[0]?._id}`}>
+                    <Link to={`/profile/consumer/${props.buyerName[0]?._id}`}>
                         <img src={props.buyerName[0]?.userImage ? props.buyerName[0]?.userImage : 'https://placehold.co/150x150'}
                             alt=""
                             className="img-fluid" />
@@ -104,7 +101,7 @@ const VendorOrder = (props) => {
                                         <p className='mb-3'>Buyer name: {`${props.buyerName[0]?.firstName} ${props.buyerName[0]?.lastName}`}</p>
                                         <p className='mb-3'>Order date: {convertDate()}</p>
                                         <form className='mb-3' onSubmit={handleFormSubmit}>
-                                            <select className="form-select" aria-label="select-order-status" defaultValue="Paid" name='orderType' onChange={handleInputChange}>
+                                            <select className="form-select" aria-label="select-order-status" defaultValue={props.orderType} name='orderType' onChange={handleInputChange}>
                                                 <option value="Paid">Paid</option>
                                                 <option value="Ready">Ready</option>
                                                 <option value="Closed">Closed</option>

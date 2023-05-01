@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers"
 import { useProductContext } from "../utils/GlobalState";
@@ -17,7 +17,7 @@ function ProductSingleOther(item) {
         productName,
         productDescription,
         productCategory,
-        productInventory,
+        // productInventory,
         productPrice,
         productUnits,
         productType,
@@ -27,11 +27,24 @@ function ProductSingleOther(item) {
 
     const { cart, vendorStatus } = state
 
-    const [value, setValue] = useState(1)
+    const [clicks, setClicks] = useState(1)
+
     const addToCart = (e) => {
         e.preventDefault()
 
-        setValue(value + 1);
+        setClicks(clicks + 1);
+
+        if (localStorage.getItem(`${productName}`) === null) {
+            localStorage.setItem(`${productName}`, clicks)
+        } else {
+            const getItem = localStorage.getItem(`${productName}`)
+            const getItemNumb = parseInt(getItem)
+            
+            localStorage.setItem(`${productName}`, getItemNumb + 1)
+            const newItemNumb = localStorage.getItem(`${productName}`)
+        }
+
+        var value = localStorage.getItem(`${productName}`)
 
         const itemInCart = cart.find((cartItem) => cartItem._id === _id)
         if (itemInCart) {
@@ -50,11 +63,9 @@ function ProductSingleOther(item) {
 
             idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
         }
+
+        localStorage.removeItem(`${productName}`) // Rids local storage of that item after updating or deleting so that it doesn't come back on refresh
     }
-
-
-    // console.log(cart);
-    // console.log(vendorStatus);
 
     return (
         <div key={_id} className="col-md-4 mb-4">
@@ -67,7 +78,7 @@ function ProductSingleOther(item) {
                         <h6 className="card-text mb-3">{productDescription}</h6>
                         <p className="card-text"><strong>Product ID: </strong>{productId}</p>
                         <p className="card-text"><strong>Category: </strong>{productCategory}</p>
-                        <p className="card-text"><strong>Inventory: </strong>{productInventory}</p>
+                        {/* <p className="card-text"><strong>Inventory: </strong>{productInventory}</p> */}
                         <p className="card-text"><strong>Price: </strong>${productPrice} /{productUnits}</p>
                         <p className="card-text"><strong>Type: </strong>{productType ? 'Weekly Farm Produce Box' : 'Produce'}</p>
                         <p className="card-text"><strong>Availability: </strong>{productAvailability ? 'in-stock' : 'out-stock'}</p>

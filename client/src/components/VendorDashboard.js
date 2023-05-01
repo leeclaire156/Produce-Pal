@@ -7,16 +7,20 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
 
     return (
         <div className="container mt-5">
-            <div className="row mb-5">
+            <div className="row mb-3 mb-md-5">
                 <div className="col dashboard-title text-center">
-                    <h1>{vendorName}</h1>
-                    <p>{vendorAddress[0]?.street}, {vendorAddress[0]?.city}, {vendorAddress[0]?.state}, {vendorAddress[0]?.zipcode}</p>
+                    <h1>{vendorName ? vendorName : "Store Name"}</h1>
+                    {vendorAddress[0]?.street ?
+                        <p>{vendorAddress[0]?.street}, {vendorAddress[0]?.city}, {vendorAddress[0]?.state}, {vendorAddress[0]?.zipcode}</p>
+                        :
+                        <p>Add an address in your profile</p>
+                    }
                     {/* <p>About us: {vendorDescription}</p> */}
                     {/* <p>Vendor Telephone: {vendorTelephone}</p> */}
                 </div>
             </div>
             <div className="row">
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faUser} size="3x" className='fa-icon' />
@@ -35,7 +39,7 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faBook} size="3x" className='fa-icon' />
@@ -48,13 +52,13 @@ function VendorDashboard({ vendorName, vendorAddress, vendorDescription, email, 
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-4 mb-3">
                     <div className="card dashboard-card">
                         <div className="card-body text-center">
                             <FontAwesomeIcon icon={faCarrot} size="3x" className='fa-icon' />
                             <h5 className="card-title mt-3">Product Inventory</h5>
                             <p className="card-text">Review and manage my product inventory</p>
-                            <Link to="/productInventory">
+                            <Link to="/product-inventory">
                                 <button className="btn btn-primary">View</button>
                             </Link>
                         </div>

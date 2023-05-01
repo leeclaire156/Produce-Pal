@@ -31,7 +31,7 @@ const productSchema = new Schema({
     // Number in inventory of product
     productInventory: {
         type: Number, 
-        default: 0,
+        default: 99,
     },
     // units example lbs, oz, ea.
     productUnits: {

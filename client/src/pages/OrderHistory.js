@@ -22,7 +22,7 @@ const OrderHistory = () => {
     //if params that pass in userID exist, use QUERY_SINGLE_PROFILE, if not, use GET_ME query
     const { loading, error, data } = useQuery(GET_ME);
 
-    console.log(data);
+    // console.log(data);
     const profile = data?.me || {};
 
     const userOrder = profile.orders
@@ -66,7 +66,7 @@ const OrderHistory = () => {
         window.removeEventListener('load', onLoad);
     });
 
-    console.log("global VendorStatus =" + vendorStatus);
+    // console.log("global VendorStatus =" + vendorStatus);
     // toggleVendorStatus function to update the vendorStatus in globalState and IndexDB.
     const toggleVendorStatus = async () => {
         try {
@@ -79,7 +79,7 @@ const OrderHistory = () => {
             throw error;
         }
     }
-    console.log("global VendorStatus =" + vendorStatus);
+    // console.log("global VendorStatus =" + vendorStatus);
 
     if (Auth.loggedIn()) {
         if (loading) {
@@ -115,7 +115,7 @@ const OrderHistory = () => {
                                 <ConsumerOrder key={order._id} {...order}
                                     orderId={order.orderId}
                                     sellerName={order.sellerName[0]?.vendorName}
-                                    _id={order.sellerName[0]?._id}
+                                    _id={order._id}
                                     purchaseDate={order.purchaseDate}
                                     productName={order.products[0].productName}
                                     productUnits={order.products[0].productUnits}

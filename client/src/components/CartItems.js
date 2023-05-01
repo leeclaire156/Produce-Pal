@@ -18,6 +18,8 @@ const CartItem = ({ item }) => {
 
     const onChange = (e) => {
         const value = e.target.value;
+        localStorage.setItem(`${item.productName}`, value)
+
         if (value === '0') {
             dispatch({
                 type: REMOVE_FROM_CART,
@@ -50,7 +52,7 @@ const CartItem = ({ item }) => {
     return (
         <div className="container" >
             <div className="row align-items-center mb-3">
-                
+
                 <div className="col-md-3">
                     <div className='d-flex flex-column align-items-center'>
                         <img
@@ -61,11 +63,11 @@ const CartItem = ({ item }) => {
                     </div>
                 </div>
 
-                <div className="col-md-6 cart-product-list">
+                <div className="col-md-6 cart-product-list mt-3 mt-md-0">
                     <div className='d-flex flex-column align-items-start text-start'>
                         <div className='cart-product-name mb-2'>{item.productName}</div>
                         <div className='cart-product-description mb-2'>{item.productDescription}</div>
-                        <div>
+                        <div className='mb-3 mb-md-0'>
                             <span>Qty:</span>
                             <input
                                 className='ms-2'
