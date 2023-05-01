@@ -29,7 +29,7 @@ const ProductInventoryOther = () => {
     const productArrayData = data?.user.products || {};
     // returns array of objects
     // returns one of the objects from the array, a product with many 
-    console.log(productArrayData.length)
+    // console.log(productArrayData.length)
     const [state, dispatch] = useProductContext();
     const { currentCategory, categories, currentCategoryName, cart, vendorStatus } = state;
     // fetch products data and product categories data locally. and dispatch to STATE. This code needs to be modified to get data from database.
@@ -107,7 +107,7 @@ const ProductInventoryOther = () => {
         }
     }
     // console.log(productArrayData);
-    console.log(productArrayDataAvailable.length);
+    // console.log(productArrayDataAvailable.length);
     if (!loading) {
         return (
             <div className="container my-2 product-inventory">
