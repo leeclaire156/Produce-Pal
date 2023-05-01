@@ -40,7 +40,11 @@ const ConsumerOrder = (props) => {
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
                     <p>Vendor name: {props.sellerName}</p>
                     <p>Order date: {convertDate()}</p>
-                    <p className='mb-3'>Pickup address: {props.sellerStreet}, {props.sellerCity}, {props.sellerState}, {props.sellerZipcode}</p>
+                    {props.sellerStreet ?
+                        <p className='mb-3'>Pickup address: {props.sellerStreet}, {props.sellerCity}, {props.sellerState}, {props.sellerZipcode}</p>
+                        : 
+                        <p className='mb-3'>Pickup address: Please Contact Seller</p>
+                    }
                 </div>
 
                 <div className="col-sm-12 col-md-3 text-center text-md-end pe-md-5 pb-md-0 pb-3">
@@ -73,7 +77,11 @@ const ConsumerOrder = (props) => {
                                         <p className='mb-3'>Vendor name: {props.sellerName}</p>
                                         <p className='mb-3'>Order date: {convertDate()}</p>
                                         <p className='mb-3'>Pickup address: </p>
-                                        <p className='mb-3'>{props.sellerStreet}, {props.sellerCity}, {props.sellerState}, {props.sellerZipcode}</p>
+                                        {props.sellerStreet ?
+                                            <p className='mb-3'>{props.sellerStreet}, {props.sellerCity}, {props.sellerState}, {props.sellerZipcode}</p>
+                                            :
+                                            <p className='mb-3'>Please Contact Seller</p>
+                                        }
                                     </div>
 
                                     <div className='order-history-text'>
