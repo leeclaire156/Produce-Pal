@@ -80,27 +80,22 @@ function Profile() {
     // };
 
 
-    if (Auth.loggedIn()) { // should render profile only if user is logged in. ...should.  It can be reused to render other user's profile by different routes with user._id  .
-        if (!loading) {
-            return (
-                <div className='container'>
-                    {/* this toggle button needs to be moved to navBar when implementing */}
-                    {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
-                    <div className="container mt-5">
-                        <VendorInfoPublic {...profile} />
-                    </div>
+    if (!loading) {
+        return (
+            <div className='container'>
+                {/* this toggle button needs to be moved to navBar when implementing */}
+                {/* <UserToggle vendorStatus={vendorStatus} onToggle={toggleVendorStatus} /> */}
+                <div className="container mt-5">
+                    <VendorInfoPublic {...profile} />
                 </div>
-            );
-        } else {
-            return (
-                <h2 className="container d-flex justify-content-center align-items-center">
-                    loading...
-                </h2>
-            )
-        }
+            </div>
+        );
     } else {
         return (
-            <Redirect to={{ pathname: '/login' }}></Redirect>)
+            <h2 className="container d-flex justify-content-center align-items-center">
+                loading...
+            </h2>
+        )
     }
 }
 

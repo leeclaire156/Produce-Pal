@@ -147,3 +147,4 @@ Credit for utilizing several activities in George Washington University Coding B
 23. [Enter event triggers button click](https://stackoverflow.com/questions/4763638/enter-triggers-button-click)
 24. [Filter brightness](https://stackoverflow.com/questions/44413690/how-to-put-a-gray-overlay-on-an-image-in-css)
 25. [Vegetable Box Favicon from "Made Premium" at flaticon.com](https://www.flaticon.com/free-icon/vegetable-box_6039875?related_id=6039875)
+26. [Heroku deploy instructions](https://stackoverflow.com/questions/21947406/git-push-heroku-master-says-everything-up-to-date-but-the-app-is-not-current)
