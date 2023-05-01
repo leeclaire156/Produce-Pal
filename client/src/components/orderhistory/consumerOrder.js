@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ConsumerOrder = (props) => {
     // const vendorId = props._id;
-    console.log(props);
+
 
     function convertDate() {
         const dateToInt = (parseInt(props.purchaseDate))
