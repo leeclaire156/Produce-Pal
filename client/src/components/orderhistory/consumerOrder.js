@@ -38,11 +38,11 @@ const ConsumerOrder = (props) => {
                 {/* My Orders Page */}
                 <div className="col-sm-12 col-md-7 mb-2 mb-md-0 text-center text-md-start mt-2 order-history-text">
                     <h4 className='mb-3'>Order # {props.orderId}</h4>
-                    <p>Vendor name: {props.sellerName}</p>
+                    <p>Vendor name: {props.sellerName ? props.sellerName : "N/A"}</p>
                     <p>Order date: {convertDate()}</p>
                     {props.sellerStreet ?
                         <p className='mb-3'>Pickup address: {props.sellerStreet}, {props.sellerCity}, {props.sellerState}, {props.sellerZipcode}</p>
-                        : 
+                        :
                         <p className='mb-3'>Pickup address: Please Contact Seller</p>
                     }
                 </div>
