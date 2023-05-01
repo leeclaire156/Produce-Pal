@@ -32,50 +32,55 @@ function Signup(props) {
         } else { setValidate(true) }
 
         console.log(formState);
-        const mutationResponse = await addUser({
-            variables: {
+        try {
+            const mutationResponse = await addUser({
+                variables: {
 
-                firstName: formState.firstName,
-                lastName: formState.lastName,
-                email: formState.email,
-                password: formState.password,
+                    firstName: formState.firstName,
+                    lastName: formState.lastName,
+                    email: formState.email,
+                    password: formState.password,
 
-                addAddressEmail2: formState.email,
-                street: formState.street,
-                city: formState.city,
-                state: formState.state,
-                zipcode: formState.zipcode,
+                    addAddressEmail2: formState.email,
+                    street: formState.street,
+                    city: formState.city,
+                    state: formState.state,
+                    zipcode: formState.zipcode,
 
-                biography: formState.biography,
-                phone: formState.phone,
-                userImage: userUrl,
+                    biography: formState.biography,
+                    phone: formState.phone,
+                    userImage: userUrl,
 
 
-                vendorStatus: formState.vendorStatus,
-                vendorName: formState.vendorName,
+                    vendorStatus: formState.vendorStatus,
+                    vendorName: formState.vendorName,
 
-                addVendorAddressEmail2: formState.email,
-                addVendorAddressStreet2: formState.addVendorAddressStreet2,
-                addVendorAddressCity2: formState.addVendorAddressCity2,
-                addVendorAddressState2: formState.addVendorAddressState2,
-                addVendorAddressZipcode2: formState.addVendorAddressZipcode2,
+                    addVendorAddressEmail2: formState.email,
+                    addVendorAddressStreet2: formState.addVendorAddressStreet2,
+                    addVendorAddressCity2: formState.addVendorAddressCity2,
+                    addVendorAddressState2: formState.addVendorAddressState2,
+                    addVendorAddressZipcode2: formState.addVendorAddressZipcode2,
 
-                vendorDescription: formState.vendorDescription,
-                vendorTelephone: formState.vendorTelephone,
-                vendorImage: vendorUrl,
+                    vendorDescription: formState.vendorDescription,
+                    vendorTelephone: formState.vendorTelephone,
+                    vendorImage: vendorUrl,
 
-                marketName: formState.marketName,
-                addPickupAddressEmail2: formState.email,
-                addPickupAddressStreet2: formState.addPickupAddressStreet2,
-                addPickupAddressCity2: formState.addPickupAddressCity2,
-                addPickupAddressState2: formState.addPickupAddressState2,
-                addPickupAddressZipcode2: formState.addPickupAddressZipcode2,
+                    marketName: formState.marketName,
+                    addPickupAddressEmail2: formState.email,
+                    addPickupAddressStreet2: formState.addPickupAddressStreet2,
+                    addPickupAddressCity2: formState.addPickupAddressCity2,
+                    addPickupAddressState2: formState.addPickupAddressState2,
+                    addPickupAddressZipcode2: formState.addPickupAddressZipcode2,
 
-            },
-        });
+                },
+            });
 
-        const token = mutationResponse.data.addUser.token;
-        Auth.login(token);
+            const token = mutationResponse.data.addUser.token;
+            Auth.login(token);
+        } catch (error) {
+            console.error(error)
+            setEmailAlert(true)
+        }
     };
 
     const handleChange = (event) => {
@@ -113,6 +118,10 @@ function Signup(props) {
         } else {
             setEmailAlert(false)
         }
+    }
+
+    const uniqueCheck = () => {
+
     }
 
     const handlePasswordValidation = () => {
