@@ -55,7 +55,8 @@ function App() {
         <ProductProvider>
           <>
             <Switch>
-              <Route exact path='/' component={Home} />
+              <Route exact path='/' component={Landing} />
+              <Route exact path='/home' component={Home} />
               <Route exact path='/login' component={Login} />
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/dashboard' component={Dashboard} />
@@ -64,11 +65,11 @@ function App() {
               {/* my OrderHistory page -- this route is for buyers/vendors to view their orders/sales */}
               <Route exact path='/order-history' component={OrderHistory} />
               {/* my productInventory page -- this route is for vendor to manage the product inventory */}
-              <Route exact path='/productinventory' component={ProductInventory} />
+              <Route exact path='/product-inventory' component={ProductInventory} />
               {/* this route is for consumer to buy farmer products */}
               {/* <Route exact path='/productinventory/:id' component={ProductInventoryOther} /> */}
               {/* this route is for testing */}
-              <Route exact path='/productInventoryother/:id' component={ProductInventoryOther} />
+              <Route exact path='/product-inventory/other/:id' component={ProductInventoryOther} />
               {/* this route is for the consumer to view vendor/farm's profile information */}
               <Route exact path='/profile/vendor/:id' component={ProfileOtherVendor} />
               {/* this route is for farmer to view their consumers who bought their products */}
@@ -76,7 +77,6 @@ function App() {
               {/* this route is for the success Stripe payment made page and where addOrder function is called */}
               <Route exact path='/success' component={Success} />
               {/* <Route exact path='/vendor-profile' component={VendorProfile} /> */}
-              <Route exact path='/landing' component={Landing} />
               <Route render={() => <div className='container no-product text-center'><h2>Wrong page!</h2></div>} />
               {/* <Route path="*" component={Error404} /> */}
 

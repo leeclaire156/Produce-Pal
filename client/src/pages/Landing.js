@@ -22,7 +22,7 @@ function Landing() {
                     <p className="landing-page-description">
                         Join our CSA farm community of like-minded individuals who share a passion for healthy, sustainable living. Our CSA farms strive to offer fresh, organic produce for pickup at farmers market locations. Explore our website to learn more about our farms and CSA program.
                     </p>
-                    <Link to='/'>
+                    <Link to='/home'>
                         <button className="landing-page-explore-btn btn btn-secondary">
                             Explore Now
                         </button>

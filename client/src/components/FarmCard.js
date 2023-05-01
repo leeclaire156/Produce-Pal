@@ -26,7 +26,7 @@ const FarmCard = ({ farm }) => {
                             <Link to={`/profile/vendor/${farm._id}`}>
                                 <button className="btn btn-primary me-md-2" type="button" id={`farmProfileBtn-${farm._id}`}>Farm profile</button>
                             </Link>
-                            <Link to={`/productInventoryother/${farm._id}`}>
+                            <Link to={`/product-inventory/other/${farm._id}`}>
                                 <button className="btn btn-secondary ms-md-1 ms-3" type="button" id={`farmProductsBtn-${farm._id}`}>Farm products</button>
                             </Link>
                         </div>
