@@ -51,7 +51,6 @@ function NavBar({ currentPage, handlePageChange }) {
     }
   }
 
-  console.log(Auth.loggedIn());
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light container">
