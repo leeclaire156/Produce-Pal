@@ -137,7 +137,7 @@ function ProductSingle(item) {
         event.preventDefault();
         console.log(productFormData)
         try {
-            //adds product to database based on input form information stored in productFormData variable
+            //edits product to database based on input form information stored in productFormData variable
             const { data } = editProduct({
                 variables: {
                     product: _id,
