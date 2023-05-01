@@ -5,8 +5,6 @@ import { GET_ORDER_TYPE } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 
 const VendorOrder = (props) => {
-    // const buyerId = props._id;
-
     const [formState, setFormState] = useState(props.orderType)
     const [updateOrderStatus] = useMutation(UPDATE_ORDER_STATUS);
 
