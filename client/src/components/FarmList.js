@@ -6,7 +6,6 @@ import vegImg2 from '../styles/img/veg-3.png'
 
 // only shows cards with vendorStatus true
 const FarmList = ({ farms }) => {
-    console.log(farms)
 
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);

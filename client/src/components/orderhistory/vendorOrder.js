@@ -5,9 +5,6 @@ import { GET_ORDER_TYPE } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 
 const VendorOrder = (props) => {
-    // const buyerId = props._id;
-    // console.log(buyerId);
-    console.log(props)
     const [formState, setFormState] = useState(props.orderType)
     const [updateOrderStatus] = useMutation(UPDATE_ORDER_STATUS);
 
@@ -26,7 +23,7 @@ const VendorOrder = (props) => {
     };
 
 
-    console.log(formState);
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setFormState(input => {
@@ -46,10 +43,8 @@ const VendorOrder = (props) => {
     function total() {
         const totalArray = []
         for (var i = 0; i < props.products.length; i++) {
-            console.log(props.quantity[i] * props.products[i].productPrice)
             totalArray.push((props.quantity[i] * props.products[i].productPrice))
         }
-        console.log(totalArray)
         let sum = totalArray.reduce(function (a, b) {
             return a + b;
         });

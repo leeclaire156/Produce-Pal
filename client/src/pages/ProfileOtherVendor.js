@@ -22,7 +22,7 @@ function Profile() {
     );
 
     const profile = data?.me || data?.profile || {};
-    console.log(profile);
+    
 
     const [state, dispatch] = useProductContext();
     const { vendorStatus } = state;
@@ -45,7 +45,7 @@ function Profile() {
     //     window.removeEventListener('load', onLoad);
     // });
 
-    console.log("global VendorStatus =" + vendorStatus);
+    // console.log("global VendorStatus =" + vendorStatus);
     // toggleVendorStatus function to update the vendorStatus in globalState and IndexDB.
     // const toggleVendorStatus = async () => {
     //     try {

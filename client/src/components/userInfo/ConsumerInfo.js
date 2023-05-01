@@ -22,7 +22,6 @@ function ConsumerInfo(props) {
         setShowCamera(false);
     };
 
-    console.log(showCamera);
 
     const [newuserUrl, setUserUrl] = useState("");
     const [updateUserImage] = useMutation(UPDATE_USER_IMAGE);
@@ -69,9 +68,6 @@ function ConsumerInfo(props) {
     };
 
 
-    console.log(props.address[0]?._id)
-    console.log(props)
-
 
     const initialAddress = props.address[0]
     const [formState, setFormState] = useState({
@@ -87,12 +83,11 @@ function ConsumerInfo(props) {
         phone: `${props.phone}`,
     });
 
-    console.log(formState);
 
     const [updateUser] = useMutation(UPDATE_USER);
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
+        // console.log(formState); //Keep for future development debugging
         await updateUser({
             variables: {
                 user: props._id,

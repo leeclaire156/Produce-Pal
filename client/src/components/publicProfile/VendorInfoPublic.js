@@ -16,14 +16,14 @@ import { useParams } from 'react-router-dom';
 
 function VendorInfoPublic() {
     const { id } = useParams();
-    console.log(id);
+
 
     const { loading, error, data } = useQuery(GET_USER_BY_ID, {
         variables: { id }
     });
     const vendorInfo = data?.user || {};
 
-    console.log(vendorInfo);
+
 
     if (!loading) {
         return (
