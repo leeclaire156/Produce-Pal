@@ -317,7 +317,7 @@ const ProductInventory = () => {
                                         </div>
                                         <div>
                                             <input type="radio" id='produce' name="productType" onChange={handleInputChange} value="false" />
-                                            <label className="ms-1" htmlFor="weekly-box">Produce</label>
+                                            <label className="ms-1" htmlFor="produce">Produce</label>
                                         </div>
                                     </div>
                                     <div className="form-group">
