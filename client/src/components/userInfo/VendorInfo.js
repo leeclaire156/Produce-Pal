@@ -137,7 +137,13 @@ function VendorInfo(props) {
 
             <div className="row">
                 <div className="col-12 text-center mb-3 mb-md-5 profile-title">
-                    <h1>{props.vendorName ? props.vendorName : "Coming Soon"}</h1>
+                    {/* <h1>{props.vendorName ? props.vendorName : "Coming Soon"}</h1> */}
+                    
+                    {props.vendorStatus ?
+                        props.vendorName ? <h1>{props.vendorName}</h1> : <h1>Coming Soon</h1>
+                        :
+                        <h1>Store Name</h1>
+                    }
                 </div>
             </div>
             <div className="row align-items-center">
