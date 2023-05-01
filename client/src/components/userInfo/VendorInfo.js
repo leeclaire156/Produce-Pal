@@ -136,7 +136,7 @@ function VendorInfo(props) {
         <div className="container-fluid">
 
             <div className="row">
-                <div className="col-12 text-center mb-5 profile-title">
+                <div className="col-12 text-center mb-3 mb-md-5 profile-title">
                     <h1>{props.vendorName}</h1>
                 </div>
             </div>
@@ -161,7 +161,7 @@ function VendorInfo(props) {
                     <input name='userImage' type="file" onChange={uploadImage} id={props.userImage} hidden></input>
                 </label>
 
-                <div className="col-md-6">
+                <div className="col-md-6 mt-2 mt-md-0">
 
                     <div className="toggle-container text-end">
                         {props.vendorStatus ?
@@ -172,31 +172,31 @@ function VendorInfo(props) {
                             </button>}
                     </div>
 
-                    <div className="profile-information">
-                        <div className="profile-about mb-5">
+                    <div className="profile-information text-center text-md-start">
+                        <div className="profile-about mb-2 mb-md-5">
                             <h1>About</h1>
                         </div>
                         <div className="profile-bio">
                             <p>{props.vendorDescription}</p>
                         </div>
 
-                        <div className="mt-5">
+                        <div className="mt-2 mt-md-5">
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faLocation} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faLocation} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Address</h5>
                                     <p>{props.vendorAddress[0]?.street}, {props.vendorAddress[0]?.city}, {props.vendorAddress[0]?.state}, {props.vendorAddress[0]?.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faStore} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faStore} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Find us at {props.marketName}</h5>
                                     <p>{props.pickupAddress[0]?.street}, {props.pickupAddress[0]?.city}, {props.pickupAddress[0]?.state}, {props.pickupAddress[0]?.zipcode}</p>
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-lg-2 col-md-2"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
+                                <div className="col-lg-2 col-md-2 mb-1 mb-md-0"><FontAwesomeIcon icon={faPhone} size="3x" /></div>
                                 <div className="col-lg-10 col-md-10">
                                     <h5>Contact</h5>
                                     <p>{props.vendorTelephone}</p>

@@ -213,9 +213,9 @@ const ProductInventory = () => {
                     <h1 className='mb-3 text-center'>My Farm Products</h1>
 
                     <div className='row mb-3'>
-                        <div className="col-lg-12 d-flex justify-content-center justify-content-lg-between">
+                        <div className="col-lg-12 d-flex justify-content-center flex-column flex-md-row justify-content-lg-between text-center mt-3 mt-md-0">
                             <div>
-                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">Create a product</button>
+                                <button type="button" className="btn btn-primary mb-3 mb-md-0" data-bs-toggle="modal" data-bs-target="#createProductModal">Create a product</button>
                             </div>
                             {/* categories filter button/menu */}
                             <div className="dropdown">

@@ -108,17 +108,17 @@ const Cart = () => {
                                     ))}
 
                                     <div className="container" >
-                                        <div className="flex-row align-items-center text-end cart-price me-5">
+                                        <div className="flex-row align-items-center text-end cart-price me-0 me-md-5">
                                             <h3>Total: ${calculateTotal()}</h3>
                                         </div>
                                     </div>
 
-                                    <div className="modal-footer">
+                                    <div className="modal-footer flex-row justify-content-center justify-content-md-end">
                                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Add items</button>
                                         <button type="button" className="btn btn-secondary" onClick={clearCart}>Clear Cart</button>
-                                            <form action="/create-checkout-session" method="POST">
-                                                <button type="button" className="btn btn-secondary" onClick={submitCheckout}>Checkout</button>
-                                            </form>
+                                        <form action="/create-checkout-session" method="POST">
+                                            <button type="button" className="btn btn-secondary" onClick={submitCheckout}>Checkout</button>
+                                        </form>
                                     </div>
                                 </div>
                             ) : (
