@@ -9,7 +9,11 @@ function ConsumerDashboard({ firstName, lastName, address, biography }) {
             <div className="row mb-3 mb-md-5">
                 <div className="col dashboard-title text-center">
                     <h1>{firstName} {lastName} </h1>
-                    <p>{address[0]?.street}, {address[0]?.city}, {address[0]?.state}, {address[0]?.zipcode}</p>
+                    {address[0]?.street ?
+                        <p>{address[0]?.street}, {address[0]?.city}, {address[0]?.state}, {address[0]?.zipcode}</p>
+                        :
+                        <p>Add an address in your profile</p>
+                    }
                 </div>
             </div>
             <div className="row">
@@ -54,7 +58,7 @@ function ConsumerDashboard({ firstName, lastName, address, biography }) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
