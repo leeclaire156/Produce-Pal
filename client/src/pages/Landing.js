@@ -37,6 +37,13 @@ function Landing() {
                     <img src={pumpkin} alt="Image 4" className="landing-page-image-pumpkin" />
                 </div>
             </div>
+
+            <div className="row align-items-center justify-content-center landing-mobile-img-box">
+                <div className="container landing-mobile-img">
+                    <img className='img-fluid' src={vegCircle} />
+                </div>
+            </div>
+
         </div >
     );
 }
