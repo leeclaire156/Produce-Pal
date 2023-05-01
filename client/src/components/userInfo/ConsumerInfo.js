@@ -41,7 +41,10 @@ function ConsumerInfo(props) {
         });
     };
 
+    const [loading, setLoading] = useState(false);
+
     function uploadSingleImage(base64) {
+        setLoading(true);
         axios
             .post("http://localhost:3000/uploadImage", { image: base64 })
 
@@ -58,6 +61,7 @@ function ConsumerInfo(props) {
                 // alert(`User Image uploaded Successfully.`);
                 // window.location.reload(false);
             })
+            .then(() => setLoading(false))
             .catch(console.log);
     }
 
@@ -139,7 +143,7 @@ function ConsumerInfo(props) {
                     <img
                         src={props.userImage ? props.userImage : "https://placehold.co/600x600"}
                         alt=""
-                        className="img-fluid "
+                        className={loading ? "img-fluid loading-img" : "img-fluid"}
                         height={600}
                         width={600}
                     />

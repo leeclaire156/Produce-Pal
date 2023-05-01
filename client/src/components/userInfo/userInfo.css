@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.loading-img {
+    filter: brightness(30%);
+}
+
 .camera-overlay {
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);

@@ -41,7 +41,10 @@ function VendorInfo(props) {
         });
     };
 
+    const [loading, setLoading] = useState(false);
+
     function uploadSingleImage(base64) {
+        setLoading(true);
         axios
             .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
@@ -56,6 +59,7 @@ function VendorInfo(props) {
                 // alert(`Vendor Image uploaded Successfully.`);
                 // window.location.reload(false);
             })
+            .then(() => setLoading(false))
             .catch(console.log);
     }
 
@@ -138,7 +142,7 @@ function VendorInfo(props) {
             <div className="row">
                 <div className="col-12 text-center mb-3 mb-md-5 profile-title">
                     {/* <h1>{props.vendorName ? props.vendorName : "Coming Soon"}</h1> */}
-                    
+
                     {props.vendorStatus ?
                         props.vendorName ? <h1>{props.vendorName}</h1> : <h1>Coming Soon</h1>
                         :
@@ -155,7 +159,7 @@ function VendorInfo(props) {
                     <img
                         src={props.vendorImage ? props.vendorImage : "https://placehold.co/600x600"}
                         alt=""
-                        className="img-fluid"
+                        className={loading ? "img-fluid loading-img" : "img-fluid"}
                         height={600}
                         width={600}
                     />
