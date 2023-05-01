@@ -414,7 +414,7 @@ function Signup(props) {
                                     onChange={handleChange}
                                     value={formState.password}
                                     required="true"
-                                    className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword} ><img src={eyeImage ? eye : blindeye} /></button></span>
+                                    className='form-control' /><span className="input-group-text" id="basic-addon1"><button className="togglePwdBtn" onClick={togglePassword} type='button'><img src={eyeImage ? eye : blindeye} /></button></span>
                             </div>
                         </div>
 
