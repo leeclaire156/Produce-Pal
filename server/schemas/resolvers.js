@@ -2,9 +2,9 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order, Address } = require('../models');
 const { signToken } = require('../utils/auth');
 // Sample secret testing key for stripe
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+// const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 // Claire's secrest testing key for stripe for heroku version
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
 const resolvers = {
