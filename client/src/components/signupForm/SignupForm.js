@@ -181,8 +181,8 @@ function Signup(props) {
     function uploadMultipleImages(images) {
         setLoading(true);
         axios
-            .post(" https://ppt-1.herokuapp.com/uploadMultipleImages", { image: base64 })
-            // .post("http://localhost:3000/uploadMultipleImages", { image: base64 })
+            .post(" https://ppt-1.herokuapp.com/uploadMultipleImages", { images })
+            // .post("http://localhost:3000/uploadMultipleImages", { images })
             .then((res) => {
                 // setUrl(res.data);
                 alert("Image uploaded Succesfully");
