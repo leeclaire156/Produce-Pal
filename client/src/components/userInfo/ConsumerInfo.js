@@ -46,7 +46,7 @@ function ConsumerInfo(props) {
     function uploadSingleImage(base64) {
         setLoading(true);
         axios
-            .post(`http://localhost:3000/uploadImage`, { image: base64 })
+            .post(`https://ppt2.herokuapp.com/uploadImage`, { image: base64 })
             // .post(`http://localhost:${PORT}/uploadImage`, { image: base64 })
             // .post("https://api.cloudinary.com/v1_1/dcvtyvwii/uploadImage", { image: base64 })
             // .post("https://api.cloudinary.com/v1_1/dcvtyvwii/uploadImage", { image: base64 })
@@ -156,7 +156,7 @@ function ConsumerInfo(props) {
 
                     <div className="toggle-container text-end">
                         <button className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#consumerModal">
-                            Edit
+                            Edit!!!!!
                         </button>
                     </div>
 
