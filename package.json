@@ -1,6 +1,9 @@
 {
     "name": "produce-pal",
     "version": "1.0.0",
+    "engines": {
+        "node": "16.18.0"
+    },
     "description": "",
     "main": "server/server.js",
     "scripts": {
