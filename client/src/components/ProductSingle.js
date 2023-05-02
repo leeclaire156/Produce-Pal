@@ -93,7 +93,8 @@ function ProductSingle(item) {
     function uploadSingleImage(base64) {
         setLoading(true);
         axios
-            .post("http://localhost:3000/uploadImage", { image: base64 })
+            .post(" https://ppt-1.herokuapp.com/uploadImage", { image: base64 })
+            // .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
                 setUrl(res.data);
                 console.log(url) // shows blank but update image function works
