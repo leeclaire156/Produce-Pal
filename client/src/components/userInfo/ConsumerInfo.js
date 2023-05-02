@@ -11,7 +11,7 @@ import { QUERY_USERS, GET_IMAGE, GET_USER } from '../../utils/queries';
 // import ConsumerEditModal from './ConsumerEditModal';
 
 function ConsumerInfo(props) {
-
+    const PORT = process.env.PORT
     const [showCamera, setShowCamera] = useState(false);
 
     const handleProfileImageMouseEnter = () => {
@@ -46,8 +46,8 @@ function ConsumerInfo(props) {
     function uploadSingleImage(base64) {
         setLoading(true);
         axios
-            .post("http://localhost:3000/uploadImage", { image: base64 })
-
+            .post(" https://ppt-1.herokuapp.com/uploadImage", { image: base64 })
+            // .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
                 // trigger refetch function in here
                 const uploadUrl = res.data

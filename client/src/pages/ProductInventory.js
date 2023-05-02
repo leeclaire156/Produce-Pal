@@ -138,7 +138,8 @@ const ProductInventory = () => {
     function uploadSingleImage(base64) {
         setUploading(true);
         axios
-            .post("http://localhost:3000/uploadImage", { image: base64 })
+            .post(" https://ppt-1.herokuapp.com/uploadImage", { image: base64 })
+            // .post("http://localhost:3000/uploadImage", { image: base64 })
             .then((res) => {
                 setUrl(`${res.data}`);
                 // alert(`Image uploaded Successfully. Url is ${url} or ${res.data}`);
